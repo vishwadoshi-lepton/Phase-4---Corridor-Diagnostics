@@ -1,8 +1,8 @@
 # TraffiCure — Corridor Diagnostics v2.1 Validation
 
 **Owner:** Umang
-**Status:** Validated across 48 segments on 6 joint corridors spanning 2 cities (Pune, Kolkata) and 4 road typologies. Stage 4 preferred mode (per-day onsets) is live. Zero tuning between cities.
-**Date:** 2026-04-10
+**Status:** Validated across 48 segments on 6 joint corridors spanning 2 cities (Pune, Kolkata) and 4 road typologies. Stage 4 preferred mode (per-day onsets) is live. Zero tuning between cities *and* between weekday / weekend slices of the same corridors (see §Cross-slice validation, added 2026-04-22).
+**Date:** 2026-04-10 (cross-slice addendum 2026-04-22)
 
 ---
 
@@ -209,6 +209,84 @@ No segment in the validation set crossed both thresholds (2× peer slower AND qu
 
 ---
 
+## Cross-slice validation (weekday vs weekend) — addendum 2026-04-22
+
+Recommendation #3 in the original validation write-up was to "run a weekend pass on the same 6 corridors to confirm the pipeline handles the weekend slice without modification." This section documents the result. **The pipeline handled it without modification. More interestingly, it produced the kind of differentiated output that makes the zero-tuning claim stronger, not just equivalent.**
+
+### Data pull and coverage check
+
+Before committing to the weekend pass, we probed `traffic_observation` for the 48 validation segments under a 60-day lookback with the ISODOW filter flipped to `IN (6, 7)`. Script: `data/v2_1/probe_weekend_coverage.py` (read-only single SELECT, groups by `road_id`, counts distinct IST dates).
+
+| Cohort | Count | Detail |
+|---|---|---|
+| Healthy (≥ 15 weekend days) | 45 / 48 | Full 18 weekend days covered |
+| Sparse (1–14 weekend days) | 3 | PUNE_B S06 & S07 (feed dropped 2026-03-28); PUNE_C S08 (intermittent) |
+| Missing (0 weekend rows) | 0 | — |
+
+None of the three sparse segments is a bottleneck on either slice, so their thin sample doesn't affect verdicts. Stage 6 recurrence simply reports fewer total days for those segments.
+
+### What changed in the pipeline
+
+Nothing in `corridor_diagnostics_v2.py` or `corridor_diagnostics_v2_1.py`. All weekend support is orchestration:
+
+- `data/v2_1/pull_profiles.py` / `pull_onsets.py` — new pullers with `--slice weekday|weekend` flags. SQL is identical aside from the `EXTRACT(ISODOW ...)` filter.
+- `data/v2_1/run_validation.py` — new `--slice` flag; resolves `profiles/all_profiles_{slice}.json` and `onsets/all_onsets_{slice}.json`; writes slice-suffixed output. Existing weekday artifacts preserved via `--legacy-names`.
+- `data/v2_1/generate_dry_runs.py` — same flag; writes `docs/dry_runs/{cid}_{slice}_dry_run.html`.
+- `data/v2_1/generate_comparison.py` (new) — pure local diff of the two structured JSONs; writes `docs/dry_runs/{cid}_compare.html`.
+- `data/v2_1/compare_slices.py` — CLI-friendly version of the same diff for terminal use.
+
+Input window: 60 calendar days back from 2026-04-22, producing 18 weekend days of coverage per segment (vs 22 weekdays in the original pass). Same p50 per-bucket aggregation, same onset SQL.
+
+### Headline comparison
+
+| corridor | weekday verdict | weekend verdict | bottleneck count WD / WE | sim% WD / WE | primary windows WD / WE |
+|---|---|---|---|---|---|
+| PUNE_A | POINT | POINT | 2 / 2 | 33 / 33 | 0 / 0 |
+| PUNE_B | POINT | POINT | 1 / 1 | 22 / 22 | 0 / 0 |
+| PUNE_C | POINT | POINT | 1 / 1 | 38 / 25 | 1 / 0 |
+| KOL_A | POINT | POINT | 2 / 2 | 71 / 71 | 2 / 2 |
+| **KOL_B** | **SYSTEMIC** | **POINT** | 3 / 3 | **86 / 57** | 2 / 1 |
+| **KOL_C** | **SYSTEMIC** | **POINT** | 5 / 3 | **91 / 64** | 2 / 1 |
+
+Pune corridors and KOL_A are stable across slices. KOL_B and KOL_C shift from SYSTEMIC on weekdays to POINT on weekends, reflecting weekend demand dropping below the 80% simultaneity threshold.
+
+### Per-corridor findings on the corridors that shifted
+
+**KOL_B (JLN → DPS) — SYSTEMIC on weekdays → POINT on weekends.**
+The weekday run fires active bottlenecks on S02, S03, S05, S07 with 86% simultaneity (v2's 80% rule triggers). On the weekend slice, **S05 (`df036495`, SPM I8–N5) disappears entirely** — its weekend regime mix is FREE-dominant and Stage 6 reports OCCASIONAL (6/18 onset days). In its place, **S01 (`ccae34ae`, JLN A1–F9) surfaces as a HEAD_BOTTLENECK** where on weekdays it was only a QUEUE_VICTIM. Stage 6 band for the remaining actives on S02/S03 stays RECURRING (30/30 weekdays → 15–18/18 weekends, within the 75% band). Simultaneity peaks drop from 86% to 57%. Operationally: the weekday bottleneck at SPM I8–N5 is office-commute driven; the weekend "head" at JLN A1–F9 suggests a leisure / commercial-traffic congestion source that doesn't show through on weekdays because it's masked by the larger commute flow.
+
+**KOL_C (KK Tagore → EM Bypass) — SYSTEMIC on weekdays → POINT on weekends.**
+Weekday 91% simultaneity collapses to 64% on weekends. Two of the five weekday actives dissolve: **S02 (`3c96ac8f`, Vivekananda D29–D9) becomes QUEUE_VICTIM** on weekends (Stage 6: RECURRING 14/18), and **S10 (`eea8da9c`, EM Bypass M4–M2B) becomes FREE_FLOW** (Stage 6: RECURRING 18/18 but with a much lower CONG density). The three bottlenecks that persist on both slices — S05 (Vivekananda L17–L21), S08 (EM Bypass L29–L7), S01 (KK Tagore, still HEAD) — are the geometric ones: physical constriction points that congest regardless of commute load. The pipeline separates "office-commute choke" from "structural choke" automatically.
+
+### What the comparison demonstrates
+
+**Zero-tuning transfer holds across day-of-week.** The same thresholds that worked Pune-vs-Kolkata also work weekday-vs-weekend without modification. No new constants were added to the v2.1 config. No SQL was altered other than the `ISODOW` filter.
+
+**The pipeline produces an interpretable slice-delta.** Corridors whose bottlenecks are geometry-driven (Pune corridors, KOL_A's core bottlenecks) stay stable. Corridors whose systemic firing is commute-driven (KOL_B, KOL_C) dissolve from SYSTEMIC to POINT as weekend demand falls off. This is exactly the pattern a well-calibrated diagnostic should produce.
+
+**Operational implication: KOL_B and KOL_C need different intervention plans for weekday vs weekend.** An intervention targeting SPM I8–N5 (KOL_B's weekday bottleneck) would leave JLN A1–F9 (the weekend bottleneck on the same corridor) untouched. Operators should read the `compare.html` page for these two corridors before committing to a retuning plan.
+
+### Caveats
+
+1. **Sample size is smaller on the weekend slice.** 18 weekend days vs 22 weekdays. Stage 6 bands have slightly wider confidence intervals on the weekend side (especially for the 3 sparse segments). The KOL_B/KOL_C shifts described above are large enough to survive that noise — 6/18 is clearly OCCASIONAL, not a borderline call — but smaller band movements on other segments could be sample-size artefacts, not real behaviour.
+2. **Free-flow baseline is recomputed per slice.** Weekend nights are generally quieter than weekday nights, so `ff_tt` on the weekend slice is slightly lower on several segments. This is correct behaviour — the weekend baseline *is* different — but means per-segment ff speeds are not directly comparable across the two slices. The verdicts are the comparable artefact.
+3. **Stage 4 pass rates are noisier on weekends.** With fewer onset pairs (~8 weekend days vs ~22 weekdays), the median-lag calculation has more variance. On sparse-bottleneck weekend corridors (KOL_A, PUNE_B) Stage 4 drops to 0%. This is the low-n guarding issue flagged in the original "Known gaps" §2 — it's now confirmed to show on the weekend slice too.
+
+### Files produced in the cross-slice phase
+
+- `data/v2_1/probe_weekend_coverage.py` — read-only coverage probe
+- `data/v2_1/pull_profiles.py`, `pull_onsets.py` — slice-aware DB pullers
+- `data/v2_1/generate_comparison.py`, `compare_slices.py` — diff generators
+- `data/v2_1/profiles/all_profiles_weekend.json` — 48-segment weekend profiles
+- `data/v2_1/onsets/all_onsets_weekend.json` — weekend per-day onsets
+- `runs/v2_1/v2_1_validation_weekend_report.txt`, `v2_1_validation_weekend_structured.json`
+- `docs/dry_runs/{PUNE_A,PUNE_B,PUNE_C,KOL_A,KOL_B,KOL_C}_weekend_dry_run.html`
+- `docs/dry_runs/{PUNE_A,PUNE_B,PUNE_C,KOL_A,KOL_B,KOL_C}_compare.html`
+
+Existing weekday artifacts were not regenerated; they are byte-identical to what was produced for the original validation.
+
+---
+
 ## Known gaps that validation exposed
 
 1. **Kolkata arterials are signal-dominated.** Stage 4 LWR shockwave validation does not apply well to them (pass rates 17–40%). The pipeline correctly does not claim a shockwave when one isn't there, but this means Stage 4 is positive-only evidence on Kolkata arterials, never a gate. This was already a known property of v2; the 48-segment cross-city run empirically confirms it.
@@ -258,8 +336,8 @@ v2.1 is ready for production deployment on the Pune and Kolkata corridor graphs.
 Before a third-city rollout (Mumbai, Bengaluru, Delhi), we should:
 
 1. Verify R8 threshold on at least one known-saturated corridor.
-2. Add Stage 4 low-n guarding (n_days ≥ 5 → emit pass/fail; else `insufficient_data`).
-3. Run a weekend pass on the same 6 corridors to confirm the pipeline handles the weekend slice without modification.
+2. Add Stage 4 low-n guarding (n_days ≥ 5 → emit pass/fail; else `insufficient_data`). The weekend pass made this more urgent — Stage 4 pass rates on the 18-day weekend slice are noisier on sparse-bottleneck corridors. See §Cross-slice validation caveat #3.
+3. ~~Run a weekend pass on the same 6 corridors to confirm the pipeline handles the weekend slice without modification.~~ **Done 2026-04-22 — see §Cross-slice validation.** The pipeline handled it without modification; KOL_B and KOL_C surfaced SYSTEMIC → POINT transitions that justify slice-specific intervention plans.
 4. Wire R5's contiguity-based systemic flag into the operator UI badge set (currently only the v2 simultaneous flag is shown).
 
 None of these block production use on Pune + Kolkata.

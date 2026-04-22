@@ -3,3 +3,4 @@ data/v2_1/__pycache__
 docs/.DS_Store
 .env
 .env.local
+.superpowers/
