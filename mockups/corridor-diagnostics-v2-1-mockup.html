@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TraffiCure — Corridor Diagnostics</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<style>
+:root {
+  --forest: #0D3B2E;
+  --forest-light: #165C46;
+  --forest-hover: #1A7358;
+  --emerald: #1DB954;
+  --white: #FFFFFF;
+  --cream: #FAF8F5;
+  --cream-dark: #F2EDE7;
+  --text-primary: #1A1A1A;
+  --text-secondary: #5F6368;
+  --text-muted: #9AA0A6;
+  --text-inverse: #FFFFFF;
+  --text-inverse-muted: rgba(255,255,255,0.55);
+  --border: #E8E2DA;
+  --border-light: #F0EBE4;
+  --severity-high: #D93025;
+  --severity-high-bg: #FEF2F2;
+  --severity-med: #E37400;
+  --severity-med-bg: #FEF8EE;
+  --severity-low: #1E8E3E;
+  --severity-low-bg: #F0FDF4;
+  --hover-light: rgba(0,0,0,0.03);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%; height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--white);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-size: 13px;
+}
+.app { display: flex; width: 100%; height: 100%; }
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.content { flex: 1; display: flex; min-height: 0; }
+
+/* ──────────────── SIDEBAR ──────────────── */
+.sidebar {
+  width: 192px;
+  background: var(--forest);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.sidebar-brand { padding: 14px 16px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.brand-city { font-size: 15px; font-weight: 600; color: var(--text-inverse); letter-spacing: -0.2px; }
+.brand-tier { font-size: 11px; font-weight: 500; color: var(--text-inverse-muted); margin-top: 1px; }
+.brand-logo { display: flex; align-items: center; gap: 7px; margin-top: 12px; }
+.brand-icon {
+  width: 22px; height: 22px; border-radius: 5px;
+  background: var(--emerald);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--forest);
+}
+.brand-name { font-size: 13px; font-weight: 600; color: var(--text-inverse); letter-spacing: -0.2px; }
+
+.sidebar-section { padding: 14px 12px 4px; }
+.sidebar-section-label {
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0 4px 8px;
+}
+.sidebar-nav { display: flex; flex-direction: column; gap: 1px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  height: 32px; padding: 0 10px;
+  border-radius: 6px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.nav-item:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
+.nav-item.active { color: #fff; background: rgba(255,255,255,0.12); }
+.nav-item svg { flex-shrink: 0; }
+.nav-badge {
+  margin-left: auto;
+  font-size: 10px; font-weight: 600;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.8);
+  padding: 1px 7px; border-radius: 10px;
+}
+
+.sidebar-footer { margin-top: auto; padding: 10px 12px 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+.user-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 6px; margin-top: 6px;
+  border-radius: 6px;
+}
+.user-avatar {
+  width: 26px; height: 26px; border-radius: 6px;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: var(--text-inverse);
+}
+.user-info-name { font-size: 12px; font-weight: 500; color: var(--text-inverse); line-height: 1.3; }
+.user-info-email { font-size: 10px; color: var(--text-inverse-muted); line-height: 1.3; }
+
+/* ──────────────── TOP BAR ──────────────── */
+.top-bar {
+  height: 42px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+.top-bar-left { display: flex; align-items: center; gap: 10px; }
+.page-title { font-size: 14px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+
+.top-bar-right { display: flex; align-items: center; gap: 10px; }
+.sync-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); }
+.sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+.top-divider { width: 1px; height: 20px; background: var(--border); }
+.top-btn {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+  font-size: 12px; font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex; align-items: center; gap: 5px;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.top-btn:hover { background: var(--cream); border-color: #D5CFC7; }
+
+/* ──────────────── CORRIDOR SWITCHER STRIP ──────────────── */
+.switcher-strip {
+  display: flex;
+  align-items: stretch;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  gap: 8px;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+.switcher-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 2px;
+  white-space: nowrap;
+  border-right: 1px solid var(--border);
+  margin-right: 4px;
+}
+.corridor-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 13px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.corridor-chip:hover { background: var(--cream-dark); border-color: #D5CFC7; }
+.corridor-chip.active {
+  border-color: var(--forest);
+  background: var(--white);
+  box-shadow: 0 0 0 2px rgba(13, 59, 46, 0.08);
+}
+.chip-city-flag {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--cream);
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+.chip-main { display: flex; flex-direction: column; gap: 1px; }
+.chip-id {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.chip-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chip-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+.chip-verdict-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ──────────────── CONTENT 3-COLUMN ──────────────── */
+.segment-panel {
+  width: 288px;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.panel-header-row {
+  padding: 13px 16px 11px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.panel-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.legend-row {
+  padding: 8px 16px 10px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: var(--cream);
+}
+.legend-chip {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.legend-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+
+.segment-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+.segment-row {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.segment-row:hover { background: var(--hover-light); }
+.segment-row.selected {
+  background: var(--cream);
+  border-left: 2px solid var(--forest);
+  padding-left: 14px;
+}
+.seg-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.seg-index {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 24px;
+  letter-spacing: 0.02em;
+}
+.seg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.seg-tag {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: auto;
+}
+.seg-tag-active { background: var(--severity-high-bg); color: var(--severity-high); }
+.seg-tag-head { background: #FEF3E2; color: #B54708; }
+.seg-tag-victim { background: #FFF7E6; color: #C27100; }
+.seg-tag-free { background: var(--severity-low-bg); color: var(--severity-low); }
+
+.seg-name {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-left: 32px;
+}
+.seg-details {
+  margin-top: 3px;
+  margin-left: 32px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ──────────────── MAP ──────────────── */
+.map-section { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; }
+#map { flex: 1; position: relative; }
+.map-corridor-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 400;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  min-width: 220px;
+}
+.mct-label {
+  font-size: 10px; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.mct-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+.mct-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.map-legend {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 400;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 13px;
+  display: flex;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.map-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.map-legend-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* ──────────────── RIGHT DIAGNOSIS PANEL ──────────────── */
+.diag-panel {
+  width: 340px;
+  background: var(--white);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+/* Headline verdict card */
+.diag-headline {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.diag-verdict-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.diag-verdict-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--severity-high);
+  margin-top: 6px;
+  letter-spacing: -0.3px;
+  line-height: 1;
+}
+.diag-verdict-value.point { color: var(--severity-med); }
+.diag-confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 9px;
+  padding: 3px 9px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.diag-confidence-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+}
+.diag-confidence .high { color: var(--severity-low); font-weight: 600; }
+.diag-confidence .med { color: var(--severity-med); font-weight: 600; }
+.diag-explain {
+  margin-top: 13px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Section blocks */
+.diag-block {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+.diag-block-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+/* When block */
+.when-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-primary);
+  padding: 4px 0;
+}
+.when-time {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  width: 118px;
+}
+.when-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.when-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* Fix list */
+.fix-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.fix-row:last-child { border-bottom: none; padding-bottom: 0; }
+.fix-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.fix-body { flex: 1; min-width: 0; }
+.fix-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+.fix-reason {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.45;
+}
+
+/* Empty state for corridors with no bottlenecks */
+.fix-empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+.action-btn {
+  flex: 1;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.action-btn:hover { background: var(--cream); }
+.action-btn.primary {
+  background: var(--forest);
+  color: #fff;
+  border-color: var(--forest);
+}
+.action-btn.primary:hover { background: var(--forest-hover); }
+
+/* Leaflet tweaks */
+.leaflet-popup-content { font-family: 'Inter', sans-serif; font-size: 12px; margin: 8px 10px; }
+.leaflet-popup-content-wrapper { border-radius: 6px; }
+.leaflet-container { font-family: 'Inter', sans-serif; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D5CFC7; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #B8AFA4; }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ════════ SIDEBAR ════════ -->
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-city" id="sideCity">Pune</div>
+      <div class="brand-tier">Enterprise</div>
+      <div class="brand-logo">
+        <div class="brand-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="brand-name">TraffiCure</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">TraffiCure</div>
+      <div class="sidebar-nav">
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Overview
+        </div>
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Alerts
+          <span class="nav-badge">28</span>
+        </div>
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Analytics
+        </div>
+        <div class="nav-item active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7"/><path d="M9 20V7"/><path d="M15 4l5.447 2.724A1 1 0 0 1 21 7.618v10.764a1 1 0 0 1-1.447.894L15 17"/><path d="M15 4v13"/></svg>
+          Diagnostics
+        </div>
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Reports
+        </div>
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          CityPulse
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Management</div>
+      <div class="sidebar-nav">
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Profile
+        </div>
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          My Organization
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-nav">
+        <div class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Help
+        </div>
+      </div>
+      <div class="user-row">
+        <div class="user-avatar">UM</div>
+        <div style="min-width:0;">
+          <div class="user-info-name">Umang</div>
+          <div class="user-info-email">umang@trafficure.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ MAIN ════════ -->
+  <div class="main">
+
+    <!-- ─── Top bar ─── -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <div class="page-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7"/><path d="M9 20V7"/><path d="M15 4l5.447 2.724A1 1 0 0 1 21 7.618v10.764a1 1 0 0 1-1.447.894L15 17"/><path d="M15 4v13"/></svg>
+          Corridor Diagnostics
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="sync-status">
+          <div class="sync-dot"></div>
+          Diagnosed 04:12 AM IST · 30 weekdays
+        </div>
+        <div class="top-divider"></div>
+        <button class="top-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+        <button class="top-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </button>
+      </div>
+    </div>
+
+    <!-- ─── Corridor switcher strip ─── -->
+    <div class="switcher-strip" id="switcherStrip">
+      <div class="switcher-label">Corridors<br><span style="color:var(--text-primary);font-weight:700;">6</span></div>
+      <!-- chips populated by JS -->
+    </div>
+
+    <!-- ─── Content 3-column ─── -->
+    <div class="content">
+
+      <!-- ── Segment list panel ── -->
+      <div class="segment-panel">
+        <div class="panel-header-row">
+          <div class="panel-title" id="segPanelTitle">Segments</div>
+          <div class="panel-sub" id="segPanelSub">—</div>
+        </div>
+        <div class="legend-row">
+          <div class="legend-chip"><span class="legend-dot" style="background:#D93025;"></span>Bottleneck</div>
+          <div class="legend-chip"><span class="legend-dot" style="background:#B54708;"></span>Head</div>
+          <div class="legend-chip"><span class="legend-dot" style="background:#C27100;"></span>Victim</div>
+          <div class="legend-chip"><span class="legend-dot" style="background:#1E8E3E;"></span>Clear</div>
+        </div>
+        <div class="segment-list" id="segmentList"></div>
+      </div>
+
+      <!-- ── Map section ── -->
+      <div class="map-section">
+        <div id="map"></div>
+
+        <div class="map-corridor-tag">
+          <div class="mct-label" id="mctLabel">Corridor · KOL_C</div>
+          <div class="mct-name" id="mctName">—</div>
+          <div class="mct-meta" id="mctMeta">—</div>
+        </div>
+
+        <div class="map-legend">
+          <div class="map-legend-item"><span class="map-legend-swatch" style="background:#D93025;"></span>Bottleneck</div>
+          <div class="map-legend-item"><span class="map-legend-swatch" style="background:#B54708;"></span>Head</div>
+          <div class="map-legend-item"><span class="map-legend-swatch" style="background:#C27100;"></span>Victim queue</div>
+          <div class="map-legend-item"><span class="map-legend-swatch" style="background:#1E8E3E;"></span>Clear</div>
+        </div>
+      </div>
+
+      <!-- ══ Right diagnosis panel (SIMPLIFIED) ══ -->
+      <div class="diag-panel">
+
+        <!-- Headline verdict -->
+        <div class="diag-headline">
+          <div class="diag-verdict-label">What's happening</div>
+          <div class="diag-verdict-value" id="verdictValue">—</div>
+          <div class="diag-confidence">
+            <span class="diag-confidence-dot" id="confDot"></span>
+            Confidence&nbsp;<span id="confLevel">—</span>
+          </div>
+          <div class="diag-explain" id="diagExplain">—</div>
+        </div>
+
+        <!-- When it's bad -->
+        <div class="diag-block">
+          <div class="diag-block-label">When it's bad</div>
+          <div id="whenLines"></div>
+          <div class="when-note" id="whenNote"></div>
+        </div>
+
+        <!-- Fix these first -->
+        <div class="diag-block">
+          <div class="diag-block-label">Fix these first</div>
+          <div id="fixList"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="diag-block" style="border-bottom:none;">
+          <div class="diag-block-label">Take action</div>
+          <div class="action-buttons">
+            <button class="action-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Work order
+            </button>
+            <button class="action-btn primary">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Dispatch
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /diag-panel -->
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+
+// ───────────────────────────────────────────────
+// All 6 corridors — real names + real v2.1 output
+// ───────────────────────────────────────────────
+const corridors = {
+
+  PUNE_A: {
+    city: 'Pune',
+    cityCode: 'PNQ',
+    name: 'Fakri Hill Chowk to Mohmmadwadi Junction',
+    subtitle: 'SE arterial-to-highway',
+    segments: 6,
+    lengthKm: 7.12,
+    center: [18.4665, 73.8960],
+    zoom: 13,
+    verdict: 'POINT BOTTLENECK',
+    verdictClass: 'point',
+    confidence: 'HIGH',
+    confidenceLevel: 'high',
+    explain: 'One slow spot at S02 (Jyoti Hotel → Lullanagar) is the whole story. The corridor flows normally outside PM peak — no rolling wave, no systemic choke.',
+    when: [
+      { time: '17:06 – 22:34', sub: 'PM peak, 27 of 30 days' }
+    ],
+    whenNote: 'Head-of-queue sits one segment upstream at Fakri Hill from 10:46 onwards — that\'s the queue origin, not the fix.',
+    fix: [
+      { title: 'S02 · Jyoti Hotel → Lullanagar Chowk', reason: 'Active bottleneck confirmed by Bertini. Highest confidence on the corridor — this is the capacity choke. Start here.' },
+      { title: 'S01 · Fakri Hill → Lullanagar (head)', reason: 'Queue origin, but not the capacity constraint. Investigate demand shaping only after S02 is fixed.' }
+    ],
+    chain: [
+      { idx:'S01', name:'Fakri Hill Chowk → Lullanagar Chowk', v:'head',   tag:'HEAD',   lat:18.4620, lng:73.8890, lat2:18.4640, lng2:73.8930 },
+      { idx:'S02', name:'Jyoti Hotel → Lullanagar Chowk',       v:'active', tag:'BOTTLENECK', lat:18.4640, lng:73.8930, lat2:18.4662, lng2:73.8972 },
+      { idx:'S03', name:'Command Hospital → Cross Road Jn',     v:'free',   tag:'CLEAR',  lat:18.4662, lng:73.8972, lat2:18.4682, lng2:73.8990 },
+      { idx:'S04', name:'Cross Road Jn → Golibar Maidan Chowk', v:'free',   tag:'CLEAR',  lat:18.4682, lng:73.8990, lat2:18.4742, lng2:73.9075 },
+      { idx:'S05', name:'Khadi Machine Chowk → Pisoli Jn',      v:'free',   tag:'CLEAR',  lat:18.4742, lng:73.9075, lat2:18.4785, lng2:73.9128 },
+      { idx:'S06', name:'Pisoli Jn → Mohmmadwadi Jn',           v:'free',   tag:'CLEAR',  lat:18.4785, lng:73.9128, lat2:18.4870, lng2:73.9245 }
+    ]
+  },
+
+  PUNE_B: {
+    city: 'Pune',
+    cityCode: 'PNQ',
+    name: 'New Katraj Bogda to Bavdhan',
+    subtitle: 'Western expressway feeder',
+    segments: 9,
+    lengthKm: 15.93,
+    center: [18.4820, 73.8050],
+    zoom: 12,
+    verdict: 'POINT BOTTLENECK',
+    verdictClass: 'point',
+    confidence: 'MEDIUM',
+    confidenceLevel: 'med',
+    explain: 'Mostly free flow. One brief AM spike at Wadgaon Pull — the corridor is healthy 22 % of the time in peak.',
+    when: [
+      { time: '09:36 – 10:06', sub: 'AM peak only, 30 min window' }
+    ],
+    whenNote: 'Short window + low recurrence — this may not be worth prioritising. Re-diagnose in 2 weeks to confirm.',
+    fix: [
+      { title: 'S05 · Wadgaon Pull → Mutha Nadi Pull', reason: 'The only active bottleneck, 30 min AM window. Low confidence — field verify before committing.' }
+    ],
+    chain: [
+      { idx:'S01', name:'New Katraj Bogda → Dari Pull',        v:'free', tag:'CLEAR', lat:18.4420, lng:73.8580, lat2:18.4480, lng2:73.8500 },
+      { idx:'S02', name:'Dari Pull → Swami Narayan Mandir',     v:'free', tag:'CLEAR', lat:18.4480, lng:73.8500, lat2:18.4555, lng2:73.8415 },
+      { idx:'S03', name:'Swami Narayan → Navle Bridge',         v:'free', tag:'CLEAR', lat:18.4555, lng:73.8415, lat2:18.4675, lng2:73.8285 },
+      { idx:'S04', name:'Navle Bridge → Wadgaon Pull',          v:'free', tag:'CLEAR', lat:18.4675, lng:73.8285, lat2:18.4735, lng2:73.8230 },
+      { idx:'S05', name:'Wadgaon Pull → Mutha Nadi Pull',       v:'active', tag:'BOTTLENECK', lat:18.4735, lng:73.8230, lat2:18.4805, lng2:73.8160 },
+      { idx:'S06', name:'Mutha Nadi Pull → Warje',              v:'free', tag:'CLEAR', lat:18.4805, lng:73.8160, lat2:18.4850, lng2:73.8105 },
+      { idx:'S07', name:'Warje → Dukkarkhind Warje',            v:'free', tag:'CLEAR', lat:18.4850, lng:73.8105, lat2:18.4940, lng2:73.7955 },
+      { idx:'S08', name:'Dukkarkhind Warje → Chandni Chowk',    v:'free', tag:'CLEAR', lat:18.4940, lng:73.7955, lat2:18.5035, lng2:73.7820 },
+      { idx:'S09', name:'Chandni Chowk → Bavdhan',              v:'free', tag:'CLEAR', lat:18.5035, lng:73.7820, lat2:18.5140, lng2:73.7685 }
+    ]
+  },
+
+  PUNE_C: {
+    city: 'Pune',
+    cityCode: 'PNQ',
+    name: 'Balewadi to Vidyapeeth Gate',
+    subtitle: 'NW arterial',
+    segments: 8,
+    lengthKm: 10.66,
+    center: [18.5450, 73.7960],
+    zoom: 13,
+    verdict: 'POINT BOTTLENECK',
+    verdictClass: 'point',
+    confidence: 'HIGH',
+    confidenceLevel: 'high',
+    explain: 'Clean single-point congestion at Balaji Chowk → Pashan Circle. 1h 16m PM peak. Shockwaves propagate normally downstream — this is a classic capacity fix.',
+    when: [
+      { time: '18:26 – 19:42', sub: 'PM peak, 26 of 30 days' }
+    ],
+    whenNote: 'Shockwaves validated on 29 % of downstream pairs — LWR physics holds here.',
+    fix: [
+      { title: 'S05 · Balaji Chowk → Pashan Circle', reason: 'Single active bottleneck, high confidence. Fixing S05 will drop travel time across S06-S08 within 10 minutes (observed backward wave).' }
+    ],
+    chain: [
+      { idx:'S01', name:'Balewadi → Sus',              v:'free', tag:'CLEAR', lat:18.5720, lng:73.7710, lat2:18.5625, lng2:73.7790 },
+      { idx:'S02', name:'Sus → Pashan',                v:'free', tag:'CLEAR', lat:18.5625, lng:73.7790, lat2:18.5555, lng2:73.7860 },
+      { idx:'S03', name:'Sus Bridge → Sai Chowk',      v:'free', tag:'CLEAR', lat:18.5555, lng:73.7860, lat2:18.5475, lng2:73.7930 },
+      { idx:'S04', name:'Sai Chowk → Balaji Chowk',    v:'free', tag:'CLEAR', lat:18.5475, lng:73.7930, lat2:18.5418, lng2:73.7975 },
+      { idx:'S05', name:'Balaji Chowk → Pashan Circle',v:'active', tag:'BOTTLENECK', lat:18.5418, lng:73.7975, lat2:18.5345, lng2:73.8065 },
+      { idx:'S06', name:'Pashan Circle → NRDE Pashan', v:'victim', tag:'VICTIM', lat:18.5345, lng:73.8065, lat2:18.5290, lng2:73.8120 },
+      { idx:'S07', name:'NRDE Pashan → Panchwati',     v:'victim', tag:'VICTIM', lat:18.5290, lng:73.8120, lat2:18.5235, lng2:73.8170 },
+      { idx:'S08', name:'Panchwati → Vidyapeeth Gate', v:'free', tag:'CLEAR', lat:18.5235, lng:73.8170, lat2:18.5135, lng2:73.8265 }
+    ]
+  },
+
+  KOL_A: {
+    city: 'Kolkata',
+    cityCode: 'CCU',
+    name: 'APC Rd to B T Road',
+    subtitle: 'North Kolkata arterial',
+    segments: 7,
+    lengthKm: 4.95,
+    center: [22.6020, 88.3730],
+    zoom: 14,
+    verdict: 'POINT BOTTLENECK',
+    verdictClass: 'point',
+    confidence: 'HIGH',
+    confidenceLevel: 'high',
+    explain: 'Two adjacent bottlenecks on APC Road between Lamps 3 and 58 generate a long midday-to-evening queue. Not systemic — the fix is local.',
+    when: [
+      { time: '10:22 – 15:04', sub: 'Midday, 27 of 30 days' },
+      { time: '16:48 – 21:26', sub: 'PM extended peak, 29 of 30 days' }
+    ],
+    whenNote: 'Two windows means the bottleneck persists all afternoon — work orders should target continuous relief, not just PM.',
+    fix: [
+      { title: 'S03 · A P C Rd (L3 – L17)', reason: 'Primary bottleneck, most sustained. Highest total minutes under CONG regime. Start here.' },
+      { title: 'S04 · A P C Rd (L17 – L58)', reason: 'Adjacent bottleneck, fires 19:06–20:20. Likely a secondary choke caused by queue spillback from S03 — re-check after S03 fix.' }
+    ],
+    chain: [
+      { idx:'S01', name:'A P C Rd (E1-E7)',          v:'free', tag:'CLEAR', lat:22.5918, lng:88.3810, lat2:22.5978, lng2:88.3785 },
+      { idx:'S02', name:'A P C Rd (E7-E10)',         v:'free', tag:'CLEAR', lat:22.5978, lng:88.3785, lat2:22.6008, lng2:88.3770 },
+      { idx:'S03', name:'A P C Rd (L3-L17)',         v:'active', tag:'BOTTLENECK', lat:22.6008, lng:88.3770, lat2:22.6055, lng2:88.3748 },
+      { idx:'S04', name:'A P C Rd (L17-L58)',        v:'active', tag:'BOTTLENECK', lat:22.6055, lng:88.3748, lat2:22.6098, lng2:88.3728 },
+      { idx:'S05', name:'A P C Rd (L58-L56)',        v:'victim', tag:'VICTIM', lat:22.6098, lng:88.3728, lat2:22.6112, lng2:88.3722 },
+      { idx:'S06', name:'Raja Dinendra St (L56-C8)', v:'victim', tag:'VICTIM', lat:22.6112, lng:88.3722, lat2:22.6138, lng2:88.3705 },
+      { idx:'S07', name:'B T Rd (C8-C21)',           v:'free', tag:'CLEAR', lat:22.6138, lng:88.3705, lat2:22.6162, lng2:88.3690 }
+    ]
+  },
+
+  KOL_B: {
+    city: 'Kolkata',
+    cityCode: 'CCU',
+    name: 'JLN Rd → SPM Rd → DPS Rd',
+    subtitle: 'S-N central Kolkata',
+    segments: 7,
+    lengthKm: 7.98,
+    center: [22.5420, 88.3500],
+    zoom: 13,
+    verdict: 'SYSTEMIC (fragmented)',
+    verdictClass: 'systemic',
+    confidence: 'MEDIUM',
+    confidenceLevel: 'med',
+    explain: 'The whole corridor is choked during PM peak, but the queue is fragmented — multiple independent slow spots, not one rolling wave. Three separate bottlenecks to address.',
+    when: [
+      { time: '11:26 – 12:00', sub: 'Late morning spike' },
+      { time: '15:00 – 20:26', sub: 'PM extended peak, 28 of 30 days' }
+    ],
+    whenNote: 'High simultaneity (86 %) but only 44 % contiguous — fragmented congestion, fix individual segments in parallel.',
+    fix: [
+      { title: 'S05 · S P Mukherjee Rd (I8 – N5)', reason: 'Highest confidence bottleneck on the corridor. Short window but repeats daily — likely a signal timing issue.' },
+      { title: 'S03 · A T M Rd (F13 – I6)', reason: 'Longest bottleneck window, 17:12–20:26. Fix will give the biggest absolute delay reduction.' },
+      { title: 'S02 · J L Nehru Rd (F9 – F13)', reason: 'Upstream of S03, likely contributing to spillback. Address after S03 to see compound effect.' }
+    ],
+    chain: [
+      { idx:'S01', name:'J L Nehru Rd (A1-F9)',   v:'free', tag:'CLEAR', lat:22.5650, lng:88.3510, lat2:22.5580, lng2:88.3520 },
+      { idx:'S02', name:'J L Nehru Rd (F9-F13)',  v:'active', tag:'BOTTLENECK', lat:22.5580, lng:88.3520, lat2:22.5490, lng2:88.3518 },
+      { idx:'S03', name:'A T M Rd (F13-I6)',      v:'active', tag:'BOTTLENECK', lat:22.5490, lng:88.3518, lat2:22.5430, lng2:88.3510 },
+      { idx:'S04', name:'S P Mukherjee Rd (I6-I8)', v:'victim', tag:'VICTIM', lat:22.5430, lng:88.3510, lat2:22.5375, lng2:88.3505 },
+      { idx:'S05', name:'S P Mukherjee Rd (I8-N5)', v:'active', tag:'BOTTLENECK', lat:22.5375, lng:88.3505, lat2:22.5325, lng2:88.3500 },
+      { idx:'S06', name:'S P Mukherjee Rd (N5-S1)', v:'victim', tag:'VICTIM', lat:22.5325, lng:88.3500, lat2:22.5215, lng2:88.3488 },
+      { idx:'S07', name:'D P S Rd (S1-S35)',      v:'free', tag:'CLEAR', lat:22.5215, lng:88.3488, lat2:22.5150, lng2:88.3480 }
+    ]
+  },
+
+  KOL_C: {
+    city: 'Kolkata',
+    cityCode: 'CCU',
+    name: 'KK Tagore → Vivekananda → EM Bypass',
+    subtitle: 'Central-to-east arterial',
+    segments: 11,
+    lengthKm: 10.24,
+    center: [22.5750, 88.3880],
+    zoom: 13,
+    verdict: 'SYSTEMIC',
+    verdictClass: 'systemic',
+    confidence: 'HIGH',
+    confidenceLevel: 'high',
+    explain: 'The whole corridor is choked up in one rolling wave during PM peak. Four active bottlenecks fire together — this is a single contiguous queue from Vivekananda Road to EM Bypass, not isolated slow spots.',
+    when: [
+      { time: '04:54 – 16:00', sub: 'Persistent midday choke' },
+      { time: '17:00 – 19:30', sub: 'PM peak, 28 of 30 days' }
+    ],
+    whenNote: 'Shockwave physics confirmed: backward queue propagation validated on 40 % of pairs — the strongest Stage 4 evidence across all 6 corridors.',
+    fix: [
+      { title: 'S05 · Vivekananda Rd (L17 – L21)', reason: 'Highest-confidence active bottleneck (0.87). Sits at the upstream edge of the contiguous queue — fixing here will unblock S06-S08 within ~12 minutes.' },
+      { title: 'S08 · E M Bypass (L29 – L7)', reason: 'Second highest confidence. AM and midday windows. Different failure mode than S05 — likely a merge capacity issue at the bypass entry.' },
+      { title: 'S02 · Vivekananda Rd (D29 – D9)', reason: 'Morning bottleneck (05:34–09:34). Less urgent than S05/S08 but rounds out the fix list.' }
+    ],
+    chain: [
+      { idx:'S01', name:'K K Tagore St (B17-D29)',    v:'head',   tag:'HEAD', lat:22.5820, lng:88.3580, lat2:22.5810, lng2:88.3635 },
+      { idx:'S02', name:'Vivekananda Rd (D29-D9)',    v:'active', tag:'BOTTLENECK', lat:22.5810, lng:88.3635, lat2:22.5798, lng2:88.3680 },
+      { idx:'S03', name:'Vivekananda Rd (D9-L14)',    v:'victim', tag:'VICTIM', lat:22.5798, lng:88.3680, lat2:22.5788, lng2:88.3720 },
+      { idx:'S04', name:'Vivekananda Rd (L14-L17)',   v:'victim', tag:'VICTIM', lat:22.5788, lng:88.3720, lat2:22.5778, lng2:88.3770 },
+      { idx:'S05', name:'Vivekananda Rd (L17-L21)',   v:'active', tag:'BOTTLENECK', lat:22.5778, lng:88.3770, lat2:22.5770, lng2:88.3815 },
+      { idx:'S06', name:'Manicktala Main (L21-L27)',  v:'victim', tag:'VICTIM', lat:22.5770, lng:88.3815, lat2:22.5745, lng2:88.3870 },
+      { idx:'S07', name:'Manicktala Main (L27-L29)',  v:'victim', tag:'VICTIM', lat:22.5745, lng:88.3870, lat2:22.5720, lng2:88.3918 },
+      { idx:'S08', name:'E M Bypass (L29-L7)',        v:'active', tag:'BOTTLENECK', lat:22.5720, lng:88.3918, lat2:22.5680, lng2:88.3955 },
+      { idx:'S09', name:'E M Bypass (M7-M4)',         v:'victim', tag:'VICTIM', lat:22.5680, lng:88.3955, lat2:22.5595, lng2:88.3990 },
+      { idx:'S10', name:'E M Bypass (M4-M2B)',        v:'active', tag:'BOTTLENECK', lat:22.5595, lng:88.3990, lat2:22.5510, lng2:88.4015 },
+      { idx:'S11', name:'E M Bypass (M2B-X1)',        v:'free', tag:'CLEAR', lat:22.5510, lng:88.4015, lat2:22.5425, lng2:88.4040 }
+    ]
+  }
+};
+
+const colorFor = {
+  active: '#D93025',
+  head:   '#B54708',
+  victim: '#C27100',
+  free:   '#1E8E3E'
+};
+const tagClass = {
+  active: 'seg-tag-active',
+  head:   'seg-tag-head',
+  victim: 'seg-tag-victim',
+  free:   'seg-tag-free'
+};
+
+// ── Render corridor switcher chips ──
+const strip = document.getElementById('switcherStrip');
+Object.entries(corridors).forEach(([id, c], i) => {
+  const chip = document.createElement('div');
+  chip.className = 'corridor-chip' + (id === 'KOL_C' ? ' active' : '');
+  chip.dataset.id = id;
+  const verdictColor =
+    c.verdictClass === 'systemic' ? '#D93025' :
+    c.verdictClass === 'point' ? '#E37400' : '#1E8E3E';
+  chip.innerHTML = `
+    <span class="chip-verdict-dot" style="background:${verdictColor};"></span>
+    <div class="chip-main">
+      <div class="chip-id">${c.cityCode} · ${id}</div>
+      <div class="chip-name">${c.name}</div>
+      <div class="chip-meta">${c.segments} segs · ${c.lengthKm.toFixed(2)} km · ${c.verdict}</div>
+    </div>
+  `;
+  chip.addEventListener('click', () => selectCorridor(id));
+  strip.appendChild(chip);
+});
+
+// ── Leaflet map init ──
+const map = L.map('map', { zoomControl: false }).setView([22.5750, 88.3880], 13);
+L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OSM &copy; CartoDB',
+  maxZoom: 19,
+  subdomains: 'abcd'
+}).addTo(map);
+
+let mapLayers = [];
+function clearMapLayers() {
+  mapLayers.forEach(l => map.removeLayer(l));
+  mapLayers = [];
+}
+
+// ── Main selection function ──
+function selectCorridor(id) {
+  const c = corridors[id];
+  if (!c) return;
+
+  // chips
+  document.querySelectorAll('.corridor-chip').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === id);
+  });
+
+  // sidebar city
+  document.getElementById('sideCity').textContent = c.city;
+
+  // map tag
+  document.getElementById('mctLabel').textContent = `Corridor · ${id}`;
+  document.getElementById('mctName').textContent = c.name;
+  document.getElementById('mctMeta').textContent = `${c.segments} segments · ${c.lengthKm.toFixed(2)} km · ${c.subtitle}`;
+
+  // segment panel header
+  document.getElementById('segPanelTitle').textContent = `${c.segments} Segments`;
+  document.getElementById('segPanelSub').textContent = `${c.lengthKm.toFixed(2)} km · ${c.city}`;
+
+  // segment list
+  const list = document.getElementById('segmentList');
+  list.innerHTML = '';
+  c.chain.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'segment-row' + (s.v !== 'free' && !list.querySelector('.selected') ? ' selected' : '');
+    row.innerHTML = `
+      <div class="seg-top">
+        <div class="seg-index">${s.idx}</div>
+        <div class="seg-dot" style="background:${colorFor[s.v]};"></div>
+        <div class="seg-tag ${tagClass[s.v]}">${s.tag}</div>
+      </div>
+      <div class="seg-name">${s.name}</div>
+    `;
+    row.addEventListener('click', () => {
+      document.querySelectorAll('.segment-row').forEach(n => n.classList.remove('selected'));
+      row.classList.add('selected');
+    });
+    list.appendChild(row);
+  });
+
+  // right panel: verdict
+  const vVal = document.getElementById('verdictValue');
+  vVal.textContent = c.verdict;
+  vVal.className = 'diag-verdict-value' + (c.verdictClass === 'point' ? ' point' : '');
+
+  // confidence
+  const confLevel = document.getElementById('confLevel');
+  confLevel.textContent = c.confidence;
+  confLevel.className = c.confidenceLevel;
+  const confDot = document.getElementById('confDot');
+  confDot.style.background = c.confidenceLevel === 'high' ? '#1E8E3E' :
+                             c.confidenceLevel === 'med' ? '#E37400' : '#D93025';
+
+  // explain
+  document.getElementById('diagExplain').textContent = c.explain;
+
+  // when
+  const whenLines = document.getElementById('whenLines');
+  whenLines.innerHTML = '';
+  c.when.forEach(w => {
+    const line = document.createElement('div');
+    line.className = 'when-line';
+    line.innerHTML = `<span class="when-time">${w.time}</span><span class="when-sub">${w.sub}</span>`;
+    whenLines.appendChild(line);
+  });
+  document.getElementById('whenNote').textContent = c.whenNote || '';
+
+  // fix list
+  const fixList = document.getElementById('fixList');
+  fixList.innerHTML = '';
+  c.fix.forEach((f, i) => {
+    const row = document.createElement('div');
+    row.className = 'fix-row';
+    row.innerHTML = `
+      <div class="fix-num">${i+1}</div>
+      <div class="fix-body">
+        <div class="fix-title">${f.title}</div>
+        <div class="fix-reason">${f.reason}</div>
+      </div>
+    `;
+    fixList.appendChild(row);
+  });
+
+  // map: redraw
+  clearMapLayers();
+  map.setView(c.center, c.zoom);
+
+  c.chain.forEach(s => {
+    const pl = L.polyline([[s.lat, s.lng], [s.lat2, s.lng2]], {
+      color: colorFor[s.v],
+      weight: 6,
+      opacity: 0.58
+    }).addTo(map).bindPopup(
+      `<b>${s.idx} · ${s.name}</b><br><span style="color:${colorFor[s.v]};">${s.tag}</span>`
+    );
+    mapLayers.push(pl);
+
+    const m = L.circleMarker([s.lat, s.lng], {
+      radius: 4.5,
+      fillColor: colorFor[s.v],
+      color: colorFor[s.v],
+      weight: 1.5,
+      opacity: 0.6,
+      fillOpacity: 0.35
+    }).addTo(map);
+    mapLayers.push(m);
+  });
+
+  // numbered pins for bottlenecks (in order they appear in fix list)
+  const bnChain = c.chain.filter(s => s.v === 'active' || s.v === 'head');
+  bnChain.forEach((s, i) => {
+    const midLat = (s.lat + s.lat2) / 2;
+    const midLng = (s.lng + s.lng2) / 2;
+    const isHead = s.v === 'head';
+    const icon = L.divIcon({
+      className: 'bn-pin',
+      html: `<div style="
+        width:22px;height:22px;border-radius:50%;
+        background:${isHead ? '#B54708' : '#D93025'};
+        border:2px solid #fff;
+        box-shadow:0 1px 3px rgba(0,0,0,0.25);
+        color:#fff;font-family:Inter,sans-serif;font-size:11px;font-weight:700;
+        display:flex;align-items:center;justify-content:center;">${isHead ? 'H' : (i+1)}</div>`,
+      iconSize: [22, 22],
+      iconAnchor: [11, 11]
+    });
+    const marker = L.marker([midLat, midLng], { icon }).addTo(map)
+      .bindPopup(`<b>${s.idx}</b> · ${s.tag}<br>${s.name}`);
+    mapLayers.push(marker);
+  });
+}
+
+// ── Nav item toggle ──
+document.querySelectorAll('.nav-item').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+  });
+});
+
+// ── Initial render: KOL_C ──
+selectCorridor('KOL_C');
+
+</script>
+</body>
+</html>

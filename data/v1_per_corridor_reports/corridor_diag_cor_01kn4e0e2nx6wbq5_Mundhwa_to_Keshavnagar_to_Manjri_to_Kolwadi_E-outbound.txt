@@ -1,0 +1,57 @@
+======================================================================================
+CORRIDOR DIAGNOSTIC — Mundhwa → Keshavnagar → Manjri → Kolwadi (E-outbound)
+======================================================================================
+
+Segments: 8    Total length: 11.19 km
+
+--- FREE-FLOW BASELINE + PROFILE SHAPE (2-min, 10-min smoothed) ---
+seg     length    ff_tt     ff_spd  shape          peaks (HH:MM ranges, peak ratio)
+S01      467m     59s    28.5kmph  SINGLE-PEAK    12:00-06:00(4.76x@16:14)
+S02      487m     53s    33.1kmph  SINGLE-PEAK    13:36-05:08(3.68x@15:04)
+S03      757m     73s    37.3kmph  DOUBLE-PEAK    13:26-05:08(2.42x@01:28), 12:44-13:06(1.52x@12:44)
+S04      912m     96s    34.2kmph  SINGLE-PEAK    13:44-04:52(2.16x@00:44)
+S05     1090m    112s    35.0kmph  SINGLE-PEAK    13:18-05:08(2.56x@01:06)
+S06     2300m    240s    34.5kmph  SINGLE-PEAK    22:58-02:00(1.64x@00:40)
+S07     2285m    434s    19.0kmph  QUIET          -
+S08     2889m    395s    26.3kmph  QUIET          -
+
+--- CORRIDOR-LEVEL PEAK WINDOWS (consensus across segments) ---
+  12:00-06:00+1  covering 6/8 segments
+
+--- PM-EVENING WINDOW DIAGNOSIS ---
+Days analysed: 22
+
+FREQUENCY (days with onset in window):
+  S01 ██████████████████████ 22/22  RECURRING
+  S02 ██████████████████████ 22/22  RECURRING
+  S03 ██████████████████████ 22/22  RECURRING
+  S04 ██████████████████████ 22/22  RECURRING
+  S05 ██████████████████████ 22/22  RECURRING
+  S06 ███████░░░░░░░░░░░░░░░  7/22  OCCASIONAL
+  S07 █░░░░░░░░░░░░░░░░░░░░░  1/22  RARE
+  S08 ░░░░░░░░░░░░░░░░░░░░░░  0/22  NEVER
+
+SEED RANKING (first to trigger each day):
+  S01  19/22 (86%)
+  S03  2/22 (9%)
+  S02  1/22 (5%)
+
+PROPAGATION LAGS (adjacent pairs):
+  S01→S02  median=+35m  fwd=21 back=1 tied=0 [STRONG-FORWARD]
+  S02→S03  median=+28m  fwd=19 back=3 tied=0 [STRONG-FORWARD]
+  S03→S04  median=+122m  fwd=20 back=2 tied=0 [STRONG-FORWARD]
+  S04→S05  median=-16m  fwd=10 back=12 tied=0 [BIDIRECTIONAL]
+  S05→S06  median=+319m  fwd=6 back=1 tied=0 [STRONG-FORWARD]
+
+BOTTLENECK CANDIDATES:
+  S01  seed rate=86%  p(null)=7.31e-15
+
+ZONE MAP:
+  S01  PRIMARY       Mundhwa To Shivaji Chowk
+  S02  SPILLBACK     Shivaji Chowk To Jay Maharashtra Chowk
+  S03  SPILLBACK     Jay Maharashtra Chowk To LC Fitness Club
+  S04  SPILLBACK     LC Fitness Club To G Mall
+  S05  INDEPENDENT   G Mall To Sanskruti Auto
+  S06  OCCASIONAL    Sanskruti Auto To Manjri
+  S07  HEALTHY       Manjri To Datta Mandir
+  S08  HEALTHY       Datta Mandir To Laxmi Hospital

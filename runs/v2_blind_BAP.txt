@@ -1,0 +1,60 @@
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Bapodi Junction -> Khadki -> Holkar Bridge -> Parnkuti -> Wadgaonsheri
+id: BAP
+==========================================================================================
+Segments: 11    Corridor length: 9.44 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      288m     42s    24.8 kmph   03:22–03:52, 03:30–04:00, 03:32–04:02
+S02     1024m    127s    29.0 kmph   03:18–03:48, 03:20–03:50, 03:22–03:52
+S03     1066m    115s    33.4 kmph   03:30–04:00, 03:32–04:02, 03:16–03:46
+S04      858m     63s    49.0 kmph   02:32–03:02, 02:48–03:18, 02:50–03:20
+S05     1255m     88s    51.3 kmph   02:12–02:42, 02:14–02:44, 02:16–02:46
+S06      774m     68s    41.0 kmph   02:18–02:48, 02:20–02:50, 02:22–02:52
+S07      879m     72s    44.0 kmph   02:56–03:26, 02:58–03:28, 03:00–03:30
+S08      435m     42s    37.3 kmph   02:26–02:56, 02:28–02:58, 02:30–03:00
+S09     1099m     87s    45.5 kmph   03:02–03:32, 03:04–03:34, 03:06–03:36
+S10     1317m    102s    46.5 kmph   03:20–03:50, 03:22–03:52, 03:24–03:54
+S11      445m     44s    36.4 kmph   04:38–05:08, 01:34–02:04, 01:36–02:06
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   81.5%   18.5%    0.0%    0.0%   Bapodi Junction To Kirloskar Company
+S02   56.9%   43.1%    0.0%    0.0%   Kirloskar company To Khadki Bajar Bus Stop
+S03   37.2%   62.8%    0.0%    0.0%   Khadki bajar bus stop To Methdist Church
+S04   41.9%   58.1%    0.0%    0.0%   Methdist Church To Holkar Bridge
+S05   56.8%   43.2%    0.0%    0.0%   Holkar Bridge To Chandrma Chowk
+S06   23.6%   19.0%   56.1%    1.2%   Chandrma Chowk To Sadalbaba Chowk
+S07   36.4%   63.6%    0.0%    0.0%   Sadalbaba Chowk To Parnkuti
+S08   28.3%   62.4%    9.3%    0.0%   Parnkuti To Gunjan Chowk
+S09   23.8%   20.1%   26.2%   29.9%   Gunjan Chowk To Shastrinagar
+S10   38.2%   61.8%    0.0%    0.0%   Shastrinagar To Ramwadi Junction
+S11   37.9%   48.6%   13.5%    0.0%   Ramwadi Junction To Wadgaonsheri
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  09:34 – 12:16   (duration 162 min)
+  17:58 – 20:12   (duration 134 min)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  S09  17:58–20:12   [Gunjan Chowk To Shastrinagar]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=median centroid) ---
+  S01→S02   skipped (no centroid)
+  S02→S03   skipped (no centroid)
+  S03→S04   skipped (no centroid)
+  S04→S05   skipped (no centroid)
+  S05→S06   skipped (no centroid)
+  S06→S07   skipped (no centroid)
+  S07→S08   skipped (no centroid)
+  !! S08→S09   observed_lag=+244.8m  expected=2.1-3.8m  dist=767m
+  S09→S10   skipped (no centroid)
+  S10→S11   skipped (no centroid)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 4/11 (36%)
+  NOT systemic — point-bottleneck model fits (1/11 segments fire Bertini)

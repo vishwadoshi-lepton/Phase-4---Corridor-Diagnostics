@@ -1,0 +1,2913 @@
+{
+  "PUNE_A": {
+    "corridor_id": "PUNE_A",
+    "corridor_name": "Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway)",
+    "n_segments": 6,
+    "total_length_m": 7122,
+    "freeflow": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "ff_tt": 52.0,
+        "raw_ff_sec": 52.0,
+        "clamped_ff_sec": 52.0,
+        "ff_speed_kmph": 34.2,
+        "quiet_windows": [
+          [
+            "03:44",
+            "04:14"
+          ],
+          [
+            "03:46",
+            "04:16"
+          ],
+          [
+            "03:48",
+            "04:18"
+          ]
+        ],
+        "warnings": []
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "ff_tt": 54.0,
+        "raw_ff_sec": 54.0,
+        "clamped_ff_sec": 54.0,
+        "ff_speed_kmph": 36.7,
+        "quiet_windows": [
+          [
+            "03:54",
+            "04:24"
+          ],
+          [
+            "03:56",
+            "04:26"
+          ],
+          [
+            "03:58",
+            "04:28"
+          ]
+        ],
+        "warnings": []
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "ff_tt": 28.0,
+        "raw_ff_sec": 28.0,
+        "clamped_ff_sec": 28.0,
+        "ff_speed_kmph": 40.4,
+        "quiet_windows": [
+          [
+            "02:52",
+            "03:22"
+          ],
+          [
+            "02:54",
+            "03:24"
+          ],
+          [
+            "02:56",
+            "03:26"
+          ]
+        ],
+        "warnings": []
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "ff_tt": 150.0,
+        "raw_ff_sec": 150.0,
+        "clamped_ff_sec": 150.0,
+        "ff_speed_kmph": 37.9,
+        "quiet_windows": [
+          [
+            "02:56",
+            "03:26"
+          ],
+          [
+            "02:58",
+            "03:28"
+          ],
+          [
+            "03:00",
+            "03:30"
+          ]
+        ],
+        "warnings": []
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "ff_tt": 90.0,
+        "raw_ff_sec": 90.0,
+        "clamped_ff_sec": 90.0,
+        "ff_speed_kmph": 29.4,
+        "quiet_windows": [
+          [
+            "07:12",
+            "07:42"
+          ],
+          [
+            "07:14",
+            "07:44"
+          ],
+          [
+            "07:16",
+            "07:46"
+          ]
+        ],
+        "warnings": []
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "ff_tt": 386.0,
+        "raw_ff_sec": 386.0,
+        "clamped_ff_sec": 386.0,
+        "ff_speed_kmph": 32.2,
+        "quiet_windows": [
+          [
+            "03:04",
+            "03:34"
+          ],
+          [
+            "03:06",
+            "03:36"
+          ],
+          [
+            "03:08",
+            "03:38"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "ff_speed_kmph": 34.2,
+        "corridor_median_speed": 35.5,
+        "peer_ratio": 1.04,
+        "quiet_busy_ratio": 0.232,
+        "baseline_saturated": false
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "ff_speed_kmph": 36.7,
+        "corridor_median_speed": 35.5,
+        "peer_ratio": 0.97,
+        "quiet_busy_ratio": 0.415,
+        "baseline_saturated": false
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "ff_speed_kmph": 40.4,
+        "corridor_median_speed": 35.5,
+        "peer_ratio": 0.88,
+        "quiet_busy_ratio": 0.5,
+        "baseline_saturated": false
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "ff_speed_kmph": 37.9,
+        "corridor_median_speed": 35.5,
+        "peer_ratio": 0.94,
+        "quiet_busy_ratio": 0.554,
+        "baseline_saturated": false
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "ff_speed_kmph": 29.4,
+        "corridor_median_speed": 35.5,
+        "peer_ratio": 1.21,
+        "quiet_busy_ratio": 0.818,
+        "baseline_saturated": false
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "ff_speed_kmph": 32.2,
+        "corridor_median_speed": 35.5,
+        "peer_ratio": 1.1,
+        "quiet_busy_ratio": 0.667,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [],
+    "bertini": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": [],
+      "78759d67-cc66-4634-a058-7f158a957912": [
+        [
+          513,
+          570
+        ],
+        [
+          585,
+          657
+        ],
+        [
+          659,
+          665
+        ],
+        [
+          672,
+          676
+        ]
+      ],
+      "33c2fa56-a315-4587-8838-1872c3d469cf": [],
+      "7495fe06-2281-4957-a928-353948d5279b": [],
+      "337b792b-f217-413b-8bda-1377fe15847d": [],
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": []
+    },
+    "head_bottleneck": [
+      [
+        323,
+        512
+      ],
+      [
+        571,
+        584
+      ],
+      [
+        666,
+        671
+      ]
+    ],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 44,
+          "observed_lag_min": -12.0,
+          "expected_lag_range_min": [
+            1.4,
+            2.6
+          ],
+          "pass": false,
+          "dist_m": 522.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 33,
+          "observed_lag_min": -24,
+          "expected_lag_range_min": [
+            1.2,
+            2.2
+          ],
+          "pass": false,
+          "dist_m": 432.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 82,
+          "observed_lag_min": 6.0,
+          "expected_lag_range_min": [
+            2.6,
+            4.7
+          ],
+          "pass": true,
+          "dist_m": 946.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 8,
+          "observed_lag_min": -17.0,
+          "expected_lag_range_min": [
+            3.2,
+            5.8
+          ],
+          "pass": false,
+          "dist_m": 1156.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 7,
+          "observed_lag_min": -14,
+          "expected_lag_range_min": [
+            5.7,
+            10.5
+          ],
+          "pass": false,
+          "dist_m": 2092.0
+        }
+      ],
+      "pass_rate": 0.2,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 2,
+      "max_fraction": 0.33,
+      "threshold_segments": 5
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.147,
+      "systemic_by_contig": false,
+      "peak_bucket": 513,
+      "peak_segs": [
+        0,
+        1
+      ]
+    },
+    "confidence": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "score": 0.524,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.095,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": "HEAD_BOTTLENECK",
+      "78759d67-cc66-4634-a058-7f158a957912": "ACTIVE_BOTTLENECK",
+      "33c2fa56-a315-4587-8838-1872c3d469cf": "FREE_FLOW",
+      "7495fe06-2281-4957-a928-353948d5279b": "FREE_FLOW",
+      "337b792b-f217-413b-8bda-1377fe15847d": "FREE_FLOW",
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": "FREE_FLOW"
+    }
+  },
+  "PUNE_B": {
+    "corridor_id": "PUNE_B",
+    "corridor_name": "New Katraj Bogda to Bavdhan (Western expressway feeder)",
+    "n_segments": 9,
+    "total_length_m": 15925,
+    "freeflow": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "ff_tt": 135.0,
+        "raw_ff_sec": 135.0,
+        "clamped_ff_sec": 135.0,
+        "ff_speed_kmph": 45.7,
+        "quiet_windows": [
+          [
+            "08:36",
+            "09:06"
+          ],
+          [
+            "08:38",
+            "09:08"
+          ],
+          [
+            "08:40",
+            "09:10"
+          ]
+        ],
+        "warnings": []
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "ff_tt": 119.0,
+        "raw_ff_sec": 119.0,
+        "clamped_ff_sec": 119.0,
+        "ff_speed_kmph": 47.6,
+        "quiet_windows": [
+          [
+            "08:30",
+            "09:00"
+          ],
+          [
+            "08:32",
+            "09:02"
+          ],
+          [
+            "08:34",
+            "09:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "ff_tt": 224.0,
+        "raw_ff_sec": 224.0,
+        "clamped_ff_sec": 224.0,
+        "ff_speed_kmph": 40.3,
+        "quiet_windows": [
+          [
+            "08:42",
+            "09:12"
+          ],
+          [
+            "08:44",
+            "09:14"
+          ],
+          [
+            "08:46",
+            "09:16"
+          ]
+        ],
+        "warnings": []
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "ff_tt": 90.0,
+        "raw_ff_sec": 90.0,
+        "clamped_ff_sec": 90.0,
+        "ff_speed_kmph": 40.5,
+        "quiet_windows": [
+          [
+            "02:30",
+            "03:00"
+          ],
+          [
+            "02:32",
+            "03:02"
+          ],
+          [
+            "02:34",
+            "03:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "ff_tt": 100.0,
+        "raw_ff_sec": 100.0,
+        "clamped_ff_sec": 100.0,
+        "ff_speed_kmph": 45.9,
+        "quiet_windows": [
+          [
+            "02:50",
+            "03:20"
+          ],
+          [
+            "02:52",
+            "03:22"
+          ],
+          [
+            "02:54",
+            "03:24"
+          ]
+        ],
+        "warnings": []
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "ff_tt": 56.0,
+        "raw_ff_sec": 56.0,
+        "clamped_ff_sec": 56.0,
+        "ff_speed_kmph": 49.8,
+        "quiet_windows": [
+          [
+            "03:06",
+            "03:36"
+          ],
+          [
+            "03:10",
+            "03:40"
+          ],
+          [
+            "03:12",
+            "03:42"
+          ]
+        ],
+        "warnings": []
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "ff_tt": 179.0,
+        "raw_ff_sec": 179.0,
+        "clamped_ff_sec": 179.0,
+        "ff_speed_kmph": 50.1,
+        "quiet_windows": [
+          [
+            "05:00",
+            "05:30"
+          ],
+          [
+            "05:02",
+            "05:32"
+          ],
+          [
+            "05:04",
+            "05:34"
+          ]
+        ],
+        "warnings": []
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "ff_tt": 149.0,
+        "raw_ff_sec": 149.0,
+        "clamped_ff_sec": 149.0,
+        "ff_speed_kmph": 53.3,
+        "quiet_windows": [
+          [
+            "06:54",
+            "07:24"
+          ],
+          [
+            "06:56",
+            "07:26"
+          ],
+          [
+            "06:58",
+            "07:28"
+          ]
+        ],
+        "warnings": []
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "ff_tt": 150.0,
+        "raw_ff_sec": 150.0,
+        "clamped_ff_sec": 150.0,
+        "ff_speed_kmph": 56.9,
+        "quiet_windows": [
+          [
+            "04:56",
+            "05:26"
+          ],
+          [
+            "04:58",
+            "05:28"
+          ],
+          [
+            "05:00",
+            "05:30"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "ff_speed_kmph": 45.7,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 1.04,
+        "quiet_busy_ratio": 0.734,
+        "baseline_saturated": false
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "ff_speed_kmph": 47.6,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.799,
+        "baseline_saturated": false
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "ff_speed_kmph": 40.3,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 1.18,
+        "quiet_busy_ratio": 0.806,
+        "baseline_saturated": false
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "ff_speed_kmph": 40.5,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 1.18,
+        "quiet_busy_ratio": 0.446,
+        "baseline_saturated": false
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "ff_speed_kmph": 45.9,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 1.04,
+        "quiet_busy_ratio": 0.152,
+        "baseline_saturated": false
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "ff_speed_kmph": 49.8,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 0.96,
+        "quiet_busy_ratio": 0.778,
+        "baseline_saturated": false
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "ff_speed_kmph": 50.1,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 0.95,
+        "quiet_busy_ratio": 0.861,
+        "baseline_saturated": false
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "ff_speed_kmph": 53.3,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 0.89,
+        "quiet_busy_ratio": 0.847,
+        "baseline_saturated": false
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "ff_speed_kmph": 56.9,
+        "corridor_median_speed": 47.6,
+        "peer_ratio": 0.84,
+        "quiet_busy_ratio": 0.758,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [],
+    "bertini": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": [],
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": [],
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": [],
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": [],
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": [
+        [
+          288,
+          302
+        ]
+      ],
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": [],
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": [],
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": [],
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 2,
+          "observed_lag_min": -34.0,
+          "expected_lag_range_min": [
+            4.5,
+            8.2
+          ],
+          "pass": false,
+          "dist_m": 1643.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 1,
+          "observed_lag_min": -6,
+          "expected_lag_range_min": [
+            5.6,
+            10.2
+          ],
+          "pass": false,
+          "dist_m": 2041.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 3,
+          "observed_lag_min": 26,
+          "expected_lag_range_min": [
+            4.8,
+            8.8
+          ],
+          "pass": false,
+          "dist_m": 1762.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 41,
+          "observed_lag_min": 34,
+          "expected_lag_range_min": [
+            3.1,
+            5.7
+          ],
+          "pass": false,
+          "dist_m": 1144.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 1,
+          "observed_lag_min": 18,
+          "expected_lag_range_min": [
+            2.8,
+            5.1
+          ],
+          "pass": false,
+          "dist_m": 1024.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 2,
+          "observed_lag_min": -14.0,
+          "expected_lag_range_min": [
+            4.5,
+            8.2
+          ],
+          "pass": false,
+          "dist_m": 1632.0
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "n_days": 1,
+          "observed_lag_min": -46,
+          "expected_lag_range_min": [
+            6.4,
+            11.7
+          ],
+          "pass": false,
+          "dist_m": 2348.0
+        },
+        {
+          "pair": [
+            7,
+            8
+          ],
+          "n_days": 1,
+          "observed_lag_min": -12,
+          "expected_lag_range_min": [
+            6.2,
+            11.4
+          ],
+          "pass": false,
+          "dist_m": 2289.0
+        }
+      ],
+      "pass_rate": 0.0,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 2,
+      "max_fraction": 0.22,
+      "threshold_segments": 8
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.144,
+      "systemic_by_contig": false,
+      "peak_bucket": 288,
+      "peak_segs": [
+        3,
+        4
+      ]
+    },
+    "confidence": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "score": 0.5,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "score": 0.625,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 0.8,
+          "shockwave_support": 0.0
+        }
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": "FREE_FLOW",
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": "FREE_FLOW",
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": "FREE_FLOW",
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": "FREE_FLOW",
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": "ACTIVE_BOTTLENECK",
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": "FREE_FLOW",
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": "FREE_FLOW",
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": "FREE_FLOW",
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": "FREE_FLOW"
+    }
+  },
+  "PUNE_C": {
+    "corridor_id": "PUNE_C",
+    "corridor_name": "Balewadi to Vidyapeeth Gate (NW arterial)",
+    "n_segments": 8,
+    "total_length_m": 10660,
+    "freeflow": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "ff_tt": 138.0,
+        "raw_ff_sec": 138.0,
+        "clamped_ff_sec": 138.0,
+        "ff_speed_kmph": 62.3,
+        "quiet_windows": [
+          [
+            "01:52",
+            "02:22"
+          ],
+          [
+            "01:54",
+            "02:24"
+          ],
+          [
+            "01:56",
+            "02:26"
+          ]
+        ],
+        "warnings": []
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "ff_tt": 66.0,
+        "raw_ff_sec": 66.0,
+        "clamped_ff_sec": 66.0,
+        "ff_speed_kmph": 53.5,
+        "quiet_windows": [
+          [
+            "01:08",
+            "01:38"
+          ],
+          [
+            "01:10",
+            "01:40"
+          ],
+          [
+            "01:12",
+            "01:42"
+          ]
+        ],
+        "warnings": []
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "ff_tt": 90.0,
+        "raw_ff_sec": 90.0,
+        "clamped_ff_sec": 90.0,
+        "ff_speed_kmph": 48.7,
+        "quiet_windows": [
+          [
+            "04:20",
+            "04:50"
+          ],
+          [
+            "04:22",
+            "04:52"
+          ],
+          [
+            "04:24",
+            "04:54"
+          ]
+        ],
+        "warnings": []
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "ff_tt": 39.0,
+        "raw_ff_sec": 39.0,
+        "clamped_ff_sec": 39.0,
+        "ff_speed_kmph": 48.6,
+        "quiet_windows": [
+          [
+            "03:26",
+            "03:56"
+          ],
+          [
+            "03:28",
+            "03:58"
+          ],
+          [
+            "03:30",
+            "04:00"
+          ]
+        ],
+        "warnings": []
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "ff_tt": 98.0,
+        "raw_ff_sec": 98.0,
+        "clamped_ff_sec": 98.0,
+        "ff_speed_kmph": 41.0,
+        "quiet_windows": [
+          [
+            "03:16",
+            "03:46"
+          ],
+          [
+            "03:18",
+            "03:48"
+          ],
+          [
+            "03:20",
+            "03:50"
+          ]
+        ],
+        "warnings": []
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "ff_tt": 49.0,
+        "raw_ff_sec": 49.0,
+        "clamped_ff_sec": 49.0,
+        "ff_speed_kmph": 50.4,
+        "quiet_windows": [
+          [
+            "03:36",
+            "04:06"
+          ],
+          [
+            "03:38",
+            "04:08"
+          ],
+          [
+            "03:40",
+            "04:10"
+          ]
+        ],
+        "warnings": []
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "ff_tt": 52.0,
+        "raw_ff_sec": 52.0,
+        "clamped_ff_sec": 52.0,
+        "ff_speed_kmph": 49.6,
+        "quiet_windows": [
+          [
+            "03:02",
+            "03:32"
+          ],
+          [
+            "03:04",
+            "03:34"
+          ],
+          [
+            "03:06",
+            "03:36"
+          ]
+        ],
+        "warnings": []
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "ff_tt": 302.0,
+        "raw_ff_sec": 302.0,
+        "clamped_ff_sec": 302.0,
+        "ff_speed_kmph": 36.1,
+        "quiet_windows": [
+          [
+            "03:42",
+            "04:12"
+          ],
+          [
+            "03:44",
+            "04:14"
+          ],
+          [
+            "03:46",
+            "04:16"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "ff_speed_kmph": 62.3,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 0.79,
+        "quiet_busy_ratio": 0.657,
+        "baseline_saturated": false
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "ff_speed_kmph": 53.5,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 0.92,
+        "quiet_busy_ratio": 0.653,
+        "baseline_saturated": false
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "ff_speed_kmph": 48.7,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 1.01,
+        "quiet_busy_ratio": 0.562,
+        "baseline_saturated": false
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "ff_speed_kmph": 48.6,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 1.01,
+        "quiet_busy_ratio": 0.351,
+        "baseline_saturated": false
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "ff_speed_kmph": 41.0,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 1.2,
+        "quiet_busy_ratio": 0.476,
+        "baseline_saturated": false
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "ff_speed_kmph": 50.4,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 0.98,
+        "quiet_busy_ratio": 0.538,
+        "baseline_saturated": false
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "ff_speed_kmph": 49.6,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 0.99,
+        "quiet_busy_ratio": 0.598,
+        "baseline_saturated": false
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "ff_speed_kmph": 36.1,
+        "corridor_median_speed": 49.2,
+        "peer_ratio": 1.36,
+        "quiet_busy_ratio": 0.411,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        523,
+        591
+      ]
+    ],
+    "bertini": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": [],
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": [],
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": [],
+      "142c6f39-913d-491e-98d9-0831783c212c": [],
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": [
+        [
+          553,
+          590
+        ]
+      ],
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": [],
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": [],
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 35,
+          "observed_lag_min": -12,
+          "expected_lag_range_min": [
+            4.6,
+            8.4
+          ],
+          "pass": false,
+          "dist_m": 1685.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 28,
+          "observed_lag_min": 15.0,
+          "expected_lag_range_min": [
+            3.0,
+            5.5
+          ],
+          "pass": false,
+          "dist_m": 1099.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 2,
+          "observed_lag_min": 7.0,
+          "expected_lag_range_min": [
+            2.4,
+            4.4
+          ],
+          "pass": true,
+          "dist_m": 872.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 67,
+          "observed_lag_min": -24,
+          "expected_lag_range_min": [
+            2.2,
+            4.1
+          ],
+          "pass": false,
+          "dist_m": 822.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 61,
+          "observed_lag_min": -20,
+          "expected_lag_range_min": [
+            2.5,
+            4.5
+          ],
+          "pass": false,
+          "dist_m": 901.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 97,
+          "observed_lag_min": -8,
+          "expected_lag_range_min": [
+            1.9,
+            3.5
+          ],
+          "pass": false,
+          "dist_m": 702.0
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "n_days": 35,
+          "observed_lag_min": 4,
+          "expected_lag_range_min": [
+            5.1,
+            9.4
+          ],
+          "pass": true,
+          "dist_m": 1872.0
+        }
+      ],
+      "pass_rate": 0.2857142857142857,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 3,
+      "max_fraction": 0.38,
+      "threshold_segments": 7
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.284,
+      "systemic_by_contig": false,
+      "peak_bucket": 298,
+      "peak_segs": [
+        7
+      ]
+    },
+    "confidence": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "score": 0.85,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      }
+    },
+    "verdicts": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": "FREE_FLOW",
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": "FREE_FLOW",
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": "FREE_FLOW",
+      "142c6f39-913d-491e-98d9-0831783c212c": "QUEUE_VICTIM",
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": "ACTIVE_BOTTLENECK",
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": "FREE_FLOW",
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": "FREE_FLOW",
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": "SLOW_LINK"
+    }
+  },
+  "KOL_A": {
+    "corridor_id": "KOL_A",
+    "corridor_name": "APC Rd to B T Road (North Kolkata arterial)",
+    "n_segments": 7,
+    "total_length_m": 4949,
+    "freeflow": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "ff_tt": 134.0,
+        "raw_ff_sec": 134.0,
+        "clamped_ff_sec": 134.0,
+        "ff_speed_kmph": 30.7,
+        "quiet_windows": [
+          [
+            "03:14",
+            "03:44"
+          ],
+          [
+            "03:16",
+            "03:46"
+          ],
+          [
+            "03:18",
+            "03:48"
+          ]
+        ],
+        "warnings": []
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "ff_tt": 68.0,
+        "raw_ff_sec": 68.0,
+        "clamped_ff_sec": 68.0,
+        "ff_speed_kmph": 33.8,
+        "quiet_windows": [
+          [
+            "03:36",
+            "04:06"
+          ],
+          [
+            "03:38",
+            "04:08"
+          ],
+          [
+            "03:40",
+            "04:10"
+          ]
+        ],
+        "warnings": []
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "ff_tt": 132.0,
+        "raw_ff_sec": 132.0,
+        "clamped_ff_sec": 132.0,
+        "ff_speed_kmph": 25.7,
+        "quiet_windows": [
+          [
+            "03:36",
+            "04:06"
+          ],
+          [
+            "03:38",
+            "04:08"
+          ],
+          [
+            "03:40",
+            "04:10"
+          ]
+        ],
+        "warnings": []
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "ff_tt": 135.0,
+        "raw_ff_sec": 135.0,
+        "clamped_ff_sec": 135.0,
+        "ff_speed_kmph": 25.6,
+        "quiet_windows": [
+          [
+            "04:14",
+            "04:44"
+          ],
+          [
+            "04:16",
+            "04:46"
+          ],
+          [
+            "04:18",
+            "04:48"
+          ]
+        ],
+        "warnings": []
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "ff_tt": 29.0,
+        "raw_ff_sec": 29.0,
+        "clamped_ff_sec": 29.0,
+        "ff_speed_kmph": 35.4,
+        "quiet_windows": [
+          [
+            "04:40",
+            "05:10"
+          ],
+          [
+            "04:42",
+            "05:12"
+          ],
+          [
+            "04:44",
+            "05:14"
+          ]
+        ],
+        "warnings": []
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "ff_tt": 104.0,
+        "raw_ff_sec": 104.0,
+        "clamped_ff_sec": 104.0,
+        "ff_speed_kmph": 19.1,
+        "quiet_windows": [
+          [
+            "04:00",
+            "04:30"
+          ],
+          [
+            "04:02",
+            "04:32"
+          ],
+          [
+            "04:06",
+            "04:36"
+          ]
+        ],
+        "warnings": []
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "ff_tt": 72.0,
+        "raw_ff_sec": 72.0,
+        "clamped_ff_sec": 72.0,
+        "ff_speed_kmph": 21.6,
+        "quiet_windows": [
+          [
+            "02:14",
+            "02:44"
+          ],
+          [
+            "02:16",
+            "02:46"
+          ],
+          [
+            "02:18",
+            "02:48"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "ff_speed_kmph": 30.7,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 0.84,
+        "quiet_busy_ratio": 0.515,
+        "baseline_saturated": false
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "ff_speed_kmph": 33.8,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 0.76,
+        "quiet_busy_ratio": 0.338,
+        "baseline_saturated": false
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "ff_speed_kmph": 25.7,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.297,
+        "baseline_saturated": false
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "ff_speed_kmph": 25.6,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.489,
+        "baseline_saturated": false
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "ff_speed_kmph": 35.4,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 0.73,
+        "quiet_busy_ratio": 0.604,
+        "baseline_saturated": false
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "ff_speed_kmph": 19.1,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 1.35,
+        "quiet_busy_ratio": 0.433,
+        "baseline_saturated": false
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "ff_speed_kmph": 21.6,
+        "corridor_median_speed": 25.7,
+        "peer_ratio": 1.19,
+        "quiet_busy_ratio": 0.391,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        311,
+        451
+      ],
+      [
+        488,
+        642
+      ]
+    ],
+    "bertini": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": [],
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": [],
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": [
+        [
+          311,
+          441
+        ],
+        [
+          444,
+          451
+        ],
+        [
+          504,
+          572
+        ],
+        [
+          610,
+          642
+        ]
+      ],
+      "7ac19cde-3769-4244-bf32-a411841e68fe": [
+        [
+          573,
+          609
+        ]
+      ],
+      "f93b3dc2-25e1-466f-9249-6eb832995299": [],
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": [],
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 30,
+          "observed_lag_min": -17.0,
+          "expected_lag_range_min": [
+            2.4,
+            4.5
+          ],
+          "pass": false,
+          "dist_m": 890.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 67,
+          "observed_lag_min": -6,
+          "expected_lag_range_min": [
+            2.2,
+            4.0
+          ],
+          "pass": false,
+          "dist_m": 790.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 24,
+          "observed_lag_min": -11.0,
+          "expected_lag_range_min": [
+            2.6,
+            4.8
+          ],
+          "pass": false,
+          "dist_m": 951.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 73,
+          "observed_lag_min": -10,
+          "expected_lag_range_min": [
+            1.7,
+            3.1
+          ],
+          "pass": false,
+          "dist_m": 622.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 56,
+          "observed_lag_min": 3.0,
+          "expected_lag_range_min": [
+            1.1,
+            2.1
+          ],
+          "pass": true,
+          "dist_m": 418.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 74,
+          "observed_lag_min": 6.0,
+          "expected_lag_range_min": [
+            1.3,
+            2.5
+          ],
+          "pass": false,
+          "dist_m": 491.0
+        }
+      ],
+      "pass_rate": 0.16666666666666666,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 5,
+      "max_fraction": 0.71,
+      "threshold_segments": 6
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.513,
+      "systemic_by_contig": false,
+      "peak_bucket": 573,
+      "peak_segs": [
+        1,
+        2,
+        3
+      ]
+    },
+    "confidence": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": "FREE_FLOW",
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": "QUEUE_VICTIM",
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": "ACTIVE_BOTTLENECK",
+      "7ac19cde-3769-4244-bf32-a411841e68fe": "ACTIVE_BOTTLENECK",
+      "f93b3dc2-25e1-466f-9249-6eb832995299": "FREE_FLOW",
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": "QUEUE_VICTIM",
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": "SLOW_LINK"
+    }
+  },
+  "KOL_B": {
+    "corridor_id": "KOL_B",
+    "corridor_name": "JLN Rd to SPM Rd to DPS Rd (S-N central)",
+    "n_segments": 7,
+    "total_length_m": 7981,
+    "freeflow": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "ff_tt": 181.0,
+        "raw_ff_sec": 181.0,
+        "clamped_ff_sec": 181.0,
+        "ff_speed_kmph": 22.2,
+        "quiet_windows": [
+          [
+            "04:56",
+            "05:26"
+          ],
+          [
+            "04:58",
+            "05:28"
+          ],
+          [
+            "05:00",
+            "05:30"
+          ]
+        ],
+        "warnings": []
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "ff_tt": 180.0,
+        "raw_ff_sec": 180.0,
+        "clamped_ff_sec": 180.0,
+        "ff_speed_kmph": 30.1,
+        "quiet_windows": [
+          [
+            "03:28",
+            "03:58"
+          ],
+          [
+            "03:30",
+            "04:00"
+          ],
+          [
+            "03:32",
+            "04:02"
+          ]
+        ],
+        "warnings": []
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "ff_tt": 102.0,
+        "raw_ff_sec": 102.0,
+        "clamped_ff_sec": 102.0,
+        "ff_speed_kmph": 32.7,
+        "quiet_windows": [
+          [
+            "03:52",
+            "04:22"
+          ],
+          [
+            "03:54",
+            "04:24"
+          ],
+          [
+            "03:56",
+            "04:26"
+          ]
+        ],
+        "warnings": []
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "ff_tt": 122.0,
+        "raw_ff_sec": 122.0,
+        "clamped_ff_sec": 122.0,
+        "ff_speed_kmph": 31.6,
+        "quiet_windows": [
+          [
+            "03:26",
+            "03:56"
+          ],
+          [
+            "03:28",
+            "03:58"
+          ],
+          [
+            "03:30",
+            "04:00"
+          ]
+        ],
+        "warnings": []
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "ff_tt": 111.0,
+        "raw_ff_sec": 111.0,
+        "clamped_ff_sec": 111.0,
+        "ff_speed_kmph": 23.8,
+        "quiet_windows": [
+          [
+            "03:06",
+            "03:36"
+          ],
+          [
+            "03:08",
+            "03:38"
+          ],
+          [
+            "03:10",
+            "03:40"
+          ]
+        ],
+        "warnings": []
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "ff_tt": 198.0,
+        "raw_ff_sec": 198.0,
+        "clamped_ff_sec": 198.0,
+        "ff_speed_kmph": 31.1,
+        "quiet_windows": [
+          [
+            "03:28",
+            "03:58"
+          ],
+          [
+            "03:30",
+            "04:00"
+          ],
+          [
+            "03:32",
+            "04:02"
+          ]
+        ],
+        "warnings": []
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "ff_tt": 98.0,
+        "raw_ff_sec": 98.0,
+        "clamped_ff_sec": 98.0,
+        "ff_speed_kmph": 33.7,
+        "quiet_windows": [
+          [
+            "03:42",
+            "04:12"
+          ],
+          [
+            "03:44",
+            "04:14"
+          ],
+          [
+            "03:46",
+            "04:16"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "ff_speed_kmph": 22.2,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 1.4,
+        "quiet_busy_ratio": 0.422,
+        "baseline_saturated": false
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "ff_speed_kmph": 30.1,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 1.03,
+        "quiet_busy_ratio": 0.239,
+        "baseline_saturated": false
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "ff_speed_kmph": 32.7,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 0.95,
+        "quiet_busy_ratio": 0.375,
+        "baseline_saturated": false
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "ff_speed_kmph": 31.6,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 0.98,
+        "quiet_busy_ratio": 0.49,
+        "baseline_saturated": false
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "ff_speed_kmph": 23.8,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 1.31,
+        "quiet_busy_ratio": 0.424,
+        "baseline_saturated": false
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "ff_speed_kmph": 31.1,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.452,
+        "baseline_saturated": false
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "ff_speed_kmph": 33.7,
+        "corridor_median_speed": 31.1,
+        "peer_ratio": 0.92,
+        "quiet_busy_ratio": 0.412,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        343,
+        359
+      ],
+      [
+        450,
+        626
+      ]
+    ],
+    "bertini": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": [],
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": [
+        [
+          463,
+          515
+        ]
+      ],
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": [
+        [
+          450,
+          454
+        ],
+        [
+          516,
+          612
+        ]
+      ],
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": [],
+      "df036495-665d-4c1f-8f74-7cb5f380579d": [
+        [
+          343,
+          359
+        ]
+      ],
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": [],
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 27,
+          "observed_lag_min": -4,
+          "expected_lag_range_min": [
+            3.6,
+            6.6
+          ],
+          "pass": false,
+          "dist_m": 1312.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 12,
+          "observed_lag_min": 34.0,
+          "expected_lag_range_min": [
+            3.3,
+            6.1
+          ],
+          "pass": false,
+          "dist_m": 1216.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 22,
+          "observed_lag_min": -40.0,
+          "expected_lag_range_min": [
+            2.7,
+            5.0
+          ],
+          "pass": false,
+          "dist_m": 998.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 48,
+          "observed_lag_min": 23.0,
+          "expected_lag_range_min": [
+            2.5,
+            4.5
+          ],
+          "pass": false,
+          "dist_m": 902.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 55,
+          "observed_lag_min": 2,
+          "expected_lag_range_min": [
+            3.3,
+            6.1
+          ],
+          "pass": true,
+          "dist_m": 1221.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 53,
+          "observed_lag_min": -2,
+          "expected_lag_range_min": [
+            3.6,
+            6.6
+          ],
+          "pass": false,
+          "dist_m": 1312.0
+        }
+      ],
+      "pass_rate": 0.16666666666666666,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [
+        [
+          1108,
+          1210
+        ]
+      ],
+      "max_simultaneous": 6,
+      "max_fraction": 0.86,
+      "threshold_segments": 6
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.445,
+      "systemic_by_contig": false,
+      "peak_bucket": 388,
+      "peak_segs": [
+        0,
+        1,
+        2
+      ]
+    },
+    "confidence": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "score": 0.875,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": "QUEUE_VICTIM",
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": "ACTIVE_BOTTLENECK",
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": "ACTIVE_BOTTLENECK",
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": "FREE_FLOW",
+      "df036495-665d-4c1f-8f74-7cb5f380579d": "ACTIVE_BOTTLENECK",
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": "QUEUE_VICTIM",
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": "SLOW_LINK"
+    }
+  },
+  "KOL_C": {
+    "corridor_id": "KOL_C",
+    "corridor_name": "KK Tagore to Vivekananda to EM Bypass",
+    "n_segments": 11,
+    "total_length_m": 10239,
+    "freeflow": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "ff_tt": 75.0,
+        "raw_ff_sec": 75.0,
+        "clamped_ff_sec": 75.0,
+        "ff_speed_kmph": 31.8,
+        "quiet_windows": [
+          [
+            "21:38",
+            "22:08"
+          ],
+          [
+            "21:40",
+            "22:10"
+          ],
+          [
+            "21:42",
+            "22:12"
+          ]
+        ],
+        "warnings": []
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "ff_tt": 60.0,
+        "raw_ff_sec": 60.0,
+        "clamped_ff_sec": 60.0,
+        "ff_speed_kmph": 26.5,
+        "quiet_windows": [
+          [
+            "21:38",
+            "22:08"
+          ],
+          [
+            "21:40",
+            "22:10"
+          ],
+          [
+            "21:42",
+            "22:12"
+          ]
+        ],
+        "warnings": []
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "ff_tt": 53.0,
+        "raw_ff_sec": 53.0,
+        "clamped_ff_sec": 53.0,
+        "ff_speed_kmph": 32.7,
+        "quiet_windows": [
+          [
+            "21:02",
+            "21:32"
+          ],
+          [
+            "21:06",
+            "21:36"
+          ],
+          [
+            "21:08",
+            "21:38"
+          ]
+        ],
+        "warnings": []
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "ff_tt": 80.0,
+        "raw_ff_sec": 80.0,
+        "clamped_ff_sec": 80.0,
+        "ff_speed_kmph": 33.2,
+        "quiet_windows": [
+          [
+            "21:22",
+            "21:52"
+          ],
+          [
+            "21:24",
+            "21:54"
+          ],
+          [
+            "21:26",
+            "21:56"
+          ]
+        ],
+        "warnings": []
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "ff_tt": 74.0,
+        "raw_ff_sec": 74.0,
+        "clamped_ff_sec": 74.0,
+        "ff_speed_kmph": 25.6,
+        "quiet_windows": [
+          [
+            "21:14",
+            "21:44"
+          ],
+          [
+            "21:16",
+            "21:46"
+          ],
+          [
+            "21:18",
+            "21:48"
+          ]
+        ],
+        "warnings": []
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "ff_tt": 137.0,
+        "raw_ff_sec": 137.0,
+        "clamped_ff_sec": 137.0,
+        "ff_speed_kmph": 31.2,
+        "quiet_windows": [
+          [
+            "22:06",
+            "22:36"
+          ],
+          [
+            "22:08",
+            "22:38"
+          ],
+          [
+            "22:10",
+            "22:40"
+          ]
+        ],
+        "warnings": []
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "ff_tt": 176.0,
+        "raw_ff_sec": 176.0,
+        "clamped_ff_sec": 176.0,
+        "ff_speed_kmph": 21.9,
+        "quiet_windows": [
+          [
+            "21:40",
+            "22:10"
+          ],
+          [
+            "21:42",
+            "22:12"
+          ],
+          [
+            "21:44",
+            "22:14"
+          ]
+        ],
+        "warnings": []
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "ff_tt": 97.6,
+        "raw_ff_sec": 97.6,
+        "clamped_ff_sec": 97.6,
+        "ff_speed_kmph": 41.3,
+        "quiet_windows": [
+          [
+            "00:00",
+            "00:30"
+          ],
+          [
+            "23:12",
+            "23:42"
+          ],
+          [
+            "23:14",
+            "23:44"
+          ]
+        ],
+        "warnings": []
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "ff_tt": 146.0,
+        "raw_ff_sec": 146.0,
+        "clamped_ff_sec": 146.0,
+        "ff_speed_kmph": 39.9,
+        "quiet_windows": [
+          [
+            "23:06",
+            "23:36"
+          ],
+          [
+            "23:08",
+            "23:38"
+          ],
+          [
+            "23:10",
+            "23:40"
+          ]
+        ],
+        "warnings": []
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "ff_tt": 96.0,
+        "raw_ff_sec": 96.0,
+        "clamped_ff_sec": 96.0,
+        "ff_speed_kmph": 46.2,
+        "quiet_windows": [
+          [
+            "00:00",
+            "00:30"
+          ],
+          [
+            "00:02",
+            "00:32"
+          ],
+          [
+            "00:04",
+            "00:34"
+          ]
+        ],
+        "warnings": []
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "ff_tt": 106.0,
+        "raw_ff_sec": 106.0,
+        "clamped_ff_sec": 106.0,
+        "ff_speed_kmph": 39.4,
+        "quiet_windows": [
+          [
+            "21:52",
+            "22:22"
+          ],
+          [
+            "21:54",
+            "22:24"
+          ],
+          [
+            "21:56",
+            "22:26"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "ff_speed_kmph": 31.8,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 1.03,
+        "quiet_busy_ratio": 0.266,
+        "baseline_saturated": false
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "ff_speed_kmph": 26.5,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 1.23,
+        "quiet_busy_ratio": 0.37,
+        "baseline_saturated": false
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "ff_speed_kmph": 32.7,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.34,
+        "baseline_saturated": false
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "ff_speed_kmph": 33.2,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 0.98,
+        "quiet_busy_ratio": 0.168,
+        "baseline_saturated": false
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "ff_speed_kmph": 25.6,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 1.28,
+        "quiet_busy_ratio": 0.339,
+        "baseline_saturated": false
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "ff_speed_kmph": 31.2,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 1.05,
+        "quiet_busy_ratio": 0.493,
+        "baseline_saturated": false
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "ff_speed_kmph": 21.9,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 1.49,
+        "quiet_busy_ratio": 0.396,
+        "baseline_saturated": false
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "ff_speed_kmph": 41.3,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 0.79,
+        "quiet_busy_ratio": 0.367,
+        "baseline_saturated": false
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "ff_speed_kmph": 39.9,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 0.82,
+        "quiet_busy_ratio": 0.399,
+        "baseline_saturated": false
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "ff_speed_kmph": 46.2,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 0.71,
+        "quiet_busy_ratio": 0.375,
+        "baseline_saturated": false
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "ff_speed_kmph": 39.4,
+        "corridor_median_speed": 32.7,
+        "peer_ratio": 0.83,
+        "quiet_busy_ratio": 0.566,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        128,
+        270
+      ],
+      [
+        287,
+        457
+      ]
+    ],
+    "bertini": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": [],
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": [
+        [
+          167,
+          286
+        ]
+      ],
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": [],
+      "58edb596-249c-4392-974d-d9130b586c84": [],
+      "415c8593-b159-424b-9d8f-5b614d13b37c": [
+        [
+          147,
+          422
+        ],
+        [
+          449,
+          479
+        ]
+      ],
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": [],
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": [],
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": [
+        [
+          177,
+          219
+        ],
+        [
+          441,
+          445
+        ]
+      ],
+      "2f13172d-1224-4dc9-857d-4dd692939334": [],
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": [
+        [
+          132,
+          176
+        ],
+        [
+          374,
+          440
+        ]
+      ],
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": []
+    },
+    "head_bottleneck": [
+      [
+        458,
+        467
+      ]
+    ],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 62,
+          "observed_lag_min": -9.0,
+          "expected_lag_range_min": [
+            1.5,
+            2.8
+          ],
+          "pass": false,
+          "dist_m": 552.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 95,
+          "observed_lag_min": 2,
+          "expected_lag_range_min": [
+            1.3,
+            2.3
+          ],
+          "pass": true,
+          "dist_m": 461.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 21,
+          "observed_lag_min": 0,
+          "expected_lag_range_min": [
+            1.7,
+            3.0
+          ],
+          "pass": true,
+          "dist_m": 610.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 24,
+          "observed_lag_min": -33.0,
+          "expected_lag_range_min": [
+            1.7,
+            3.2
+          ],
+          "pass": false,
+          "dist_m": 632.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 44,
+          "observed_lag_min": 3.0,
+          "expected_lag_range_min": [
+            2.3,
+            4.3
+          ],
+          "pass": true,
+          "dist_m": 856.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 57,
+          "observed_lag_min": -10,
+          "expected_lag_range_min": [
+            3.1,
+            5.6
+          ],
+          "pass": false,
+          "dist_m": 1130.0
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "n_days": 47,
+          "observed_lag_min": 0,
+          "expected_lag_range_min": [
+            3.0,
+            5.5
+          ],
+          "pass": true,
+          "dist_m": 1096.0
+        },
+        {
+          "pair": [
+            7,
+            8
+          ],
+          "n_days": 36,
+          "observed_lag_min": -12.0,
+          "expected_lag_range_min": [
+            3.7,
+            6.8
+          ],
+          "pass": false,
+          "dist_m": 1370.0
+        },
+        {
+          "pair": [
+            8,
+            9
+          ],
+          "n_days": 120,
+          "observed_lag_min": -4.0,
+          "expected_lag_range_min": [
+            3.9,
+            7.1
+          ],
+          "pass": false,
+          "dist_m": 1426.0
+        },
+        {
+          "pair": [
+            9,
+            10
+          ],
+          "n_days": 53,
+          "observed_lag_min": -12,
+          "expected_lag_range_min": [
+            3.3,
+            6.0
+          ],
+          "pass": false,
+          "dist_m": 1196.0
+        }
+      ],
+      "pass_rate": 0.4,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [
+        [
+          782,
+          882
+        ]
+      ],
+      "max_simultaneous": 10,
+      "max_fraction": 0.91,
+      "threshold_segments": 9
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.887,
+      "systemic_by_contig": true,
+      "peak_bucket": 423,
+      "peak_segs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "confidence": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "score": 0.875,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "score": 0.85,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "score": 0.868,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.971,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "score": 0.875,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": "HEAD_BOTTLENECK",
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": "ACTIVE_BOTTLENECK",
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": "QUEUE_VICTIM",
+      "58edb596-249c-4392-974d-d9130b586c84": "QUEUE_VICTIM",
+      "415c8593-b159-424b-9d8f-5b614d13b37c": "ACTIVE_BOTTLENECK",
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": "FREE_FLOW",
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": "QUEUE_VICTIM",
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": "ACTIVE_BOTTLENECK",
+      "2f13172d-1224-4dc9-857d-4dd692939334": "QUEUE_VICTIM",
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": "ACTIVE_BOTTLENECK",
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": "FREE_FLOW"
+    }
+  }
+}

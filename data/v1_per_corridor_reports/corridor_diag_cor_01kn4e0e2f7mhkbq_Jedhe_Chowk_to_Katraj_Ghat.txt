@@ -1,0 +1,70 @@
+======================================================================================
+CORRIDOR DIAGNOSTIC — Jedhe Chowk → Katraj Ghat
+======================================================================================
+
+Segments: 11    Total length: 13.53 km
+
+--- FREE-FLOW BASELINE + PROFILE SHAPE (2-min, 10-min smoothed) ---
+seg     length    ff_tt     ff_spd  shape          peaks (HH:MM ranges, peak ratio)
+S01      428m     52s    29.6kmph  MULTI-PEAK (4) 21:02-03:16(1.79x@00:48), 16:20-16:40(1.52x@16:20), 16:44-19:32(1.69x@17:30), 19:58-20:26(1.52x@20:16)
+S02      466m     39s    43.0kmph  DOUBLE-PEAK    21:12-04:36(2.46x@00:54), 15:18-20:22(1.82x@17:30)
+S03      180m     15s    43.2kmph  SINGLE-PEAK    15:06-04:40(4.0x@17:14)
+S04      664m     60s    39.8kmph  SINGLE-PEAK    12:06-04:42(4.33x@17:02)
+S05      859m     78s    39.6kmph  SINGLE-PEAK    13:20-04:08(2.58x@01:00)
+S06     1003m     86s    42.0kmph  DOUBLE-PEAK    21:34-03:08(2.05x@01:26), 17:30-20:00(1.53x@18:48)
+S07      259m     19s    49.1kmph  QUIET          -
+S08      895m     74s    43.5kmph  DOUBLE-PEAK    23:16-02:18(1.74x@01:08), 18:40-19:22(1.53x@19:00)
+S09     1086m    129s    30.3kmph  DOUBLE-PEAK    14:50-03:22(2.02x@00:08), 03:32-04:00(1.52x@03:44)
+S10     1118m    142s    28.3kmph  SINGLE-PEAK    13:38-04:58(3.12x@00:16)
+S11     6575m    670s    35.3kmph  QUIET          -
+
+--- CORRIDOR-LEVEL PEAK WINDOWS (consensus across segments) ---
+  12:06-04:58+1  covering 9/11 segments
+
+--- PM-EVENING WINDOW DIAGNOSIS ---
+Days analysed: 22
+
+FREQUENCY (days with onset in window):
+  S01 ███████████████████░░░ 19/22  RECURRING
+  S02 ██████████████████████ 22/22  RECURRING
+  S03 ██████████████████████ 22/22  RECURRING
+  S04 ██████████████████████ 22/22  RECURRING
+  S05 ██████████████████████ 22/22  RECURRING
+  S06 █████████████████████░ 21/22  RECURRING
+  S07 ███████░░░░░░░░░░░░░░░  7/22  OCCASIONAL
+  S08 ███████████████████░░░ 19/22  RECURRING
+  S09 █████████████████████░ 21/22  RECURRING
+  S10 ██████████████████████ 22/22  RECURRING
+  S11 █░░░░░░░░░░░░░░░░░░░░░  1/22  RARE
+
+SEED RANKING (first to trigger each day):
+  S04  19/22 (86%)
+  S01  3/22 (14%)
+
+PROPAGATION LAGS (adjacent pairs):
+  S01→S02  median=-7m  fwd=8 back=11 tied=0 [BIDIRECTIONAL]
+  S02→S03  median=-44m  fwd=6 back=16 tied=0 [BIDIRECTIONAL]
+  S03→S04  median=-212m  fwd=0 back=22 tied=0 [STRONG-BACKWARD]
+  S04→S05  median=+144m  fwd=22 back=0 tied=0 [STRONG-FORWARD]
+  S05→S06  median=+534m  fwd=21 back=0 tied=0 [STRONG-FORWARD]
+  S06→S07  median=+104m  fwd=6 back=1 tied=0 [STRONG-FORWARD]
+  S07→S08  median=-388m  fwd=2 back=5 tied=0 [BIDIRECTIONAL]
+  S08→S09  median=-103m  fwd=6 back=13 tied=0 [BIDIRECTIONAL]
+  S09→S10  median=-226m  fwd=0 back=21 tied=0 [STRONG-BACKWARD]
+  S10→S11  median=+366m  fwd=1 back=0 tied=0 [STRONG-FORWARD]
+
+BOTTLENECK CANDIDATES:
+  S04  seed rate=86%  p(null)=1.92e-17
+
+ZONE MAP:
+  S01  INDEPENDENT   Jedhe Chowk To Laxminarayan
+  S02  INDEPENDENT   Laxminarayan To Panchmi Hotel
+  S03  INDEPENDENT   Panchmi Hotel To Adinath Society
+  S04  PRIMARY       Adinath Society To Rao Nursing Home
+  S05  SPILLBACK     Rao Nursing Home To Padmavati
+  S06  SPILLBACK     Padmavati To KK Market Chowk
+  S07  SPILLBACK     KK Market Chowk To Dhankavdi Phata
+  S08  INDEPENDENT   Dhankavdi Phata To Bharti Vidhyapeeth
+  S09  INDEPENDENT   Bharti Vidhyapeeth To Katraj Chowk
+  S10  INDEPENDENT   Katraj Chowk To Gujarwadi Phata
+  S11  HEALTHY       Gujarwadi Phata To Katraj Ghat

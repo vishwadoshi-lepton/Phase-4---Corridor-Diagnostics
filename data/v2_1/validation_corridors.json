@@ -1,0 +1,338 @@
+{
+  "PUNE_A": {
+    "city": "Pune",
+    "name": "Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway)",
+    "chain": [
+      {
+        "road_id": "53b8c7b4-c353-488c-992e-04298c2671b3",
+        "road_name": "Pune/Fakri Hill Chowk To  Lullanagar Chowk",
+        "length_m": 494,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "78759d67-cc66-4634-a058-7f158a957912",
+        "road_name": "Pune/Jyoti Hotel Chowk to Lullanagar Chowk",
+        "length_m": 551,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "33c2fa56-a315-4587-8838-1872c3d469cf",
+        "road_name": "Pune/Command Hospital To Cross Road junction",
+        "length_m": 314,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7495fe06-2281-4957-a928-353948d5279b",
+        "road_name": "Pune/Cross Road junction To Golibar Maidan Chowk",
+        "length_m": 1578,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "337b792b-f217-413b-8bda-1377fe15847d",
+        "road_name": "Pune/Khadi Machine Chowk To Pisoli Junction",
+        "length_m": 734,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "a08d9521-9203-43a4-a98d-48a50d31fcfb",
+        "road_name": "Pune/Pisoli Junction To Mohmmadwadi Junction",
+        "length_m": 3451,
+        "road_class": "Highway"
+      }
+    ],
+    "total_length_m": 7122,
+    "n_segments": 6
+  },
+  "PUNE_B": {
+    "city": "Pune",
+    "name": "New Katraj Bogda to Bavdhan (Western expressway feeder)",
+    "chain": [
+      {
+        "road_id": "41ee1523-56bf-45d5-b682-5ec53164d3ba",
+        "road_name": "Pune/New Katraj Bogda To Dari Pull",
+        "length_m": 1714,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea",
+        "road_name": "Pune/Dari Pull To Swami Narayan Mandir",
+        "length_m": 1572,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "d4aa2f2a-bd1e-48c0-a441-e92cd838042a",
+        "road_name": "Pune/Swami Narayan Mandir To Navle Bridge",
+        "length_m": 2510,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6",
+        "road_name": "Pune/Navle Bridge To Wadgaon Pull",
+        "length_m": 1013,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "0e668e68-2eb3-4dfa-9f30-b62888659dee",
+        "road_name": "Pune/Wadgaon Pull To Mutha Nadi Pull",
+        "length_m": 1274,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a",
+        "road_name": "Pune/Mutha Nadi Pull To Warje",
+        "length_m": 775,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "889abc53-d3ea-43b0-bc12-0b248ccea383",
+        "road_name": "Pune/Warje To Dukkarkhind Warje",
+        "length_m": 2489,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "599072f7-4ccc-425c-933f-fa39dea96bd4",
+        "road_name": "Pune/Dukkarkhind Warje  To Chandni Chowk",
+        "length_m": 2208,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272",
+        "road_name": "Pune/Chandni Chowk To Bavdhan",
+        "length_m": 2370,
+        "road_class": "Highway"
+      }
+    ],
+    "total_length_m": 15925,
+    "n_segments": 9
+  },
+  "PUNE_C": {
+    "city": "Pune",
+    "name": "Balewadi to Vidyapeeth Gate (NW arterial)",
+    "chain": [
+      {
+        "road_id": "c015b564-c6d1-4e9c-b646-9c035ca1cd50",
+        "road_name": "Pune/Balewadi To Sus",
+        "length_m": 2389,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "df1f3813-757f-475a-bae4-8f14063f5e3a",
+        "road_name": "Pune/Sus To Pashan",
+        "length_m": 981,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d",
+        "road_name": "Pune/Sus Bridge To Sai Chowk",
+        "length_m": 1217,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "142c6f39-913d-491e-98d9-0831783c212c",
+        "road_name": "Pune/Sai Chowk To Balaji Chowk",
+        "length_m": 527,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e65bee0c-0c59-46a3-ac20-495f2914bf69",
+        "road_name": "Pune/Balaji Chowk To Pashan Circle",
+        "length_m": 1116,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3",
+        "road_name": "Pune/Pashan Circle To NRDE Pashan",
+        "length_m": 686,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bea75ee2-6089-4b0b-801c-5888a59ed073",
+        "road_name": "Pune/NRDE Pashan To Panchwati",
+        "length_m": 717,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6faa1b47-53c2-43ed-9f45-3bc367682a83",
+        "road_name": "Pune/Panchwati To Vidhyapeeth Gate",
+        "length_m": 3027,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 10660,
+    "n_segments": 8
+  },
+  "KOL_A": {
+    "city": "Kolkata",
+    "name": "APC Rd to B T Road (North Kolkata arterial)",
+    "chain": [
+      {
+        "road_id": "a4230c8e-88a6-45cc-8197-2857aa21043f",
+        "road_name": "Kolkata/A P C RD (E1-E7)",
+        "length_m": 1142,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa",
+        "road_name": "Kolkata/A P C RD (E7-E10)",
+        "length_m": 638,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4afeb63a-a0b6-4300-9888-01d53fb37c02",
+        "road_name": "Kolkata/A P C RD (L3-L17)",
+        "length_m": 943,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7ac19cde-3769-4244-bf32-a411841e68fe",
+        "road_name": "Kolkata/A P C RD (L17-L-58)",
+        "length_m": 959,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f93b3dc2-25e1-466f-9249-6eb832995299",
+        "road_name": "Kolkata/A P C RD (L58-L56)",
+        "length_m": 285,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "60d1e438-df9e-4f64-abe6-63f9c647e4cb",
+        "road_name": "Kolkata/RAJA DINENDRA ST (L56-C8)",
+        "length_m": 551,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "827e7b0e-b36c-4cc0-8fcb-8783a3126efc",
+        "road_name": "Kolkata/B T ROAD (C8-C21)",
+        "length_m": 431,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 4949,
+    "n_segments": 7
+  },
+  "KOL_B": {
+    "city": "Kolkata",
+    "name": "JLN Rd to SPM Rd to DPS Rd (S-N central)",
+    "chain": [
+      {
+        "road_id": "ccae34ae-68f2-461b-ad35-e22ffed0cbca",
+        "road_name": "Kolkata/J L NEHRU RD (A1-F9)",
+        "length_m": 1118,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "ed74068d-02e5-4425-b625-43bcba3a05ea",
+        "road_name": "Kolkata/J L NEHRU RD(F9-F13)",
+        "length_m": 1507,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "89537212-35b1-45c4-99e4-b5f836c5ce58",
+        "road_name": "Kolkata/A T M RD(F13-I6)",
+        "length_m": 926,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "397e7aaf-f00c-4a2c-b523-d1bf227c77c2",
+        "road_name": "Kolkata/S P MUKHERJEE RD (I6-I8)",
+        "length_m": 1071,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "df036495-665d-4c1f-8f74-7cb5f380579d",
+        "road_name": "Kolkata/S P MUKHERJEE RD(I8 - N5)",
+        "length_m": 734,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bb42e92a-5f01-4286-afe8-07b183cc5bb8",
+        "road_name": "Kolkata/S P MUKHERJEE RD( N5 - S1 )",
+        "length_m": 1708,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4cc5b7f6-4d2b-4435-a27f-055e89014f92",
+        "road_name": "Kolkata/D P S RD(S1 - S35)",
+        "length_m": 917,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 7981,
+    "n_segments": 7
+  },
+  "KOL_C": {
+    "city": "Kolkata",
+    "name": "KK Tagore to Vivekananda to EM Bypass",
+    "chain": [
+      {
+        "road_id": "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38",
+        "road_name": "Kolkata/K K TAGORE ST (B17-D29)",
+        "length_m": 662,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271",
+        "road_name": "Kolkata/VIVEKANANDA RD (D29-D9)",
+        "length_m": 441,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7",
+        "road_name": "Kolkata/VIVEKANANDA RD (D9-L14)",
+        "length_m": 481,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "58edb596-249c-4392-974d-d9130b586c84",
+        "road_name": "Kolkata/VIVEKANADA RD (L14-L17)",
+        "length_m": 738,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "415c8593-b159-424b-9d8f-5b614d13b37c",
+        "road_name": "Kolkata/VIVEKANANDA RD (L17-L21)",
+        "length_m": 527,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b1745c1e-10c1-448c-9d50-a493002d53fc",
+        "road_name": "Kolkata/MANICKTALA MAIN RD (L21-L27)",
+        "length_m": 1186,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "46b12af8-6b96-4e60-bc35-c3e8d8406b28",
+        "road_name": "Kolkata/MANICKTALA MAIN RD (L27-L29)",
+        "length_m": 1073,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b6878d6b-dbb7-4869-84a8-233b48ec70be",
+        "road_name": "Kolkata/E M BY PASS (L29-L7)",
+        "length_m": 1119,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2f13172d-1224-4dc9-857d-4dd692939334",
+        "road_name": "Kolkata/E M BAY PASS (M7-M4)",
+        "length_m": 1620,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "eea8da9c-27eb-4ec3-9071-b57adf20f057",
+        "road_name": "Kolkata/E M BY PASS (M4-M2B)",
+        "length_m": 1232,
+        "road_class": "Highway"
+      },
+      {
+        "road_id": "a8b44907-05e0-4fcc-8061-882b9eea84c4",
+        "road_name": "Kolkata/E M BY PASS (M2B-X1)",
+        "length_m": 1160,
+        "road_class": "Highway"
+      }
+    ],
+    "total_length_m": 10239,
+    "n_segments": 11
+  }
+}

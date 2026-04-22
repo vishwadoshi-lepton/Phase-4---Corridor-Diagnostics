@@ -1,0 +1,55 @@
+======================================================================================
+CORRIDOR DIAGNOSTIC — Koregaon Park Jn → Keshavnagar (ABC Farm/Tadigutta/Mundhwa)
+======================================================================================
+
+Segments: 7    Total length: 6.13 km
+
+--- FREE-FLOW BASELINE + PROFILE SHAPE (2-min, 10-min smoothed) ---
+seg     length    ff_tt     ff_spd  shape          peaks (HH:MM ranges, peak ratio)
+S01      372m     64s    20.9kmph  QUIET          -
+S02      594m     46s    46.5kmph  SINGLE-PEAK    14:12-05:12(2.59x@23:40)
+S03     1106m     87s    45.8kmph  SINGLE-PEAK    13:40-05:18(5.64x@00:00)
+S04      506m     55s    33.1kmph  SINGLE-PEAK    13:12-05:00(5.38x@18:22)
+S05     1251m    112s    40.2kmph  SINGLE-PEAK    23:38-01:40(1.58x@00:34)
+S06      932m    108s    31.1kmph  SINGLE-PEAK    12:22-05:18(5.7x@23:34)
+S07     1368m    143s    34.4kmph  SINGLE-PEAK    12:38-05:00(2.49x@00:48)
+
+--- CORRIDOR-LEVEL PEAK WINDOWS (consensus across segments) ---
+  12:22-05:18+1  covering 6/7 segments
+
+--- PM-EVENING WINDOW DIAGNOSIS ---
+Days analysed: 22
+
+FREQUENCY (days with onset in window):
+  S01 ██░░░░░░░░░░░░░░░░░░░░  2/22  RARE
+  S02 ██████████████████████ 22/22  RECURRING
+  S03 ██████████████████████ 22/22  RECURRING
+  S04 ██████████████████████ 22/22  RECURRING
+  S05 ██████░░░░░░░░░░░░░░░░  6/22  OCCASIONAL
+  S06 ██████████████████████ 22/22  RECURRING
+  S07 ██████████████████████ 22/22  RECURRING
+
+SEED RANKING (first to trigger each day):
+  S04  17/22 (77%)
+  S07  3/22 (14%)
+  S06  2/22 (9%)
+
+PROPAGATION LAGS (adjacent pairs):
+  S01→S02  median=-246m  fwd=0 back=2 tied=0 [STRONG-BACKWARD]
+  S02→S03  median=-44m  fwd=4 back=18 tied=0 [STRONG-BACKWARD]
+  S03→S04  median=-49m  fwd=0 back=22 tied=0 [STRONG-BACKWARD]
+  S04→S05  median=+160m  fwd=6 back=0 tied=0 [STRONG-FORWARD]
+  S05→S06  median=-194m  fwd=0 back=6 tied=0 [STRONG-BACKWARD]
+  S06→S07  median=+12m  fwd=16 back=6 tied=0 [BIDIRECTIONAL]
+
+BOTTLENECK CANDIDATES:
+  S04  seed rate=77%  p(null)=5.49e-11
+
+ZONE MAP:
+  S01  HEALTHY       Koregaon Park Junction To Lane no.4
+  S02  INDEPENDENT   Lane no.4 To Lane No.7
+  S03  INDEPENDENT   Westin Hotel To Punawala Fincorp
+  S04  PRIMARY       Punawala Fincorp To Tadigutta
+  S05  SPILLBACK     Tadigutta To Kodre Hospital
+  S06  INDEPENDENT   Kodre Hospital To Mundhwa Post Office
+  S07  INDEPENDENT   Mundhwa Post Office To Keshav nagar Y Jn

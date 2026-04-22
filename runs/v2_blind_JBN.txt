@@ -1,0 +1,89 @@
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Jedhe Chowk -> Bhairoba -> Kavdipath -> Naygaon Phata
+id: JBN
+==========================================================================================
+Segments: 20    Corridor length: 27.59 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      351m     42s    30.1 kmph   03:26–03:56, 03:28–03:58, 03:30–04:00
+S02      688m     52s    47.6 kmph   03:10–03:40, 03:12–03:42, 03:14–03:44
+S03      135m      8s    60.8 kmph   02:46–03:16, 02:48–03:18, 02:50–03:20
+S04      630m     44s    51.5 kmph   02:44–03:14, 02:46–03:16, 02:48–03:18
+S05      857m    104s    29.7 kmph   03:44–04:14, 03:46–04:16, 03:48–04:18
+S06      544m     63s    31.1 kmph   03:26–03:56, 03:30–04:00, 03:32–04:02
+S07      596m     63s    34.1 kmph   03:26–03:56, 03:28–03:58, 03:30–04:00
+S08      882m     81s    39.2 kmph   03:36–04:06, 03:38–04:08, 03:40–04:10
+S09      962m     95s    36.5 kmph   02:44–03:14, 02:46–03:16, 02:48–03:18
+S10      609m     48s    45.7 kmph   02:46–03:16, 02:48–03:18, 02:50–03:20
+S11     1600m    120s    48.0 kmph   02:32–03:02, 02:34–03:04, 02:36–03:06
+S12     1218m    113s    38.8 kmph   02:04–02:34, 02:06–02:36, 02:08–02:38
+S13     1647m    140s    42.4 kmph   02:40–03:10, 02:44–03:14, 02:46–03:16
+S14     1699m    116s    52.7 kmph   02:50–03:20, 02:52–03:22, 02:54–03:24
+S15     2468m    161s    55.2 kmph   04:52–05:22, 04:54–05:24, 04:56–05:26
+S16      761m     56s    48.9 kmph   02:42–03:12, 02:44–03:14, 02:46–03:16
+S17     1781m    109s    58.8 kmph   02:34–03:04, 02:36–03:06, 02:38–03:08
+S18     3007m    189s    57.3 kmph   03:02–03:32, 03:04–03:34, 03:06–03:36
+S19     2504m    159s    56.7 kmph   03:04–03:34, 03:06–03:36, 03:08–03:38
+S20     4650m    274s    61.1 kmph   06:46–07:16, 06:48–07:18, 06:50–07:20
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   34.4%   64.4%    1.1%    0.0%   Swargate Jedhe Chowk To Vega Center
+S02   29.2%   21.9%   48.9%    0.0%   Vega Center To ST Depo
+S03   42.4%   57.6%    0.0%    0.0%   ST Depo To Kumar Pacific Mall
+S04   34.2%   63.3%    2.5%    0.0%   Kumar Pacific Mall To Dhobi Ghat
+S05   36.0%   61.4%    2.6%    0.0%   Dhobi Ghat To Khanya Maruti Chowk
+S06   27.4%   51.9%   20.7%    0.0%   Khanya Maruti Chowk To St. Mery Chowk
+S07   31.0%   14.3%   54.7%    0.0%   St. Mery Chowk To Turf Club
+S08   65.7%   32.9%    1.4%    0.0%   Turf Club To Bhairoba Nala
+S09   31.4%   50.0%   18.6%    0.0%   Bhairoba Nala To Kalubai Junction
+S10   29.7%   58.1%   12.2%    0.0%   Kalubai Junction To Ramtekdi
+S11   31.8%   54.7%   13.5%    0.0%   Ramtekdi To Megacenter
+S12   51.5%   48.5%    0.0%    0.0%   Megacenter To Gadital
+S13   26.7%   24.2%   49.2%    0.0%   Gadital To 15 Number
+S14   29.6%   56.2%   14.2%    0.0%   15 Number To Shewalwadi
+S15   39.3%   60.7%    0.0%    0.0%   Shewalwadi To Kavdipath Toll Naka
+S16   32.4%   67.6%    0.0%    0.0%   Kavdipath Toll Naka To Fursungi Road Junction
+S17   32.6%   67.4%    0.0%    0.0%   Fursungi Road Junction To Kadamwak Wasti
+S18   31.5%   68.5%    0.0%    0.0%   Kadamwak Wasti To Rajlaxmi Mangalkaryalay
+S19   35.6%   64.4%    0.0%    0.0%   Rajlaxmi Mangalkaryalay To Kunjir Lawns
+S20   66.8%   33.2%    0.0%    0.0%   Kunjir Lawns To Naygaon Phata
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  12:04 – 13:34   (duration 90 min)
+  17:26 – 20:30   (duration 184 min)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  S07  12:14–12:56, 13:00–14:10, 17:26–19:00, 19:20–20:18   [St. Mery Chowk To Turf Club]
+  S11  17:50–20:18   [Ramtekdi To Megacenter]
+  S14  18:48–21:14   [15 Number To Shewalwadi]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=median centroid) ---
+  S01→S02   skipped (no centroid)
+  S02→S03   skipped (no centroid)
+  S03→S04   skipped (no centroid)
+  !! S04→S05   observed_lag=+158.4m  expected=2.0-3.7m  dist=744m
+  !! S05→S06   observed_lag=-46.3m  expected=1.9-3.5m  dist=700m
+  !! S06→S07   observed_lag=-6.7m  expected=1.6-2.9m  dist=570m
+  !! S07→S08   observed_lag=-109.4m  expected=2.0-3.7m  dist=739m
+  !! S08→S09   observed_lag=+147.1m  expected=2.5-4.6m  dist=922m
+  !! S09→S10   observed_lag=-149.4m  expected=2.1-3.9m  dist=786m
+  !! S10→S11   observed_lag=+40.2m  expected=3.0-5.5m  dist=1104m
+  S11→S12   skipped (no centroid)
+  S12→S13   skipped (no centroid)
+  !! S13→S14   observed_lag=-115.4m  expected=4.6-8.4m  dist=1673m
+  S14→S15   skipped (no centroid)
+  S15→S16   skipped (no centroid)
+  S16→S17   skipped (no centroid)
+  S17→S18   skipped (no centroid)
+  S18→S19   skipped (no centroid)
+  S19→S20   skipped (no centroid)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 10/20 (50%)
+  NOT systemic — point-bottleneck model fits (3/20 segments fire Bertini)

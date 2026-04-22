@@ -1,0 +1,42 @@
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Hadapsar Gadital -> Fursungi -> Urali Devachi -> Dive Ghat
+id: HDV
+==========================================================================================
+Segments: 8    Corridor length: 12.20 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      329m     28s    42.3 kmph   07:36–08:06, 07:38–08:08, 07:40–08:10
+S02     1161m    132s    31.7 kmph   02:40–03:10, 02:42–03:12, 02:44–03:14
+S03      597m     66s    32.6 kmph   04:14–04:44, 04:16–04:46, 04:18–04:48
+S04     1419m    198s    25.9 kmph   02:48–03:18, 02:50–03:20, 02:52–03:22
+S05     1198m    168s    25.7 kmph   03:24–03:54, 03:26–03:56, 03:28–03:58
+S06     2007m    277s    26.1 kmph   03:14–03:44, 03:16–03:46, 03:18–03:48
+S07     2621m    273s    34.6 kmph   07:24–07:54, 07:26–07:56, 07:10–07:40
+S08     2870m    303s    34.1 kmph   07:06–07:36, 07:08–07:38, 07:10–07:40
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   97.4%    2.6%    0.0%    0.0%   Hadapsar Gadital To Ayppa Mandir
+S02   73.9%   26.1%    0.0%    0.0%   Ayppa Mandir To Kaleborate Nagar Road
+S03   29.9%   47.5%   22.6%    0.0%   Kaleborate Nagar Road To Fursungi gaon Road Junction
+S04   33.5%   66.4%    0.1%    0.0%   Fursungi gaon Road Junction To Katraj Road Junction
+S05   69.3%   30.7%    0.0%    0.0%   Katraj Road Junction To Urali Devachi Road Junction
+S06   54.0%   46.0%    0.0%    0.0%   Urali Devachi Road Junction To Wadki
+S07   95.8%    4.2%    0.0%    0.0%   Wadki To Diveghat start
+S08  100.0%    0.0%    0.0%    0.0%   Diveghat start To Diveghat End
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  (no corridor-level congestion window — quiet or fragmented)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  (no segment satisfies the Bertini activation rule — likely systemic or quiet corridor)
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=no primary windows) ---
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 2/8 (25%)
+  NOT systemic — point-bottleneck model fits (0/8 segments fire Bertini)

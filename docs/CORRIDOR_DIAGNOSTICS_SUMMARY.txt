@@ -1,0 +1,34 @@
+======================================================================================
+TRAFFICURE — CROSS-CORRIDOR DIAGNOSTIC SUMMARY (2-MIN RESOLUTION)
+======================================================================================
+
+Algorithm: generalized, no hard-coded direction/time/demand assumptions
+Data: 2-min weekday medians over 22 weekdays (2026-03-01..2026-03-31)
+Free-flow baseline: p15 of 08:00-10:00 IST per segment
+Congestion definition: tt_ratio = current_tt / ff_tt
+  · peak-shape detection: ratio >= 1.5 (sustained >= 20 min)
+  · onset definition: ratio >= 2.0
+
+• Jedhe Chowk → Katraj Ghat
+  id: cor_01kn4e0e2f7mhkbqbx6x8w0xwm
+  report: corridor_diag_cor_01kn4e0e2f7mhkbq_Jedhe_Chowk_to_Katraj_Ghat.txt
+  window: 12:06-04:58+1  covering 9/11 segments
+  bottleneck: S04  seed rate=86%  p(null)=1.92e-17
+
+• Koregaon Park Jn → Keshavnagar (ABC Farm/Tadigutta/Mundhwa)
+  id: cor_01kn4e0e2g9t4995eje0k423xz
+  report: corridor_diag_cor_01kn4e0e2g9t4995_Koregaon_Park_Jn_to_Keshavnagar_ABC_Farm_Tadigutta_Mundhwa.txt
+  window: 12:22-05:18+1  covering 6/7 segments
+  bottleneck: S04  seed rate=77%  p(null)=5.49e-11
+
+• Pune Station → Kanha Hotel
+  id: cor_01kn4e0e2hjxvs594yw6jfa8yg
+  report: corridor_diag_cor_01kn4e0e2hjxvs59_Pune_Station_to_Kanha_Hotel.txt
+  window: 12:58-04:44+1  covering 12/12 segments
+  bottleneck: S09  seed rate=82%  p(null)=1.98e-16
+
+• Mundhwa → Keshavnagar → Manjri → Kolwadi (E-outbound)
+  id: cor_01kn4e0e2nx6wbq5vp8dnqabjk
+  report: corridor_diag_cor_01kn4e0e2nx6wbq5_Mundhwa_to_Keshavnagar_to_Manjri_to_Kolwadi_E-outbound.txt
+  window: 12:00-06:00+1  covering 6/8 segments
+  bottleneck: S01  seed rate=86%  p(null)=7.31e-15

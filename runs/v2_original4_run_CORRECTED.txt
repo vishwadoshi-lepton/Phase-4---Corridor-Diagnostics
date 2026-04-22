@@ -1,0 +1,243 @@
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Jedhe Chowk → Katraj Ghat
+id: cor_01kn4e0e2f7mhkbqbx6x8w0xwm
+==========================================================================================
+Segments: 11    Corridor length: 13.53 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      428m     54s    28.5 kmph   01:48–02:18, 01:50–02:20, 01:52–02:22
+S02      466m     40s    41.9 kmph   02:20–02:50, 02:22–02:52, 02:24–02:54
+S03      180m     15s    43.2 kmph   02:24–02:54, 02:26–02:56, 02:28–02:58
+S04      664m     61s    39.2 kmph   02:32–03:02, 02:34–03:04, 02:36–03:06
+S05      859m     79s    39.1 kmph   03:24–03:54, 03:26–03:56, 03:28–03:58
+S06     1003m     87s    41.5 kmph   02:34–03:04, 02:36–03:06, 02:38–03:08
+S07      259m     19s    49.1 kmph   01:42–02:12, 01:44–02:14, 01:46–02:16
+S08      895m     75s    43.0 kmph   03:42–04:12, 03:44–04:14, 03:46–04:16
+S09     1086m    130s    30.1 kmph   02:34–03:04, 02:36–03:06, 02:38–03:08
+S10     1118m    140s    28.7 kmph   01:36–02:06, 01:38–02:08, 01:40–02:10
+S11     6575m    668s    35.4 kmph   04:38–05:08, 04:40–05:10, 04:42–05:12
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   36.1%   63.9%    0.0%    0.0%   Jedhe Chowk To Laxminarayan
+S02   37.6%   54.9%    7.5%    0.0%   Laxminarayan To Panchmi Hotel
+S03   27.6%   60.3%   10.3%    1.8%   Panchmi Hotel To Adinath Society
+S04   27.6%    8.1%   58.9%    5.4%   Adinath Society To Rao Nursing Home
+S05   31.9%   48.9%   19.2%    0.0%   Rao Nursing Home To Padmavati
+S06   37.5%   56.8%    5.7%    0.0%   Padmavati To KK Market Chowk
+S07   73.1%   26.9%    0.0%    0.0%   KK Market Chowk To Dhankavdi Phata
+S08   38.3%   61.7%    0.0%    0.0%   Dhankavdi Phata To Bharti Vidhyapeeth
+S09   26.0%   71.8%    2.2%    0.0%   Bharti Vidhyapeeth To Katraj Chowk
+S10   25.0%   46.5%   28.5%    0.0%   Katraj Chowk To Gujarwadi Phata
+S11   95.1%    4.9%    0.0%    0.0%   Gujarwadi Phata To Katraj Ghat
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  11:30 – 13:00   (duration 90 min)
+  17:56 – 20:54   (duration 178 min)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  S04  11:14–11:52   [Adinath Society To Rao Nursing Home]
+  S05  11:52–13:30, 17:56–18:58, 20:20–20:54   [Rao Nursing Home To Padmavati]
+  S06  18:58–20:20   [Padmavati To KK Market Chowk]
+  S10  18:36–19:08   [Katraj Chowk To Gujarwadi Phata]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=per-day onsets) ---
+  !! S01→S02   observed_lag=+6.0m  expected=1.2-2.2m  dist=447m  (n=6d)
+  OK S02→S03   observed_lag=+3.0m  expected=0.9-1.6m  dist=323m  (n=11d)
+  S03→S04   skipped (no paired onsets)
+  !! S04→S05   observed_lag=-46.5m  expected=2.1-3.8m  dist=762m  (n=2d)
+  S05→S06   skipped (no paired onsets)
+  !! S06→S07   observed_lag=-25.0m  expected=1.7-3.2m  dist=631m  (n=2d)
+  S07→S08   skipped (no paired onsets)
+  OK S08→S09   observed_lag=+4.0m  expected=2.7-5.0m  dist=990m  (n=4d)
+  !! S09→S10   observed_lag=+36.0m  expected=3.0-5.5m  dist=1102m  (n=1d)
+  S10→S11   skipped (no paired onsets)
+  shockwave pass rate: 33%
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 7/11 (64%)
+  NOT systemic — point-bottleneck model fits (4/11 segments fire Bertini)
+
+
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Koregaon Park Jn → Keshavnagar (ABC Farm/Tadigutta/Mundhwa)
+id: cor_01kn4e0e2g9t4995eje0k423xz
+==========================================================================================
+Segments: 7    Corridor length: 6.13 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      372m     64s    20.9 kmph   01:24–01:54, 01:26–01:56, 01:28–01:58
+S02      594m     47s    45.5 kmph   03:18–03:48, 03:20–03:50, 03:22–03:52
+S03     1106m     88s    45.2 kmph   03:32–04:02, 03:34–04:04, 03:36–04:06
+S04      506m     57s    32.0 kmph   03:28–03:58, 03:30–04:00, 03:32–04:02
+S05     1251m    114s    39.5 kmph   03:06–03:36, 03:08–03:38, 03:10–03:40
+S06      932m    108s    31.1 kmph   01:52–02:22, 01:54–02:24, 01:56–02:26
+S07     1368m    144s    34.2 kmph   03:22–03:52, 03:24–03:54, 03:26–03:56
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01  100.0%    0.0%    0.0%    0.0%   Koregaon Park Junction To Lane no.4
+S02   29.7%   29.4%   40.8%    0.0%   Lane no.4 To Lane No.7
+S03   28.5%   21.0%   34.7%   15.8%   Westin Hotel To Punawala Fincorp
+S04   26.2%   20.4%   37.4%   16.0%   Punawala Fincorp To Tadigutta
+S05   40.6%   59.4%    0.0%    0.0%   Tadigutta To Kodre Hospital
+S06   22.6%   21.1%   40.7%   15.6%   Kodre Hospital To Mundhwa Post Office
+S07   24.6%   51.5%   23.9%    0.0%   Mundhwa Post Office To Keshav nagar Y Jn
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  08:46 – 22:18   (duration 812 min)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  S04  09:16–13:20, 13:24–14:10, 14:22–21:04   [Punawala Fincorp To Tadigutta]
+  S07  08:54–09:56, 11:34–12:10, 12:24–12:38, 17:54–21:46   [Mundhwa Post Office To Keshav nagar Y Jn]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=per-day onsets) ---
+  S01→S02   skipped (no paired onsets)
+  !! S02→S03   observed_lag=+40.0m  expected=2.3-4.3m  dist=850m  (n=17d)
+  !! S03→S04   observed_lag=+45.5m  expected=2.2-4.0m  dist=806m  (n=18d)
+  S04→S05   skipped (no paired onsets)
+  S05→S06   skipped (no paired onsets)
+  !! S06→S07   observed_lag=-9.0m  expected=3.1-5.8m  dist=1150m  (n=19d)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 5/7 (71%)
+  NOT systemic — point-bottleneck model fits (2/7 segments fire Bertini)
+
+
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Pune Station → Kanha Hotel
+id: cor_01kn4e0e2hjxvs594yw6jfa8yg
+==========================================================================================
+Segments: 12    Corridor length: 9.49 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      995m    183s    19.6 kmph   03:04–03:34, 03:06–03:36, 03:02–03:32
+S02      683m     96s    25.6 kmph   03:28–03:58, 03:32–04:02, 03:36–04:06
+S03      491m     60s    29.5 kmph   03:06–03:36, 03:08–03:38, 03:10–03:40
+S04      523m     57s    33.0 kmph   02:56–03:26, 02:58–03:28, 03:00–03:30
+S05      249m     30s    29.9 kmph   03:14–03:44, 03:16–03:46, 03:18–03:48
+S06      789m     98s    29.0 kmph   03:12–03:42, 03:14–03:44, 03:16–03:46
+S07      550m     57s    34.7 kmph   03:36–04:06, 03:38–04:08, 03:42–04:12
+S08      782m     73s    38.6 kmph   03:28–03:58, 03:30–04:00, 03:32–04:02
+S09      998m    102s    35.1 kmph   03:04–03:34, 03:06–03:36, 03:08–03:38
+S10     1038m    113s    33.1 kmph   03:56–04:26, 03:58–04:28, 04:00–04:30
+S11     1227m    125s    35.3 kmph   03:52–04:22, 03:54–04:24, 03:24–03:54
+S12     1162m    130s    32.2 kmph   03:04–03:34, 03:06–03:36, 03:08–03:38
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   26.0%   63.2%   10.8%    0.0%   Pune Station To Maldhkka Chowk
+S02   39.2%   60.8%    0.0%    0.0%   Maldhkka Chowk To Power House Chowk
+S03   37.5%   31.8%   30.7%    0.0%   Power House Chowk To Santkabir Chowk
+S04   32.9%   53.2%   13.9%    0.0%   Santkabir Chowk To Suryamukhi Ganpati Chowk
+S05   46.7%   53.3%    0.0%    0.0%   Suryamukhi Ganpati Chowk To Bahubali Chowk
+S06   32.9%   34.2%   32.9%    0.0%   Bahubali Chowk To Seven Loves Chowk
+S07   41.1%   58.9%    0.0%    0.0%   Seven Loves Chowk To Diasplot Chowk
+S08   34.7%   51.4%   13.9%    0.0%   Diasplot Chowk To Wakhar Mahamandal Chowk
+S09   31.9%   16.1%   47.4%    4.6%   Wakhar Mahamandal Chowk To Gangadham Chowk
+S10   35.7%   64.3%    0.0%    0.0%   Gangadham Chowk To Aaimata Mandir
+S11   33.1%   62.5%    4.4%    0.0%   Aaimata Mandir To Pasalkar Chowk
+S12   27.1%   67.5%    5.4%    0.0%   Pasalkar Chowk To Kanha Hotel Chowk
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  10:52 – 14:24   (duration 212 min)
+  15:40 – 20:34   (duration 294 min)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  S01  10:52–11:20, 16:26–18:34   [Pune Station To Maldhkka Chowk]
+  S04  17:12–19:34   [Santkabir Chowk To Suryamukhi Ganpati Chowk]
+  S09  10:50–11:46, 17:40–20:04   [Wakhar Mahamandal Chowk To Gangadham Chowk]
+  S12  19:16–20:20   [Pasalkar Chowk To Kanha Hotel Chowk]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=per-day onsets) ---
+  !! S01→S02   observed_lag=-8.0m  expected=2.3-4.2m  dist=839m  (n=3d)
+  !! S02→S03   observed_lag=-8.5m  expected=1.6-2.9m  dist=587m  (n=6d)
+  !! S03→S04   observed_lag=-48.0m  expected=1.4-2.5m  dist=507m  (n=11d)
+  !! S04→S05   observed_lag=-3.5m  expected=1.1-1.9m  dist=386m  (n=10d)
+  !! S05→S06   observed_lag=+19.0m  expected=1.4-2.6m  dist=519m  (n=2d)
+  S06→S07   skipped (no paired onsets)
+  !! S07→S08   observed_lag=-2.0m  expected=1.8-3.3m  dist=666m  (n=3d)
+  S08→S09   skipped (no paired onsets)
+  S09→S10   skipped (no paired onsets)
+  !! S10→S11   observed_lag=+12.0m  expected=3.1-5.7m  dist=1132m  (n=5d)
+  !! S11→S12   observed_lag=-13.5m  expected=3.3-6.0m  dist=1194m  (n=8d)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 7/12 (58%)
+  NOT systemic — point-bottleneck model fits (4/12 segments fire Bertini)
+
+
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2  —  Mundhwa → Keshavnagar → Manjri → Kolwadi (E-outbound)
+id: cor_01kn4e0e2nx6wbq5vp8dnqabjk
+==========================================================================================
+Segments: 8    Corridor length: 11.19 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW (quietest 30-min windows, p15, clamped) ---
+seg     length    ff_tt     ff_spd   quiet windows used
+S01      467m     61s    27.6 kmph   02:10–02:40, 02:12–02:42, 02:14–02:44
+S02      487m     54s    32.5 kmph   03:36–04:06, 04:02–04:32, 04:04–04:34
+S03      757m     75s    36.3 kmph   02:42–03:12, 02:44–03:14, 02:46–03:16
+S04      912m     98s    33.5 kmph   03:00–03:30, 03:02–03:32, 03:04–03:34
+S05     1090m    114s    34.3 kmph   02:56–03:26, 02:58–03:28, 03:00–03:30
+S06     2300m    243s    34.1 kmph   03:06–03:36, 03:08–03:38, 03:10–03:40
+S07     2285m    434s    19.0 kmph   04:42–05:12, 04:44–05:14, 04:46–05:16
+S08     2889m    406s    25.6 kmph   02:54–03:24, 02:56–03:26, 02:38–03:08
+
+--- STAGE 2 — REGIME DISTRIBUTION (speed-ratio classification) ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   21.7%   17.5%   39.0%   21.8%   Mundhwa To Shivaji Chowk
+S02   23.8%   43.9%   31.1%    1.2%   Shivaji Chowk To Jay Maharashtra Chowk
+S03   24.7%   62.5%   12.8%    0.0%   Jay Maharashtra Chowk To LC Fitness Club
+S04   24.2%   73.8%    2.1%    0.0%   LC Fitness Club To G Mall
+S05   22.6%   63.5%   13.9%    0.0%   G Mall To Sanskruti Auto
+S06   34.0%   66.0%    0.0%    0.0%   Sanskruti Auto To Manjri
+S07   93.9%    6.1%    0.0%    0.0%   Manjri To Datta Mandir
+S08   87.2%   12.8%    0.0%    0.0%   Datta Mandir To Laxmi Hospital
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) ---
+  rule: ≥25% of segments congested simultaneously for ≥30 min
+  08:32 – 12:46   (duration 254 min)
+  17:52 – 21:42   (duration 230 min)
+
+--- STAGE 3 — BERTINI ACTIVATION INTERVALS (active bottleneck evidence) ---
+rule: upstream CONG/SEVR  AND  current CONG/SEVR  AND  downstream FREE/APPR
+      sustained ≥ 10 min
+  S01  12:14–12:32   [Mundhwa To Shivaji Chowk]
+  S02  08:32–12:14, 17:52–18:18   [Shivaji Chowk To Jay Maharashtra Chowk]
+  S03  18:18–19:12, 19:34–19:54, 20:08–21:22   [Jay Maharashtra Chowk To LC Fitness Club]
+  S05  19:12–19:22, 19:54–20:08   [G Mall To Sanskruti Auto]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (LWR 12–22 km/h back-prop; mode=per-day onsets) ---
+  !! S01→S02   observed_lag=-32.0m  expected=1.3-2.4m  dist=477m  (n=20d)
+  !! S02→S03   observed_lag=-8.0m  expected=1.7-3.1m  dist=622m  (n=14d)
+  !! S03→S04   observed_lag=-24.5m  expected=2.3-4.2m  dist=834m  (n=4d)
+  !! S04→S05   observed_lag=+15.0m  expected=2.7-5.0m  dist=1001m  (n=7d)
+  !! S05→S06   observed_lag=+16.0m  expected=4.6-8.5m  dist=1695m  (n=1d)
+  S06→S07   skipped (no paired onsets)
+  S07→S08   skipped (no paired onsets)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT CONGESTION ---
+  max simultaneous congested segments: 5/8 (62%)
+  NOT systemic — point-bottleneck model fits (4/8 segments fire Bertini)
+
+
+
