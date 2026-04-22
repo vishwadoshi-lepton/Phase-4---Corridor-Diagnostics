@@ -307,6 +307,44 @@
         1
       ]
     },
+    "recurrence": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "n_days": 8,
+        "total_days": 30,
+        "frac": 0.27,
+        "label": "OCCASIONAL"
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "n_days": 21,
+        "total_days": 30,
+        "frac": 0.7,
+        "label": "FREQUENT"
+      }
+    },
     "confidence": {
       "53b8c7b4-c353-488c-992e-04298c2671b3": {
         "score": 0.524,
@@ -790,6 +828,62 @@
         4
       ]
     },
+    "recurrence": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "n_days": 9,
+        "total_days": 30,
+        "frac": 0.3,
+        "label": "OCCASIONAL"
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "n_days": 4,
+        "total_days": 30,
+        "frac": 0.13,
+        "label": "RARE"
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "n_days": 5,
+        "total_days": 30,
+        "frac": 0.17,
+        "label": "RARE"
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "n_days": 27,
+        "total_days": 30,
+        "frac": 0.9,
+        "label": "RECURRING"
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "n_days": 4,
+        "total_days": 30,
+        "frac": 0.13,
+        "label": "RARE"
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "n_days": 5,
+        "total_days": 30,
+        "frac": 0.17,
+        "label": "RARE"
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "n_days": 4,
+        "total_days": 30,
+        "frac": 0.13,
+        "label": "RARE"
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "n_days": 11,
+        "total_days": 30,
+        "frac": 0.37,
+        "label": "OCCASIONAL"
+      }
+    },
     "confidence": {
       "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
         "score": 0.675,
@@ -1267,6 +1361,56 @@
         7
       ]
     },
+    "recurrence": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "n_days": 22,
+        "total_days": 30,
+        "frac": 0.73,
+        "label": "FREQUENT"
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "n_days": 20,
+        "total_days": 30,
+        "frac": 0.67,
+        "label": "FREQUENT"
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "n_days": 27,
+        "total_days": 30,
+        "frac": 0.9,
+        "label": "RECURRING"
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "n_days": 27,
+        "total_days": 30,
+        "frac": 0.9,
+        "label": "RECURRING"
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "n_days": 19,
+        "total_days": 30,
+        "frac": 0.63,
+        "label": "FREQUENT"
+      }
+    },
     "confidence": {
       "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
         "score": 0.6,
@@ -1713,6 +1857,50 @@
         3
       ]
     },
+    "recurrence": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "n_days": 28,
+        "total_days": 30,
+        "frac": 0.93,
+        "label": "RECURRING"
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "n_days": 28,
+        "total_days": 30,
+        "frac": 0.93,
+        "label": "RECURRING"
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      }
+    },
     "confidence": {
       "a4230c8e-88a6-45cc-8197-2857aa21043f": {
         "score": 0.6,
@@ -2149,6 +2337,50 @@
         1,
         2
       ]
+    },
+    "recurrence": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      }
     },
     "confidence": {
       "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
@@ -2783,6 +3015,74 @@
         8,
         9
       ]
+    },
+    "recurrence": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "n_days": 30,
+        "total_days": 30,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "n_days": 29,
+        "total_days": 30,
+        "frac": 0.97,
+        "label": "RECURRING"
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "n_days": 28,
+        "total_days": 30,
+        "frac": 0.93,
+        "label": "RECURRING"
+      }
     },
     "confidence": {
       "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {

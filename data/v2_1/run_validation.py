@@ -6,10 +6,13 @@ from collections import defaultdict
 sys.path.insert(0, os.path.dirname(__file__))
 from corridor_diagnostics_v2_1 import diagnose_v21, render_v21, to_plain_dict
 
-BASE = "/sessions/nice-adoring-lamport/valid"
-corridors = json.load(open(f"{BASE}/validation_corridors.json"))
-profiles  = json.load(open(f"{BASE}/profiles/all_profiles.json"))
-onsets    = json.load(open(f"{BASE}/onsets/all_onsets.json"))
+HERE         = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(HERE, os.pardir, os.pardir))
+OUT_DIR      = os.path.join(PROJECT_ROOT, "runs", "v2_1")
+os.makedirs(OUT_DIR, exist_ok=True)
+corridors = json.load(open(f"{HERE}/validation_corridors.json"))
+profiles  = json.load(open(f"{HERE}/profiles/all_profiles.json"))
+onsets    = json.load(open(f"{HERE}/onsets/all_onsets.json"))
 
 # group onsets by segment
 onsets_by_seg = defaultdict(list)
@@ -54,13 +57,15 @@ for cid, cdata in corridors.items():
     structured[cid] = to_plain_dict(diag)
 
 # write outputs
-with open(f"{BASE}/v2_1_validation_report.txt", "w") as f:
+report_path     = os.path.join(OUT_DIR, "v2_1_validation_report.txt")
+structured_path = os.path.join(OUT_DIR, "v2_1_validation_structured.json")
+with open(report_path, "w") as f:
     f.write("\n\n".join(reports))
-with open(f"{BASE}/v2_1_validation_structured.json", "w") as f:
+with open(structured_path, "w") as f:
     json.dump(structured, f, indent=2, default=str)
 
 print("\n\n".join(reports))
 print("\n\n" + "=" * 90)
 print("Wrote:")
-print(f"  {BASE}/v2_1_validation_report.txt")
-print(f"  {BASE}/v2_1_validation_structured.json")
+print(f"  {report_path}")
+print(f"  {structured_path}")

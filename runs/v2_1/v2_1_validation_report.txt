@@ -43,6 +43,20 @@ S06   47.8%   52.2%    0.0%    0.0%   Pune/Pisoli Junction To Mohmmadwadi Juncti
   contig-length (v2.1 R5): max=15%  threshold=60%
   VERDICT: POINT-BOTTLENECK
 
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 30 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01★ HEAD_BOTTLENECK     RECURRING    30/30   100%  Pune/Fakri Hill Chowk To  Lullanagar Chowk
+  S02★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+  S03  FREE_FLOW           RECURRING    30/30   100%  Pune/Command Hospital To Cross Road junction
+  S04  FREE_FLOW           RECURRING    29/30    97%  Pune/Cross Road junction To Golibar Maidan Chowk
+  S05  FREE_FLOW           OCCASIONAL    8/30    27%  Pune/Khadi Machine Chowk To Pisoli Junction
+  S06  FREE_FLOW           FREQUENT     21/30    70%  Pune/Pisoli Junction To Mohmmadwadi Junction
+  ★ bottleneck recurrence summary:
+      S01  HEAD_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  HEAD_BOTTLENECK     conf=MEDIUM (0.52)  Pune/Fakri Hill Chowk To  Lullanagar Chowk
   S02  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
@@ -103,6 +117,22 @@ S09   92.4%    7.6%    0.0%    0.0%   Pune/Chandni Chowk To Bavdhan
   simultaneous (v2): 2/9 (22%)  threshold=80%
   contig-length (v2.1 R5): max=14%  threshold=60%
   VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 30 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           OCCASIONAL    9/30    30%  Pune/New Katraj Bogda To Dari Pull
+  S02  FREE_FLOW           RARE          4/30    13%  Pune/Dari Pull To Swami Narayan Mandir
+  S03  FREE_FLOW           RARE          5/30    17%  Pune/Swami Narayan Mandir To Navle Bridge
+  S04  FREE_FLOW           RECURRING    27/30    90%  Pune/Navle Bridge To Wadgaon Pull
+  S05★ ACTIVE_BOTTLENECK   RECURRING    29/30    97%  Pune/Wadgaon Pull To Mutha Nadi Pull
+  S06  FREE_FLOW           RARE          4/30    13%  Pune/Mutha Nadi Pull To Warje
+  S07  FREE_FLOW           RARE          5/30    17%  Pune/Warje To Dukkarkhind Warje
+  S08  FREE_FLOW           RARE          4/30    13%  Pune/Dukkarkhind Warje  To Chandni Chowk
+  S09  FREE_FLOW           OCCASIONAL   11/30    37%  Pune/Chandni Chowk To Bavdhan
+  ★ bottleneck recurrence summary:
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (29/30 days, 97%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  FREE_FLOW           conf=MEDIUM (0.68)  Pune/New Katraj Bogda To Dari Pull
@@ -165,6 +195,21 @@ S08   38.8%   50.0%   11.2%    0.0%   Pune/Panchwati To Vidhyapeeth Gate
   contig-length (v2.1 R5): max=28%  threshold=60%
   VERDICT: POINT-BOTTLENECK
 
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 30 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           FREQUENT     22/30    73%  Pune/Balewadi To Sus
+  S02  FREE_FLOW           FREQUENT     20/30    67%  Pune/Sus To Pashan
+  S03  FREE_FLOW           RECURRING    29/30    97%  Pune/Sus Bridge To Sai Chowk
+  S04  QUEUE_VICTIM        RECURRING    30/30   100%  Pune/Sai Chowk To Balaji Chowk
+  S05★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Pune/Balaji Chowk To Pashan Circle
+  S06  FREE_FLOW           RECURRING    27/30    90%  Pune/Pashan Circle To NRDE Pashan
+  S07  FREE_FLOW           RECURRING    27/30    90%  Pune/NRDE Pashan To Panchwati
+  S08  SLOW_LINK           FREQUENT     19/30    63%  Pune/Panchwati To Vidhyapeeth Gate
+  ★ bottleneck recurrence summary:
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Balewadi To Sus
   S02  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Sus To Pashan
@@ -224,6 +269,21 @@ S07   27.4%   30.0%   42.6%    0.0%   Kolkata/B T ROAD (C8-C21)
   contig-length (v2.1 R5): max=51%  threshold=60%
   VERDICT: POINT-BOTTLENECK
 
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 30 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           RECURRING    28/30    93%  Kolkata/A P C RD (E1-E7)
+  S02  QUEUE_VICTIM        RECURRING    30/30   100%  Kolkata/A P C RD (E7-E10)
+  S03★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Kolkata/A P C RD (L3-L17)
+  S04★ ACTIVE_BOTTLENECK   RECURRING    29/30    97%  Kolkata/A P C RD (L17-L-58)
+  S05  FREE_FLOW           RECURRING    28/30    93%  Kolkata/A P C RD (L58-L56)
+  S06  QUEUE_VICTIM        RECURRING    30/30   100%  Kolkata/RAJA DINENDRA ST (L56-C8)
+  S07  SLOW_LINK           RECURRING    30/30   100%  Kolkata/B T ROAD (C8-C21)
+  ★ bottleneck recurrence summary:
+      S03  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+      S04  ACTIVE_BOTTLENECK  →  RECURRING (29/30 days, 97%)
+
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/A P C RD (E1-E7)
   S02  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/A P C RD (E7-E10)
@@ -282,6 +342,22 @@ S07   28.6%   60.7%   10.7%    0.0%   Kolkata/D P S RD(S1 - S35)
   simultaneous (v2): 6/7 (86%)  threshold=80%
   contig-length (v2.1 R5): max=44%  threshold=60%
   VERDICT: SYSTEMIC
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 30 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  QUEUE_VICTIM        RECURRING    30/30   100%  Kolkata/J L NEHRU RD (A1-F9)
+  S02★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Kolkata/J L NEHRU RD(F9-F13)
+  S03★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           RECURRING    30/30   100%  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S05★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Kolkata/S P MUKHERJEE RD(I8 - N5)
+  S06  QUEUE_VICTIM        RECURRING    30/30   100%  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S07  SLOW_LINK           RECURRING    29/30    97%  Kolkata/D P S RD(S1 - S35)
+  ★ bottleneck recurrence summary:
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+      S03  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/J L NEHRU RD (A1-F9)
@@ -355,6 +431,28 @@ S11   39.7%   60.3%    0.0%    0.0%   Kolkata/E M BY PASS (M2B-X1)
   simultaneous (v2): 10/11 (91%)  threshold=80%
   contig-length (v2.1 R5): max=89%  threshold=60%
   VERDICT: SYSTEMIC
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 30 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01★ HEAD_BOTTLENECK     RECURRING    29/30    97%  Kolkata/K K TAGORE ST (B17-D29)
+  S02★ ACTIVE_BOTTLENECK   RECURRING    29/30    97%  Kolkata/VIVEKANANDA RD (D29-D9)
+  S03  QUEUE_VICTIM        RECURRING    30/30   100%  Kolkata/VIVEKANANDA RD (D9-L14)
+  S04  QUEUE_VICTIM        RECURRING    30/30   100%  Kolkata/VIVEKANADA RD (L14-L17)
+  S05★ ACTIVE_BOTTLENECK   RECURRING    29/30    97%  Kolkata/VIVEKANANDA RD (L17-L21)
+  S06  FREE_FLOW           RECURRING    29/30    97%  Kolkata/MANICKTALA MAIN RD (L21-L27)
+  S07  QUEUE_VICTIM        RECURRING    29/30    97%  Kolkata/MANICKTALA MAIN RD (L27-L29)
+  S08★ ACTIVE_BOTTLENECK   RECURRING    30/30   100%  Kolkata/E M BY PASS (L29-L7)
+  S09  QUEUE_VICTIM        RECURRING    29/30    97%  Kolkata/E M BAY PASS (M7-M4)
+  S10★ ACTIVE_BOTTLENECK   RECURRING    29/30    97%  Kolkata/E M BY PASS (M4-M2B)
+  S11  FREE_FLOW           RECURRING    28/30    93%  Kolkata/E M BY PASS (M2B-X1)
+  ★ bottleneck recurrence summary:
+      S01  HEAD_BOTTLENECK  →  RECURRING (29/30 days, 97%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (29/30 days, 97%)
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (29/30 days, 97%)
+      S08  ACTIVE_BOTTLENECK  →  RECURRING (30/30 days, 100%)
+      S10  ACTIVE_BOTTLENECK  →  RECURRING (29/30 days, 97%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  HEAD_BOTTLENECK     conf=HIGH   (0.75)  Kolkata/K K TAGORE ST (B17-D29)

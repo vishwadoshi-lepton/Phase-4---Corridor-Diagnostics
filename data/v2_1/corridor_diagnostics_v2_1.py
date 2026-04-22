@@ -71,8 +71,8 @@ from dataclasses import dataclass, field, asdict
 from statistics import median
 from typing import Optional
 
-# bring v2 into scope
-V2_PATH = "/sessions/nice-adoring-lamport/mnt/Phase 4 - Corridor Diagnostics/data"
+# bring v2 into scope — parent data/ dir, resolved relative to this file
+V2_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.insert(0, V2_PATH)
 import corridor_diagnostics_v2 as v2  # noqa: E402
 
@@ -400,9 +400,20 @@ def _refine_slow_vs_victim(seg_order, regimes_by_idx, primary_windows, verdicts)
 def diagnose_v21(corridor_id, corridor_name, segment_order, segment_meta,
                  profile_by_seg, raw_onsets=None):
     """Run v2 + v2.1 refinements. Returns CorridorDiagnosisV21."""
+    # Build per-day onset dict for Stage 6 recurrence (earliest onset per seg per day).
+    onsets_by_day_by_seg = None
+    if raw_onsets:
+        obd: dict[str, dict[str, int]] = {}
+        for s, d, o in raw_onsets:
+            day = obd.setdefault(str(d), {})
+            if s not in day or o < day[s]:
+                day[s] = o
+        onsets_by_day_by_seg = obd
+
     # Run v2 as-is first
     diag_v2 = v2.diagnose(corridor_id, corridor_name, segment_order, segment_meta,
-                          profile_by_seg, raw_onsets=raw_onsets)
+                          profile_by_seg, raw_onsets=raw_onsets,
+                          onsets_by_day_by_seg=onsets_by_day_by_seg)
     out = CorridorDiagnosisV21(corridor_id, corridor_name, segment_order, segment_meta, v2=diag_v2)
 
     regimes_by_idx = [diag_v2.regimes[s] for s in segment_order]
@@ -565,6 +576,37 @@ def render_v21(out: CorridorDiagnosisV21) -> str:
     is_sys = (sys_["max_fraction"] >= v2.SYSTEMIC_ALL_FRACTION) or sc["systemic_by_contig"]
     L.append(f"  VERDICT: {'SYSTEMIC' if is_sys else 'POINT-BOTTLENECK'}")
 
+    # Stage 6 — recurrence typing
+    L.append("\n--- STAGE 6 — RECURRENCE TYPING ---")
+    if not diag.recurrence:
+        L.append("  (no per-day onsets supplied — recurrence not computed)")
+    else:
+        any_rec = next(iter(diag.recurrence.values()))
+        L.append(f"  window: {any_rec['total_days']} analysed days with ≥1 onset")
+        L.append(f"  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER")
+        L.append(f"  {'seg':<5}  {'verdict':<18}  {'band':<11}  days  frac   name")
+        for i, s in enumerate(out.segment_order):
+            r = diag.recurrence.get(s, {})
+            if not r:
+                continue
+            v_label = out.verdicts.get(s, "")
+            bottleneck = v_label in ("ACTIVE_BOTTLENECK", "HEAD_BOTTLENECK")
+            marker = "★" if bottleneck else " "
+            L.append(f"  S{i+1:02d}{marker} {v_label:<18}  {r['label']:<11}  "
+                     f"{r['n_days']:>2}/{r['total_days']:<2}  "
+                     f"{r['frac']*100:>4.0f}%  "
+                     f"{out.segment_meta[s]['name'][:55]}")
+        # Explicit per-bottleneck summary (CONTEXT.md item #3: "Turn each
+        # ACTIVE BOTTLENECK verdict into recurrent/frequent/episodic").
+        bot = [(i, s) for i, s in enumerate(out.segment_order)
+               if out.verdicts.get(s) in ("ACTIVE_BOTTLENECK", "HEAD_BOTTLENECK")]
+        if bot:
+            L.append("  ★ bottleneck recurrence summary:")
+            for i, s in bot:
+                r = diag.recurrence[s]
+                L.append(f"      S{i+1:02d}  {out.verdicts[s]}  →  "
+                         f"{r['label']} ({r['n_days']}/{r['total_days']} days, {r['frac']*100:.0f}%)")
+
     # Per-segment verdicts
     L.append("\n--- PER-SEGMENT VERDICTS (operator-facing) ---")
     for i, s in enumerate(out.segment_order):
@@ -604,6 +646,7 @@ def to_plain_dict(out: CorridorDiagnosisV21) -> dict:
         "shockwave": diag.shockwave,
         "systemic_v2": diag.systemic,
         "systemic_v21": out.systemic_v21,
+        "recurrence": diag.recurrence,
         "confidence": out.confidence,
         "verdicts": out.verdicts,
     }

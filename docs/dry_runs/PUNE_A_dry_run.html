@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>PUNE_A — Corridor Diagnostics v2.1 — Dry Run</title>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html lang="en"><head><meta charset="utf-8"/><title>PUNE_A — Corridor Diagnostics v2.1 — Dry Run</title><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <style>
   :root {
     --bg:#f8fafc; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
@@ -37,9 +33,6 @@
   .pass { color:var(--free); font-weight:600; }
   .fail { color:var(--sevr); font-weight:600; }
   svg.corridor, svg.diagram { width:100%; height:auto; }
-  svg.corridor { display:block; }
-
-  /* regime strip */
   .strip-row { display:grid; grid-template-columns: 60px 1fr 70px; gap:10px; align-items:center; margin:3px 0; }
   .strip-row .seg-label { font-weight:700; color:#1e293b; font-size:13px; }
   .strip { display:flex; width:100%; height:20px; border-radius:3px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05); cursor:crosshair; }
@@ -49,576 +42,204 @@
   .ticks .axis { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); }
   .legend { display:flex; gap:14px; font-size:12px; color:var(--muted); margin:10px 0 16px; }
   .legend span.sw { display:inline-block; width:14px; height:14px; border-radius:3px; vertical-align:middle; margin-right:5px; }
-
-  /* tooltip */
   #tip { position:fixed; pointer-events:none; background:#0f172a; color:#f8fafc; padding:8px 10px; border-radius:6px; font-size:12px; z-index:999; display:none; white-space:nowrap; box-shadow:0 6px 20px rgba(15,23,42,0.25); }
   #tip .tip-head { font-weight:700; font-size:11px; opacity:0.9; margin-bottom:3px; letter-spacing:0.04em; }
-
-  /* verdict badges */
   .verdict { display:inline-block; padding:2px 10px; border-radius:99px; font-size:11px; font-weight:700; letter-spacing:0.04em; }
-  .verdict-free_flow { background:#dcfce7; color:#14532d; }
-  .verdict-slow_link { background:#fef3c7; color:#713f12; }
-  .verdict-queue_victim { background:#fed7aa; color:#7c2d12; }
-  .verdict-active_bottleneck { background:#fecaca; color:#7f1d1d; }
-  .verdict-head_bottleneck { background:#fbcfe8; color:#831843; }
-
-  .label-high { color:var(--free); font-weight:700; }
+  .verdict-free_flow        { background:#dcfce7; color:#14532d; }
+  .verdict-slow_link        { background:#fef3c7; color:#713f12; }
+  .verdict-queue_victim     { background:#fed7aa; color:#7c2d12; }
+  .verdict-active_bottleneck{ background:#fecaca; color:#7f1d1d; }
+  .verdict-head_bottleneck  { background:#fbcfe8; color:#831843; }
+  .label-high   { color:var(--free); font-weight:700; }
   .label-medium { color:#ca8a04; font-weight:700; }
-  .label-low { color:var(--sevr); font-weight:700; }
-
-  /* confidence stacked bar */
+  .label-low    { color:var(--sevr); font-weight:700; }
   .sbar { display:flex; width:100%; height:14px; border-radius:7px; overflow:hidden; background:#e2e8f0; }
   .sbar-seg { height:100%; }
   td.bar-cell { min-width:180px; }
-
-  /* KPI cards */
   .kpis { display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:12px 0 20px; }
   .kpi { background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
   .kpi .k { font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:4px; }
   .kpi .v { font-size:20px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
   .kpi .s { font-size:11px; color:var(--muted); margin-top:2px; }
-
   details { margin:10px 0; background:#f8fafc; border:1px solid var(--line); border-radius:6px; padding:10px 14px; }
   details summary { cursor:pointer; font-weight:600; color:#334155; font-size:13px; }
   details[open] summary { margin-bottom:10px; }
-
-  @media (max-width: 900px) {
-    .wrap { grid-template-columns:1fr; }
-    nav.toc { position:static; }
-  }
-  @media print {
-    nav.toc { display:none; }
-    .wrap { grid-template-columns:1fr; padding:0; }
-  }
+  @media (max-width: 900px) { .wrap { grid-template-columns:1fr; } nav.toc { position:static; } }
+  @media print { nav.toc { display:none; } .wrap { grid-template-columns:1fr; padding:0; } }
 </style>
-</head>
-<body>
+</head><body>
 <div class="wrap">
-  <nav class="toc">
-    <h2>On this page</h2>
-    <a href="#top">PUNE_A at a glance</a>
-    <a href="#s1">Stage 1 · Free flow</a>
-    <a href="#s2">Stage 2 · Regimes</a>
-    <a href="#s2b">Stage 2b · Primary window</a>
-    <a href="#s3">Stage 3 · Bertini</a>
-    <a href="#s3r3">Stage 3 R3 · Head bottleneck</a>
-    <a href="#s4">Stage 4 · Shockwave</a>
-    <a href="#s5">Stage 5 · Systemic vs Point</a>
-    <a href="#r7">R7 · Confidence</a>
-    <a href="#r8">R8 · Baseline sanity</a>
-    <a href="#final">Final verdicts</a>
-  </nav>
-
-  <main>
-    <a id="top"></a>
-    <header class="hero">
-      <h1>PUNE_A — Corridor Diagnostics v2.1, dry run</h1>
-      <div class="sub">Fakri Hill Chowk → Mohmmadwadi Junction · SE Pune · arterial-to-highway · 6 segments · 7122 m</div>
-      <div class="meta">
-        <div><span>Final verdict</span><b>POINT BOTTLENECK</b></div>
-        <div><span>Active bottleneck</span>S02 · Jyoti Hotel → Lullanagar</div>
-        <div><span>Head bottleneck</span>S01 · Fakri Hill → Lullanagar</div>
-        <div><span>Shockwave pass rate</span>20% (1 of 5 pairs)</div>
-        <div><span>Data</span>22 weekdays · 2-min buckets</div>
-      </div>
-    </header>
-
-    <section>
-      <h2>0 · Corridor at a glance</h2>
-      <div class="stage-sub">Each box below is one monitored segment. Width is proportional to physical length. Labels show free-flow speed (Stage 1 output) and free-flow travel time.</div>
-      <svg class="corridor" viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg">
-<line x1="40" y1="90" x2="960" y2="90" stroke="#cbd5e1" stroke-width="2"/>
-<rect x="40" y="76" width="63.81353552372929" height="28" rx="4" fill="#3b82f6" fill-opacity="0.22" stroke="#3b82f6" stroke-width="1.5"/>
-<text x="71.90676776186464" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S01</text>
-<text x="71.90676776186464" y="60" text-anchor="middle" font-size="11" fill="#475569">494 m</text>
-<text x="71.90676776186464" y="124" text-anchor="middle" font-size="10" fill="#64748b">34.2 km/h</text>
-<text x="71.90676776186464" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 52s</text>
-<rect x="103.81353552372929" y="76" width="71.1766357764673" height="28" rx="4" fill="#3b82f6" fill-opacity="0.22" stroke="#3b82f6" stroke-width="1.5"/>
-<text x="139.40185341196292" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S02</text>
-<text x="139.40185341196292" y="60" text-anchor="middle" font-size="11" fill="#475569">551 m</text>
-<text x="139.40185341196292" y="124" text-anchor="middle" font-size="10" fill="#64748b">36.7 km/h</text>
-<text x="139.40185341196292" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 54s</text>
-<rect x="174.99017130019658" y="76" width="40.5616399887672" height="28" rx="4" fill="#3b82f6" fill-opacity="0.22" stroke="#3b82f6" stroke-width="1.5"/>
-<text x="195.27099129458017" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S03</text>
-<text x="195.27099129458017" y="60" text-anchor="middle" font-size="11" fill="#475569">314 m</text>
-<text x="195.27099129458017" y="124" text-anchor="middle" font-size="10" fill="#64748b">40.4 km/h</text>
-<text x="195.27099129458017" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 28s</text>
-<rect x="215.5518112889638" y="76" width="203.84161752316763" height="28" rx="4" fill="#3b82f6" fill-opacity="0.22" stroke="#3b82f6" stroke-width="1.5"/>
-<text x="317.4726200505476" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S04</text>
-<text x="317.4726200505476" y="60" text-anchor="middle" font-size="11" fill="#475569">1578 m</text>
-<text x="317.4726200505476" y="124" text-anchor="middle" font-size="10" fill="#64748b">37.9 km/h</text>
-<text x="317.4726200505476" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 150s</text>
-<rect x="419.39342881213145" y="76" width="94.81606290367874" height="28" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
-<text x="466.8014602639708" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S05</text>
-<text x="466.8014602639708" y="60" text-anchor="middle" font-size="11" fill="#475569">734 m</text>
-<text x="466.8014602639708" y="124" text-anchor="middle" font-size="10" fill="#64748b">29.4 km/h</text>
-<text x="466.8014602639708" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 90s</text>
-<rect x="514.2094917158101" y="76" width="445.7905082841898" height="28" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
-<text x="737.1047458579051" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S06</text>
-<text x="737.1047458579051" y="60" text-anchor="middle" font-size="11" fill="#475569">3451 m</text>
-<text x="737.1047458579051" y="124" text-anchor="middle" font-size="10" fill="#64748b">32.2 km/h</text>
-<text x="737.1047458579051" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 386s</text>
-<text x="40" y="30" font-size="12" fill="#1e293b">⬅ upstream (Fakri Hill Chowk)</text>
-<text x="960" y="30" text-anchor="end" font-size="12" fill="#1e293b">downstream (Mohmmadwadi Junction) ➡</text>
+<nav class="toc"><h2>On this page</h2><a href="#top">PUNE_A at a glance</a><a href="#s1">Stage 1 · Free flow</a><a href="#s2">Stage 2 · Regimes</a><a href="#s2b">Stage 2b · Primary window</a><a href="#s3">Stage 3 · Bertini</a><a href="#s3r3">Stage 3 R3 · Head bottleneck</a><a href="#s4">Stage 4 · Shockwave</a><a href="#s5">Stage 5 · Systemic vs Point</a><a href="#s6">Stage 6 · Recurrence</a><a href="#r7">R7 · Confidence</a><a href="#r8">R8 · Baseline sanity</a><a href="#final">Final verdicts</a></nav>
+<main>
+<a id="top"></a>
+<header class="hero">
+<h1>PUNE_A — Corridor Diagnostics v2.1, dry run</h1>
+<div class="sub">Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway) · Pune · 6 segments · 7122 m</div>
+<div class="meta">
+<div><span>Final verdict</span><b>POINT BOTTLENECK</b></div>
+<div><span>Active bottleneck</span>S02</div>
+<div><span>Head bottleneck</span>S01</div>
+<div><span>Shockwave pass rate</span>20% (1 of 5 pairs)</div>
+<div><span>Stage 4 mode</span>per-day onsets</div>
+</div></header>
+<section><h2>0 · Corridor at a glance</h2><div class="stage-sub">Each box below is one monitored segment. Width ∝ physical length; colour shows the final verdict. Labels show free-flow speed and free-flow travel time.</div>
+<svg class="corridor" viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg">
+<line x1="40.0" y1="90" x2="960.0" y2="90" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="40.00" y="76" width="63.81" height="28" rx="4" fill="#db2777" fill-opacity="0.3" stroke="#db2777" stroke-width="1.5"/>
+<text x="71.91" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S01</text>
+<text x="71.91" y="60" text-anchor="middle" font-size="11" fill="#475569">494 m</text>
+<text x="71.91" y="124" text-anchor="middle" font-size="10" fill="#64748b">34.2 km/h</text>
+<text x="71.91" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 52s</text>
+<rect x="103.81" y="76" width="71.18" height="28" rx="4" fill="#dc2626" fill-opacity="0.3" stroke="#dc2626" stroke-width="1.5"/>
+<text x="139.40" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S02</text>
+<text x="139.40" y="60" text-anchor="middle" font-size="11" fill="#475569">551 m</text>
+<text x="139.40" y="124" text-anchor="middle" font-size="10" fill="#64748b">36.7 km/h</text>
+<text x="139.40" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 54s</text>
+<rect x="174.99" y="76" width="40.56" height="28" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="195.27" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S03</text>
+<text x="195.27" y="60" text-anchor="middle" font-size="11" fill="#475569">314 m</text>
+<text x="195.27" y="124" text-anchor="middle" font-size="10" fill="#64748b">40.4 km/h</text>
+<text x="195.27" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 28s</text>
+<rect x="215.55" y="76" width="203.84" height="28" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="317.47" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S04</text>
+<text x="317.47" y="60" text-anchor="middle" font-size="11" fill="#475569">1578 m</text>
+<text x="317.47" y="124" text-anchor="middle" font-size="10" fill="#64748b">37.9 km/h</text>
+<text x="317.47" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 150s</text>
+<rect x="419.39" y="76" width="94.82" height="28" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="466.80" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S05</text>
+<text x="466.80" y="60" text-anchor="middle" font-size="11" fill="#475569">734 m</text>
+<text x="466.80" y="124" text-anchor="middle" font-size="10" fill="#64748b">29.4 km/h</text>
+<text x="466.80" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 90s</text>
+<rect x="514.21" y="76" width="445.79" height="28" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="737.10" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S06</text>
+<text x="737.10" y="60" text-anchor="middle" font-size="11" fill="#475569">3451 m</text>
+<text x="737.10" y="124" text-anchor="middle" font-size="10" fill="#64748b">32.2 km/h</text>
+<text x="737.10" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt 386s</text>
+<text x="40.0" y="30" font-size="12" fill="#1e293b">⬅ upstream (Fakri Hill Chowk)</text>
+<text x="960.0" y="30" text-anchor="end" font-size="12" fill="#1e293b">downstream (Mohmmadwadi Junction) ➡</text>
 <text x="500.0" y="170" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">segments drawn to scale; total corridor length 7122 m</text>
 </svg>
-
-      <div class="kpis">
-        <div class="kpi"><div class="k">Total length</div><div class="v">7122 m</div><div class="s">arterial + highway mix</div></div>
-        <div class="kpi"><div class="k">S01 + S02 + S03</div><div class="v">1359 m</div><div class="s">19.1% of corridor ← the 3 short ones</div></div>
-        <div class="kpi"><div class="k">S04 + S05 + S06</div><div class="v">5763 m</div><div class="s">80.9% of corridor ← the long healthy spine</div></div>
-        <div class="kpi"><div class="k">Verdict</div><div class="v">POINT</div><div class="s">not systemic</div></div>
-      </div>
-
-      <div class="story"><b>The one-paragraph story</b> — The corridor is ~7 km. The last 5.7 km (S04–S06) are a highway spine that flows freely all day. The first 1.4 km (S01–S03) contain a junction at Lullanagar Chowk that chokes for most of the day: S01 is the queue head from about 10:46 to 17:04 IST, and as demand climbs in the evening the queue spills into S02, which becomes the operative active bottleneck from 17:06 onward. This is a <b>point problem</b>, not a corridor-wide one — the fix is signal retiming at Lullanagar, not lane widening of the highway.</div>
-    </section>
-
-    <a id="s1"></a>
-    <section>
-      <h2>Stage 1 · Free-flow discovery</h2>
-      <div class="stage-sub">For every segment, slide a 30-min window across 22 weekdays of 2-min data, pick the 3 quietest windows, pool their raw travel times, take p15.</div>
-
-      <div class="why"><b>Why we don't trust static speed limits or vendor "freeflow"</b> — Urban signs say 50 km/h but real geometry + signal density often caps you at 35. Vendor freeflow columns are heuristic blends of nighttime averages and road-class defaults; the DB's <code>freeflow_travel_time_sec</code> mirrors the 8–9 am commute median within ±1 s on every Pune segment, which means using it would silently anchor regime classification to a <i>congested</i> baseline. Discovering free flow from each segment's own quietest 30 min is the only defensible baseline.</div>
-
-      <table>
-      <thead><tr><th>Seg</th><th>Road name</th><th>Length (m)</th><th>Class</th><th>ff_tt (p15)</th><th>ff_spd (km/h)</th><th>Quietest window (IST)</th><th>80 km/h clamp?</th><th>Warnings</th></tr></thead>
-      <tbody>
-          <tr>
-      <td><b>S01</b></td>
-      <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Fakri Hill Chowk To  Lullanagar Chowk">Pune/Fakri Hill Chowk To  Lullanagar Chowk</td>
-      <td>494</td>
-      <td>Arterial</td>
-      <td>52 s</td>
-      <td><b>34.2</b></td>
-      <td><code>03:44–04:14</code></td>
-      <td>no</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td><b>S02</b></td>
-      <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Jyoti Hotel Chowk to Lullanagar Chowk">Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td>
-      <td>551</td>
-      <td>Arterial</td>
-      <td>54 s</td>
-      <td><b>36.7</b></td>
-      <td><code>03:54–04:24</code></td>
-      <td>no</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td><b>S03</b></td>
-      <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Command Hospital To Cross Road junction">Pune/Command Hospital To Cross Road junction</td>
-      <td>314</td>
-      <td>Arterial</td>
-      <td>28 s</td>
-      <td><b>40.4</b></td>
-      <td><code>02:52–03:22</code></td>
-      <td>no</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td><b>S04</b></td>
-      <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Cross Road junction To Golibar Maidan Chowk">Pune/Cross Road junction To Golibar Maidan Chowk</td>
-      <td>1578</td>
-      <td>Arterial</td>
-      <td>150 s</td>
-      <td><b>37.9</b></td>
-      <td><code>02:56–03:26</code></td>
-      <td>no</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td><b>S05</b></td>
-      <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Khadi Machine Chowk To Pisoli Junction">Pune/Khadi Machine Chowk To Pisoli Junction</td>
-      <td>734</td>
-      <td>Highway</td>
-      <td>90 s</td>
-      <td><b>29.4</b></td>
-      <td><code>07:12–07:42</code></td>
-      <td>no</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td><b>S06</b></td>
-      <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Pisoli Junction To Mohmmadwadi Junction">Pune/Pisoli Junction To Mohmmadwadi Junction</td>
-      <td>3451</td>
-      <td>Highway</td>
-      <td>386 s</td>
-      <td><b>32.2</b></td>
-      <td><code>03:04–03:34</code></td>
-      <td>no</td>
-      <td>—</td>
-    </tr>
-      </tbody>
-      </table>
-
-      <div class="callout"><b>The no-tuning proof</b> — Every quiet window landed between 02:52 and 07:46 IST, but the algorithm was never told "night is quiet". It let the data decide. Zero clamps, zero warnings across all 6 segments. The same code picks 07:06 on ghat sections (where overnight freight is actually busy) and 02:30 on urban arterials — that's what "zero city-specific tuning" means in practice.</div>
-    </section>
-
-    <a id="s2"></a>
-    <section>
-      <h2>Stage 2 · Regime classification</h2>
-      <div class="stage-sub">For every 2-min bucket compute <code>speed_ratio = ff_tt / current_tt</code>. Bucket into 4 regimes grounded in the fundamental diagram of traffic flow.</div>
-
-      <div class="why"><b>Why 0.80 / 0.50 / 0.30 and not other numbers</b> — These breakpoints come from the Greenshields / Van Aerde family of speed–density models. A road at 80% of free-flow speed is physically near capacity (<i>stable dense flow</i>). At 50% you're past the critical speed (<i>LOS E</i>). At 30% you're in stop-and-go (<i>LOS F</i>). They are traffic-engineering numbers, not tuned knobs. Same thresholds work in Pune and Kolkata without a single change.</div>
-
-      <div class="legend">
-        <span><span class="sw" style="background:var(--free)"></span>FREE (≥ 0.80)</span>
-        <span><span class="sw" style="background:var(--appr)"></span>APPROACHING (0.50 – 0.80)</span>
-        <span><span class="sw" style="background:var(--cong)"></span>CONGESTED (0.30 – 0.50)</span>
-        <span><span class="sw" style="background:var(--sevr)"></span>SEVERE (&lt; 0.30)</span>
-      </div>
-
-      <div class="ticks">
-        <div></div>
-        <div class="axis"><span>00:00</span><span>04:00</span><span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span><span>23:58</span></div>
-        <div></div>
-      </div>
-      <div id="heatstrips"></div>
-
-      <div class="story"><b>What to notice</b> — S01 and S02 both turn red/orange from ~10:45 onward. S03 stays yellow most of the day (busy but not congested). S04 and S06 are green–yellow. S05 is green all day. This is exactly the geometric story: short arterial links at the Lullanagar junction suffer; the highway doesn't.</div>
-
-      <details><summary>Hover any cell for the exact time / tt / regime at that bucket</summary>
-      Tooltip shows clock time, travel-time in seconds, and regime label. Hover the strip to explore.
-      </details>
-    </section>
-
-    <a id="s2b"></a>
-    <section>
-      <h2>Stage 2b · Primary congestion window (length-weighted, R1)</h2>
-      <div class="stage-sub">Find intervals where ≥ 25% of <b>corridor length</b> is simultaneously CONG/SEVR for ≥ 30 min. Merge gaps &lt; 30 min.</div>
-
-      <div class="why"><b>Why v2.1 switched from segment-count to length-weighted</b> — v2 used "≥ 25% of segments congested". That treats a 3,451 m highway segment and a 314 m arterial stub as equivalent votes, which gets the physics backwards: a corridor with 3 short + 2 long segments has 60% of its length in just 2 segments, so if those two are free-flow the corridor <i>is</i> free-flow even if 3 of 5 short segments jam. The length-weighted rule is what makes the POINT vs SYSTEMIC distinction robust against pathological corridor shapes.</div>
-
-      <div class="callout"><b>What v2.1 found on PUNE_A: <span style="color:#7f1d1d">zero primary windows</span></b> — Even at the evening peak (buckets ~513, when S01 + S02 are both CONG simultaneously), that's only <b>1,045 m / 7,122 m = 14.7%</b> of the corridor by length. Below the 25% threshold. So the corridor as a whole is never "under stress" in the Stage 2b sense, even though S01 and S02 definitely are. This is the key diagnostic — it tells the downstream stages "don't call this systemic, it's a local event".</div>
-
-      <details><summary>The math, spelled out</summary>
-      <pre style="font-size:12px; background:#f1f5f9; padding:10px; border-radius:6px; overflow:auto;">
-corridor_length = 7122 m
+<div class="kpis"><div class="kpi"><div class="k">Total length</div><div class="v">7122 m</div><div class="s">6 segments</div></div><div class="kpi"><div class="k">Free-flow length</div><div class="v">6077 m</div><div class="s">85.3% of corridor</div></div><div class="kpi"><div class="k">Bottleneck/victim length</div><div class="v">1045 m</div><div class="s">14.7% of corridor</div></div><div class="kpi"><div class="k">Verdict</div><div class="v">POINT</div><div class="s">not systemic</div></div></div>
+<div class="story"><b>One-paragraph story</b> — Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway) is a <b>POINT bottleneck</b> corridor (6 segments, 7122 m). Stage 2b found no primary window. Stage 3 fired on S01, S02 (1 active + 1 head); 20% shockwave pass rate. Stage 5 simultaneity peaked at 33%; contiguous-length peaked at 15%.</div>
+</section>
+<a id="s1"></a><section><h2>Stage 1 · Free-flow discovery</h2><div class="stage-sub">For every segment, slide a 30-min window across weekdays of 2-min data, pick the 3 quietest windows, pool their raw travel times, take p15.</div>
+<div class="why"><b>Why we don't trust static speed limits or vendor "freeflow"</b> — Urban signs say 50 km/h but real geometry + signal density often caps you at 35. Vendor freeflow columns are heuristic blends of nighttime averages and road-class defaults; the DB's <code>freeflow_travel_time_sec</code> mirrors the 8–9 am commute median within ±1 s on every Pune segment, which means using it would silently anchor regime classification to a <i>congested</i> baseline. Discovering free flow from each segment's own quietest 30 min is the only defensible baseline.</div>
+<table><thead><tr><th>Seg</th><th>Road name</th><th>Length (m)</th><th>Class</th><th>ff_tt (p15)</th><th>ff_spd (km/h)</th><th>Quietest window (IST)</th><th>80 km/h clamp?</th><th>Warnings</th></tr></thead><tbody><tr><td><b>S01</b></td><td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Fakri Hill Chowk To  Lullanagar Chowk">Pune/Fakri Hill Chowk To  Lullanagar Chowk</td><td>494</td><td>Arterial</td><td>52 s</td><td><b>34.2</b></td><td><code>03:44–04:14 (+2 more)</code></td><td>no</td><td>—</td></tr><tr><td><b>S02</b></td><td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Jyoti Hotel Chowk to Lullanagar Chowk">Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td>551</td><td>Arterial</td><td>54 s</td><td><b>36.7</b></td><td><code>03:54–04:24 (+2 more)</code></td><td>no</td><td>—</td></tr><tr><td><b>S03</b></td><td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Command Hospital To Cross Road junction">Pune/Command Hospital To Cross Road junction</td><td>314</td><td>Arterial</td><td>28 s</td><td><b>40.4</b></td><td><code>02:52–03:22 (+2 more)</code></td><td>no</td><td>—</td></tr><tr><td><b>S04</b></td><td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Cross Road junction To Golibar Maidan Chowk">Pune/Cross Road junction To Golibar Maidan Chowk</td><td>1578</td><td>Arterial</td><td>150 s</td><td><b>37.9</b></td><td><code>02:56–03:26 (+2 more)</code></td><td>no</td><td>—</td></tr><tr><td><b>S05</b></td><td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Khadi Machine Chowk To Pisoli Junction">Pune/Khadi Machine Chowk To Pisoli Junction</td><td>734</td><td>Highway</td><td>90 s</td><td><b>29.4</b></td><td><code>07:12–07:42 (+2 more)</code></td><td>no</td><td>—</td></tr><tr><td><b>S06</b></td><td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="Pune/Pisoli Junction To Mohmmadwadi Junction">Pune/Pisoli Junction To Mohmmadwadi Junction</td><td>3451</td><td>Highway</td><td>386 s</td><td><b>32.2</b></td><td><code>03:04–03:34 (+2 more)</code></td><td>no</td><td>—</td></tr></tbody></table>
+</section>
+<a id="s2"></a><section><h2>Stage 2 · Regime classification</h2><div class="stage-sub">For every 2-min bucket compute <code>speed_ratio = ff_tt / current_tt</code>. Bucket into 4 regimes grounded in the fundamental diagram of traffic flow.</div>
+<div class="why"><b>Why 0.80 / 0.50 / 0.30 and not other numbers</b> — These breakpoints come from the Greenshields / Van Aerde family of speed–density models. A road at 80% of free-flow speed is physically near capacity (<i>stable dense flow</i>). At 50% you're past the critical speed (<i>LOS E</i>). At 30% you're in stop-and-go (<i>LOS F</i>). They are traffic-engineering numbers, not tuned knobs.</div>
+<div class="legend"><span><span class="sw" style="background:var(--free)"></span>FREE (≥ 0.80)</span><span><span class="sw" style="background:var(--appr)"></span>APPROACHING (0.50 – 0.80)</span><span><span class="sw" style="background:var(--cong)"></span>CONGESTED (0.30 – 0.50)</span><span><span class="sw" style="background:var(--sevr)"></span>SEVERE (&lt; 0.30)</span></div>
+<div class="ticks"><div></div><div class="axis"><span>00:00</span><span>04:00</span><span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span><span>23:58</span></div><div></div></div>
+<div id="heatstrips"></div>
+<details><summary>Hover any cell for the exact time / tt / regime</summary>Tooltip shows clock time, travel-time in seconds, and regime label.</details>
+</section>
+<a id="s2b"></a><section><h2>Stage 2b · Primary congestion window (length-weighted, R1)</h2><div class="stage-sub">Find intervals where ≥ 25% of <b>corridor length</b> is simultaneously CONG/SEVR for ≥ 30 min. Merge gaps &lt; 30 min.</div>
+<div class="why"><b>Why v2.1 switched from segment-count to length-weighted</b> — v2 used "≥ 25% of segments congested". That treats a 3,451 m highway segment and a 314 m arterial stub as equivalent votes, which gets the physics backwards. The length-weighted rule is what makes the POINT vs SYSTEMIC distinction robust against pathological corridor shapes.</div>
+<div class="callout"><b>No primary windows fired.</b> Peak corridor-level stress was <b>1045 m / 7122 m = 14.7%</b> at 17:06, below the 25% threshold. The corridor is never "under stress" as a whole — downstream stages will treat it as a POINT problem.</div><details><summary>The math, spelled out</summary><pre style="font-size:12px; background:#f1f5f9; padding:10px; border-radius:6px; overflow:auto;">corridor_length = 7122 m
 At peak bucket (513, i.e. 17:06 IST):
   CONG/SEVR segments: S01 (494 m) + S02 (551 m) = 1045 m
   hot_fraction = 1045 / 7122 = 0.147 = 14.7%
-Threshold: 0.25 (25%) for ≥ 15 consecutive buckets (30 min)
-Result: fraction never crosses 0.25 → no primary window fires
-      </pre></details>
-    </section>
-
-    <a id="s3"></a>
-    <section>
-      <h2>Stage 3 · Bertini active-bottleneck test (core)</h2>
-      <div class="stage-sub">The three-point test: look at each segment with its upstream and downstream neighbour. A real bottleneck has a queue upstream AND free discharge downstream.</div>
-
-      
+Threshold: 0.25 (25%) for ≥15 consecutive buckets (30 min)
+Result: fraction never crosses 0.25 → no primary window fires</pre></details>
+</section>
+<a id="s3"></a><section><h2>Stage 3 · Bertini active-bottleneck test (core)</h2><div class="stage-sub">The three-point test: look at each segment with its upstream and downstream neighbour. A real bottleneck has a queue upstream AND free discharge downstream.</div>
 <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" class="diagram">
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
     </marker>
   </defs>
-  <!-- three boxes: up, mid, dn -->
   <rect x="40"  y="80" width="180" height="60" rx="6" fill="#fed7aa" stroke="#f97316" stroke-width="2"/>
-  <text x="130" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">S01 (upstream)</text>
+  <text x="130" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#7c2d12">upstream</text>
   <text x="130" y="120" text-anchor="middle" font-size="11" fill="#7c2d12">CONG — queue backing up</text>
-
   <rect x="270" y="80" width="180" height="60" rx="6" fill="#fecaca" stroke="#dc2626" stroke-width="2"/>
-  <text x="360" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">S02 (mid = choke)</text>
+  <text x="360" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#7f1d1d">mid = choke</text>
   <text x="360" y="120" text-anchor="middle" font-size="11" fill="#7f1d1d">CONG — the active bottleneck</text>
-
   <rect x="500" y="80" width="180" height="60" rx="6" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
-  <text x="590" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">S03 (downstream)</text>
+  <text x="590" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">downstream</text>
   <text x="590" y="120" text-anchor="middle" font-size="11" fill="#14532d">FREE — traffic discharging</text>
-
   <line x1="220" y1="110" x2="270" y2="110" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
   <line x1="450" y1="110" x2="500" y2="110" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
-
   <text x="360" y="50"  text-anchor="middle" font-size="14" font-weight="700" fill="#0f172a">The Bertini &amp; Leal (2005) three-point test</text>
-  <text x="360" y="70"  text-anchor="middle" font-size="12" fill="#475569">mid is CONG  +  up is CONG (queue)  +  dn is FREE (discharge)  →  mid IS an active bottleneck</text>
-  <text x="360" y="175" text-anchor="middle" font-size="11" fill="#64748b">
-    If up is also FREE → mid is a <tspan font-weight="700">slow link</tspan>, not a bottleneck.
-    If dn is also CONG → mid is a <tspan font-weight="700">queue victim</tspan>, inheriting congestion from further downstream.
-  </text>
-  <text x="360" y="195" text-anchor="middle" font-size="11" fill="#64748b">
-    Sustained for ≥ 10 min (5 consecutive 2-min buckets) → fires.
-  </text>
+  <text x="360" y="70"  text-anchor="middle" font-size="12" fill="#475569">mid is CONG + up is CONG (queue) + dn is FREE (discharge) → active bottleneck</text>
+  <text x="360" y="175" text-anchor="middle" font-size="11" fill="#64748b">Sustained for ≥ 10 min (5 consecutive 2-min buckets) → fires.</text>
 </svg>
-
-
-      <div class="why"><b>Why three points and not just one</b> — A slow segment and a bottleneck look identical on a speed-only map (both are red). The difference is what's happening on either side. A bottleneck makes a <b>queue back up</b> upstream because demand outstrips capacity at the choke — and past the choke, traffic <b>discharges freely</b> because you're downstream of the restriction. A slow link (narrow road, sharp curve) is slow in isolation: upstream is fine because nothing is pooling, and downstream is also fine. Without the three-point context, v1 used to flag every slow segment as a "bottleneck" and operators couldn't tell which ones needed signal changes vs geometric fixes. Bertini & Leal's 2005 insight was: use the three-point pattern as the <i>operational definition</i> of active bottleneck. Physically verifiable, no thresholds to tune.</div>
-
-      <h3 style="margin-top:18px;font-size:15px;">On PUNE_A, Bertini fires on S02 only</h3>
-      <p style="font-size:13px;color:#475569;">S02 sits between S01 (upstream) and S03 (downstream). The test: whenever S02 is CONG/SEVR <b>and</b> S01 is also CONG/SEVR (queue backing up) <b>and</b> S03 is FREE/APPR (discharge), for ≥ 5 consecutive buckets — fire.</p>
-
-      <table>
-      <thead><tr><th>Bucket interval (raw)</th><th>IST clock time</th><th># buckets</th><th>Duration</th></tr></thead>
-      <tbody>
-          <tr><td><code>[513, 570]</code></td><td><b>17:06 – 19:00</b></td><td>58</td><td>116 min</td></tr>
-    <tr><td><code>[585, 657]</code></td><td><b>19:30 – 21:54</b></td><td>73</td><td>146 min</td></tr>
-    <tr><td><code>[659, 665]</code></td><td><b>21:58 – 22:10</b></td><td>7</td><td>14 min</td></tr>
-    <tr><td><code>[672, 676]</code></td><td><b>22:24 – 22:32</b></td><td>5</td><td>10 min</td></tr>
-      </tbody>
-      </table>
-
-      <div class="callout"><b>Main evening fire: 17:06 – 19:00 IST (1 h 54 min)</b> — This is the canonical PM peak. S02's congestion is validated as an <i>active</i> bottleneck, not a passive slow link. In an operator dashboard this would be the row that says "choke at Lullanagar, PM peak, recommend signal retune".</div>
-    </section>
-
-    <a id="s3r3"></a>
-    <section>
-      <h2>Stage 3 R3 · Head-segment bottleneck (v2.1 addition)</h2>
-      <div class="stage-sub">The classical Bertini test needs an upstream segment — so S01 (the corridor's first segment) can <i>never</i> fire, even when the queue visibly originates there. R3 adds a two-point relaxation specifically for S01.</div>
-
-      <div class="why"><b>Why R3 matters</b> — On a recorded corridor, the "first" segment is almost always the place where a junction queue starts. There's no S00 to act as the upstream anchor, so classical Bertini has a structural blind spot at S01. Without R3, the pipeline would have seen S01 as "persistently congested but not a bottleneck" — an unhelpful answer for an operator asking "where do I send the marshal?". R3 says: <b>if S01 is CONG/SEVR and its only downstream neighbour S02 is FREE/APPR, that IS a head bottleneck</b>. The two-point relaxation is conservative: it only fires when the queue clearly starts at S01 and doesn't yet extend downstream. The terminus S_N stays unrelaxed (no downstream to verify).</div>
-
-      <h3 style="margin-top:18px;font-size:15px;">S01's head-bottleneck intervals</h3>
-      <table>
-      <thead><tr><th>Bucket interval (raw)</th><th>IST clock time</th><th># buckets</th><th>Duration</th></tr></thead>
-      <tbody>
-          <tr><td><code>[323, 512]</code></td><td><b>10:46 – 17:04</b></td><td>190</td><td>380 min</td></tr>
-    <tr><td><code>[571, 584]</code></td><td><b>19:02 – 19:28</b></td><td>14</td><td>28 min</td></tr>
-    <tr><td><code>[666, 671]</code></td><td><b>22:12 – 22:22</b></td><td>6</td><td>12 min</td></tr>
-      </tbody>
-      </table>
-
-      <div class="story"><b>The hand-off moment</b> — notice that S01's main head run ends at <b>17:04</b> and S02's first Bertini fire starts at <b>17:06</b>. That 2-minute gap is the exact moment the evening demand crosses a threshold: the queue that was contained at S01 spills into S02, and now S01 is "just backed-up upstream" while S02 is the operative choke. The pipeline catches that transition cleanly without any explicit rule for it — it falls out of the regime definitions. This is a real thing you'll want to highlight in the UI: a single verdict label doesn't capture the fact that the choke moves <i>within</i> the corridor as conditions evolve.</div>
-    </section>
-
-    <a id="s4"></a>
-    <section>
-      <h2>Stage 4 · Shockwave cross-check (LWR)</h2>
-      <div class="stage-sub">For each adjacent pair, check whether the observed congestion onset lag matches what the LWR shockwave model predicts (backward propagation at 12–22 km/h).</div>
-
-      <div class="why"><b>Why shockwave validation is a check, not a gate</b> — Bertini is already strong on its own. But shockwaves have a physical meaning: when a bottleneck forms, the congestion boundary <i>propagates backwards</i> through traffic at a predictable speed (typically 12–22 km/h in urban/arterial traffic, from the Lighthill-Whitham-Richards model). If we see a pair of segments where the upstream one starts congesting <i>before</i> the downstream one by exactly the lag predicted by distance ÷ shockwave_speed, that's an independent physics confirmation of a real bottleneck behind them. Low pass rate <b>doesn't</b> mean Bertini is wrong — it usually means the congestion is local (doesn't propagate far), or the onset signal is noisy.</div>
-
-      <table>
-      <thead><tr><th>Pair</th><th>Distance</th><th>Expected lag (12–22 km/h)</th><th>Observed lag</th><th># days</th><th>Result</th></tr></thead>
-      <tbody>
-          <tr><td>S01 → S02</td><td>522 m</td><td>1.4 – 2.6 min</td><td>-12.0 min</td><td>44</td><td class="fail">❌ FAIL</td></tr>
-    <tr><td>S02 → S03</td><td>432 m</td><td>1.2 – 2.2 min</td><td>-24 min</td><td>33</td><td class="fail">❌ FAIL</td></tr>
-    <tr><td>S03 → S04</td><td>946 m</td><td>2.6 – 4.7 min</td><td>6.0 min</td><td>82</td><td class="pass">✅ PASS</td></tr>
-    <tr><td>S04 → S05</td><td>1156 m</td><td>3.2 – 5.8 min</td><td>-17.0 min</td><td>8</td><td class="fail">❌ FAIL</td></tr>
-    <tr><td>S05 → S06</td><td>2092 m</td><td>5.7 – 10.5 min</td><td>-14 min</td><td>7</td><td class="fail">❌ FAIL</td></tr>
-      </tbody>
-      </table>
-
-      <div class="callout"><b>Pass rate: 20% (1 of 5)</b> — Only S03→S04 passes. The failures are mostly <i>negative</i> observed lags (downstream onsets before upstream), which is consistent with our story: the choke is at S01/S02, so the queue backs UP to earlier segments — it doesn't propagate forward as a shockwave. A low SW pass rate on a POINT corridor is expected behaviour, not a bug. It would only alarm us on a corridor classified as SYSTEMIC.</div>
-    </section>
-
-    <a id="s5"></a>
-    <section>
-      <h2>Stage 5 · Systemic vs Point classification</h2>
-      <div class="stage-sub">Two independent rules. Either can flip the corridor to SYSTEMIC; neither fires here.</div>
-
-      <div class="kpis">
-        <div class="kpi"><div class="k">v2 rule — simultaneity</div><div class="v">33%</div><div class="s">max 2 of 6 segs CONG at once · threshold 80%</div></div>
-        <div class="kpi"><div class="k">v2.1 R5 — contiguity</div><div class="v">14.7%</div><div class="s">longest contiguous CONG run by length · threshold 60%</div></div>
-        <div class="kpi"><div class="k">Verdict</div><div class="v">POINT</div><div class="s">both checks miles below</div></div>
-      </div>
-
-      <div class="why"><b>Why two systemic rules, not one</b> — The simultaneity rule catches corridors where almost everything jams at once (a city-wide grind). The contiguity rule (R5) catches the case where, say, 7 of 10 adjacent segments jam in a connected block — operationally systemic because you can't "fix segment 4" in isolation, the whole 70% failing-together stretch needs intervention. Neither rule alone is sufficient: you can have 80% of a corridor CONG but in 4 disconnected pockets (that's still point behaviour), or 50% of corridor CONG but all contiguous (operationally systemic because the block can't be unblocked locally).</div>
-
-      <div class="callout"><b>On PUNE_A the contiguous run is just S01 + S02 = 1045 m = 14.7% of corridor.</b> Nowhere near the 60% contiguity threshold. And at any single bucket we only ever see 2 segments CONG simultaneously (33%, well under 80%). Both rules are explicit "no" — the pipeline lands on POINT with very high margin.</div>
-    </section>
-
-    <a id="r7"></a>
-    <section>
-      <h2>R7 · Confidence index (per segment)</h2>
-      <div class="stage-sub">Four independent signals, each in [0, 1], weighted 0.25 each. Sum in [0, 1]; labelled HIGH (≥ 0.75), MEDIUM (≥ 0.50), LOW (&lt; 0.50).</div>
-
-      <div class="why"><b>Why four separate signals instead of one score</b> — A single opaque "confidence number" tells an operator nothing. The four components tell them exactly <i>why</i> they should trust (or not trust) a verdict. <code>ff_tight</code> says "our baseline is well-identified on this segment". <code>primary_overlap</code> says "this verdict is supported by corridor-level stress, not an isolated blip". <code>onset_support</code> says "we have enough day-level onset data to trust the Stage 4 check". <code>shockwave_support</code> says "at least one flanking pair actually passed Stage 4 physics". Each signal is a standard QA metric that breaks out separately in the report, so the operator knows which failure mode hit. All four at 1.0 → rock-solid verdict. One or two at 0 → verdict is probably still right but there's a named reason to be careful.</div>
-
-      <table>
-      <thead><tr><th>Seg</th><th>Verdict</th><th>Score</th><th>Label</th><th>ff_tight</th><th>primary_overlap</th><th>onset_support</th><th>shockwave_support</th><th>Breakdown</th></tr></thead>
-      <tbody>
-          <tr>
-      <td><b>S01</b></td>
-      <td><span class="verdict verdict-head_bottleneck">HEAD_BOTTLENECK</span></td>
-      <td><b>0.524</b></td>
-      <td><span class="label-medium">MEDIUM</span></td>
-      <td>1.00</td>
-      <td>0.10</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td class="bar-cell"><div class="sbar"><div class="sbar-seg" style="width:25.0%;background:#3b82f6" title="ff_tight=1.00"></div><div class="sbar-seg" style="width:2.375%;background:#8b5cf6" title="primary_overlap=0.10"></div><div class="sbar-seg" style="width:25.0%;background:#14b8a6" title="onset_support=1.00"></div><div class="sbar-seg" style="width:0.0%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td>
-    </tr>
-    <tr>
-      <td><b>S02</b></td>
-      <td><span class="verdict verdict-active_bottleneck">ACTIVE_BOTTLENECK</span></td>
-      <td><b>0.750</b></td>
-      <td><span class="label-high">HIGH</span></td>
-      <td>1.00</td>
-      <td>1.00</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td class="bar-cell"><div class="sbar"><div class="sbar-seg" style="width:25.0%;background:#3b82f6" title="ff_tight=1.00"></div><div class="sbar-seg" style="width:25.0%;background:#8b5cf6" title="primary_overlap=1.00"></div><div class="sbar-seg" style="width:25.0%;background:#14b8a6" title="onset_support=1.00"></div><div class="sbar-seg" style="width:0.0%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td>
-    </tr>
-    <tr>
-      <td><b>S03</b></td>
-      <td><span class="verdict verdict-free_flow">FREE_FLOW</span></td>
-      <td><b>0.725</b></td>
-      <td><span class="label-medium">MEDIUM</span></td>
-      <td>1.00</td>
-      <td>0.40</td>
-      <td>1.00</td>
-      <td>0.50</td>
-      <td class="bar-cell"><div class="sbar"><div class="sbar-seg" style="width:25.0%;background:#3b82f6" title="ff_tight=1.00"></div><div class="sbar-seg" style="width:10.0%;background:#8b5cf6" title="primary_overlap=0.40"></div><div class="sbar-seg" style="width:25.0%;background:#14b8a6" title="onset_support=1.00"></div><div class="sbar-seg" style="width:12.5%;background:#f59e0b" title="shockwave_support=0.50"></div></div></td>
-    </tr>
-    <tr>
-      <td><b>S04</b></td>
-      <td><span class="verdict verdict-free_flow">FREE_FLOW</span></td>
-      <td><b>0.725</b></td>
-      <td><span class="label-medium">MEDIUM</span></td>
-      <td>1.00</td>
-      <td>0.40</td>
-      <td>1.00</td>
-      <td>0.50</td>
-      <td class="bar-cell"><div class="sbar"><div class="sbar-seg" style="width:25.0%;background:#3b82f6" title="ff_tight=1.00"></div><div class="sbar-seg" style="width:10.0%;background:#8b5cf6" title="primary_overlap=0.40"></div><div class="sbar-seg" style="width:25.0%;background:#14b8a6" title="onset_support=1.00"></div><div class="sbar-seg" style="width:12.5%;background:#f59e0b" title="shockwave_support=0.50"></div></div></td>
-    </tr>
-    <tr>
-      <td><b>S05</b></td>
-      <td><span class="verdict verdict-free_flow">FREE_FLOW</span></td>
-      <td><b>0.600</b></td>
-      <td><span class="label-medium">MEDIUM</span></td>
-      <td>1.00</td>
-      <td>0.40</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td class="bar-cell"><div class="sbar"><div class="sbar-seg" style="width:25.0%;background:#3b82f6" title="ff_tight=1.00"></div><div class="sbar-seg" style="width:10.0%;background:#8b5cf6" title="primary_overlap=0.40"></div><div class="sbar-seg" style="width:25.0%;background:#14b8a6" title="onset_support=1.00"></div><div class="sbar-seg" style="width:0.0%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td>
-    </tr>
-    <tr>
-      <td><b>S06</b></td>
-      <td><span class="verdict verdict-free_flow">FREE_FLOW</span></td>
-      <td><b>0.600</b></td>
-      <td><span class="label-medium">MEDIUM</span></td>
-      <td>1.00</td>
-      <td>0.40</td>
-      <td>1.00</td>
-      <td>0.00</td>
-      <td class="bar-cell"><div class="sbar"><div class="sbar-seg" style="width:25.0%;background:#3b82f6" title="ff_tight=1.00"></div><div class="sbar-seg" style="width:10.0%;background:#8b5cf6" title="primary_overlap=0.40"></div><div class="sbar-seg" style="width:25.0%;background:#14b8a6" title="onset_support=1.00"></div><div class="sbar-seg" style="width:0.0%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td>
-    </tr>
-      </tbody>
-      </table>
-
-      <div class="callout"><b>Reading the table</b> — S02 ACTIVE_BOTTLENECK lands at <b>0.75 HIGH</b> — three of four signals full, only shockwave_support missing (and we know why from Section 4). S01 HEAD_BOTTLENECK is <b>0.524 MEDIUM</b> — primary_overlap is low (0.095) because the length-weighted primary window never fired, and shockwave support is 0. That's a <i>correct</i> medium score: the verdict is right, but we can't triangulate it from every side. The FREE_FLOW segments all land MEDIUM (0.60–0.725) because shockwave_support is mixed and primary_overlap is by construction partial.</div>
-    </section>
-
-    <a id="r8"></a>
-    <section>
-      <h2>R8 · Baseline-saturated sanity check (informational only)</h2>
-      <div class="stage-sub">Flag any segment whose discovered free flow is &gt; 2× slower than the corridor median AND whose quietest window is still &gt; 70% of the busiest window (i.e. the segment never actually got quiet).</div>
-
-      <div class="why"><b>Why this doesn't change verdicts</b> — If a segment is perpetually saturated, its "free flow" is really "less bad congestion", which would make every regime classification wrong (everything would look FREE because the baseline is already slow). We still compute a ff_tt and clamp to 80 km/h so the pipeline stays coherent, but we raise a warning so the operator knows the regime bar is on a soft foundation. <i>Never</i> silently rewriting verdicts preserves the audit trail — if the operator wants to manually override, they have the evidence to.</div>
-
-      <table>
-      <thead><tr><th>Seg</th><th>ff_spd (km/h)</th><th>Corridor median</th><th>Peer ratio</th><th>Quiet/busy ratio</th><th>Flag</th></tr></thead>
-      <tbody>
-          <tr><td><b>S01</b></td><td>34.2</td><td>35.5</td><td>1.04</td><td>0.232</td><td>🟢 clear</td></tr>
-    <tr><td><b>S02</b></td><td>36.7</td><td>35.5</td><td>0.97</td><td>0.415</td><td>🟢 clear</td></tr>
-    <tr><td><b>S03</b></td><td>40.4</td><td>35.5</td><td>0.88</td><td>0.500</td><td>🟢 clear</td></tr>
-    <tr><td><b>S04</b></td><td>37.9</td><td>35.5</td><td>0.94</td><td>0.554</td><td>🟢 clear</td></tr>
-    <tr><td><b>S05</b></td><td>29.4</td><td>35.5</td><td>1.21</td><td>0.818</td><td>🟢 clear &larr; <i>quiet/busy ratio flirting with the 0.70 line, watch it</i></td></tr>
-    <tr><td><b>S06</b></td><td>32.2</td><td>35.5</td><td>1.10</td><td>0.667</td><td>🟢 clear</td></tr>
-      </tbody>
-      </table>
-    </section>
-
-    <a id="final"></a>
-    <section>
-      <h2>Final per-segment verdicts</h2>
-
-      <table>
-      <thead><tr><th>Seg</th><th>Road name</th><th>Length</th><th>Verdict</th><th>Confidence</th></tr></thead>
-      <tbody>
-          <tr><td><b>S01</b></td><td>Pune/Fakri Hill Chowk To  Lullanagar Chowk</td><td>494 m</td><td><span class="verdict verdict-head_bottleneck">HEAD_BOTTLENECK</span></td><td><span class="label-medium">MEDIUM</span> (0.52)</td></tr>
-    <tr><td><b>S02</b></td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td>551 m</td><td><span class="verdict verdict-active_bottleneck">ACTIVE_BOTTLENECK</span></td><td><span class="label-high">HIGH</span> (0.75)</td></tr>
-    <tr><td><b>S03</b></td><td>Pune/Command Hospital To Cross Road junction</td><td>314 m</td><td><span class="verdict verdict-free_flow">FREE_FLOW</span></td><td><span class="label-medium">MEDIUM</span> (0.72)</td></tr>
-    <tr><td><b>S04</b></td><td>Pune/Cross Road junction To Golibar Maidan Chowk</td><td>1578 m</td><td><span class="verdict verdict-free_flow">FREE_FLOW</span></td><td><span class="label-medium">MEDIUM</span> (0.72)</td></tr>
-    <tr><td><b>S05</b></td><td>Pune/Khadi Machine Chowk To Pisoli Junction</td><td>734 m</td><td><span class="verdict verdict-free_flow">FREE_FLOW</span></td><td><span class="label-medium">MEDIUM</span> (0.60)</td></tr>
-    <tr><td><b>S06</b></td><td>Pune/Pisoli Junction To Mohmmadwadi Junction</td><td>3451 m</td><td><span class="verdict verdict-free_flow">FREE_FLOW</span></td><td><span class="label-medium">MEDIUM</span> (0.60)</td></tr>
-      </tbody>
-      </table>
-
-      <div class="story" style="margin-top:20px;"><b>Traffic-engineer-grade summary</b> —
-      <br/><br/>
-      <b>Corridor PUNE_A is a POINT problem, not a systemic one.</b> 5,763 m of highway spine (S04–S06, 80.9% of the corridor) is healthy all day.
-      The problem is 1,045 m (14.7%) around Lullanagar Chowk, where two adjacent short arterial segments carry the queue for most of the operational day.
-      <br/><br/>
-      Between roughly 10:46 and 17:04 IST, <b>S01 (Fakri Hill → Lullanagar)</b> is a head bottleneck — the queue originates at the Lullanagar junction and stays contained at S01. From 17:06 demand rises, the queue spills over into <b>S02 (Jyoti Hotel → Lullanagar)</b>, which becomes the active bottleneck until 19:00, with a second evening fire from 19:30 to 21:54.
-      <br/><br/>
-      <b>Recommended action</b>: signal retiming at Lullanagar Chowk, potentially junction geometry changes. <b>Not</b> widening the highway (which is fine). <b>Not</b> corridor-wide signal coordination (which wouldn't help — the issue is local to one junction).
-      <br/><br/>
-      <b>Confidence</b>: HIGH on S02's active-bottleneck call; MEDIUM on S01's head-bottleneck call (because the length-weighted primary window never fires, which is correct given the physics — but it reduces our corroboration surface). Both are correct.
-      </div>
-    </section>
-
-    <footer style="font-size:12px; color:var(--muted); text-align:center; margin:30px 0 0;">
-      Generated from <code>data/v2_1/profiles/all_profiles.json</code> + <code>runs/v2_1/v2_1_validation_structured.json</code>.<br/>
-      Corridor: PUNE_A · 22 weekdays · 2-min median profiles · v2.1 pipeline output, unmodified.
-    </footer>
-  </main>
-</div>
-
+<div class="why"><b>Why three points and not just one</b> — A slow segment and a bottleneck look identical on a speed-only map (both are red). The difference is what's happening on either side. A bottleneck makes a <b>queue back up</b> upstream because demand outstrips capacity at the choke — and past the choke, traffic <b>discharges freely</b> because you're downstream of the restriction. Bertini &amp; Leal's 2005 insight: use the three-point pattern as the <i>operational definition</i> of active bottleneck. Physically verifiable, no thresholds to tune.</div>
+<table><thead><tr><th>Seg</th><th>Road</th><th>Bucket</th><th>IST clock</th><th># buckets</th><th>Duration</th></tr></thead><tbody><tr><td><b>S02</b></td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td><code>[513, 570]</code></td><td><b>17:06 – 19:00</b></td><td>58</td><td>116 min</td></tr><tr><td><b>S02</b></td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td><code>[585, 657]</code></td><td><b>19:30 – 21:54</b></td><td>73</td><td>146 min</td></tr><tr><td><b>S02</b></td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td><code>[659, 665]</code></td><td><b>21:58 – 22:10</b></td><td>7</td><td>14 min</td></tr><tr><td><b>S02</b></td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td><code>[672, 676]</code></td><td><b>22:24 – 22:32</b></td><td>5</td><td>10 min</td></tr></tbody></table>
+</section>
+<a id="s3r3"></a><section><h2>Stage 3 R3 · Head-segment bottleneck (v2.1 addition)</h2><div class="stage-sub">The classical Bertini test needs an upstream segment, so S01 can never fire. R3 is a two-point relaxation for S01 specifically.</div>
+<div class="why"><b>Why R3 matters</b> — On a recorded corridor, the "first" segment is almost always the place where a junction queue starts. There's no S00 to act as the upstream anchor, so classical Bertini has a structural blind spot at S01. R3 adds a two-point relaxation: <b>if S01 is CONG/SEVR and S02 is FREE/APPR, that IS a head bottleneck</b>.</div>
+<h3 style="margin-top:18px;font-size:15px;">S01 · Pune/Fakri Hill Chowk To  Lullanagar Chowk — head runs</h3><table><thead><tr><th>Bucket interval</th><th>IST clock</th><th># buckets</th><th>Duration</th></tr></thead><tbody><tr><td><code>[323, 512]</code></td><td><b>10:46 – 17:04</b></td><td>190</td><td>380 min</td></tr><tr><td><code>[571, 584]</code></td><td><b>19:02 – 19:28</b></td><td>14</td><td>28 min</td></tr><tr><td><code>[666, 671]</code></td><td><b>22:12 – 22:22</b></td><td>6</td><td>12 min</td></tr></tbody></table>
+<div class="story"><b>Hand-off moment</b> — an S01 head run ends at <b>17:04</b>; the next S02 Bertini fire starts at <b>17:06</b>. A 2-min gap marks the transition from S01-only congestion to S02 becoming the operative active bottleneck. This falls out of the regime definitions — the pipeline has no explicit rule for it.</div>
+</section>
+<a id="s4"></a><section><h2>Stage 4 · Shockwave cross-check (LWR)</h2><div class="stage-sub">Mode: <code>per-day onsets</code>. For each adjacent pair, check whether the observed congestion onset lag matches the LWR prediction (backward propagation at 12–22 km/h).</div>
+<div class="why"><b>Why shockwave validation is a check, not a gate</b> — Bertini is already strong on its own. Shockwaves have a physical meaning: when a bottleneck forms, the congestion boundary <i>propagates backwards</i> at 12–22 km/h (LWR model). Low pass rate <b>doesn't</b> mean Bertini is wrong — it usually means the congestion is local (doesn't propagate far), or the onset signal is noisy.</div>
+<table><thead><tr><th>Pair</th><th>Distance</th><th>Expected lag (12–22 km/h)</th><th>Observed lag</th><th># days</th><th>Result</th></tr></thead><tbody><tr><td>S01 → S02</td><td>522 m</td><td>1.4 – 2.6 min</td><td>-12.0 min</td><td>44</td><td class='fail'>❌ FAIL</td></tr><tr><td>S02 → S03</td><td>432 m</td><td>1.2 – 2.2 min</td><td>-24.0 min</td><td>33</td><td class='fail'>❌ FAIL</td></tr><tr><td>S03 → S04</td><td>946 m</td><td>2.6 – 4.7 min</td><td>+6.0 min</td><td>82</td><td class='pass'>✅ PASS</td></tr><tr><td>S04 → S05</td><td>1156 m</td><td>3.2 – 5.8 min</td><td>-17.0 min</td><td>8</td><td class='fail'>❌ FAIL</td></tr><tr><td>S05 → S06</td><td>2092 m</td><td>5.7 – 10.5 min</td><td>-14.0 min</td><td>7</td><td class='fail'>❌ FAIL</td></tr></tbody></table>
+<div class="callout"><b>Pass rate: 20% (1 of 5)</b> — 4 pair(s) show negative observed lag (downstream onset before upstream). A low SW pass rate on a POINT corridor is expected — negative lags mean the queue backs UP past segment boundaries rather than propagating as a forward shockwave.</div>
+</section>
+<a id="s5"></a><section><h2>Stage 5 · Systemic vs Point classification</h2><div class="stage-sub">Two independent rules: v2's simultaneity (≥80%) and v2.1's contiguity (≥60% of length). Either triggers SYSTEMIC.</div>
+<div class="why"><b>Why two rules and not one</b> — v2's simultaneity rule (≥80% of segments CONG at the same bucket) catches the canonical corridor-wide jam. v2.1 adds a contiguity rule (≥60% of corridor <i>length</i> in one unbroken CONG run) to catch corridors where 7 of 10 adjacent segments jam in a connected spine — operationally systemic even if the full 80% never fires simultaneously.</div>
+<table><thead><tr><th>Rule</th><th>Peak value</th><th>Threshold</th><th>Trigger?</th></tr></thead><tbody><tr><td>v2 · simultaneous CONG/SEVR</td><td>33%</td><td>80%</td><td>❌ no</td></tr><tr><td>v2.1 R5 · contiguous length</td><td>15%</td><td>60%</td><td>❌ no</td></tr></tbody></table><div class="callout"><b>Verdict: POINT</b></div>
+</section>
+<a id="s6"></a><section><h2>Stage 6 · Recurrence typing</h2><div class="stage-sub">How often does each segment show a congestion onset on an analysed weekday?</div>
+<div class="why"><b>Why recurrence typing matters</b> — A verdict of ACTIVE_BOTTLENECK only says "the three-point test fires"; it says nothing about <i>how often</i>. Operators prioritise by recurrence: a RECURRING bottleneck (≥75% of weekdays) is a standing issue; an OCCASIONAL one may be event-driven and not worth retuning for. Stage 6 counts per-day onsets directly — no heuristics.</div>
+<div class="callout"><b>30 analysed days with ≥1 onset.</b> Bands: RECURRING ≥ 75%, FREQUENT ≥ 50%, OCCASIONAL ≥ 25%, RARE ≥ 1%, else NEVER. Per <code>CONTEXT.md</code> item #3, each ACTIVE_BOTTLENECK / HEAD_BOTTLENECK verdict gets tagged with its recurrence band.</div><table><thead><tr><th>Seg</th><th>Verdict</th><th>Band</th><th>Days</th><th>Frac</th><th>Road</th></tr></thead><tbody><tr><td><b>S01</b> ★</td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td><b>RECURRING</b></td><td>30 / 30</td><td>100%</td><td>Pune/Fakri Hill Chowk To  Lullanagar Chowk</td></tr><tr><td><b>S02</b> ★</td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td><b>RECURRING</b></td><td>30 / 30</td><td>100%</td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td></tr><tr><td><b>S03</b> </td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><b>RECURRING</b></td><td>30 / 30</td><td>100%</td><td>Pune/Command Hospital To Cross Road junction</td></tr><tr><td><b>S04</b> </td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><b>RECURRING</b></td><td>29 / 30</td><td>97%</td><td>Pune/Cross Road junction To Golibar Maidan Chowk</td></tr><tr><td><b>S05</b> </td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><b>OCCASIONAL</b></td><td>8 / 30</td><td>27%</td><td>Pune/Khadi Machine Chowk To Pisoli Junction</td></tr><tr><td><b>S06</b> </td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><b>FREQUENT</b></td><td>21 / 30</td><td>70%</td><td>Pune/Pisoli Junction To Mohmmadwadi Junction</td></tr></tbody></table><div class="story"><b>Bottleneck recurrence summary</b><ul><li><b>S01</b> (HEAD_BOTTLENECK) → <b>RECURRING</b> (30/30 days, 100%)</li><li><b>S02</b> (ACTIVE_BOTTLENECK) → <b>RECURRING</b> (30/30 days, 100%)</li></ul></div>
+</section>
+<a id="r7"></a><section><h2>R7 · Per-segment confidence (v2.1 addition)</h2><div class="stage-sub">Four independent 0–1 signals, each weighted 0.25. Sum → confidence score. Label: HIGH ≥ 0.75, MEDIUM ≥ 0.50, LOW &lt; 0.50.</div>
+<div class="why"><b>Why four separate signals instead of one score</b> — A single opaque "confidence number" tells an operator nothing. The four components tell them exactly <i>why</i> they should trust (or not trust) a verdict. Each signal is a standard QA metric that breaks out separately — operators know which failure mode hit.</div>
+<table><thead><tr><th>Seg</th><th>Verdict</th><th>Score</th><th>Label</th><th>ff_tight</th><th>primary_overlap</th><th>onset_support</th><th>shockwave_support</th><th>Breakdown</th></tr></thead><tbody><tr><td><b>S01</b></td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td>0.52</td><td><span class='label-medium'>MEDIUM</span></td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td class='bar-cell'><div class="sbar"><div class="sbar-seg" style="width:0.000%;background:#3b82f6" title="ff_tight=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#8b5cf6" title="primary_overlap=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#14b8a6" title="onset_support=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td></tr><tr><td><b>S02</b></td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td>0.75</td><td><span class='label-high'>HIGH</span></td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td class='bar-cell'><div class="sbar"><div class="sbar-seg" style="width:0.000%;background:#3b82f6" title="ff_tight=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#8b5cf6" title="primary_overlap=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#14b8a6" title="onset_support=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td></tr><tr><td><b>S03</b></td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>0.72</td><td><span class='label-medium'>MEDIUM</span></td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td class='bar-cell'><div class="sbar"><div class="sbar-seg" style="width:0.000%;background:#3b82f6" title="ff_tight=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#8b5cf6" title="primary_overlap=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#14b8a6" title="onset_support=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td></tr><tr><td><b>S04</b></td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>0.72</td><td><span class='label-medium'>MEDIUM</span></td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td class='bar-cell'><div class="sbar"><div class="sbar-seg" style="width:0.000%;background:#3b82f6" title="ff_tight=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#8b5cf6" title="primary_overlap=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#14b8a6" title="onset_support=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td></tr><tr><td><b>S05</b></td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>0.60</td><td><span class='label-medium'>MEDIUM</span></td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td class='bar-cell'><div class="sbar"><div class="sbar-seg" style="width:0.000%;background:#3b82f6" title="ff_tight=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#8b5cf6" title="primary_overlap=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#14b8a6" title="onset_support=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td></tr><tr><td><b>S06</b></td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>0.60</td><td><span class='label-medium'>MEDIUM</span></td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td class='bar-cell'><div class="sbar"><div class="sbar-seg" style="width:0.000%;background:#3b82f6" title="ff_tight=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#8b5cf6" title="primary_overlap=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#14b8a6" title="onset_support=0.00"></div><div class="sbar-seg" style="width:0.000%;background:#f59e0b" title="shockwave_support=0.00"></div></div></td></tr></tbody></table>
+</section>
+<a id="r8"></a><section><h2>R8 · Baseline-saturated sanity check (informational only)</h2><div class="stage-sub">Flag any segment whose discovered free flow is &gt; 2× slower than the corridor median AND whose quietest window is still &gt; 70% of the busiest window.</div>
+<div class="why"><b>Why this doesn't change verdicts</b> — If a segment is perpetually saturated, its "free flow" is really "less bad congestion", which would make every regime classification wrong. We still compute ff_tt and clamp to 80 km/h so the pipeline stays coherent, but we raise a warning so the operator knows the regime bar is on a soft foundation. <i>Never</i> silently rewriting verdicts preserves the audit trail.</div>
+<table><thead><tr><th>Seg</th><th>ff_spd (km/h)</th><th>Corridor median</th><th>Peer ratio</th><th>Quiet/busy ratio</th><th>Flag</th></tr></thead><tbody><tr><td><b>S01</b></td><td>34.2</td><td>35.5</td><td>1.04</td><td>0.232</td><td>🟢 clear</td></tr><tr><td><b>S02</b></td><td>36.7</td><td>35.5</td><td>0.97</td><td>0.415</td><td>🟢 clear</td></tr><tr><td><b>S03</b></td><td>40.4</td><td>35.5</td><td>0.88</td><td>0.500</td><td>🟢 clear</td></tr><tr><td><b>S04</b></td><td>37.9</td><td>35.5</td><td>0.94</td><td>0.554</td><td>🟢 clear</td></tr><tr><td><b>S05</b></td><td>29.4</td><td>35.5</td><td>1.21</td><td>0.818</td><td>🟢 clear</td></tr><tr><td><b>S06</b></td><td>32.2</td><td>35.5</td><td>1.10</td><td>0.667</td><td>🟢 clear</td></tr></tbody></table>
+</section>
+<a id="final"></a><section><h2>Final per-segment verdicts</h2>
+<table><thead><tr><th>Seg</th><th>Road name</th><th>Length</th><th>Verdict</th><th>Confidence</th></tr></thead><tbody><tr><td><b>S01</b></td><td>Pune/Fakri Hill Chowk To  Lullanagar Chowk</td><td>494 m</td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td><span class='label-medium'>MEDIUM</span> (0.52)</td></tr><tr><td><b>S02</b></td><td>Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td>551 m</td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td><span class='label-high'>HIGH</span> (0.75)</td></tr><tr><td><b>S03</b></td><td>Pune/Command Hospital To Cross Road junction</td><td>314 m</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><span class='label-medium'>MEDIUM</span> (0.72)</td></tr><tr><td><b>S04</b></td><td>Pune/Cross Road junction To Golibar Maidan Chowk</td><td>1578 m</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><span class='label-medium'>MEDIUM</span> (0.72)</td></tr><tr><td><b>S05</b></td><td>Pune/Khadi Machine Chowk To Pisoli Junction</td><td>734 m</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><span class='label-medium'>MEDIUM</span> (0.60)</td></tr><tr><td><b>S06</b></td><td>Pune/Pisoli Junction To Mohmmadwadi Junction</td><td>3451 m</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td><span class='label-medium'>MEDIUM</span> (0.60)</td></tr></tbody></table>
+</section>
+<footer style="font-size:12px; color:var(--muted); text-align:center; margin:30px 0 0;">Generated from <code>data/v2_1/profiles/all_profiles.json</code> + <code>runs/v2_1/v2_1_validation_structured.json</code>.<br/>Corridor: PUNE_A · 2-min median profiles · v2.1 pipeline output, unmodified.</footer>
+</main></div>
 <div id="tip"><div class="tip-head"></div><div class="tip-body"></div></div>
-
+<script>const DATA = {"segments": [{"label": "S01", "name": "Pune/Fakri Hill Chowk To  Lullanagar Chowk", "ff_tt": 52.0, "ff_spd": 34.2, "regime": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSSCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "tt": [80, 81, 80, 78, 78, 79, 79, 77, 77, 76, 77, 74, 74, 76, 76, 74, 74, 74, 73, 72, 74, 72, 73, 72, 71, 73, 70, 71, 70, 71, 70, 69, 70, 69, 68, 68, 67, 68, 68, 68, 67, 66, 66, 65, 64, 65, 64, 65, 64, 63, 65, 62, 63, 63, 62, 62, 63, 61, 64, 64, 64, 62, 62, 63, 60, 60, 60, 59, 59, 59, 57, 58, 58, 58, 58, 59, 60, 60, 58, 56, 56, 57, 55, 54, 55, 56, 56, 54, 56, 56, 56, 55, 54, 55, 56, 54, 54, 54, 56, 55, 55, 55, 54, 56, 56, 56, 54, 54, 54, 54, 54, 54, 54, 56, 54, 55, 53, 52, 52, 52, 54, 54, 52, 53, 53, 54, 53, 53, 54, 54, 53, 54, 54, 54, 54, 53, 53, 54, 54, 54, 53, 54, 55, 52, 52, 53, 53, 53, 52, 52, 54, 54, 53, 54, 52, 54, 53, 56, 54, 54, 54, 55, 55, 54, 55, 56, 54, 55, 55, 55, 56, 56, 56, 56, 56, 56, 55, 56, 55, 56, 57, 57, 57, 58, 58, 58, 59, 60, 60, 60, 60, 61, 60, 61, 61, 61, 62, 63, 64, 64, 64, 65, 66, 66, 67, 67, 67, 67, 68, 68, 67, 67, 68, 69, 70, 70, 71, 72, 72, 74, 75, 75, 74, 76, 77, 78, 78, 78, 78, 79, 80, 80, 81, 79, 80, 80, 81, 81, 79, 80, 81, 80, 80, 79, 78, 78, 79, 80, 80, 80, 78, 78, 80, 82, 82, 82, 82, 81, 82, 82, 85, 86, 89, 88, 88, 91, 89, 90, 92, 91, 93, 91, 92, 96, 98, 96, 95, 96, 98, 98, 97, 96, 97, 97, 98, 98, 97, 96, 98, 98, 100, 101, 100, 100, 100, 99, 100, 99, 100, 100, 102, 103, 104, 102, 100, 101, 101, 100, 101, 103, 102, 102, 102, 104, 103, 104, 102, 101, 105, 104, 104, 104, 103, 105, 106, 106, 107, 108, 107, 107, 108, 109, 107, 108, 108, 108, 106, 109, 108, 110, 108, 112, 110, 110, 110, 112, 110, 109, 110, 112, 110, 109, 110, 110, 113, 114, 118, 116, 115, 114, 118, 117, 117, 121, 121, 121, 122, 120, 122, 124, 120, 121, 121, 122, 121, 120, 117, 119, 116, 115, 117, 117, 116, 117, 116, 114, 115, 115, 114, 114, 113, 114, 115, 112, 114, 116, 113, 113, 110, 109, 108, 108, 110, 108, 110, 107, 108, 106, 110, 108, 107, 107, 108, 108, 108, 108, 109, 109, 110, 110, 110, 110, 111, 112, 114, 112, 112, 112, 114, 114, 116, 114, 117, 116, 116, 112, 115, 117, 114, 113, 112, 114, 112, 111, 112, 112, 110, 112, 110, 109, 110, 111, 111, 112, 112, 113, 112, 112, 112, 112, 110, 110, 109, 111, 108, 107, 110, 108, 110, 110, 109, 108, 106, 107, 108, 108, 108, 109, 108, 108, 112, 112, 111, 110, 109, 109, 110, 111, 112, 112, 111, 110, 112, 112, 111, 112, 115, 115, 115, 114, 116, 113, 116, 116, 114, 117, 118, 118, 117, 113, 117, 116, 118, 122, 120, 123, 123, 128, 126, 125, 126, 128, 126, 130, 131, 127, 128, 125, 129, 129, 128, 127, 124, 123, 130, 132, 135, 140, 144, 155, 164, 186, 193, 204, 210, 220, 209, 208, 228, 239, 242, 269, 273, 244, 255, 221, 235, 173, 167, 175, 154, 133, 133, 127, 121, 116, 120, 116, 118, 114, 118, 118, 116, 117, 118, 121, 122, 126, 125, 127, 127, 124, 126, 129, 126, 129, 132, 132, 127, 130, 134, 127, 128, 130, 129, 134, 129, 130, 134, 133, 134, 136, 144, 139, 144, 137, 142, 138, 140, 144, 145, 133, 133, 138, 140, 139, 141, 131, 130, 133, 131, 125, 130, 130, 141, 130, 128, 130, 134, 132, 125, 128, 127, 126, 126, 127, 123, 127, 123, 122, 119, 118, 118, 118, 128, 118, 114, 117, 116, 114, 110, 111, 112, 111, 112, 110, 115, 113, 116, 114, 115, 110, 111, 111, 108, 116, 116, 111, 111, 113, 118, 108, 107, 108, 112, 110, 108, 106, 104, 108, 103, 103, 100, 101, 100, 101, 99, 100, 98, 96, 95, 96, 96, 93, 94, 91, 90, 91, 90, 90, 91, 89, 88, 89, 89, 88, 86, 84, 87, 86, 88, 86, 85, 84, 84, 84, 84, 83, 83, 81]}, {"label": "S02", "name": "Pune/Jyoti Hotel Chowk to Lullanagar Chowk", "ff_tt": 54.0, "ff_spd": 36.7, "regime": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCAAAAAAAAAAAAAACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCACCCCCCCAAAAAACCCCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "tt": [84, 84, 85, 84, 82, 84, 81, 79, 79, 80, 79, 78, 78, 77, 78, 78, 76, 76, 75, 75, 78, 76, 76, 74, 74, 76, 76, 73, 72, 73, 72, 72, 70, 70, 69, 72, 70, 69, 70, 70, 69, 68, 68, 68, 70, 67, 67, 67, 66, 65, 64, 64, 64, 65, 63, 65, 63, 64, 63, 64, 64, 64, 65, 64, 64, 64, 62, 62, 64, 62, 65, 62, 61, 62, 61, 60, 60, 60, 60, 58, 60, 57, 59, 59, 59, 58, 58, 58, 58, 58, 57, 58, 57, 57, 58, 58, 57, 58, 59, 58, 57, 57, 55, 58, 58, 57, 57, 57, 56, 56, 56, 53, 55, 56, 55, 56, 58, 55, 56, 56, 55, 54, 55, 54, 54, 54, 55, 54, 54, 54, 56, 54, 56, 55, 57, 58, 57, 56, 56, 57, 56, 56, 55, 57, 56, 56, 56, 56, 55, 55, 56, 57, 57, 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 55, 56, 56, 56, 55, 56, 57, 57, 59, 56, 58, 57, 56, 58, 56, 58, 58, 56, 57, 58, 58, 59, 59, 60, 60, 60, 62, 59, 62, 63, 63, 63, 62, 64, 64, 66, 65, 66, 67, 66, 67, 67, 67, 68, 69, 69, 68, 69, 69, 69, 70, 70, 70, 70, 70, 71, 72, 72, 72, 72, 73, 73, 73, 73, 73, 73, 74, 75, 75, 74, 75, 75, 76, 75, 75, 76, 76, 76, 77, 77, 76, 76, 76, 76, 78, 78, 79, 79, 79, 79, 81, 83, 83, 83, 85, 86, 88, 89, 90, 90, 93, 94, 97, 95, 94, 94, 97, 96, 97, 100, 99, 104, 104, 102, 103, 101, 101, 102, 104, 105, 106, 104, 102, 103, 100, 99, 102, 99, 101, 100, 97, 98, 98, 95, 96, 95, 95, 95, 94, 96, 95, 95, 95, 96, 94, 92, 93, 93, 92, 92, 91, 93, 92, 92, 93, 92, 92, 92, 92, 92, 92, 94, 94, 93, 93, 93, 94, 92, 94, 94, 94, 94, 94, 94, 95, 94, 95, 95, 95, 95, 96, 97, 96, 97, 96, 97, 96, 95, 96, 96, 97, 98, 96, 97, 96, 98, 98, 100, 100, 100, 101, 102, 101, 100, 100, 100, 101, 102, 100, 103, 104, 105, 104, 105, 104, 105, 104, 102, 105, 104, 103, 102, 103, 100, 102, 101, 100, 101, 99, 98, 98, 97, 96, 97, 97, 96, 98, 97, 96, 96, 95, 96, 95, 95, 97, 96, 96, 97, 97, 96, 97, 98, 98, 98, 99, 99, 102, 103, 103, 104, 100, 102, 102, 100, 103, 102, 103, 105, 103, 104, 104, 105, 106, 104, 103, 106, 104, 104, 103, 101, 101, 100, 102, 100, 102, 101, 100, 102, 102, 103, 101, 101, 100, 102, 104, 100, 102, 102, 103, 102, 100, 102, 102, 104, 104, 102, 102, 102, 104, 102, 103, 103, 103, 106, 104, 106, 106, 104, 106, 105, 104, 104, 104, 106, 102, 104, 103, 105, 106, 105, 105, 104, 106, 106, 108, 106, 109, 108, 105, 106, 106, 108, 108, 106, 108, 106, 110, 108, 111, 109, 108, 112, 109, 110, 111, 110, 113, 110, 113, 112, 111, 112, 112, 112, 115, 112, 112, 114, 115, 118, 122, 120, 121, 122, 122, 130, 127, 133, 132, 139, 147, 135, 129, 131, 131, 124, 123, 123, 120, 119, 119, 118, 116, 118, 118, 116, 116, 113, 111, 111, 112, 110, 110, 110, 109, 107, 107, 107, 109, 105, 106, 107, 107, 112, 111, 106, 108, 107, 104, 112, 107, 110, 109, 114, 112, 111, 116, 116, 124, 117, 118, 117, 120, 116, 120, 126, 123, 129, 120, 122, 121, 122, 120, 122, 122, 129, 126, 121, 121, 124, 124, 127, 128, 128, 120, 121, 118, 117, 118, 117, 120, 121, 122, 118, 119, 116, 123, 120, 116, 117, 124, 122, 118, 121, 119, 117, 120, 118, 117, 118, 113, 114, 112, 109, 113, 111, 108, 109, 110, 110, 108, 108, 110, 106, 112, 110, 108, 113, 105, 110, 110, 110, 105, 107, 106, 105, 108, 110, 109, 109, 109, 110, 108, 107, 105, 107, 102, 102, 106, 103, 103, 100, 100, 98, 98, 105, 104, 103, 94, 97, 97, 97, 98, 97, 95, 98, 94, 91, 93, 89, 90, 88, 90, 90, 89, 92, 89, 88, 87, 86, 88, 84, 88, 88, 84]}, {"label": "S03", "name": "Pune/Command Hospital To Cross Road junction", "ff_tt": 28.0, "ff_spd": 40.4, "regime": "AAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "tt": [41, 41, 41, 40, 40, 41, 40, 40, 40, 38, 38, 38, 38, 37, 38, 36, 37, 37, 36, 36, 36, 36, 36, 36, 36, 36, 35, 36, 34, 35, 34, 34, 34, 33, 34, 34, 33, 33, 33, 33, 34, 32, 34, 33, 34, 32, 32, 33, 32, 32, 32, 32, 31, 31, 32, 31, 32, 31, 31, 31, 30, 31, 30, 30, 30, 30, 30, 32, 32, 30, 30, 30, 30, 29, 30, 30, 30, 29, 29, 29, 30, 29, 30, 29, 29, 29, 29, 29, 29, 29, 29, 28, 28, 28, 28, 28, 28, 29, 29, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 28, 28, 28, 28, 29, 29, 28, 28, 29, 28, 28, 28, 28, 28, 28, 29, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 28, 28, 29, 29, 29, 29, 29, 29, 29, 30, 29, 29, 29, 29, 30, 29, 30, 29, 30, 29, 30, 30, 31, 31, 32, 31, 32, 32, 32, 32, 32, 33, 33, 33, 33, 33, 33, 34, 34, 34, 33, 34, 34, 34, 34, 34, 34, 34, 35, 35, 34, 34, 35, 35, 35, 35, 35, 35, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 35, 36, 36, 35, 36, 35, 35, 35, 36, 35, 35, 36, 35, 36, 36, 36, 36, 36, 36, 37, 36, 37, 37, 37, 37, 38, 38, 38, 38, 38, 38, 38, 38, 39, 38, 39, 39, 39, 39, 39, 40, 39, 40, 40, 40, 40, 40, 41, 41, 40, 41, 41, 41, 41, 41, 41, 41, 41, 42, 42, 42, 42, 43, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 43, 42, 42, 43, 43, 43, 42, 42, 43, 43, 43, 43, 44, 44, 44, 44, 43, 43, 43, 43, 44, 44, 45, 44, 44, 44, 45, 45, 46, 45, 45, 46, 46, 45, 45, 46, 45, 46, 45, 45, 46, 46, 46, 46, 46, 47, 47, 47, 47, 47, 47, 47, 48, 48, 47, 47, 47, 48, 47, 47, 48, 47, 48, 48, 48, 48, 48, 48, 47, 47, 47, 47, 47, 47, 47, 46, 46, 46, 46, 46, 47, 46, 46, 45, 46, 45, 45, 45, 45, 45, 44, 46, 45, 46, 45, 45, 46, 45, 45, 45, 45, 45, 46, 46, 45, 46, 46, 46, 47, 47, 47, 48, 48, 48, 48, 49, 49, 48, 47, 48, 49, 49, 49, 48, 48, 48, 47, 47, 48, 48, 48, 48, 48, 48, 47, 48, 48, 48, 47, 48, 47, 47, 48, 47, 47, 46, 47, 48, 47, 46, 46, 46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 48, 48, 48, 48, 48, 48, 48, 48, 47, 47, 48, 48, 49, 48, 47, 47, 46, 47, 47, 47, 48, 48, 47, 47, 49, 48, 48, 48, 48, 48, 48, 48, 48, 49, 48, 48, 49, 50, 49, 48, 48, 50, 50, 50, 49, 49, 49, 49, 50, 49, 49, 49, 50, 50, 50, 51, 52, 52, 51, 53, 53, 57, 56, 55, 56, 57, 56, 55, 56, 57, 56, 56, 56, 55, 54, 52, 51, 52, 51, 52, 50, 50, 49, 49, 49, 48, 48, 48, 48, 48, 47, 47, 47, 47, 47, 47, 47, 47, 46, 46, 46, 46, 46, 46, 46, 46, 47, 48, 47, 47, 47, 48, 48, 48, 49, 49, 49, 49, 49, 48, 50, 50, 49, 50, 49, 50, 49, 50, 50, 49, 50, 50, 49, 49, 49, 51, 50, 50, 50, 50, 50, 49, 50, 50, 48, 49, 50, 50, 49, 48, 49, 48, 49, 48, 48, 48, 48, 48, 47, 47, 48, 48, 48, 48, 47, 48, 47, 48, 48, 46, 47, 47, 47, 47, 46, 48, 45, 46, 47, 46, 46, 47, 47, 47, 46, 48, 48, 48, 47, 48, 48, 48, 47, 47, 48, 47, 47, 48, 48, 47, 48, 48, 48, 48, 48, 47, 47, 47, 46, 46, 46, 47, 46, 45, 46, 46, 46, 46, 46, 45, 45, 44, 45, 44, 45, 44, 43, 44, 43, 43, 44, 43, 43, 44, 42, 42, 43, 42, 41, 41, 41]}, {"label": "S04", "name": "Pune/Cross Road junction To Golibar Maidan Chowk", "ff_tt": 150.0, "ff_spd": 37.9, "regime": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFF", "tt": [179, 178, 178, 177, 177, 178, 177, 176, 176, 175, 174, 173, 172, 171, 171, 172, 171, 170, 170, 170, 171, 168, 168, 167, 167, 165, 166, 165, 165, 164, 162, 164, 164, 164, 162, 162, 160, 161, 161, 162, 161, 161, 161, 159, 160, 159, 158, 158, 158, 158, 159, 158, 157, 157, 157, 158, 156, 155, 155, 156, 156, 156, 156, 157, 157, 156, 157, 156, 156, 158, 158, 156, 156, 155, 155, 155, 155, 156, 154, 154, 154, 154, 153, 154, 153, 153, 153, 153, 153, 152, 152, 152, 151, 151, 150, 150, 150, 150, 150, 150, 150, 152, 150, 150, 150, 151, 150, 151, 151, 150, 150, 151, 150, 152, 153, 151, 152, 152, 152, 152, 151, 152, 151, 150, 150, 150, 151, 150, 149, 149, 150, 149, 149, 150, 150, 150, 150, 150, 151, 150, 151, 151, 151, 150, 150, 150, 150, 150, 150, 150, 150, 149, 149, 149, 150, 149, 150, 149, 150, 151, 151, 150, 152, 152, 150, 150, 151, 149, 151, 151, 152, 152, 154, 152, 152, 152, 151, 152, 154, 153, 154, 155, 155, 156, 155, 158, 156, 157, 159, 158, 160, 160, 162, 162, 163, 165, 165, 166, 166, 168, 169, 170, 170, 171, 172, 171, 170, 170, 169, 171, 170, 170, 170, 171, 172, 171, 171, 171, 170, 171, 172, 174, 174, 174, 174, 175, 176, 178, 178, 178, 179, 179, 180, 182, 183, 184, 184, 186, 186, 185, 185, 186, 186, 187, 186, 186, 185, 187, 186, 187, 188, 188, 189, 190, 192, 192, 194, 195, 196, 198, 198, 198, 200, 200, 200, 201, 203, 206, 205, 208, 209, 209, 206, 211, 210, 211, 214, 210, 212, 213, 214, 215, 216, 212, 214, 219, 217, 217, 218, 213, 214, 217, 217, 218, 218, 220, 219, 221, 219, 220, 222, 222, 220, 222, 220, 223, 223, 223, 225, 224, 225, 224, 225, 225, 224, 224, 225, 228, 229, 230, 229, 231, 230, 228, 232, 230, 234, 232, 233, 232, 233, 231, 232, 234, 234, 232, 234, 238, 239, 234, 236, 236, 236, 236, 238, 238, 243, 240, 240, 241, 244, 241, 242, 244, 242, 242, 243, 243, 243, 245, 250, 247, 250, 251, 247, 246, 248, 246, 250, 252, 251, 253, 251, 248, 246, 246, 249, 249, 246, 250, 248, 246, 247, 251, 246, 249, 249, 246, 248, 247, 248, 246, 248, 248, 248, 249, 246, 244, 246, 244, 247, 244, 244, 242, 244, 245, 242, 242, 245, 249, 249, 242, 240, 244, 238, 237, 238, 241, 240, 239, 242, 242, 242, 243, 242, 245, 244, 239, 240, 242, 242, 240, 242, 244, 244, 245, 243, 242, 240, 241, 242, 242, 241, 242, 246, 244, 240, 239, 237, 237, 240, 243, 240, 238, 240, 235, 236, 238, 238, 237, 235, 237, 232, 237, 235, 234, 236, 238, 237, 240, 236, 236, 236, 238, 238, 237, 236, 236, 237, 235, 238, 240, 240, 240, 236, 239, 239, 238, 236, 240, 237, 236, 239, 239, 241, 240, 239, 239, 241, 239, 244, 239, 241, 240, 239, 244, 242, 245, 242, 242, 245, 242, 244, 246, 242, 243, 245, 246, 247, 250, 249, 249, 251, 255, 254, 256, 255, 254, 254, 256, 260, 262, 268, 270, 272, 270, 272, 268, 264, 264, 266, 266, 266, 270, 274, 278, 272, 270, 271, 275, 275, 270, 274, 271, 271, 267, 268, 269, 267, 268, 267, 268, 268, 268, 263, 262, 258, 261, 258, 259, 258, 254, 254, 256, 255, 257, 253, 252, 254, 253, 252, 250, 249, 248, 244, 247, 248, 252, 243, 244, 241, 241, 238, 241, 240, 240, 241, 238, 242, 240, 243, 242, 240, 241, 242, 238, 238, 241, 238, 236, 234, 236, 234, 232, 234, 234, 232, 232, 231, 231, 232, 230, 230, 229, 228, 227, 227, 227, 225, 223, 225, 224, 224, 224, 222, 223, 224, 222, 218, 219, 218, 219, 217, 216, 216, 216, 215, 215, 214, 215, 212, 212, 211, 210, 210, 212, 209, 209, 209, 209, 211, 210, 210, 210, 208, 208, 207, 208, 209, 207, 206, 206, 206, 206, 205, 205, 204, 204, 202, 204, 202, 201, 203, 202, 201, 200, 200, 198, 199, 198, 198, 198, 198, 196, 195, 194, 193, 195, 193, 192, 190, 191, 190, 190, 188, 186, 189, 187, 185, 185, 184, 183, 183, 183, 183, 183, 181, 180, 180, 180]}, {"label": "S05", "name": "Pune/Khadi Machine Chowk To Pisoli Junction", "ff_tt": 90.0, "ff_spd": 29.4, "regime": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "tt": [94, 94, 94, 95, 96, 95, 95, 95, 95, 95, 95, 94, 94, 94, 94, 94, 94, 93, 94, 94, 94, 94, 94, 94, 93, 93, 93, 94, 93, 94, 93, 94, 94, 93, 94, 94, 94, 93, 94, 93, 94, 94, 94, 94, 93, 94, 94, 93, 93, 93, 92, 92, 92, 92, 92, 91, 92, 92, 92, 92, 92, 91, 92, 92, 92, 92, 93, 93, 93, 94, 93, 93, 93, 92, 92, 92, 92, 93, 93, 92, 92, 92, 92, 92, 93, 93, 93, 92, 93, 93, 94, 93, 92, 93, 93, 93, 94, 93, 93, 93, 93, 93, 93, 93, 92, 93, 93, 93, 93, 93, 93, 91, 91, 92, 92, 92, 93, 92, 92, 93, 93, 92, 92, 92, 93, 93, 92, 92, 93, 93, 92, 93, 93, 93, 94, 93, 93, 93, 93, 92, 92, 93, 94, 94, 93, 93, 93, 93, 93, 94, 94, 94, 94, 94, 93, 93, 92, 93, 94, 93, 93, 93, 92, 92, 93, 92, 93, 93, 93, 92, 92, 92, 93, 92, 92, 93, 92, 92, 93, 92, 93, 93, 93, 93, 93, 93, 93, 92, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 92, 93, 93, 93, 93, 92, 92, 92, 92, 92, 92, 91, 92, 91, 92, 91, 91, 91, 91, 91, 91, 90, 90, 90, 91, 91, 90, 90, 90, 90, 90, 91, 90, 91, 90, 90, 90, 90, 91, 91, 91, 90, 91, 92, 91, 91, 91, 91, 91, 91, 92, 92, 92, 93, 93, 93, 93, 94, 95, 95, 96, 96, 97, 97, 99, 98, 99, 99, 101, 100, 102, 101, 101, 102, 101, 101, 101, 101, 102, 102, 102, 102, 103, 102, 102, 104, 104, 103, 104, 104, 103, 103, 103, 103, 103, 103, 103, 103, 103, 104, 103, 104, 103, 103, 103, 103, 103, 103, 103, 103, 103, 102, 103, 103, 102, 103, 103, 104, 103, 104, 104, 102, 104, 103, 104, 103, 103, 103, 103, 103, 103, 103, 103, 105, 104, 104, 104, 104, 103, 104, 104, 105, 105, 105, 103, 105, 104, 104, 104, 104, 105, 105, 105, 105, 105, 104, 106, 105, 104, 105, 106, 104, 107, 105, 106, 106, 107, 108, 107, 106, 106, 106, 106, 105, 108, 108, 109, 108, 108, 107, 107, 106, 107, 106, 106, 108, 108, 108, 110, 108, 107, 108, 108, 110, 108, 107, 110, 112, 109, 108, 107, 108, 106, 108, 107, 106, 106, 107, 107, 105, 105, 106, 106, 106, 106, 106, 105, 105, 105, 105, 106, 104, 105, 105, 105, 105, 104, 105, 104, 104, 104, 104, 103, 104, 104, 104, 103, 103, 104, 103, 105, 105, 104, 104, 105, 105, 105, 104, 104, 104, 105, 105, 105, 106, 105, 105, 105, 104, 104, 106, 107, 106, 104, 105, 105, 104, 105, 105, 106, 106, 106, 104, 106, 105, 104, 105, 104, 106, 104, 104, 104, 104, 105, 104, 104, 104, 105, 104, 104, 104, 104, 104, 104, 104, 102, 104, 103, 104, 103, 103, 104, 103, 104, 104, 103, 105, 105, 105, 104, 104, 105, 106, 104, 105, 105, 107, 106, 105, 107, 106, 106, 108, 107, 105, 107, 106, 106, 107, 108, 108, 108, 108, 109, 108, 109, 108, 110, 110, 108, 108, 108, 109, 109, 109, 108, 109, 111, 110, 110, 110, 110, 110, 109, 110, 109, 108, 110, 110, 108, 110, 111, 110, 110, 109, 108, 108, 109, 109, 110, 111, 110, 109, 109, 109, 111, 109, 110, 108, 110, 109, 108, 107, 107, 106, 107, 106, 106, 106, 106, 105, 106, 104, 104, 104, 104, 103, 104, 104, 105, 104, 103, 103, 103, 102, 103, 102, 102, 102, 102, 102, 101, 101, 101, 101, 101, 100, 101, 101, 100, 100, 100, 101, 100, 100, 100, 100, 100, 100, 99, 99, 100, 99, 100, 100, 100, 99, 99, 99, 99, 99, 99, 98, 98, 98, 98, 98, 98, 97, 97, 98, 97, 98, 97, 97, 97, 97, 97, 97, 98, 96, 97, 98, 97, 97, 97, 97, 97, 97, 98, 97, 97, 97, 97, 97, 97, 98, 98, 97, 97, 96, 97, 97, 97, 97, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 95, 95, 95, 95, 96, 95, 95, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94]}, {"label": "S06", "name": "Pune/Pisoli Junction To Mohmmadwadi Junction", "ff_tt": 386.0, "ff_spd": 32.2, "regime": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "tt": [423, 425, 425, 425, 424, 424, 419, 422, 424, 425, 422, 422, 420, 420, 420, 420, 418, 418, 419, 416, 416, 416, 413, 415, 412, 410, 410, 410, 410, 408, 408, 408, 408, 405, 404, 408, 411, 410, 412, 408, 405, 405, 406, 406, 405, 404, 402, 403, 402, 402, 402, 397, 398, 398, 396, 395, 396, 394, 394, 392, 392, 392, 396, 396, 392, 395, 396, 393, 395, 396, 398, 397, 396, 394, 394, 394, 392, 394, 392, 390, 391, 392, 388, 388, 389, 391, 388, 387, 388, 387, 389, 390, 393, 391, 386, 387, 388, 389, 390, 389, 388, 387, 386, 384, 386, 387, 387, 388, 386, 386, 390, 392, 388, 388, 387, 386, 386, 388, 386, 388, 388, 388, 389, 387, 388, 388, 391, 390, 390, 393, 392, 392, 393, 395, 395, 392, 390, 394, 392, 393, 391, 393, 392, 392, 391, 392, 390, 392, 391, 390, 391, 390, 391, 395, 391, 391, 393, 391, 391, 390, 392, 394, 394, 394, 393, 392, 392, 392, 393, 393, 394, 393, 394, 393, 397, 396, 397, 394, 396, 398, 400, 399, 397, 399, 398, 400, 401, 401, 399, 400, 404, 402, 402, 403, 403, 402, 405, 404, 402, 405, 406, 404, 402, 406, 402, 402, 402, 400, 400, 403, 401, 403, 399, 400, 398, 400, 400, 400, 399, 400, 398, 402, 401, 401, 402, 404, 407, 408, 410, 409, 412, 414, 415, 416, 418, 419, 420, 423, 419, 426, 425, 426, 424, 424, 430, 428, 430, 433, 432, 435, 436, 440, 442, 448, 445, 447, 451, 446, 453, 452, 454, 457, 460, 464, 471, 473, 476, 478, 490, 488, 494, 499, 498, 496, 499, 502, 510, 512, 511, 509, 508, 504, 502, 512, 504, 500, 504, 502, 498, 497, 498, 499, 500, 496, 492, 494, 496, 496, 494, 490, 492, 495, 502, 499, 500, 496, 498, 501, 500, 493, 495, 494, 500, 496, 500, 498, 490, 494, 498, 493, 494, 500, 497, 497, 499, 502, 506, 508, 504, 504, 506, 505, 508, 511, 512, 510, 509, 510, 506, 515, 511, 512, 511, 514, 514, 513, 513, 514, 514, 519, 518, 516, 520, 514, 520, 526, 524, 520, 524, 528, 527, 531, 536, 537, 528, 534, 540, 545, 558, 552, 560, 558, 549, 560, 566, 568, 574, 577, 582, 571, 569, 572, 568, 570, 564, 568, 568, 577, 567, 559, 570, 576, 560, 561, 556, 558, 565, 560, 588, 580, 604, 588, 593, 581, 574, 580, 574, 590, 583, 570, 562, 570, 580, 564, 566, 552, 550, 545, 544, 547, 538, 545, 545, 544, 537, 536, 545, 538, 530, 532, 525, 526, 533, 532, 527, 532, 530, 530, 522, 527, 525, 519, 517, 525, 520, 519, 517, 525, 531, 521, 520, 518, 520, 520, 518, 514, 511, 508, 509, 513, 507, 503, 506, 503, 512, 506, 508, 517, 514, 509, 519, 505, 510, 509, 505, 502, 503, 505, 506, 505, 504, 500, 497, 501, 496, 495, 496, 500, 500, 499, 501, 502, 498, 494, 499, 498, 497, 501, 499, 503, 498, 502, 503, 505, 498, 498, 502, 503, 499, 503, 505, 507, 511, 510, 509, 517, 515, 512, 518, 510, 514, 516, 516, 511, 513, 515, 514, 512, 511, 508, 511, 512, 513, 514, 520, 515, 519, 520, 517, 520, 526, 529, 528, 535, 534, 534, 547, 550, 548, 560, 551, 553, 556, 556, 560, 568, 563, 567, 572, 566, 562, 565, 561, 560, 556, 562, 565, 561, 555, 564, 561, 562, 574, 568, 562, 571, 572, 566, 574, 572, 559, 555, 558, 565, 555, 552, 546, 547, 551, 540, 536, 537, 534, 536, 531, 532, 528, 530, 528, 520, 528, 525, 524, 522, 520, 523, 520, 517, 517, 514, 512, 512, 509, 506, 509, 509, 504, 502, 504, 498, 501, 499, 495, 495, 493, 492, 492, 490, 492, 490, 491, 496, 492, 486, 488, 491, 488, 485, 488, 484, 486, 487, 483, 482, 483, 482, 481, 480, 479, 478, 476, 478, 476, 472, 472, 474, 472, 474, 478, 471, 474, 474, 471, 471, 470, 470, 471, 470, 467, 466, 463, 466, 463, 462, 461, 460, 464, 464, 459, 458, 456, 456, 456, 455, 458, 456, 448, 454, 454, 452, 454, 451, 448, 449, 448, 446, 443, 447, 444, 442, 444, 443, 442, 444, 438, 436, 436, 434, 435, 434, 433, 433, 431, 434, 430, 428, 428, 428, 426, 426]}]};</script>
 <script>
-const DATA = {"segments": [{"label": "S01", "name": "Pune/Fakri Hill Chowk To  Lullanagar Chowk", "ff_tt": 52.0, "ff_spd": 34.2, "regime": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCSSSSSSSSSSSSSSSSCCSCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "tt": [80, 81, 80, 78, 78, 79, 79, 77, 77, 76, 77, 74, 74, 76, 76, 74, 74, 74, 73, 72, 74, 72, 73, 72, 71, 73, 70, 71, 70, 71, 70, 69, 70, 69, 68, 68, 67, 68, 68, 68, 67, 66, 66, 65, 64, 65, 64, 65, 64, 63, 65, 62, 63, 63, 62, 62, 63, 61, 64, 64, 64, 62, 62, 63, 60, 60, 60, 59, 59, 59, 57, 58, 58, 58, 58, 59, 60, 60, 58, 56, 56, 57, 55, 54, 55, 56, 56, 54, 56, 56, 56, 55, 54, 55, 56, 54, 54, 54, 56, 55, 55, 55, 54, 56, 56, 56, 54, 54, 54, 54, 54, 54, 54, 56, 54, 55, 53, 52, 52, 52, 54, 54, 52, 53, 53, 54, 53, 53, 54, 54, 53, 54, 54, 54, 54, 53, 53, 54, 54, 54, 53, 54, 55, 52, 52, 53, 53, 53, 52, 52, 54, 54, 53, 54, 52, 54, 53, 56, 54, 54, 54, 55, 55, 54, 55, 56, 54, 55, 55, 55, 56, 56, 56, 56, 56, 56, 55, 56, 55, 56, 57, 57, 57, 58, 58, 58, 59, 60, 60, 60, 60, 61, 60, 61, 61, 61, 62, 63, 64, 64, 64, 65, 66, 66, 67, 67, 67, 67, 68, 68, 67, 67, 68, 69, 70, 70, 71, 72, 72, 74, 75, 75, 74, 76, 77, 78, 78, 78, 78, 79, 80, 80, 81, 79, 80, 80, 81, 81, 79, 80, 81, 80, 80, 79, 78, 78, 79, 80, 80, 80, 78, 78, 80, 82, 82, 82, 82, 81, 82, 82, 85, 86, 89, 88, 88, 91, 89, 90, 92, 91, 93, 91, 92, 96, 98, 96, 95, 96, 98, 98, 97, 96, 97, 97, 98, 98, 97, 96, 98, 98, 100, 101, 100, 100, 100, 99, 100, 99, 100, 100, 102, 103, 104, 102, 100, 101, 101, 100, 101, 103, 102, 102, 102, 104, 103, 104, 102, 101, 105, 104, 104, 104, 103, 105, 106, 106, 107, 108, 107, 107, 108, 109, 107, 108, 108, 108, 106, 109, 108, 110, 108, 112, 110, 110, 110, 112, 110, 109, 110, 112, 110, 109, 110, 110, 113, 114, 118, 116, 115, 114, 118, 117, 117, 121, 121, 121, 122, 120, 122, 124, 120, 121, 121, 122, 121, 120, 117, 119, 116, 115, 117, 117, 116, 117, 116, 114, 115, 115, 114, 114, 113, 114, 115, 112, 114, 116, 113, 113, 110, 109, 108, 108, 110, 108, 110, 107, 108, 106, 110, 108, 107, 107, 108, 108, 108, 108, 109, 109, 110, 110, 110, 110, 111, 112, 114, 112, 112, 112, 114, 114, 116, 114, 117, 116, 116, 112, 115, 117, 114, 113, 112, 114, 112, 111, 112, 112, 110, 112, 110, 109, 110, 111, 111, 112, 112, 113, 112, 112, 112, 112, 110, 110, 109, 111, 108, 107, 110, 108, 110, 110, 109, 108, 106, 107, 108, 108, 108, 109, 108, 108, 112, 112, 111, 110, 109, 109, 110, 111, 112, 112, 111, 110, 112, 112, 111, 112, 115, 115, 115, 114, 116, 113, 116, 116, 114, 117, 118, 118, 117, 113, 117, 116, 118, 122, 120, 123, 123, 128, 126, 125, 126, 128, 126, 130, 131, 127, 128, 125, 129, 129, 128, 127, 124, 123, 130, 132, 135, 140, 144, 155, 164, 186, 193, 204, 210, 220, 209, 208, 228, 239, 242, 269, 273, 244, 255, 221, 235, 173, 167, 175, 154, 133, 133, 127, 121, 116, 120, 116, 118, 114, 118, 118, 116, 117, 118, 121, 122, 126, 125, 127, 127, 124, 126, 129, 126, 129, 132, 132, 127, 130, 134, 127, 128, 130, 129, 134, 129, 130, 134, 133, 134, 136, 144, 139, 144, 137, 142, 138, 140, 144, 145, 133, 133, 138, 140, 139, 141, 131, 130, 133, 131, 125, 130, 130, 141, 130, 128, 130, 134, 132, 125, 128, 127, 126, 126, 127, 123, 127, 123, 122, 119, 118, 118, 118, 128, 118, 114, 117, 116, 114, 110, 111, 112, 111, 112, 110, 115, 113, 116, 114, 115, 110, 111, 111, 108, 116, 116, 111, 111, 113, 118, 108, 107, 108, 112, 110, 108, 106, 104, 108, 103, 103, 100, 101, 100, 101, 99, 100, 98, 96, 95, 96, 96, 93, 94, 91, 90, 91, 90, 90, 91, 89, 88, 89, 89, 88, 86, 84, 87, 86, 88, 86, 85, 84, 84, 84, 84, 83, 83, 81]}, {"label": "S02", "name": "Pune/Jyoti Hotel Chowk to Lullanagar Chowk", "ff_tt": 54.0, "ff_spd": 36.7, "regime": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACACCACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCAAACAAAACCAAAACACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCACCCAACACCACACCCAAAAACCCCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "tt": [84, 84, 85, 84, 82, 84, 81, 79, 79, 80, 79, 78, 78, 77, 78, 78, 76, 76, 75, 75, 78, 76, 76, 74, 74, 76, 76, 73, 72, 73, 72, 72, 70, 70, 69, 72, 70, 69, 70, 70, 69, 68, 68, 68, 70, 67, 67, 67, 66, 65, 64, 64, 64, 65, 63, 65, 63, 64, 63, 64, 64, 64, 65, 64, 64, 64, 62, 62, 64, 62, 65, 62, 61, 62, 61, 60, 60, 60, 60, 58, 60, 57, 59, 59, 59, 58, 58, 58, 58, 58, 57, 58, 57, 57, 58, 58, 57, 58, 59, 58, 57, 57, 55, 58, 58, 57, 57, 57, 56, 56, 56, 53, 55, 56, 55, 56, 58, 55, 56, 56, 55, 54, 55, 54, 54, 54, 55, 54, 54, 54, 56, 54, 56, 55, 57, 58, 57, 56, 56, 57, 56, 56, 55, 57, 56, 56, 56, 56, 55, 55, 56, 57, 57, 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 55, 56, 56, 56, 55, 56, 57, 57, 59, 56, 58, 57, 56, 58, 56, 58, 58, 56, 57, 58, 58, 59, 59, 60, 60, 60, 62, 59, 62, 63, 63, 63, 62, 64, 64, 66, 65, 66, 67, 66, 67, 67, 67, 68, 69, 69, 68, 69, 69, 69, 70, 70, 70, 70, 70, 71, 72, 72, 72, 72, 73, 73, 73, 73, 73, 73, 74, 75, 75, 74, 75, 75, 76, 75, 75, 76, 76, 76, 77, 77, 76, 76, 76, 76, 78, 78, 79, 79, 79, 79, 81, 83, 83, 83, 85, 86, 88, 89, 90, 90, 93, 94, 97, 95, 94, 94, 97, 96, 97, 100, 99, 104, 104, 102, 103, 101, 101, 102, 104, 105, 106, 104, 102, 103, 100, 99, 102, 99, 101, 100, 97, 98, 98, 95, 96, 95, 95, 95, 94, 96, 95, 95, 95, 96, 94, 92, 93, 93, 92, 92, 91, 93, 92, 92, 93, 92, 92, 92, 92, 92, 92, 94, 94, 93, 93, 93, 94, 92, 94, 94, 94, 94, 94, 94, 95, 94, 95, 95, 95, 95, 96, 97, 96, 97, 96, 97, 96, 95, 96, 96, 97, 98, 96, 97, 96, 98, 98, 100, 100, 100, 101, 102, 101, 100, 100, 100, 101, 102, 100, 103, 104, 105, 104, 105, 104, 105, 104, 102, 105, 104, 103, 102, 103, 100, 102, 101, 100, 101, 99, 98, 98, 97, 96, 97, 97, 96, 98, 97, 96, 96, 95, 96, 95, 95, 97, 96, 96, 97, 97, 96, 97, 98, 98, 98, 99, 99, 102, 103, 103, 104, 100, 102, 102, 100, 103, 102, 103, 105, 103, 104, 104, 105, 106, 104, 103, 106, 104, 104, 103, 101, 101, 100, 102, 100, 102, 101, 100, 102, 102, 103, 101, 101, 100, 102, 104, 100, 102, 102, 103, 102, 100, 102, 102, 104, 104, 102, 102, 102, 104, 102, 103, 103, 103, 106, 104, 106, 106, 104, 106, 105, 104, 104, 104, 106, 102, 104, 103, 105, 106, 105, 105, 104, 106, 106, 108, 106, 109, 108, 105, 106, 106, 108, 108, 106, 108, 106, 110, 108, 111, 109, 108, 112, 109, 110, 111, 110, 113, 110, 113, 112, 111, 112, 112, 112, 115, 112, 112, 114, 115, 118, 122, 120, 121, 122, 122, 130, 127, 133, 132, 139, 147, 135, 129, 131, 131, 124, 123, 123, 120, 119, 119, 118, 116, 118, 118, 116, 116, 113, 111, 111, 112, 110, 110, 110, 109, 107, 107, 107, 109, 105, 106, 107, 107, 112, 111, 106, 108, 107, 104, 112, 107, 110, 109, 114, 112, 111, 116, 116, 124, 117, 118, 117, 120, 116, 120, 126, 123, 129, 120, 122, 121, 122, 120, 122, 122, 129, 126, 121, 121, 124, 124, 127, 128, 128, 120, 121, 118, 117, 118, 117, 120, 121, 122, 118, 119, 116, 123, 120, 116, 117, 124, 122, 118, 121, 119, 117, 120, 118, 117, 118, 113, 114, 112, 109, 113, 111, 108, 109, 110, 110, 108, 108, 110, 106, 112, 110, 108, 113, 105, 110, 110, 110, 105, 107, 106, 105, 108, 110, 109, 109, 109, 110, 108, 107, 105, 107, 102, 102, 106, 103, 103, 100, 100, 98, 98, 105, 104, 103, 94, 97, 97, 97, 98, 97, 95, 98, 94, 91, 93, 89, 90, 88, 90, 90, 89, 92, 89, 88, 87, 86, 88, 84, 88, 88, 84]}, {"label": "S03", "name": "Pune/Command Hospital To Cross Road junction", "ff_tt": 28.0, "ff_spd": 40.4, "regime": "AAAAAAAAAAAAAAAAAAAAAAAAAAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAFAAFAFFFAFFAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAACAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "tt": [41, 41, 41, 40, 40, 41, 40, 40, 40, 38, 38, 38, 38, 37, 38, 36, 37, 37, 36, 36, 36, 36, 36, 36, 36, 36, 35, 36, 34, 35, 34, 34, 34, 33, 34, 34, 33, 33, 33, 33, 34, 32, 34, 33, 34, 32, 32, 33, 32, 32, 32, 32, 31, 31, 32, 31, 32, 31, 31, 31, 30, 31, 30, 30, 30, 30, 30, 32, 32, 30, 30, 30, 30, 29, 30, 30, 30, 29, 29, 29, 30, 29, 30, 29, 29, 29, 29, 29, 29, 29, 29, 28, 28, 28, 28, 28, 28, 29, 29, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 28, 28, 28, 28, 29, 29, 28, 28, 29, 28, 28, 28, 28, 28, 28, 29, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 29, 28, 28, 29, 29, 29, 29, 29, 29, 29, 30, 29, 29, 29, 29, 30, 29, 30, 29, 30, 29, 30, 30, 31, 31, 32, 31, 32, 32, 32, 32, 32, 33, 33, 33, 33, 33, 33, 34, 34, 34, 33, 34, 34, 34, 34, 34, 34, 34, 35, 35, 34, 34, 35, 35, 35, 35, 35, 35, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 36, 36, 36, 35, 36, 36, 35, 36, 35, 35, 35, 36, 35, 35, 36, 35, 36, 36, 36, 36, 36, 36, 37, 36, 37, 37, 37, 37, 38, 38, 38, 38, 38, 38, 38, 38, 39, 38, 39, 39, 39, 39, 39, 40, 39, 40, 40, 40, 40, 40, 41, 41, 40, 41, 41, 41, 41, 41, 41, 41, 41, 42, 42, 42, 42, 43, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 43, 42, 42, 43, 43, 43, 42, 42, 43, 43, 43, 43, 44, 44, 44, 44, 43, 43, 43, 43, 44, 44, 45, 44, 44, 44, 45, 45, 46, 45, 45, 46, 46, 45, 45, 46, 45, 46, 45, 45, 46, 46, 46, 46, 46, 47, 47, 47, 47, 47, 47, 47, 48, 48, 47, 47, 47, 48, 47, 47, 48, 47, 48, 48, 48, 48, 48, 48, 47, 47, 47, 47, 47, 47, 47, 46, 46, 46, 46, 46, 47, 46, 46, 45, 46, 45, 45, 45, 45, 45, 44, 46, 45, 46, 45, 45, 46, 45, 45, 45, 45, 45, 46, 46, 45, 46, 46, 46, 47, 47, 47, 48, 48, 48, 48, 49, 49, 48, 47, 48, 49, 49, 49, 48, 48, 48, 47, 47, 48, 48, 48, 48, 48, 48, 47, 48, 48, 48, 47, 48, 47, 47, 48, 47, 47, 46, 47, 48, 47, 46, 46, 46, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 48, 48, 48, 48, 48, 48, 48, 48, 47, 47, 48, 48, 49, 48, 47, 47, 46, 47, 47, 47, 48, 48, 47, 47, 49, 48, 48, 48, 48, 48, 48, 48, 48, 49, 48, 48, 49, 50, 49, 48, 48, 50, 50, 50, 49, 49, 49, 49, 50, 49, 49, 49, 50, 50, 50, 51, 52, 52, 51, 53, 53, 57, 56, 55, 56, 57, 56, 55, 56, 57, 56, 56, 56, 55, 54, 52, 51, 52, 51, 52, 50, 50, 49, 49, 49, 48, 48, 48, 48, 48, 47, 47, 47, 47, 47, 47, 47, 47, 46, 46, 46, 46, 46, 46, 46, 46, 47, 48, 47, 47, 47, 48, 48, 48, 49, 49, 49, 49, 49, 48, 50, 50, 49, 50, 49, 50, 49, 50, 50, 49, 50, 50, 49, 49, 49, 51, 50, 50, 50, 50, 50, 49, 50, 50, 48, 49, 50, 50, 49, 48, 49, 48, 49, 48, 48, 48, 48, 48, 47, 47, 48, 48, 48, 48, 47, 48, 47, 48, 48, 46, 47, 47, 47, 47, 46, 48, 45, 46, 47, 46, 46, 47, 47, 47, 46, 48, 48, 48, 47, 48, 48, 48, 47, 47, 48, 47, 47, 48, 48, 47, 48, 48, 48, 48, 48, 47, 47, 47, 46, 46, 46, 47, 46, 45, 46, 46, 46, 46, 46, 45, 45, 44, 45, 44, 45, 44, 43, 44, 43, 43, 44, 43, 43, 44, 42, 42, 43, 42, 41, 41, 41]}, {"label": "S04", "name": "Pune/Cross Road junction To Golibar Maidan Chowk", "ff_tt": 150.0, "ff_spd": 37.9, "regime": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAFFFFFFFFFFFFF", "tt": [179, 178, 178, 177, 177, 178, 177, 176, 176, 175, 174, 173, 172, 171, 171, 172, 171, 170, 170, 170, 171, 168, 168, 167, 167, 165, 166, 165, 165, 164, 162, 164, 164, 164, 162, 162, 160, 161, 161, 162, 161, 161, 161, 159, 160, 159, 158, 158, 158, 158, 159, 158, 157, 157, 157, 158, 156, 155, 155, 156, 156, 156, 156, 157, 157, 156, 157, 156, 156, 158, 158, 156, 156, 155, 155, 155, 155, 156, 154, 154, 154, 154, 153, 154, 153, 153, 153, 153, 153, 152, 152, 152, 151, 151, 150, 150, 150, 150, 150, 150, 150, 152, 150, 150, 150, 151, 150, 151, 151, 150, 150, 151, 150, 152, 153, 151, 152, 152, 152, 152, 151, 152, 151, 150, 150, 150, 151, 150, 149, 149, 150, 149, 149, 150, 150, 150, 150, 150, 151, 150, 151, 151, 151, 150, 150, 150, 150, 150, 150, 150, 150, 149, 149, 149, 150, 149, 150, 149, 150, 151, 151, 150, 152, 152, 150, 150, 151, 149, 151, 151, 152, 152, 154, 152, 152, 152, 151, 152, 154, 153, 154, 155, 155, 156, 155, 158, 156, 157, 159, 158, 160, 160, 162, 162, 163, 165, 165, 166, 166, 168, 169, 170, 170, 171, 172, 171, 170, 170, 169, 171, 170, 170, 170, 171, 172, 171, 171, 171, 170, 171, 172, 174, 174, 174, 174, 175, 176, 178, 178, 178, 179, 179, 180, 182, 183, 184, 184, 186, 186, 185, 185, 186, 186, 187, 186, 186, 185, 187, 186, 187, 188, 188, 189, 190, 192, 192, 194, 195, 196, 198, 198, 198, 200, 200, 200, 201, 203, 206, 205, 208, 209, 209, 206, 211, 210, 211, 214, 210, 212, 213, 214, 215, 216, 212, 214, 219, 217, 217, 218, 213, 214, 217, 217, 218, 218, 220, 219, 221, 219, 220, 222, 222, 220, 222, 220, 223, 223, 223, 225, 224, 225, 224, 225, 225, 224, 224, 225, 228, 229, 230, 229, 231, 230, 228, 232, 230, 234, 232, 233, 232, 233, 231, 232, 234, 234, 232, 234, 238, 239, 234, 236, 236, 236, 236, 238, 238, 243, 240, 240, 241, 244, 241, 242, 244, 242, 242, 243, 243, 243, 245, 250, 247, 250, 251, 247, 246, 248, 246, 250, 252, 251, 253, 251, 248, 246, 246, 249, 249, 246, 250, 248, 246, 247, 251, 246, 249, 249, 246, 248, 247, 248, 246, 248, 248, 248, 249, 246, 244, 246, 244, 247, 244, 244, 242, 244, 245, 242, 242, 245, 249, 249, 242, 240, 244, 238, 237, 238, 241, 240, 239, 242, 242, 242, 243, 242, 245, 244, 239, 240, 242, 242, 240, 242, 244, 244, 245, 243, 242, 240, 241, 242, 242, 241, 242, 246, 244, 240, 239, 237, 237, 240, 243, 240, 238, 240, 235, 236, 238, 238, 237, 235, 237, 232, 237, 235, 234, 236, 238, 237, 240, 236, 236, 236, 238, 238, 237, 236, 236, 237, 235, 238, 240, 240, 240, 236, 239, 239, 238, 236, 240, 237, 236, 239, 239, 241, 240, 239, 239, 241, 239, 244, 239, 241, 240, 239, 244, 242, 245, 242, 242, 245, 242, 244, 246, 242, 243, 245, 246, 247, 250, 249, 249, 251, 255, 254, 256, 255, 254, 254, 256, 260, 262, 268, 270, 272, 270, 272, 268, 264, 264, 266, 266, 266, 270, 274, 278, 272, 270, 271, 275, 275, 270, 274, 271, 271, 267, 268, 269, 267, 268, 267, 268, 268, 268, 263, 262, 258, 261, 258, 259, 258, 254, 254, 256, 255, 257, 253, 252, 254, 253, 252, 250, 249, 248, 244, 247, 248, 252, 243, 244, 241, 241, 238, 241, 240, 240, 241, 238, 242, 240, 243, 242, 240, 241, 242, 238, 238, 241, 238, 236, 234, 236, 234, 232, 234, 234, 232, 232, 231, 231, 232, 230, 230, 229, 228, 227, 227, 227, 225, 223, 225, 224, 224, 224, 222, 223, 224, 222, 218, 219, 218, 219, 217, 216, 216, 216, 215, 215, 214, 215, 212, 212, 211, 210, 210, 212, 209, 209, 209, 209, 211, 210, 210, 210, 208, 208, 207, 208, 209, 207, 206, 206, 206, 206, 205, 205, 204, 204, 202, 204, 202, 201, 203, 202, 201, 200, 200, 198, 199, 198, 198, 198, 198, 196, 195, 194, 193, 195, 193, 192, 190, 191, 190, 190, 188, 186, 189, 187, 185, 185, 184, 183, 183, 183, 183, 183, 181, 180, 180, 180]}, {"label": "S05", "name": "Pune/Khadi Machine Chowk To Pisoli Junction", "ff_tt": 90.0, "ff_spd": 29.4, "regime": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "tt": [94, 94, 94, 95, 96, 95, 95, 95, 95, 95, 95, 94, 94, 94, 94, 94, 94, 93, 94, 94, 94, 94, 94, 94, 93, 93, 93, 94, 93, 94, 93, 94, 94, 93, 94, 94, 94, 93, 94, 93, 94, 94, 94, 94, 93, 94, 94, 93, 93, 93, 92, 92, 92, 92, 92, 91, 92, 92, 92, 92, 92, 91, 92, 92, 92, 92, 93, 93, 93, 94, 93, 93, 93, 92, 92, 92, 92, 93, 93, 92, 92, 92, 92, 92, 93, 93, 93, 92, 93, 93, 94, 93, 92, 93, 93, 93, 94, 93, 93, 93, 93, 93, 93, 93, 92, 93, 93, 93, 93, 93, 93, 91, 91, 92, 92, 92, 93, 92, 92, 93, 93, 92, 92, 92, 93, 93, 92, 92, 93, 93, 92, 93, 93, 93, 94, 93, 93, 93, 93, 92, 92, 93, 94, 94, 93, 93, 93, 93, 93, 94, 94, 94, 94, 94, 93, 93, 92, 93, 94, 93, 93, 93, 92, 92, 93, 92, 93, 93, 93, 92, 92, 92, 93, 92, 92, 93, 92, 92, 93, 92, 93, 93, 93, 93, 93, 93, 93, 92, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 92, 93, 93, 93, 93, 92, 92, 92, 92, 92, 92, 91, 92, 91, 92, 91, 91, 91, 91, 91, 91, 90, 90, 90, 91, 91, 90, 90, 90, 90, 90, 91, 90, 91, 90, 90, 90, 90, 91, 91, 91, 90, 91, 92, 91, 91, 91, 91, 91, 91, 92, 92, 92, 93, 93, 93, 93, 94, 95, 95, 96, 96, 97, 97, 99, 98, 99, 99, 101, 100, 102, 101, 101, 102, 101, 101, 101, 101, 102, 102, 102, 102, 103, 102, 102, 104, 104, 103, 104, 104, 103, 103, 103, 103, 103, 103, 103, 103, 103, 104, 103, 104, 103, 103, 103, 103, 103, 103, 103, 103, 103, 102, 103, 103, 102, 103, 103, 104, 103, 104, 104, 102, 104, 103, 104, 103, 103, 103, 103, 103, 103, 103, 103, 105, 104, 104, 104, 104, 103, 104, 104, 105, 105, 105, 103, 105, 104, 104, 104, 104, 105, 105, 105, 105, 105, 104, 106, 105, 104, 105, 106, 104, 107, 105, 106, 106, 107, 108, 107, 106, 106, 106, 106, 105, 108, 108, 109, 108, 108, 107, 107, 106, 107, 106, 106, 108, 108, 108, 110, 108, 107, 108, 108, 110, 108, 107, 110, 112, 109, 108, 107, 108, 106, 108, 107, 106, 106, 107, 107, 105, 105, 106, 106, 106, 106, 106, 105, 105, 105, 105, 106, 104, 105, 105, 105, 105, 104, 105, 104, 104, 104, 104, 103, 104, 104, 104, 103, 103, 104, 103, 105, 105, 104, 104, 105, 105, 105, 104, 104, 104, 105, 105, 105, 106, 105, 105, 105, 104, 104, 106, 107, 106, 104, 105, 105, 104, 105, 105, 106, 106, 106, 104, 106, 105, 104, 105, 104, 106, 104, 104, 104, 104, 105, 104, 104, 104, 105, 104, 104, 104, 104, 104, 104, 104, 102, 104, 103, 104, 103, 103, 104, 103, 104, 104, 103, 105, 105, 105, 104, 104, 105, 106, 104, 105, 105, 107, 106, 105, 107, 106, 106, 108, 107, 105, 107, 106, 106, 107, 108, 108, 108, 108, 109, 108, 109, 108, 110, 110, 108, 108, 108, 109, 109, 109, 108, 109, 111, 110, 110, 110, 110, 110, 109, 110, 109, 108, 110, 110, 108, 110, 111, 110, 110, 109, 108, 108, 109, 109, 110, 111, 110, 109, 109, 109, 111, 109, 110, 108, 110, 109, 108, 107, 107, 106, 107, 106, 106, 106, 106, 105, 106, 104, 104, 104, 104, 103, 104, 104, 105, 104, 103, 103, 103, 102, 103, 102, 102, 102, 102, 102, 101, 101, 101, 101, 101, 100, 101, 101, 100, 100, 100, 101, 100, 100, 100, 100, 100, 100, 99, 99, 100, 99, 100, 100, 100, 99, 99, 99, 99, 99, 99, 98, 98, 98, 98, 98, 98, 97, 97, 98, 97, 98, 97, 97, 97, 97, 97, 97, 98, 96, 97, 98, 97, 97, 97, 97, 97, 97, 98, 97, 97, 97, 97, 97, 97, 98, 98, 97, 97, 96, 97, 97, 97, 97, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 95, 95, 95, 95, 96, 95, 95, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94]}, {"label": "S06", "name": "Pune/Pisoli Junction To Mohmmadwadi Junction", "ff_tt": 386.0, "ff_spd": 32.2, "regime": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", "tt": [423, 425, 425, 425, 424, 424, 419, 422, 424, 425, 422, 422, 420, 420, 420, 420, 418, 418, 419, 416, 416, 416, 413, 415, 412, 410, 410, 410, 410, 408, 408, 408, 408, 405, 404, 408, 411, 410, 412, 408, 405, 405, 406, 406, 405, 404, 402, 403, 402, 402, 402, 397, 398, 398, 396, 395, 396, 394, 394, 392, 392, 392, 396, 396, 392, 395, 396, 393, 395, 396, 398, 397, 396, 394, 394, 394, 392, 394, 392, 390, 391, 392, 388, 388, 389, 391, 388, 387, 388, 387, 389, 390, 393, 391, 386, 387, 388, 389, 390, 389, 388, 387, 386, 384, 386, 387, 387, 388, 386, 386, 390, 392, 388, 388, 387, 386, 386, 388, 386, 388, 388, 388, 389, 387, 388, 388, 391, 390, 390, 393, 392, 392, 393, 395, 395, 392, 390, 394, 392, 393, 391, 393, 392, 392, 391, 392, 390, 392, 391, 390, 391, 390, 391, 395, 391, 391, 393, 391, 391, 390, 392, 394, 394, 394, 393, 392, 392, 392, 393, 393, 394, 393, 394, 393, 397, 396, 397, 394, 396, 398, 400, 399, 397, 399, 398, 400, 401, 401, 399, 400, 404, 402, 402, 403, 403, 402, 405, 404, 402, 405, 406, 404, 402, 406, 402, 402, 402, 400, 400, 403, 401, 403, 399, 400, 398, 400, 400, 400, 399, 400, 398, 402, 401, 401, 402, 404, 407, 408, 410, 409, 412, 414, 415, 416, 418, 419, 420, 423, 419, 426, 425, 426, 424, 424, 430, 428, 430, 433, 432, 435, 436, 440, 442, 448, 445, 447, 451, 446, 453, 452, 454, 457, 460, 464, 471, 473, 476, 478, 490, 488, 494, 499, 498, 496, 499, 502, 510, 512, 511, 509, 508, 504, 502, 512, 504, 500, 504, 502, 498, 497, 498, 499, 500, 496, 492, 494, 496, 496, 494, 490, 492, 495, 502, 499, 500, 496, 498, 501, 500, 493, 495, 494, 500, 496, 500, 498, 490, 494, 498, 493, 494, 500, 497, 497, 499, 502, 506, 508, 504, 504, 506, 505, 508, 511, 512, 510, 509, 510, 506, 515, 511, 512, 511, 514, 514, 513, 513, 514, 514, 519, 518, 516, 520, 514, 520, 526, 524, 520, 524, 528, 527, 531, 536, 537, 528, 534, 540, 545, 558, 552, 560, 558, 549, 560, 566, 568, 574, 577, 582, 571, 569, 572, 568, 570, 564, 568, 568, 577, 567, 559, 570, 576, 560, 561, 556, 558, 565, 560, 588, 580, 604, 588, 593, 581, 574, 580, 574, 590, 583, 570, 562, 570, 580, 564, 566, 552, 550, 545, 544, 547, 538, 545, 545, 544, 537, 536, 545, 538, 530, 532, 525, 526, 533, 532, 527, 532, 530, 530, 522, 527, 525, 519, 517, 525, 520, 519, 517, 525, 531, 521, 520, 518, 520, 520, 518, 514, 511, 508, 509, 513, 507, 503, 506, 503, 512, 506, 508, 517, 514, 509, 519, 505, 510, 509, 505, 502, 503, 505, 506, 505, 504, 500, 497, 501, 496, 495, 496, 500, 500, 499, 501, 502, 498, 494, 499, 498, 497, 501, 499, 503, 498, 502, 503, 505, 498, 498, 502, 503, 499, 503, 505, 507, 511, 510, 509, 517, 515, 512, 518, 510, 514, 516, 516, 511, 513, 515, 514, 512, 511, 508, 511, 512, 513, 514, 520, 515, 519, 520, 517, 520, 526, 529, 528, 535, 534, 534, 547, 550, 548, 560, 551, 553, 556, 556, 560, 568, 563, 567, 572, 566, 562, 565, 561, 560, 556, 562, 565, 561, 555, 564, 561, 562, 574, 568, 562, 571, 572, 566, 574, 572, 559, 555, 558, 565, 555, 552, 546, 547, 551, 540, 536, 537, 534, 536, 531, 532, 528, 530, 528, 520, 528, 525, 524, 522, 520, 523, 520, 517, 517, 514, 512, 512, 509, 506, 509, 509, 504, 502, 504, 498, 501, 499, 495, 495, 493, 492, 492, 490, 492, 490, 491, 496, 492, 486, 488, 491, 488, 485, 488, 484, 486, 487, 483, 482, 483, 482, 481, 480, 479, 478, 476, 478, 476, 472, 472, 474, 472, 474, 478, 471, 474, 474, 471, 471, 470, 470, 471, 470, 467, 466, 463, 466, 463, 462, 461, 460, 464, 464, 459, 458, 456, 456, 456, 455, 458, 456, 448, 454, 454, 452, 454, 451, 448, 449, 448, 446, 443, 447, 444, 442, 444, 443, 442, 444, 438, 436, 436, 434, 435, 434, 433, 433, 431, 434, 430, 428, 428, 428, 426, 426]}]};
 const COLOR = { "F":"var(--free)", "A":"var(--appr)", "C":"var(--cong)", "S":"var(--sevr)", ".":"#e2e8f0" };
 const LABEL = { "F":"FREE", "A":"APPR", "C":"CONG", "S":"SEVR", ".":"n/a" };
 const N = 720;
-
-function minToClock(b) {
-  const m = b * 2; const h = Math.floor(m/60); const mm = m % 60;
-  return String(h).padStart(2,'0') + ':' + String(mm).padStart(2,'0');
-}
-
+function minToClock(b) { const m = b*2; return String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0'); }
 function renderStrips() {
   const root = document.getElementById("heatstrips");
   for (const seg of DATA.segments) {
     const row = document.createElement("div"); row.className = "strip-row";
     const lbl = document.createElement("div"); lbl.className = "seg-label"; lbl.textContent = seg.label; row.appendChild(lbl);
     const strip = document.createElement("div"); strip.className = "strip";
-    // count regimes to show per-seg stats
-    let fF=0,fA=0,fC=0,fS=0,fNA=0;
+    let fF=0,fA=0,fC=0,fS=0;
     for (let i=0;i<N;i++) {
       const c = seg.regime[i];
       const cell = document.createElement("div"); cell.className = "cell";
-      cell.style.background = COLOR[c];
+      cell.style.background = COLOR[c] || "#e2e8f0";
       cell.dataset.i = i; cell.dataset.seg = seg.label;
       strip.appendChild(cell);
-      if (c==="F") fF++; else if (c==="A") fA++; else if (c==="C") fC++; else if (c==="S") fS++; else fNA++;
+      if (c==="F") fF++; else if (c==="A") fA++; else if (c==="C") fC++; else if (c==="S") fS++;
     }
     row.appendChild(strip);
     const stats = document.createElement("div"); stats.className = "seg-stats";
-    const congPct = ((fC+fS)/N*100).toFixed(0);
-    stats.innerHTML = `<b>${congPct}%</b> red`;
+    stats.innerHTML = `<b>${((fC+fS)/N*100).toFixed(0)}%</b> red`;
     row.appendChild(stats);
     root.appendChild(row);
   }
-
-  const tip = document.getElementById("tip");
-  const tipHead = tip.querySelector(".tip-head");
-  const tipBody = tip.querySelector(".tip-body");
+  const tip = document.getElementById("tip"); const tipHead = tip.querySelector(".tip-head"); const tipBody = tip.querySelector(".tip-body");
   document.getElementById("heatstrips").addEventListener("mousemove", (e) => {
     const t = e.target;
     if (!t.classList.contains("cell")) { tip.style.display = "none"; return; }
     const i = parseInt(t.dataset.i, 10);
-    const label = t.dataset.seg;
-    const seg = DATA.segments.find(s => s.label === label);
-    const tt = seg.tt[i];
-    const reg = seg.regime[i];
+    const seg = DATA.segments.find(s => s.label === t.dataset.seg);
+    const tt = seg.tt[i]; const reg = seg.regime[i];
     const r = tt ? (seg.ff_tt / tt) : null;
-    tipHead.textContent = label + "   " + minToClock(i);
-    tipBody.innerHTML = tt
-      ? `tt = <b>${tt} s</b>   ·   ratio ${r.toFixed(2)}   ·   <b>${LABEL[reg]}</b>`
-      : `<i>no data</i>`;
-    tip.style.display = "block";
-    tip.style.left = (e.clientX + 14) + "px";
-    tip.style.top  = (e.clientY + 14) + "px";
+    tipHead.textContent = seg.label + "   " + minToClock(i);
+    tipBody.innerHTML = tt ? `tt = <b>${tt} s</b>   ·   ratio ${r.toFixed(2)}   ·   <b>${LABEL[reg]}</b>` : `<i>no data</i>`;
+    tip.style.display = "block"; tip.style.left = (e.clientX+14)+"px"; tip.style.top = (e.clientY+14)+"px";
   });
-  document.getElementById("heatstrips").addEventListener("mouseleave", () => {
-    document.getElementById("tip").style.display = "none";
-  });
+  document.getElementById("heatstrips").addEventListener("mouseleave", () => document.getElementById("tip").style.display = "none");
 }
-
 renderStrips();
 </script>
-</body>
-</html>
+</body></html>
