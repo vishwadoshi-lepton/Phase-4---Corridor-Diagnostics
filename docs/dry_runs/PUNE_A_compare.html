@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>PUNE_A — weekday vs weekend compare</title><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+  :root {
+    --bg:#f8fafc; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+    --accent:#1d4ed8; --accent-soft:#dbeafe;
+    --free:#16a34a; --appr:#eab308; --cong:#f97316; --sevr:#dc2626;
+  }
+  html,body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif; margin:0; padding:0; line-height:1.55; font-size:15px; }
+  .wrap { display:grid; grid-template-columns: 220px 1fr; gap:32px; max-width:1200px; margin:0 auto; padding:32px; }
+  nav.toc { position:sticky; top:24px; align-self:start; font-size:13px; }
+  nav.toc h2 { font-size:12px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin:0 0 8px; }
+  nav.toc a { display:block; padding:4px 0; color:#334155; text-decoration:none; }
+  nav.toc a:hover { color:var(--accent); }
+  header.hero { background:linear-gradient(135deg,#1e40af,#1d4ed8); color:#fff; padding:32px; border-radius:14px; margin-bottom:28px; }
+  header.hero h1 { margin:0 0 6px; font-size:28px; letter-spacing:-0.01em; }
+  header.hero .sub { opacity:0.85; font-size:14px; }
+  header.hero .meta { display:flex; gap:22px; margin-top:18px; flex-wrap:wrap; font-size:13px; }
+  header.hero .meta div span { display:block; opacity:0.7; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px 28px; margin-bottom:22px; }
+  section h2 { margin:0 0 4px; font-size:20px; letter-spacing:-0.01em; }
+  section .stage-sub { color:var(--muted); font-size:13px; margin-bottom:14px; }
+  .why { background:#fef9c3; border-left:4px solid #ca8a04; padding:12px 16px; border-radius:6px; margin:14px 0; font-size:14px; }
+  .why b { color:#713f12; }
+  .callout { background:#ede9fe; border-left:4px solid #7c3aed; padding:12px 16px; border-radius:6px; margin:14px 0; font-size:14px; }
+  .callout b { color:#5b21b6; }
+  .story { background:#ecfeff; border-left:4px solid #0891b2; padding:14px 18px; border-radius:6px; margin:16px 0; font-size:14px; }
+  .story b { color:#155e75; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { background:#f1f5f9; font-weight:600; color:#1e293b; }
+  td code { background:#f1f5f9; padding:1px 6px; border-radius:4px; font-size:12px; }
+  .pass { color:var(--free); font-weight:600; }
+  .fail { color:var(--sevr); font-weight:600; }
+  svg.corridor, svg.diagram { width:100%; height:auto; }
+  .strip-row { display:grid; grid-template-columns: 60px 1fr 70px; gap:10px; align-items:center; margin:3px 0; }
+  .strip-row .seg-label { font-weight:700; color:#1e293b; font-size:13px; }
+  .strip { display:flex; width:100%; height:20px; border-radius:3px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05); cursor:crosshair; }
+  .strip .cell { flex:1 1 0; height:100%; }
+  .strip-row .seg-stats { font-size:11px; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums; }
+  .ticks { display:grid; grid-template-columns: 60px 1fr 70px; gap:10px; margin-top:6px; margin-bottom:4px; }
+  .ticks .axis { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); }
+  .legend { display:flex; gap:14px; font-size:12px; color:var(--muted); margin:10px 0 16px; }
+  .legend span.sw { display:inline-block; width:14px; height:14px; border-radius:3px; vertical-align:middle; margin-right:5px; }
+  #tip { position:fixed; pointer-events:none; background:#0f172a; color:#f8fafc; padding:8px 10px; border-radius:6px; font-size:12px; z-index:999; display:none; white-space:nowrap; box-shadow:0 6px 20px rgba(15,23,42,0.25); }
+  #tip .tip-head { font-weight:700; font-size:11px; opacity:0.9; margin-bottom:3px; letter-spacing:0.04em; }
+  .verdict { display:inline-block; padding:2px 10px; border-radius:99px; font-size:11px; font-weight:700; letter-spacing:0.04em; }
+  .verdict-free_flow        { background:#dcfce7; color:#14532d; }
+  .verdict-slow_link        { background:#fef3c7; color:#713f12; }
+  .verdict-queue_victim     { background:#fed7aa; color:#7c2d12; }
+  .verdict-active_bottleneck{ background:#fecaca; color:#7f1d1d; }
+  .verdict-head_bottleneck  { background:#fbcfe8; color:#831843; }
+  .label-high   { color:var(--free); font-weight:700; }
+  .label-medium { color:#ca8a04; font-weight:700; }
+  .label-low    { color:var(--sevr); font-weight:700; }
+  .sbar { display:flex; width:100%; height:14px; border-radius:7px; overflow:hidden; background:#e2e8f0; }
+  .sbar-seg { height:100%; }
+  td.bar-cell { min-width:180px; }
+  .kpis { display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin:12px 0 20px; }
+  .kpi { background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+  .kpi .k { font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:4px; }
+  .kpi .v { font-size:20px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
+  .kpi .s { font-size:11px; color:var(--muted); margin-top:2px; }
+  details { margin:10px 0; background:#f8fafc; border:1px solid var(--line); border-radius:6px; padding:10px 14px; }
+  details summary { cursor:pointer; font-weight:600; color:#334155; font-size:13px; }
+  details[open] summary { margin-bottom:10px; }
+  @media (max-width: 900px) { .wrap { grid-template-columns:1fr; } nav.toc { position:static; } }
+  @media print { nav.toc { display:none; } .wrap { grid-template-columns:1fr; padding:0; } }
+</style>
+</head><body>
+<div class="wrap">
+<nav class="toc"><h2>On this page</h2><a href="#top">Overview</a><a href="#seg">Per-segment verdict diff</a><a href="#s2b">Stage 2b windows</a><a href="#s3">Stage 3 activations</a><a href="#s4">Stage 4 shockwave</a><a href="#s5">Stage 5 systemic rules</a><a href="#s6">Stage 6 recurrence</a><a href="#links">Full per-slice HTMLs</a></nav>
+<main>
+<a id="top"></a>
+<header class="hero">
+<h1>PUNE_A — weekday vs weekend</h1>
+<div class="sub">Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway) · Pune · 6 segments · 7122 m</div>
+<div class="meta">
+<div><span>Weekday verdict</span><b>POINT</b></div>
+<div><span>Weekend verdict</span><b>POINT</b></div>
+<div><span>Status</span><b style="background:#16a34a;padding:2px 10px;border-radius:99px;font-size:11px;">IDENTICAL</b></div>
+</div></header>
+<section><h2>Overview</h2><div class="stage-sub">Segments colored by final verdict. Weekday row on top, weekend below. Δ marker sits between rows where a segment's verdict moves between slices.</div>
+<svg class="corridor" viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg">
+<text x="40.0" y="40" font-size="13" font-weight="700" fill="#1e293b">Weekday</text>
+<text x="40.0" y="160" font-size="13" font-weight="700" fill="#1e293b">Weekend</text>
+<text x="40.0" y="18" font-size="11" fill="#64748b">⬅ upstream</text>
+<text x="960.0" y="18" text-anchor="end" font-size="11" fill="#64748b">downstream ➡</text>
+<rect x="40.00" y="50" width="63.81" height="30" rx="4" fill="#db2777" fill-opacity="0.3" stroke="#db2777" stroke-width="1.5"/>
+<text x="71.91" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S01</text>
+<rect x="103.81" y="50" width="71.18" height="30" rx="4" fill="#dc2626" fill-opacity="0.3" stroke="#dc2626" stroke-width="1.5"/>
+<text x="139.40" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S02</text>
+<rect x="174.99" y="50" width="40.56" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="195.27" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S03</text>
+<rect x="215.55" y="50" width="203.84" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="317.47" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S04</text>
+<rect x="419.39" y="50" width="94.82" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="466.80" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S05</text>
+<rect x="514.21" y="50" width="445.79" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="737.10" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S06</text>
+<rect x="40.00" y="170" width="63.81" height="30" rx="4" fill="#db2777" fill-opacity="0.3" stroke="#db2777" stroke-width="1.5"/>
+<text x="71.91" y="191" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S01</text>
+<rect x="103.81" y="170" width="71.18" height="30" rx="4" fill="#dc2626" fill-opacity="0.3" stroke="#dc2626" stroke-width="1.5"/>
+<text x="139.40" y="191" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S02</text>
+<rect x="174.99" y="170" width="40.56" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="195.27" y="191" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S03</text>
+<rect x="215.55" y="170" width="203.84" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="317.47" y="191" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S04</text>
+<rect x="419.39" y="170" width="94.82" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="466.80" y="191" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S05</text>
+<rect x="514.21" y="170" width="445.79" height="30" rx="4" fill="#10b981" fill-opacity="0.22" stroke="#10b981" stroke-width="1.5"/>
+<text x="737.10" y="191" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">S06</text>
+<text x="500" y="218" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">segments drawn to scale; Δ markers flag segments whose verdict moves between slices</text>
+</svg>
+<div class="story">✅ <b>Verdicts identical across slices.</b> Same final verdict, same per-segment verdicts. </div>
+</section>
+<a id="seg"></a><section><h2>Per-segment verdict diff</h2><div class="stage-sub">Rows highlighted in red indicate segments whose verdict moved between slices. Confidence label + score shown for both slices.</div>
+<table><thead><tr><th>Seg</th><th>Road</th><th>Weekday verdict</th><th>WD conf</th><th>Weekend verdict</th><th>WE conf</th><th>Δ</th></tr></thead><tbody><tr><td><b>S01</b></td><td style='max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' title="Pune/Fakri Hill Chowk To  Lullanagar Chowk">Pune/Fakri Hill Chowk To  Lullanagar Chowk</td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td>MEDIUM (0.52)</td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td>HIGH (0.75)</td><td style='text-align:center;'></td></tr><tr><td><b>S02</b></td><td style='max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' title="Pune/Jyoti Hotel Chowk to Lullanagar Chowk">Pune/Jyoti Hotel Chowk to Lullanagar Chowk</td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td>HIGH (0.75)</td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td>HIGH (0.88)</td><td style='text-align:center;'></td></tr><tr><td><b>S03</b></td><td style='max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' title="Pune/Command Hospital To Cross Road junction">Pune/Command Hospital To Cross Road junction</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.72)</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.60)</td><td style='text-align:center;'></td></tr><tr><td><b>S04</b></td><td style='max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' title="Pune/Cross Road junction To Golibar Maidan Chowk">Pune/Cross Road junction To Golibar Maidan Chowk</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.72)</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.60)</td><td style='text-align:center;'></td></tr><tr><td><b>S05</b></td><td style='max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' title="Pune/Khadi Machine Chowk To Pisoli Junction">Pune/Khadi Machine Chowk To Pisoli Junction</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.60)</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.60)</td><td style='text-align:center;'></td></tr><tr><td><b>S06</b></td><td style='max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;' title="Pune/Pisoli Junction To Mohmmadwadi Junction">Pune/Pisoli Junction To Mohmmadwadi Junction</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.60)</td><td><span class='verdict verdict-free_flow'>FREE_FLOW</span></td><td>MEDIUM (0.60)</td><td style='text-align:center;'></td></tr></tbody></table>
+</section>
+<a id="s2b"></a><section><h2>Stage 2b · Primary windows</h2><div class="stage-sub">Length-weighted R1 rule: ≥25% of corridor length simultaneously CONG/SEVR for ≥30 min. Listed per slice.</div>
+<table><thead><tr><th style="width:50%">Weekday</th><th>Weekend</th></tr></thead><tbody><tr><td style="vertical-align:top"><i style='color:#64748b'>none</i></td><td style="vertical-align:top"><i style='color:#64748b'>none</i></td></tr></tbody></table>
+</section>
+<a id="s3"></a><section><h2>Stage 3 · Bertini + R3 head</h2><div class="stage-sub">Active bottlenecks that fire the three-point test, plus any S01 head bottleneck from R3's two-point relaxation.</div>
+<table><thead><tr><th style="width:50%">Weekday</th><th>Weekend</th></tr></thead><tbody><tr><td style="vertical-align:top"><ul style='margin:4px 0;padding-left:18px;'><li><b>S02</b> ACTIVE — <code>17:06 – 19:00</code>, <code>19:30 – 21:54</code>, <code>21:58 – 22:10</code>, <code>22:24 – 22:32</code></li><li><b>S01</b> HEAD — <code>10:46 – 17:04</code>, <code>19:02 – 19:28</code>, <code>22:12 – 22:22</code></li></ul></td><td style="vertical-align:top"><ul style='margin:4px 0;padding-left:18px;'><li><b>S02</b> ACTIVE — <code>12:24 – 13:10</code>, <code>13:42 – 16:12</code></li><li><b>S01</b> HEAD — <code>05:56 – 07:52</code>, <code>11:06 – 12:22</code>, <code>13:12 – 13:40</code>, <code>16:14 – 16:56</code></li></ul></td></tr></tbody></table>
+</section>
+<a id="s4"></a><section><h2>Stage 4 · Shockwave pass rate</h2><div class="stage-sub">LWR backward-propagation check; mode indicates whether Stage 4 ran with per-day onsets or fallback midpoints.</div>
+<table><thead><tr><th></th><th>Weekday</th><th>Weekend</th></tr></thead><tbody><tr><td>Pass rate</td><td>20%</td><td>20%</td></tr><tr><td>Stage 4 mode</td><td><code>per-day onsets</code></td><td><code>per-day onsets</code></td></tr></tbody></table>
+</section>
+<a id="s5"></a><section><h2>Stage 5 · Systemic vs Point rules</h2><div class="stage-sub">Both slices evaluated against the same two thresholds (v2 simultaneity 80%, v2.1 contiguous-length 60%).</div>
+<table><thead><tr><th>Rule</th><th>WD peak</th><th>WE peak</th><th>Threshold</th><th>WD fire?</th><th>WE fire?</th></tr></thead><tbody><tr><td>v2 simultaneous CONG/SEVR</td><td>33%</td><td>33%</td><td>80%</td><td>❌</td><td>❌</td></tr><tr><td>v2.1 R5 contiguous length</td><td>15%</td><td>15%</td><td>60%</td><td>❌</td><td>❌</td></tr></tbody></table>
+</section>
+<a id="s6"></a><section><h2>Stage 6 · Recurrence bands on bottleneck segments</h2><div class="stage-sub">For every segment that fires as ACTIVE_BOTTLENECK or HEAD_BOTTLENECK in either slice, showing its recurrence band on each. Shift arrows indicate band movement (RARE → OCCASIONAL → FREQUENT → RECURRING).</div>
+<table><thead><tr><th>Seg</th><th>WD verdict</th><th>WD band</th><th>WE verdict</th><th>WE band</th><th>Shift</th></tr></thead><tbody><tr><td><b>S01</b></td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td>RECURRING (30/30)</td><td><span class='verdict verdict-head_bottleneck'>HEAD_BOTTLENECK</span></td><td>RECURRING (18/18)</td><td></td></tr><tr><td><b>S02</b></td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td>RECURRING (30/30)</td><td><span class='verdict verdict-active_bottleneck'>ACTIVE_BOTTLENECK</span></td><td>RECURRING (18/18)</td><td></td></tr></tbody></table>
+</section>
+<a id="links"></a><section><h2>Per-slice full dry-runs</h2><ul><li><a href="PUNE_A_dry_run.html">PUNE_A_dry_run.html</a> (weekday, with heatstrips, Stage 1/R7/R8 detail)</li><li><a href="PUNE_A_weekend_dry_run.html">PUNE_A_weekend_dry_run.html</a> (weekend, same shape)</li></ul></section>
+<footer style="font-size:12px; color:var(--muted); text-align:center; margin:30px 0 0;">Generated from <code>runs/v2_1/v2_1_validation_structured.json</code> + <code>runs/v2_1/v2_1_validation_weekend_structured.json</code>. Pure local diff — no DB access.</footer>
+</main></div></body></html>
