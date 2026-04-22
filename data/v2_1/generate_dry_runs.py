@@ -15,19 +15,32 @@ moments, one-paragraph summary, Stage 4 lag story) are computed from the
 structured output at render time.
 """
 from __future__ import annotations
-import json, os, sys, html as _html
+import argparse, json, os, sys, html as _html
 
 HERE         = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(HERE, os.pardir, os.pardir))
 DATA_DIR     = os.path.abspath(os.path.join(PROJECT_ROOT, "data"))
 OUT_DIR      = os.path.join(PROJECT_ROOT, "docs", "dry_runs")
-
-STRUCTURED_PATH = os.path.join(PROJECT_ROOT, "runs", "v2_1", "v2_1_validation_structured.json")
 CORRIDORS_PATH  = os.path.join(HERE, "validation_corridors.json")
-PROFILES_PATH   = os.path.join(HERE, "profiles", "all_profiles.json")
 
 sys.path.insert(0, DATA_DIR)
 import corridor_diagnostics_v2 as v2  # noqa: E402
+
+
+def resolve_slice_paths(slice_: str) -> tuple[str, str]:
+    """Return (structured_path, profiles_path) for this slice, with legacy fallback."""
+    structured_suffixed = os.path.join(PROJECT_ROOT, "runs", "v2_1", f"v2_1_validation_{slice_}_structured.json")
+    structured_legacy   = os.path.join(PROJECT_ROOT, "runs", "v2_1", "v2_1_validation_structured.json")
+    profiles_suffixed   = os.path.join(HERE, "profiles", f"all_profiles_{slice_}.json")
+    profiles_legacy     = os.path.join(HERE, "profiles", "all_profiles.json")
+    structured = structured_suffixed if os.path.isfile(structured_suffixed) else (
+        structured_legacy if slice_ == "weekday" and os.path.isfile(structured_legacy) else None)
+    profiles = profiles_suffixed if os.path.isfile(profiles_suffixed) else (
+        profiles_legacy if slice_ == "weekday" and os.path.isfile(profiles_legacy) else None)
+    if not structured or not profiles:
+        raise FileNotFoundError(f"missing input files for slice={slice_}: "
+                                f"structured={structured_suffixed}, profiles={profiles_suffixed}")
+    return structured, profiles
 
 # ---- constants ----
 REG_CHAR = {"FREE": "F", "APPROACHING": "A", "CONGESTED": "C", "SEVERE": "S"}
@@ -883,10 +896,21 @@ def render_one(cid: str, cor_meta: dict, structured_one: dict, profiles: dict) -
 
 
 def main():
-    structured = json.load(open(STRUCTURED_PATH))
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--slice", default="weekday", choices=["weekday", "weekend"])
+    ap.add_argument("--legacy-names", action="store_true",
+                    help="for slice=weekday, write un-suffixed output filenames")
+    args = ap.parse_args()
+
+    structured_path, profiles_path = resolve_slice_paths(args.slice)
+    structured = json.load(open(structured_path))
     corridors  = json.load(open(CORRIDORS_PATH))
-    profiles_raw = json.load(open(PROFILES_PATH))
+    profiles_raw = json.load(open(profiles_path))
     profiles   = {rid: {int(k): v for k, v in prof.items()} for rid, prof in profiles_raw.items()}
+
+    print(f"slice={args.slice}")
+    print(f"  structured: {structured_path}")
+    print(f"  profiles:   {profiles_path}")
 
     os.makedirs(OUT_DIR, exist_ok=True)
     wrote = []
@@ -895,7 +919,11 @@ def main():
             print(f"skip {cid}: no chain in validation_corridors.json")
             continue
         html_out = render_one(cid, corridors[cid], structured[cid], profiles)
-        path = os.path.join(OUT_DIR, f"{cid}_dry_run.html")
+        if args.legacy_names and args.slice == "weekday":
+            filename = f"{cid}_dry_run.html"
+        else:
+            filename = f"{cid}_{args.slice}_dry_run.html"
+        path = os.path.join(OUT_DIR, filename)
         with open(path, "w") as f:
             f.write(html_out)
         wrote.append(path)

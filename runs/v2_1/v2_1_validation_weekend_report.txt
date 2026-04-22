@@ -1,0 +1,462 @@
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway)
+id: PUNE_A
+==========================================================================================
+Segments: 6    Corridor length: 7.12 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01      494m     56s   31.8 kmph     1.0x 0.24  Pune/Fakri Hill Chowk To  Lullanagar Chowk
+S02      551m     60s   33.1 kmph     1.0x 0.43  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+S03      314m     32s   35.3 kmph     0.9x 0.60  Pune/Command Hospital To Cross Road junction
+S04     1578m    152s   37.4 kmph     0.9x 0.61  Pune/Cross Road junction To Golibar Maidan Chowk
+S05      734m     89s   29.7 kmph     1.1x 0.84  Pune/Khadi Machine Chowk To Pisoli Junction
+S06     3451m    382s   32.5 kmph     1.0x 0.67  Pune/Pisoli Junction To Mohmmadwadi Junction
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   27.6%   39.7%   29.4%    3.2%   Pune/Fakri Hill Chowk To  Lullanagar Chowk
+S02   29.6%   56.5%   13.9%    0.0%   Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+S03   38.2%   61.8%    0.0%    0.0%   Pune/Command Hospital To Cross Road junction
+S04   38.2%   61.8%    0.0%    0.0%   Pune/Cross Road junction To Golibar Maidan Chowk
+S05  100.0%    0.0%    0.0%    0.0%   Pune/Khadi Machine Chowk To Pisoli Junction
+S06   58.5%   41.5%    0.0%    0.0%   Pune/Pisoli Junction To Mohmmadwadi Junction
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  (no corridor-level congestion window — quiet or fragmented)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S02  ACTIVE   12:24–13:12, 13:42–16:14   conf=HIGH(0.88)   [Pune/Jyoti Hotel Chowk to Lullanagar Chowk]
+  S01  HEAD     05:56–07:54, 11:06–12:24, 13:12–13:42, 16:14–16:58   conf=HIGH(0.75)   [Pune/Fakri Hill Chowk To  Lullanagar Chowk]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  OK S01→S02   observed_lag=+1.0m  expected=1.4-2.6m  dist=522m  (n=5d)
+  !! S02→S03   observed_lag=-22.5m  expected=1.2-2.2m  dist=432m  (n=2d)
+  !! S03→S04   observed_lag=-48.0m  expected=2.6-4.7m  dist=946m  (n=1d)
+  !! S04→S05   observed_lag=+46.0m  expected=3.2-5.8m  dist=1156m  (n=1d)
+  !! S05→S06   observed_lag=+28.0m  expected=5.7-10.5m  dist=2092m  (n=2d)
+  shockwave pass rate: 20%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 2/6 (33%)  threshold=80%
+  contig-length (v2.1 R5): max=15%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 18 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01★ HEAD_BOTTLENECK     RECURRING    18/18   100%  Pune/Fakri Hill Chowk To  Lullanagar Chowk
+  S02★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+  S03  FREE_FLOW           RECURRING    17/18    94%  Pune/Command Hospital To Cross Road junction
+  S04  FREE_FLOW           FREQUENT      9/18    50%  Pune/Cross Road junction To Golibar Maidan Chowk
+  S05  FREE_FLOW           FREQUENT      9/18    50%  Pune/Khadi Machine Chowk To Pisoli Junction
+  S06  FREE_FLOW           FREQUENT     11/18    61%  Pune/Pisoli Junction To Mohmmadwadi Junction
+  ★ bottleneck recurrence summary:
+      S01  HEAD_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  HEAD_BOTTLENECK     conf=HIGH   (0.75)  Pune/Fakri Hill Chowk To  Lullanagar Chowk
+  S02  ACTIVE_BOTTLENECK   conf=HIGH   (0.88)  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+  S03  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Command Hospital To Cross Road junction
+  S04  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Cross Road junction To Golibar Maidan Chowk
+  S05  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Khadi Machine Chowk To Pisoli Junction
+  S06  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Pisoli Junction To Mohmmadwadi Junction
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  New Katraj Bogda to Bavdhan (Western expressway feeder)
+id: PUNE_B
+==========================================================================================
+Segments: 9    Corridor length: 15.93 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01     1714m    133s   46.4 kmph     1.1x 0.73  Pune/New Katraj Bogda To Dari Pull
+S02     1572m    116s   48.8 kmph     1.0x 0.80  Pune/Dari Pull To Swami Narayan Mandir
+S03     2510m    220s   41.1 kmph     1.2x 0.81  Pune/Swami Narayan Mandir To Navle Bridge
+S04     1013m     88s   41.4 kmph     1.2x 0.31  Pune/Navle Bridge To Wadgaon Pull
+S05     1274m    100s   45.9 kmph     1.1x 0.24  Pune/Wadgaon Pull To Mutha Nadi Pull
+S06      775m     54s   51.7 kmph     0.9x 0.76  Pune/Mutha Nadi Pull To Warje
+S07     2489m    168s   53.3 kmph     0.9x 0.79  Pune/Warje To Dukkarkhind Warje
+S08     2208m    140s   56.8 kmph     0.9x 0.82  Pune/Dukkarkhind Warje  To Chandni Chowk
+S09     2370m    141s   60.5 kmph     0.8x 0.76  Pune/Chandni Chowk To Bavdhan
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   49.9%   50.1%    0.0%    0.0%   Pune/New Katraj Bogda To Dari Pull
+S02   95.7%    4.3%    0.0%    0.0%   Pune/Dari Pull To Swami Narayan Mandir
+S03  100.0%    0.0%    0.0%    0.0%   Pune/Swami Narayan Mandir To Navle Bridge
+S04   62.8%   28.1%    9.2%    0.0%   Pune/Navle Bridge To Wadgaon Pull
+S05   50.7%   14.3%   21.2%   13.8%   Pune/Wadgaon Pull To Mutha Nadi Pull
+S06   52.6%   47.4%    0.0%    0.0%   Pune/Mutha Nadi Pull To Warje
+S07   96.9%    3.1%    0.0%    0.0%   Pune/Warje To Dukkarkhind Warje
+S08  100.0%    0.0%    0.0%    0.0%   Pune/Dukkarkhind Warje  To Chandni Chowk
+S09   73.5%   26.5%    0.0%    0.0%   Pune/Chandni Chowk To Bavdhan
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  (no corridor-level congestion window — quiet or fragmented)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S05  ACTIVE   12:06–14:18   conf=MEDIUM(0.50)   [Pune/Wadgaon Pull To Mutha Nadi Pull]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  OK S01→S02   observed_lag=+2.0m  expected=4.5-8.2m  dist=1643m  (n=1d)
+  S02→S03   skipped (no paired onsets)
+  S03→S04   skipped (no paired onsets)
+  !! S04→S05   observed_lag=+18.0m  expected=3.1-5.7m  dist=1144m  (n=9d)
+  S05→S06   skipped (no paired onsets)
+  S06→S07   skipped (no paired onsets)
+  S07→S08   skipped (no paired onsets)
+  !! S08→S09   observed_lag=-42.0m  expected=6.2-11.4m  dist=2289m  (n=1d)
+  shockwave pass rate: 33%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 2/9 (22%)  threshold=80%
+  contig-length (v2.1 R5): max=14%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 18 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           OCCASIONAL    8/18    44%  Pune/New Katraj Bogda To Dari Pull
+  S02  FREE_FLOW           RARE          3/18    17%  Pune/Dari Pull To Swami Narayan Mandir
+  S03  FREE_FLOW           OCCASIONAL    8/18    44%  Pune/Swami Narayan Mandir To Navle Bridge
+  S04  FREE_FLOW           RECURRING    18/18   100%  Pune/Navle Bridge To Wadgaon Pull
+  S05★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Pune/Wadgaon Pull To Mutha Nadi Pull
+  S06  FREE_FLOW           RARE          2/18    11%  Pune/Mutha Nadi Pull To Warje
+  S07  FREE_FLOW           RARE          4/18    22%  Pune/Warje To Dukkarkhind Warje
+  S08  FREE_FLOW           OCCASIONAL    6/18    33%  Pune/Dukkarkhind Warje  To Chandni Chowk
+  S09  FREE_FLOW           OCCASIONAL    5/18    28%  Pune/Chandni Chowk To Bavdhan
+  ★ bottleneck recurrence summary:
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  FREE_FLOW           conf=HIGH   (0.93)  Pune/New Katraj Bogda To Dari Pull
+  S02  FREE_FLOW           conf=HIGH   (0.82)  Pune/Dari Pull To Swami Narayan Mandir
+  S03  FREE_FLOW           conf=HIGH   (0.80)  Pune/Swami Narayan Mandir To Navle Bridge
+  S04  FREE_FLOW           conf=MEDIUM (0.68)  Pune/Navle Bridge To Wadgaon Pull
+  S05  ACTIVE_BOTTLENECK   conf=MEDIUM (0.50)  Pune/Wadgaon Pull To Mutha Nadi Pull
+  S06  FREE_FLOW           conf=MEDIUM (0.65)  Pune/Mutha Nadi Pull To Warje
+  S07  FREE_FLOW           conf=HIGH   (0.75)  Pune/Warje To Dukkarkhind Warje
+  S08  FREE_FLOW           conf=MEDIUM (0.68)  Pune/Dukkarkhind Warje  To Chandni Chowk
+  S09  FREE_FLOW           conf=MEDIUM (0.68)  Pune/Chandni Chowk To Bavdhan
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  Balewadi to Vidyapeeth Gate (NW arterial)
+id: PUNE_C
+==========================================================================================
+Segments: 8    Corridor length: 10.66 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01     2389m    136s   63.2 kmph     0.8x 0.70  Pune/Balewadi To Sus
+S02      981m     64s   55.2 kmph     0.9x 0.73  Pune/Sus To Pashan
+S03     1217m     96s   45.6 kmph     1.1x 0.57  Pune/Sus Bridge To Sai Chowk
+S04      527m     41s   46.3 kmph     1.0x 0.36  Pune/Sai Chowk To Balaji Chowk
+S05     1116m    100s   40.2 kmph     1.2x 0.49  Pune/Balaji Chowk To Pashan Circle
+S06      686m     50s   49.4 kmph     1.0x 0.64  Pune/Pashan Circle To NRDE Pashan
+S07      717m     52s   49.6 kmph     1.0x 0.65  Pune/NRDE Pashan To Panchwati
+S08     3027m    301s   36.2 kmph     1.3x 0.64  Pune/Panchwati To Vidhyapeeth Gate
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   66.0%   34.0%    0.0%    0.0%   Pune/Balewadi To Sus
+S02   74.3%   25.7%    0.0%    0.0%   Pune/Sus To Pashan
+S03   39.2%   60.8%    0.0%    0.0%   Pune/Sus Bridge To Sai Chowk
+S04   34.9%   33.9%   31.2%    0.0%   Pune/Sai Chowk To Balaji Chowk
+S05   36.0%   59.7%    4.3%    0.0%   Pune/Balaji Chowk To Pashan Circle
+S06   40.6%   59.4%    0.0%    0.0%   Pune/Pashan Circle To NRDE Pashan
+S07   38.8%   61.2%    0.0%    0.0%   Pune/NRDE Pashan To Panchwati
+S08   42.5%   57.5%    0.0%    0.0%   Pune/Panchwati To Vidhyapeeth Gate
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  (no corridor-level congestion window — quiet or fragmented)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S05  ACTIVE   13:08–14:10   conf=HIGH(0.75)   [Pune/Balaji Chowk To Pashan Circle]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  OK S01→S02   observed_lag=+2.0m  expected=4.6-8.4m  dist=1685m  (n=4d)
+  !! S02→S03   observed_lag=+11.0m  expected=3.0-5.5m  dist=1099m  (n=3d)
+  S03→S04   skipped (no paired onsets)
+  !! S04→S05   observed_lag=-53.0m  expected=2.2-4.1m  dist=822m  (n=1d)
+  S05→S06   skipped (no paired onsets)
+  S06→S07   skipped (no paired onsets)
+  S07→S08   skipped (no paired onsets)
+  shockwave pass rate: 33%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 2/8 (25%)  threshold=80%
+  contig-length (v2.1 R5): max=15%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 18 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           FREQUENT      9/18    50%  Pune/Balewadi To Sus
+  S02  FREE_FLOW           OCCASIONAL    6/18    33%  Pune/Sus To Pashan
+  S03  FREE_FLOW           FREQUENT      9/18    50%  Pune/Sus Bridge To Sai Chowk
+  S04  FREE_FLOW           RECURRING    18/18   100%  Pune/Sai Chowk To Balaji Chowk
+  S05★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Pune/Balaji Chowk To Pashan Circle
+  S06  FREE_FLOW           RARE          1/18     6%  Pune/Pashan Circle To NRDE Pashan
+  S07  FREE_FLOW           NEVER         0/18     0%  Pune/NRDE Pashan To Panchwati
+  S08  FREE_FLOW           OCCASIONAL    5/18    28%  Pune/Panchwati To Vidhyapeeth Gate
+  ★ bottleneck recurrence summary:
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  FREE_FLOW           conf=HIGH   (0.85)  Pune/Balewadi To Sus
+  S02  FREE_FLOW           conf=MEDIUM (0.72)  Pune/Sus To Pashan
+  S03  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Sus Bridge To Sai Chowk
+  S04  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Sai Chowk To Balaji Chowk
+  S05  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Pune/Balaji Chowk To Pashan Circle
+  S06  FREE_FLOW           conf=MEDIUM (0.53)  Pune/Pashan Circle To NRDE Pashan
+  S07  FREE_FLOW           conf=LOW    (0.47)  Pune/NRDE Pashan To Panchwati
+  S08  FREE_FLOW           conf=MEDIUM (0.72)  Pune/Panchwati To Vidhyapeeth Gate
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  APC Rd to B T Road (North Kolkata arterial)
+id: KOL_A
+==========================================================================================
+Segments: 7    Corridor length: 4.95 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01     1142m    138s   29.8 kmph     0.9x 0.61  Kolkata/A P C RD (E1-E7)
+S02      638m     68s   33.8 kmph     0.8x 0.45  Kolkata/A P C RD (E7-E10)
+S03      943m    131s   25.9 kmph     1.0x 0.44  Kolkata/A P C RD (L3-L17)
+S04      959m    159s   21.7 kmph     1.2x 0.35  Kolkata/A P C RD (L17-L-58)
+S05      285m     35s   29.3 kmph     0.9x 0.71  Kolkata/A P C RD (L58-L56)
+S06      551m    103s   19.3 kmph     1.3x 0.43  Kolkata/RAJA DINENDRA ST (L56-C8)
+S07      431m     68s   22.8 kmph     1.1x 0.41  Kolkata/B T ROAD (C8-C21)
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   25.0%   75.0%    0.0%    0.0%   Kolkata/A P C RD (E1-E7)
+S02   25.0%   67.2%    7.8%    0.0%   Kolkata/A P C RD (E7-E10)
+S03   29.4%   61.9%    8.6%    0.0%   Kolkata/A P C RD (L3-L17)
+S04   29.7%   60.4%    9.7%    0.1%   Kolkata/A P C RD (L17-L-58)
+S05   71.7%   28.3%    0.0%    0.0%   Kolkata/A P C RD (L58-L56)
+S06   24.4%   53.5%   22.1%    0.0%   Kolkata/RAJA DINENDRA ST (L56-C8)
+S07   19.9%   24.4%   55.7%    0.0%   Kolkata/B T ROAD (C8-C21)
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  02:38 – 03:50   (duration 72 min)
+  13:10 – 15:14   (duration 124 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S03  ACTIVE   13:22–14:08, 14:48–15:14   conf=HIGH(0.75)   [Kolkata/A P C RD (L3-L17)]
+  S04  ACTIVE   14:08–14:24   conf=HIGH(0.75)   [Kolkata/A P C RD (L17-L-58)]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  !! S01→S02   observed_lag=+21.0m  expected=2.4-4.5m  dist=890m  (n=1d)
+  !! S02→S03   observed_lag=+17.5m  expected=2.2-4.0m  dist=790m  (n=6d)
+  S03→S04   skipped (no paired onsets)
+  !! S04→S05   observed_lag=-18.0m  expected=1.7-3.1m  dist=622m  (n=9d)
+  S05→S06   skipped (no paired onsets)
+  !! S06→S07   observed_lag=-52.5m  expected=1.3-2.5m  dist=491m  (n=2d)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 5/7 (71%)  threshold=80%
+  contig-length (v2.1 R5): max=51%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 18 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           FREQUENT     10/18    56%  Kolkata/A P C RD (E1-E7)
+  S02  QUEUE_VICTIM        FREQUENT     13/18    72%  Kolkata/A P C RD (E7-E10)
+  S03★ ACTIVE_BOTTLENECK   FREQUENT     12/18    67%  Kolkata/A P C RD (L3-L17)
+  S04★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/A P C RD (L17-L-58)
+  S05  FREE_FLOW           RECURRING    18/18   100%  Kolkata/A P C RD (L58-L56)
+  S06  QUEUE_VICTIM        RECURRING    18/18   100%  Kolkata/RAJA DINENDRA ST (L56-C8)
+  S07  SLOW_LINK           RECURRING    17/18    94%  Kolkata/B T ROAD (C8-C21)
+  ★ bottleneck recurrence summary:
+      S03  ACTIVE_BOTTLENECK  →  FREQUENT (12/18 days, 67%)
+      S04  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/A P C RD (E1-E7)
+  S02  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/A P C RD (E7-E10)
+  S03  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A P C RD (L3-L17)
+  S04  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A P C RD (L17-L-58)
+  S05  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/A P C RD (L58-L56)
+  S06  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/RAJA DINENDRA ST (L56-C8)
+  S07  SLOW_LINK           conf=MEDIUM (0.60)  Kolkata/B T ROAD (C8-C21)
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  JLN Rd to SPM Rd to DPS Rd (S-N central)
+id: KOL_B
+==========================================================================================
+Segments: 7    Corridor length: 7.98 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01     1118m    173s   23.3 kmph     1.4x 0.38  Kolkata/J L NEHRU RD (A1-F9)
+S02     1507m    188s   28.9 kmph     1.1x 0.25  Kolkata/J L NEHRU RD(F9-F13)
+S03      926m    100s   33.3 kmph     0.9x 0.44  Kolkata/A T M RD(F13-I6)
+S04     1071m    120s   32.1 kmph     1.0x 0.57  Kolkata/S P MUKHERJEE RD (I6-I8)
+S05      734m    106s   24.9 kmph     1.3x 0.44  Kolkata/S P MUKHERJEE RD(I8 - N5)
+S06     1708m    194s   31.7 kmph     1.0x 0.55  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+S07      917m     98s   33.7 kmph     0.9x 0.55  Kolkata/D P S RD(S1 - S35)
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   30.0%   44.9%   25.1%    0.0%   Kolkata/J L NEHRU RD (A1-F9)
+S02   37.2%   35.6%   24.4%    2.8%   Kolkata/J L NEHRU RD(F9-F13)
+S03   25.8%   58.1%   16.1%    0.0%   Kolkata/A T M RD(F13-I6)
+S04   31.1%   68.9%    0.0%    0.0%   Kolkata/S P MUKHERJEE RD (I6-I8)
+S05   24.9%   61.2%   13.9%    0.0%   Kolkata/S P MUKHERJEE RD(I8 - N5)
+S06   29.3%   70.7%    0.0%    0.0%   Kolkata/S P MUKHERJEE RD( N5 - S1 )
+S07   29.2%   70.8%    0.0%    0.0%   Kolkata/D P S RD(S1 - S35)
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  09:50 – 15:04   (duration 314 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S02  ACTIVE   09:56–11:48, 12:12–12:22, 12:40–12:52, 14:26–15:04   conf=HIGH(0.75)   [Kolkata/J L NEHRU RD(F9-F13)]
+  S03  ACTIVE   12:52–14:02   conf=HIGH(0.75)   [Kolkata/A T M RD(F13-I6)]
+  S01  HEAD     11:48–12:12, 12:22–12:40, 14:08–14:26, 15:04–15:54   conf=MEDIUM(0.64)   [Kolkata/J L NEHRU RD (A1-F9)]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  !! S01→S02   observed_lag=-20.0m  expected=3.6-6.6m  dist=1312m  (n=9d)
+  !! S02→S03   observed_lag=+21.0m  expected=3.3-6.1m  dist=1216m  (n=3d)
+  !! S03→S04   observed_lag=-3.0m  expected=2.7-5.0m  dist=998m  (n=1d)
+  S04→S05   skipped (no paired onsets)
+  S05→S06   skipped (no paired onsets)
+  !! S06→S07   observed_lag=-26.0m  expected=3.6-6.6m  dist=1312m  (n=3d)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 4/7 (57%)  threshold=80%
+  contig-length (v2.1 R5): max=44%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 18 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01★ HEAD_BOTTLENECK     RECURRING    18/18   100%  Kolkata/J L NEHRU RD (A1-F9)
+  S02★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/J L NEHRU RD(F9-F13)
+  S03★ ACTIVE_BOTTLENECK   RECURRING    15/18    83%  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           RARE          4/18    22%  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S05  FREE_FLOW           OCCASIONAL    6/18    33%  Kolkata/S P MUKHERJEE RD(I8 - N5)
+  S06  FREE_FLOW           RARE          4/18    22%  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S07  FREE_FLOW           OCCASIONAL    8/18    44%  Kolkata/D P S RD(S1 - S35)
+  ★ bottleneck recurrence summary:
+      S01  HEAD_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S03  ACTIVE_BOTTLENECK  →  RECURRING (15/18 days, 83%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  HEAD_BOTTLENECK     conf=MEDIUM (0.64)  Kolkata/J L NEHRU RD (A1-F9)
+  S02  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/J L NEHRU RD(F9-F13)
+  S03  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           conf=MEDIUM (0.55)  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S05  FREE_FLOW           conf=MEDIUM (0.72)  Kolkata/S P MUKHERJEE RD(I8 - N5)
+  S06  FREE_FLOW           conf=MEDIUM (0.55)  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S07  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/D P S RD(S1 - S35)
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  KK Tagore to Vivekananda to EM Bypass
+id: KOL_C
+==========================================================================================
+Segments: 11    Corridor length: 10.24 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01      662m     76s   31.4 kmph     1.1x 0.45  Kolkata/K K TAGORE ST (B17-D29)
+S02      441m     62s   25.6 kmph     1.3x 0.43  Kolkata/VIVEKANANDA RD (D29-D9)
+S03      481m     52s   33.3 kmph     1.0x 0.42  Kolkata/VIVEKANANDA RD (D9-L14)
+S04      738m     79s   33.6 kmph     1.0x 0.29  Kolkata/VIVEKANADA RD (L14-L17)
+S05      527m     73s   26.0 kmph     1.3x 0.40  Kolkata/VIVEKANANDA RD (L17-L21)
+S06     1186m    136s   31.4 kmph     1.1x 0.53  Kolkata/MANICKTALA MAIN RD (L21-L27)
+S07     1073m    174s   22.2 kmph     1.5x 0.37  Kolkata/MANICKTALA MAIN RD (L27-L29)
+S08     1119m     98s   41.1 kmph     0.8x 0.39  Kolkata/E M BY PASS (L29-L7)
+S09     1620m    148s   39.4 kmph     0.8x 0.54  Kolkata/E M BAY PASS (M7-M4)
+S10     1232m     96s   46.2 kmph     0.7x 0.58  Kolkata/E M BY PASS (M4-M2B)
+S11     1160m    110s   38.0 kmph     0.9x 0.76  Kolkata/E M BY PASS (M2B-X1)
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   24.2%   66.9%    8.9%    0.0%   Kolkata/K K TAGORE ST (B17-D29)
+S02   26.2%   61.1%   12.6%    0.0%   Kolkata/VIVEKANANDA RD (D29-D9)
+S03   29.0%   59.2%   11.8%    0.0%   Kolkata/VIVEKANANDA RD (D9-L14)
+S04   27.9%   57.2%   13.6%    1.2%   Kolkata/VIVEKANADA RD (L14-L17)
+S05   21.8%   34.6%   43.6%    0.0%   Kolkata/VIVEKANANDA RD (L17-L21)
+S06   30.4%   69.6%    0.0%    0.0%   Kolkata/MANICKTALA MAIN RD (L21-L27)
+S07   35.8%   56.2%    7.9%    0.0%   Kolkata/MANICKTALA MAIN RD (L27-L29)
+S08   36.2%   46.1%   17.6%    0.0%   Kolkata/E M BY PASS (L29-L7)
+S09   34.9%   65.1%    0.0%    0.0%   Kolkata/E M BAY PASS (M7-M4)
+S10   44.9%   55.1%    0.0%    0.0%   Kolkata/E M BY PASS (M4-M2B)
+S11   52.5%   47.5%    0.0%    0.0%   Kolkata/E M BY PASS (M2B-X1)
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  11:44 – 15:04   (duration 200 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S05  ACTIVE   11:58–15:04   conf=HIGH(0.75)   [Kolkata/VIVEKANANDA RD (L17-L21)]
+  S08  ACTIVE   12:54–14:46   conf=HIGH(0.75)   [Kolkata/E M BY PASS (L29-L7)]
+  S01  HEAD     11:34–11:48, 12:46–13:08, 13:54–14:04, 14:18–14:42, 14:52–15:18   conf=HIGH(0.75)   [Kolkata/K K TAGORE ST (B17-D29)]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  !! S01→S02   observed_lag=-14.0m  expected=1.5-2.8m  dist=552m  (n=3d)
+  !! S02→S03   observed_lag=-17.5m  expected=1.3-2.3m  dist=461m  (n=8d)
+  !! S03→S04   observed_lag=-7.0m  expected=1.7-3.0m  dist=610m  (n=7d)
+  !! S04→S05   observed_lag=+22.0m  expected=1.7-3.2m  dist=632m  (n=7d)
+  !! S05→S06   observed_lag=-4.0m  expected=2.3-4.3m  dist=856m  (n=1d)
+  S06→S07   skipped (no paired onsets)
+  !! S07→S08   observed_lag=+13.5m  expected=3.0-5.5m  dist=1096m  (n=6d)
+  !! S08→S09   observed_lag=-7.5m  expected=3.7-6.8m  dist=1370m  (n=12d)
+  !! S09→S10   observed_lag=-12.0m  expected=3.9-7.1m  dist=1426m  (n=13d)
+  !! S10→S11   observed_lag=-22.5m  expected=3.3-6.0m  dist=1196m  (n=2d)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 7/11 (64%)  threshold=80%
+  contig-length (v2.1 R5): max=28%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 18 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01★ HEAD_BOTTLENECK     RECURRING    15/18    83%  Kolkata/K K TAGORE ST (B17-D29)
+  S02  QUEUE_VICTIM        RECURRING    14/18    78%  Kolkata/VIVEKANANDA RD (D29-D9)
+  S03  QUEUE_VICTIM        RECURRING    17/18    94%  Kolkata/VIVEKANANDA RD (D9-L14)
+  S04  QUEUE_VICTIM        RECURRING    15/18    83%  Kolkata/VIVEKANADA RD (L14-L17)
+  S05★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/VIVEKANANDA RD (L17-L21)
+  S06  FREE_FLOW           FREQUENT     12/18    67%  Kolkata/MANICKTALA MAIN RD (L21-L27)
+  S07  QUEUE_VICTIM        RECURRING    18/18   100%  Kolkata/MANICKTALA MAIN RD (L27-L29)
+  S08★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/E M BY PASS (L29-L7)
+  S09  FREE_FLOW           RECURRING    18/18   100%  Kolkata/E M BAY PASS (M7-M4)
+  S10  FREE_FLOW           RECURRING    18/18   100%  Kolkata/E M BY PASS (M4-M2B)
+  S11  FREE_FLOW           RARE          3/18    17%  Kolkata/E M BY PASS (M2B-X1)
+  ★ bottleneck recurrence summary:
+      S01  HEAD_BOTTLENECK  →  RECURRING (15/18 days, 83%)
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S08  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  HEAD_BOTTLENECK     conf=HIGH   (0.75)  Kolkata/K K TAGORE ST (B17-D29)
+  S02  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/VIVEKANANDA RD (D29-D9)
+  S03  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/VIVEKANANDA RD (D9-L14)
+  S04  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/VIVEKANADA RD (L14-L17)
+  S05  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/VIVEKANANDA RD (L17-L21)
+  S06  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/MANICKTALA MAIN RD (L21-L27)
+  S07  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/MANICKTALA MAIN RD (L27-L29)
+  S08  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/E M BY PASS (L29-L7)
+  S09  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/E M BAY PASS (M7-M4)
+  S10  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/E M BY PASS (M4-M2B)
+  S11  FREE_FLOW           conf=MEDIUM (0.50)  Kolkata/E M BY PASS (M2B-X1)

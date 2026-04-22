@@ -1,0 +1,3090 @@
+{
+  "PUNE_A": {
+    "corridor_id": "PUNE_A",
+    "corridor_name": "Fakri Hill Chowk to Mohmmadwadi Junction (SE arterial-to-highway)",
+    "n_segments": 6,
+    "total_length_m": 7122,
+    "freeflow": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "ff_tt": 56.0,
+        "raw_ff_sec": 56.0,
+        "clamped_ff_sec": 56.0,
+        "ff_speed_kmph": 31.8,
+        "quiet_windows": [
+          [
+            "22:22",
+            "22:52"
+          ],
+          [
+            "22:24",
+            "22:54"
+          ],
+          [
+            "22:26",
+            "22:56"
+          ]
+        ],
+        "warnings": []
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "ff_tt": 60.0,
+        "raw_ff_sec": 60.0,
+        "clamped_ff_sec": 60.0,
+        "ff_speed_kmph": 33.1,
+        "quiet_windows": [
+          [
+            "00:04",
+            "00:34"
+          ],
+          [
+            "00:06",
+            "00:36"
+          ],
+          [
+            "00:08",
+            "00:38"
+          ]
+        ],
+        "warnings": []
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "ff_tt": 32.0,
+        "raw_ff_sec": 32.0,
+        "clamped_ff_sec": 32.0,
+        "ff_speed_kmph": 35.3,
+        "quiet_windows": [
+          [
+            "00:00",
+            "00:30"
+          ],
+          [
+            "00:02",
+            "00:32"
+          ],
+          [
+            "00:04",
+            "00:34"
+          ]
+        ],
+        "warnings": []
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "ff_tt": 152.0,
+        "raw_ff_sec": 152.0,
+        "clamped_ff_sec": 152.0,
+        "ff_speed_kmph": 37.4,
+        "quiet_windows": [
+          [
+            "22:24",
+            "22:54"
+          ],
+          [
+            "22:26",
+            "22:56"
+          ],
+          [
+            "22:28",
+            "22:58"
+          ]
+        ],
+        "warnings": []
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "ff_tt": 89.0,
+        "raw_ff_sec": 89.0,
+        "clamped_ff_sec": 89.0,
+        "ff_speed_kmph": 29.7,
+        "quiet_windows": [
+          [
+            "01:42",
+            "02:12"
+          ],
+          [
+            "01:44",
+            "02:14"
+          ],
+          [
+            "01:46",
+            "02:16"
+          ]
+        ],
+        "warnings": []
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "ff_tt": 382.0,
+        "raw_ff_sec": 382.0,
+        "clamped_ff_sec": 382.0,
+        "ff_speed_kmph": 32.5,
+        "quiet_windows": [
+          [
+            "01:16",
+            "01:46"
+          ],
+          [
+            "01:18",
+            "01:48"
+          ],
+          [
+            "01:20",
+            "01:50"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "ff_speed_kmph": 31.8,
+        "corridor_median_speed": 32.8,
+        "peer_ratio": 1.03,
+        "quiet_busy_ratio": 0.239,
+        "baseline_saturated": false
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "ff_speed_kmph": 33.1,
+        "corridor_median_speed": 32.8,
+        "peer_ratio": 0.99,
+        "quiet_busy_ratio": 0.426,
+        "baseline_saturated": false
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "ff_speed_kmph": 35.3,
+        "corridor_median_speed": 32.8,
+        "peer_ratio": 0.93,
+        "quiet_busy_ratio": 0.604,
+        "baseline_saturated": false
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "ff_speed_kmph": 37.4,
+        "corridor_median_speed": 32.8,
+        "peer_ratio": 0.88,
+        "quiet_busy_ratio": 0.608,
+        "baseline_saturated": false
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "ff_speed_kmph": 29.7,
+        "corridor_median_speed": 32.8,
+        "peer_ratio": 1.1,
+        "quiet_busy_ratio": 0.84,
+        "baseline_saturated": false
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "ff_speed_kmph": 32.5,
+        "corridor_median_speed": 32.8,
+        "peer_ratio": 1.01,
+        "quiet_busy_ratio": 0.674,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [],
+    "bertini": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": [],
+      "78759d67-cc66-4634-a058-7f158a957912": [
+        [
+          372,
+          395
+        ],
+        [
+          411,
+          486
+        ]
+      ],
+      "33c2fa56-a315-4587-8838-1872c3d469cf": [],
+      "7495fe06-2281-4957-a928-353948d5279b": [],
+      "337b792b-f217-413b-8bda-1377fe15847d": [],
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": []
+    },
+    "head_bottleneck": [
+      [
+        178,
+        236
+      ],
+      [
+        333,
+        371
+      ],
+      [
+        396,
+        410
+      ],
+      [
+        487,
+        508
+      ]
+    ],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 5,
+          "observed_lag_min": 1,
+          "expected_lag_range_min": [
+            1.4,
+            2.6
+          ],
+          "pass": true,
+          "dist_m": 522.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 2,
+          "observed_lag_min": -22.5,
+          "expected_lag_range_min": [
+            1.2,
+            2.2
+          ],
+          "pass": false,
+          "dist_m": 432.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 1,
+          "observed_lag_min": -48,
+          "expected_lag_range_min": [
+            2.6,
+            4.7
+          ],
+          "pass": false,
+          "dist_m": 946.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 1,
+          "observed_lag_min": 46,
+          "expected_lag_range_min": [
+            3.2,
+            5.8
+          ],
+          "pass": false,
+          "dist_m": 1156.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 2,
+          "observed_lag_min": 28.0,
+          "expected_lag_range_min": [
+            5.7,
+            10.5
+          ],
+          "pass": false,
+          "dist_m": 2092.0
+        }
+      ],
+      "pass_rate": 0.2,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 2,
+      "max_fraction": 0.33,
+      "threshold_segments": 5
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.147,
+      "systemic_by_contig": false,
+      "peak_bucket": 372,
+      "peak_segs": [
+        0,
+        1
+      ]
+    },
+    "recurrence": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "n_days": 17,
+        "total_days": 18,
+        "frac": 0.94,
+        "label": "RECURRING"
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "n_days": 9,
+        "total_days": 18,
+        "frac": 0.5,
+        "label": "FREQUENT"
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "n_days": 9,
+        "total_days": 18,
+        "frac": 0.5,
+        "label": "FREQUENT"
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "n_days": 11,
+        "total_days": 18,
+        "frac": 0.61,
+        "label": "FREQUENT"
+      }
+    },
+    "confidence": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.0,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      },
+      "78759d67-cc66-4634-a058-7f158a957912": {
+        "score": 0.875,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "33c2fa56-a315-4587-8838-1872c3d469cf": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "7495fe06-2281-4957-a928-353948d5279b": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "337b792b-f217-413b-8bda-1377fe15847d": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "53b8c7b4-c353-488c-992e-04298c2671b3": "HEAD_BOTTLENECK",
+      "78759d67-cc66-4634-a058-7f158a957912": "ACTIVE_BOTTLENECK",
+      "33c2fa56-a315-4587-8838-1872c3d469cf": "FREE_FLOW",
+      "7495fe06-2281-4957-a928-353948d5279b": "FREE_FLOW",
+      "337b792b-f217-413b-8bda-1377fe15847d": "FREE_FLOW",
+      "a08d9521-9203-43a4-a98d-48a50d31fcfb": "FREE_FLOW"
+    }
+  },
+  "PUNE_B": {
+    "corridor_id": "PUNE_B",
+    "corridor_name": "New Katraj Bogda to Bavdhan (Western expressway feeder)",
+    "n_segments": 9,
+    "total_length_m": 15925,
+    "freeflow": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "ff_tt": 133.0,
+        "raw_ff_sec": 133.0,
+        "clamped_ff_sec": 133.0,
+        "ff_speed_kmph": 46.4,
+        "quiet_windows": [
+          [
+            "02:56",
+            "03:26"
+          ],
+          [
+            "02:58",
+            "03:28"
+          ],
+          [
+            "03:00",
+            "03:30"
+          ]
+        ],
+        "warnings": []
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "ff_tt": 116.0,
+        "raw_ff_sec": 116.0,
+        "clamped_ff_sec": 116.0,
+        "ff_speed_kmph": 48.8,
+        "quiet_windows": [
+          [
+            "03:18",
+            "03:48"
+          ],
+          [
+            "03:20",
+            "03:50"
+          ],
+          [
+            "03:22",
+            "03:52"
+          ]
+        ],
+        "warnings": []
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "ff_tt": 220.0,
+        "raw_ff_sec": 220.0,
+        "clamped_ff_sec": 220.0,
+        "ff_speed_kmph": 41.1,
+        "quiet_windows": [
+          [
+            "03:04",
+            "03:34"
+          ],
+          [
+            "03:06",
+            "03:36"
+          ],
+          [
+            "03:10",
+            "03:40"
+          ]
+        ],
+        "warnings": []
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "ff_tt": 88.0,
+        "raw_ff_sec": 88.0,
+        "clamped_ff_sec": 88.0,
+        "ff_speed_kmph": 41.4,
+        "quiet_windows": [
+          [
+            "01:28",
+            "01:58"
+          ],
+          [
+            "01:30",
+            "02:00"
+          ],
+          [
+            "01:32",
+            "02:02"
+          ]
+        ],
+        "warnings": []
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "ff_tt": 100.0,
+        "raw_ff_sec": 100.0,
+        "clamped_ff_sec": 100.0,
+        "ff_speed_kmph": 45.9,
+        "quiet_windows": [
+          [
+            "20:44",
+            "21:14"
+          ],
+          [
+            "20:46",
+            "21:16"
+          ],
+          [
+            "20:48",
+            "21:18"
+          ]
+        ],
+        "warnings": []
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "ff_tt": 54.0,
+        "raw_ff_sec": 54.0,
+        "clamped_ff_sec": 54.0,
+        "ff_speed_kmph": 51.7,
+        "quiet_windows": [
+          [
+            "01:42",
+            "02:12"
+          ],
+          [
+            "01:44",
+            "02:14"
+          ],
+          [
+            "01:46",
+            "02:16"
+          ]
+        ],
+        "warnings": []
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "ff_tt": 168.0,
+        "raw_ff_sec": 168.0,
+        "clamped_ff_sec": 168.0,
+        "ff_speed_kmph": 53.3,
+        "quiet_windows": [
+          [
+            "02:08",
+            "02:38"
+          ],
+          [
+            "02:10",
+            "02:40"
+          ],
+          [
+            "02:12",
+            "02:42"
+          ]
+        ],
+        "warnings": []
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "ff_tt": 140.0,
+        "raw_ff_sec": 140.0,
+        "clamped_ff_sec": 140.0,
+        "ff_speed_kmph": 56.8,
+        "quiet_windows": [
+          [
+            "01:54",
+            "02:24"
+          ],
+          [
+            "01:56",
+            "02:26"
+          ],
+          [
+            "01:58",
+            "02:28"
+          ]
+        ],
+        "warnings": []
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "ff_tt": 141.0,
+        "raw_ff_sec": 141.0,
+        "clamped_ff_sec": 141.0,
+        "ff_speed_kmph": 60.5,
+        "quiet_windows": [
+          [
+            "01:50",
+            "02:20"
+          ],
+          [
+            "01:52",
+            "02:22"
+          ],
+          [
+            "01:54",
+            "02:24"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "ff_speed_kmph": 46.4,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 1.05,
+        "quiet_busy_ratio": 0.732,
+        "baseline_saturated": false
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "ff_speed_kmph": 48.8,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.796,
+        "baseline_saturated": false
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "ff_speed_kmph": 41.1,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 1.19,
+        "quiet_busy_ratio": 0.812,
+        "baseline_saturated": false
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "ff_speed_kmph": 41.4,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 1.18,
+        "quiet_busy_ratio": 0.31,
+        "baseline_saturated": false
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "ff_speed_kmph": 45.9,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 1.06,
+        "quiet_busy_ratio": 0.244,
+        "baseline_saturated": false
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "ff_speed_kmph": 51.7,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 0.94,
+        "quiet_busy_ratio": 0.764,
+        "baseline_saturated": false
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "ff_speed_kmph": 53.3,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 0.92,
+        "quiet_busy_ratio": 0.785,
+        "baseline_saturated": false
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "ff_speed_kmph": 56.8,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 0.86,
+        "quiet_busy_ratio": 0.819,
+        "baseline_saturated": false
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "ff_speed_kmph": 60.5,
+        "corridor_median_speed": 48.8,
+        "peer_ratio": 0.81,
+        "quiet_busy_ratio": 0.758,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [],
+    "bertini": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": [],
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": [],
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": [],
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": [],
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": [
+        [
+          363,
+          428
+        ]
+      ],
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": [],
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": [],
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": [],
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 1,
+          "observed_lag_min": 2,
+          "expected_lag_range_min": [
+            4.5,
+            8.2
+          ],
+          "pass": true,
+          "dist_m": 1643.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 9,
+          "observed_lag_min": 18,
+          "expected_lag_range_min": [
+            3.1,
+            5.7
+          ],
+          "pass": false,
+          "dist_m": 1144.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            7,
+            8
+          ],
+          "n_days": 1,
+          "observed_lag_min": -42,
+          "expected_lag_range_min": [
+            6.2,
+            11.4
+          ],
+          "pass": false,
+          "dist_m": 2289.0
+        }
+      ],
+      "pass_rate": 0.3333333333333333,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 2,
+      "max_fraction": 0.22,
+      "threshold_segments": 8
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.144,
+      "systemic_by_contig": false,
+      "peak_bucket": 363,
+      "peak_segs": [
+        3,
+        4
+      ]
+    },
+    "recurrence": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "n_days": 8,
+        "total_days": 18,
+        "frac": 0.44,
+        "label": "OCCASIONAL"
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "n_days": 3,
+        "total_days": 18,
+        "frac": 0.17,
+        "label": "RARE"
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "n_days": 8,
+        "total_days": 18,
+        "frac": 0.44,
+        "label": "OCCASIONAL"
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "n_days": 2,
+        "total_days": 18,
+        "frac": 0.11,
+        "label": "RARE"
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "n_days": 4,
+        "total_days": 18,
+        "frac": 0.22,
+        "label": "RARE"
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "n_days": 6,
+        "total_days": 18,
+        "frac": 0.33,
+        "label": "OCCASIONAL"
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "n_days": 5,
+        "total_days": 18,
+        "frac": 0.28,
+        "label": "OCCASIONAL"
+      }
+    },
+    "confidence": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": {
+        "score": 0.925,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      },
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": {
+        "score": 0.825,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 0.6,
+          "shockwave_support": 1.0
+        }
+      },
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": {
+        "score": 0.8,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": {
+        "score": 0.5,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": {
+        "score": 0.65,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 0.4,
+          "shockwave_support": 0.5
+        }
+      },
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 0.8,
+          "shockwave_support": 0.5
+        }
+      },
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": {
+        "score": 0.675,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.7,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "41ee1523-56bf-45d5-b682-5ec53164d3ba": "FREE_FLOW",
+      "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea": "FREE_FLOW",
+      "d4aa2f2a-bd1e-48c0-a441-e92cd838042a": "FREE_FLOW",
+      "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6": "FREE_FLOW",
+      "0e668e68-2eb3-4dfa-9f30-b62888659dee": "ACTIVE_BOTTLENECK",
+      "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a": "FREE_FLOW",
+      "889abc53-d3ea-43b0-bc12-0b248ccea383": "FREE_FLOW",
+      "599072f7-4ccc-425c-933f-fa39dea96bd4": "FREE_FLOW",
+      "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272": "FREE_FLOW"
+    }
+  },
+  "PUNE_C": {
+    "corridor_id": "PUNE_C",
+    "corridor_name": "Balewadi to Vidyapeeth Gate (NW arterial)",
+    "n_segments": 8,
+    "total_length_m": 10660,
+    "freeflow": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "ff_tt": 136.0,
+        "raw_ff_sec": 136.0,
+        "clamped_ff_sec": 136.0,
+        "ff_speed_kmph": 63.2,
+        "quiet_windows": [
+          [
+            "21:08",
+            "21:38"
+          ],
+          [
+            "21:10",
+            "21:40"
+          ],
+          [
+            "21:12",
+            "21:42"
+          ]
+        ],
+        "warnings": []
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "ff_tt": 64.0,
+        "raw_ff_sec": 64.0,
+        "clamped_ff_sec": 64.0,
+        "ff_speed_kmph": 55.2,
+        "quiet_windows": [
+          [
+            "22:18",
+            "22:48"
+          ],
+          [
+            "22:26",
+            "22:56"
+          ],
+          [
+            "22:28",
+            "22:58"
+          ]
+        ],
+        "warnings": []
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "ff_tt": 96.0,
+        "raw_ff_sec": 96.0,
+        "clamped_ff_sec": 96.0,
+        "ff_speed_kmph": 45.6,
+        "quiet_windows": [
+          [
+            "22:20",
+            "22:50"
+          ],
+          [
+            "22:22",
+            "22:52"
+          ],
+          [
+            "22:24",
+            "22:54"
+          ]
+        ],
+        "warnings": []
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "ff_tt": 41.0,
+        "raw_ff_sec": 41.0,
+        "clamped_ff_sec": 41.0,
+        "ff_speed_kmph": 46.3,
+        "quiet_windows": [
+          [
+            "21:58",
+            "22:28"
+          ],
+          [
+            "22:00",
+            "22:30"
+          ],
+          [
+            "22:02",
+            "22:32"
+          ]
+        ],
+        "warnings": []
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "ff_tt": 100.0,
+        "raw_ff_sec": 100.0,
+        "clamped_ff_sec": 100.0,
+        "ff_speed_kmph": 40.2,
+        "quiet_windows": [
+          [
+            "21:54",
+            "22:24"
+          ],
+          [
+            "21:56",
+            "22:26"
+          ],
+          [
+            "21:58",
+            "22:28"
+          ]
+        ],
+        "warnings": []
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "ff_tt": 50.0,
+        "raw_ff_sec": 50.0,
+        "clamped_ff_sec": 50.0,
+        "ff_speed_kmph": 49.4,
+        "quiet_windows": [
+          [
+            "21:38",
+            "22:08"
+          ],
+          [
+            "21:40",
+            "22:10"
+          ],
+          [
+            "21:42",
+            "22:12"
+          ]
+        ],
+        "warnings": []
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "ff_tt": 52.0,
+        "raw_ff_sec": 52.0,
+        "clamped_ff_sec": 52.0,
+        "ff_speed_kmph": 49.6,
+        "quiet_windows": [
+          [
+            "21:42",
+            "22:12"
+          ],
+          [
+            "21:44",
+            "22:14"
+          ],
+          [
+            "21:46",
+            "22:16"
+          ]
+        ],
+        "warnings": []
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "ff_tt": 301.0,
+        "raw_ff_sec": 301.0,
+        "clamped_ff_sec": 301.0,
+        "ff_speed_kmph": 36.2,
+        "quiet_windows": [
+          [
+            "22:06",
+            "22:36"
+          ],
+          [
+            "22:08",
+            "22:38"
+          ],
+          [
+            "22:10",
+            "22:40"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "ff_speed_kmph": 63.2,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 0.76,
+        "quiet_busy_ratio": 0.705,
+        "baseline_saturated": false
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "ff_speed_kmph": 55.2,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 0.87,
+        "quiet_busy_ratio": 0.727,
+        "baseline_saturated": false
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "ff_speed_kmph": 45.6,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 1.05,
+        "quiet_busy_ratio": 0.568,
+        "baseline_saturated": false
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "ff_speed_kmph": 46.3,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 1.03,
+        "quiet_busy_ratio": 0.357,
+        "baseline_saturated": false
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "ff_speed_kmph": 40.2,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 1.19,
+        "quiet_busy_ratio": 0.488,
+        "baseline_saturated": false
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "ff_speed_kmph": 49.4,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 0.97,
+        "quiet_busy_ratio": 0.641,
+        "baseline_saturated": false
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "ff_speed_kmph": 49.6,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 0.96,
+        "quiet_busy_ratio": 0.65,
+        "baseline_saturated": false
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "ff_speed_kmph": 36.2,
+        "corridor_median_speed": 47.8,
+        "peer_ratio": 1.32,
+        "quiet_busy_ratio": 0.644,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [],
+    "bertini": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": [],
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": [],
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": [],
+      "142c6f39-913d-491e-98d9-0831783c212c": [],
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": [
+        [
+          394,
+          424
+        ]
+      ],
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": [],
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": [],
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 4,
+          "observed_lag_min": 2.0,
+          "expected_lag_range_min": [
+            4.6,
+            8.4
+          ],
+          "pass": true,
+          "dist_m": 1685.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 3,
+          "observed_lag_min": 11,
+          "expected_lag_range_min": [
+            3.0,
+            5.5
+          ],
+          "pass": false,
+          "dist_m": 1099.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 1,
+          "observed_lag_min": -53,
+          "expected_lag_range_min": [
+            2.2,
+            4.1
+          ],
+          "pass": false,
+          "dist_m": 822.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "skipped": "no paired onsets"
+        }
+      ],
+      "pass_rate": 0.3333333333333333,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 2,
+      "max_fraction": 0.25,
+      "threshold_segments": 7
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.154,
+      "systemic_by_contig": false,
+      "peak_bucket": 394,
+      "peak_segs": [
+        3,
+        4
+      ]
+    },
+    "recurrence": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "n_days": 9,
+        "total_days": 18,
+        "frac": 0.5,
+        "label": "FREQUENT"
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "n_days": 6,
+        "total_days": 18,
+        "frac": 0.33,
+        "label": "OCCASIONAL"
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "n_days": 9,
+        "total_days": 18,
+        "frac": 0.5,
+        "label": "FREQUENT"
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "n_days": 1,
+        "total_days": 18,
+        "frac": 0.06,
+        "label": "RARE"
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "n_days": 0,
+        "total_days": 18,
+        "frac": 0.0,
+        "label": "NEVER"
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "n_days": 5,
+        "total_days": 18,
+        "frac": 0.28,
+        "label": "OCCASIONAL"
+      }
+    },
+    "confidence": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": {
+        "score": 0.85,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      },
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "142c6f39-913d-491e-98d9-0831783c212c": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": {
+        "score": 0.525,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 0.2,
+          "shockwave_support": 0.5
+        }
+      },
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": {
+        "score": 0.475,
+        "label": "LOW",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 0.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      }
+    },
+    "verdicts": {
+      "c015b564-c6d1-4e9c-b646-9c035ca1cd50": "FREE_FLOW",
+      "df1f3813-757f-475a-bae4-8f14063f5e3a": "FREE_FLOW",
+      "fbedd51a-37c7-4cd8-bfd5-a30f58f1b24d": "FREE_FLOW",
+      "142c6f39-913d-491e-98d9-0831783c212c": "FREE_FLOW",
+      "e65bee0c-0c59-46a3-ac20-495f2914bf69": "ACTIVE_BOTTLENECK",
+      "60f9cfc9-2ae5-4b6b-aaaa-05ee01b858d3": "FREE_FLOW",
+      "bea75ee2-6089-4b0b-801c-5888a59ed073": "FREE_FLOW",
+      "6faa1b47-53c2-43ed-9f45-3bc367682a83": "FREE_FLOW"
+    }
+  },
+  "KOL_A": {
+    "corridor_id": "KOL_A",
+    "corridor_name": "APC Rd to B T Road (North Kolkata arterial)",
+    "n_segments": 7,
+    "total_length_m": 4949,
+    "freeflow": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "ff_tt": 138.0,
+        "raw_ff_sec": 138.0,
+        "clamped_ff_sec": 138.0,
+        "ff_speed_kmph": 29.8,
+        "quiet_windows": [
+          [
+            "21:30",
+            "22:00"
+          ],
+          [
+            "21:32",
+            "22:02"
+          ],
+          [
+            "21:34",
+            "22:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "ff_tt": 68.0,
+        "raw_ff_sec": 68.0,
+        "clamped_ff_sec": 68.0,
+        "ff_speed_kmph": 33.8,
+        "quiet_windows": [
+          [
+            "22:02",
+            "22:32"
+          ],
+          [
+            "22:04",
+            "22:34"
+          ],
+          [
+            "22:06",
+            "22:36"
+          ]
+        ],
+        "warnings": []
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "ff_tt": 131.0,
+        "raw_ff_sec": 131.0,
+        "clamped_ff_sec": 131.0,
+        "ff_speed_kmph": 25.9,
+        "quiet_windows": [
+          [
+            "22:04",
+            "22:34"
+          ],
+          [
+            "22:06",
+            "22:36"
+          ],
+          [
+            "22:08",
+            "22:38"
+          ]
+        ],
+        "warnings": []
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "ff_tt": 159.0,
+        "raw_ff_sec": 159.0,
+        "clamped_ff_sec": 159.0,
+        "ff_speed_kmph": 21.7,
+        "quiet_windows": [
+          [
+            "21:26",
+            "21:56"
+          ],
+          [
+            "21:28",
+            "21:58"
+          ],
+          [
+            "21:30",
+            "22:00"
+          ]
+        ],
+        "warnings": []
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "ff_tt": 35.0,
+        "raw_ff_sec": 35.0,
+        "clamped_ff_sec": 35.0,
+        "ff_speed_kmph": 29.3,
+        "quiet_windows": [
+          [
+            "22:02",
+            "22:32"
+          ],
+          [
+            "22:04",
+            "22:34"
+          ],
+          [
+            "22:06",
+            "22:36"
+          ]
+        ],
+        "warnings": []
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "ff_tt": 102.6,
+        "raw_ff_sec": 102.6,
+        "clamped_ff_sec": 102.6,
+        "ff_speed_kmph": 19.3,
+        "quiet_windows": [
+          [
+            "23:26",
+            "23:56"
+          ],
+          [
+            "23:28",
+            "23:58"
+          ],
+          [
+            "23:30",
+            "00:00+1"
+          ]
+        ],
+        "warnings": []
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "ff_tt": 68.0,
+        "raw_ff_sec": 68.0,
+        "clamped_ff_sec": 68.0,
+        "ff_speed_kmph": 22.8,
+        "quiet_windows": [
+          [
+            "22:12",
+            "22:42"
+          ],
+          [
+            "22:14",
+            "22:44"
+          ],
+          [
+            "21:56",
+            "22:26"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "ff_speed_kmph": 29.8,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 0.87,
+        "quiet_busy_ratio": 0.611,
+        "baseline_saturated": false
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "ff_speed_kmph": 33.8,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 0.77,
+        "quiet_busy_ratio": 0.453,
+        "baseline_saturated": false
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "ff_speed_kmph": 25.9,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.443,
+        "baseline_saturated": false
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "ff_speed_kmph": 21.7,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 1.19,
+        "quiet_busy_ratio": 0.354,
+        "baseline_saturated": false
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "ff_speed_kmph": 29.3,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 0.88,
+        "quiet_busy_ratio": 0.706,
+        "baseline_saturated": false
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "ff_speed_kmph": 19.3,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 1.34,
+        "quiet_busy_ratio": 0.43,
+        "baseline_saturated": false
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "ff_speed_kmph": 22.8,
+        "corridor_median_speed": 25.9,
+        "peer_ratio": 1.14,
+        "quiet_busy_ratio": 0.415,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        79,
+        114
+      ],
+      [
+        395,
+        456
+      ]
+    ],
+    "bertini": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": [],
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": [],
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": [
+        [
+          401,
+          423
+        ],
+        [
+          444,
+          456
+        ]
+      ],
+      "7ac19cde-3769-4244-bf32-a411841e68fe": [
+        [
+          424,
+          431
+        ]
+      ],
+      "f93b3dc2-25e1-466f-9249-6eb832995299": [],
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": [],
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 1,
+          "observed_lag_min": 21,
+          "expected_lag_range_min": [
+            2.4,
+            4.5
+          ],
+          "pass": false,
+          "dist_m": 890.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 6,
+          "observed_lag_min": 17.5,
+          "expected_lag_range_min": [
+            2.2,
+            4.0
+          ],
+          "pass": false,
+          "dist_m": 790.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 9,
+          "observed_lag_min": -18,
+          "expected_lag_range_min": [
+            1.7,
+            3.1
+          ],
+          "pass": false,
+          "dist_m": 622.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 2,
+          "observed_lag_min": -52.5,
+          "expected_lag_range_min": [
+            1.3,
+            2.5
+          ],
+          "pass": false,
+          "dist_m": 491.0
+        }
+      ],
+      "pass_rate": 0.0,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 5,
+      "max_fraction": 0.71,
+      "threshold_segments": 6
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.513,
+      "systemic_by_contig": false,
+      "peak_bucket": 424,
+      "peak_segs": [
+        1,
+        2,
+        3
+      ]
+    },
+    "recurrence": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "n_days": 10,
+        "total_days": 18,
+        "frac": 0.56,
+        "label": "FREQUENT"
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "n_days": 13,
+        "total_days": 18,
+        "frac": 0.72,
+        "label": "FREQUENT"
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "n_days": 12,
+        "total_days": 18,
+        "frac": 0.67,
+        "label": "FREQUENT"
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "n_days": 17,
+        "total_days": 18,
+        "frac": 0.94,
+        "label": "RECURRING"
+      }
+    },
+    "confidence": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "7ac19cde-3769-4244-bf32-a411841e68fe": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "f93b3dc2-25e1-466f-9249-6eb832995299": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": {
+        "score": 0.596,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 0.985,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "a4230c8e-88a6-45cc-8197-2857aa21043f": "FREE_FLOW",
+      "6b6192f3-86e6-4c8e-91e2-8e9ce4d07bfa": "QUEUE_VICTIM",
+      "4afeb63a-a0b6-4300-9888-01d53fb37c02": "ACTIVE_BOTTLENECK",
+      "7ac19cde-3769-4244-bf32-a411841e68fe": "ACTIVE_BOTTLENECK",
+      "f93b3dc2-25e1-466f-9249-6eb832995299": "FREE_FLOW",
+      "60d1e438-df9e-4f64-abe6-63f9c647e4cb": "QUEUE_VICTIM",
+      "827e7b0e-b36c-4cc0-8fcb-8783a3126efc": "SLOW_LINK"
+    }
+  },
+  "KOL_B": {
+    "corridor_id": "KOL_B",
+    "corridor_name": "JLN Rd to SPM Rd to DPS Rd (S-N central)",
+    "n_segments": 7,
+    "total_length_m": 7981,
+    "freeflow": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "ff_tt": 173.0,
+        "raw_ff_sec": 173.0,
+        "clamped_ff_sec": 173.0,
+        "ff_speed_kmph": 23.3,
+        "quiet_windows": [
+          [
+            "22:40",
+            "23:10"
+          ],
+          [
+            "22:42",
+            "23:12"
+          ],
+          [
+            "22:44",
+            "23:14"
+          ]
+        ],
+        "warnings": []
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "ff_tt": 188.0,
+        "raw_ff_sec": 188.0,
+        "clamped_ff_sec": 188.0,
+        "ff_speed_kmph": 28.9,
+        "quiet_windows": [
+          [
+            "23:02",
+            "23:32"
+          ],
+          [
+            "23:04",
+            "23:34"
+          ],
+          [
+            "23:06",
+            "23:36"
+          ]
+        ],
+        "warnings": []
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "ff_tt": 100.0,
+        "raw_ff_sec": 100.0,
+        "clamped_ff_sec": 100.0,
+        "ff_speed_kmph": 33.3,
+        "quiet_windows": [
+          [
+            "22:14",
+            "22:44"
+          ],
+          [
+            "22:16",
+            "22:46"
+          ],
+          [
+            "22:18",
+            "22:48"
+          ]
+        ],
+        "warnings": []
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "ff_tt": 120.0,
+        "raw_ff_sec": 120.0,
+        "clamped_ff_sec": 120.0,
+        "ff_speed_kmph": 32.1,
+        "quiet_windows": [
+          [
+            "22:10",
+            "22:40"
+          ],
+          [
+            "22:12",
+            "22:42"
+          ],
+          [
+            "22:14",
+            "22:44"
+          ]
+        ],
+        "warnings": []
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "ff_tt": 106.0,
+        "raw_ff_sec": 106.0,
+        "clamped_ff_sec": 106.0,
+        "ff_speed_kmph": 24.9,
+        "quiet_windows": [
+          [
+            "21:42",
+            "22:12"
+          ],
+          [
+            "21:44",
+            "22:14"
+          ],
+          [
+            "21:46",
+            "22:16"
+          ]
+        ],
+        "warnings": []
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "ff_tt": 194.0,
+        "raw_ff_sec": 194.0,
+        "clamped_ff_sec": 194.0,
+        "ff_speed_kmph": 31.7,
+        "quiet_windows": [
+          [
+            "22:30",
+            "23:00"
+          ],
+          [
+            "22:32",
+            "23:02"
+          ],
+          [
+            "22:34",
+            "23:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "ff_tt": 98.0,
+        "raw_ff_sec": 98.0,
+        "clamped_ff_sec": 98.0,
+        "ff_speed_kmph": 33.7,
+        "quiet_windows": [
+          [
+            "21:44",
+            "22:14"
+          ],
+          [
+            "22:00",
+            "22:30"
+          ],
+          [
+            "22:02",
+            "22:32"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "ff_speed_kmph": 23.3,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 1.36,
+        "quiet_busy_ratio": 0.379,
+        "baseline_saturated": false
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "ff_speed_kmph": 28.9,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 1.1,
+        "quiet_busy_ratio": 0.252,
+        "baseline_saturated": false
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "ff_speed_kmph": 33.3,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 0.95,
+        "quiet_busy_ratio": 0.439,
+        "baseline_saturated": false
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "ff_speed_kmph": 32.1,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 0.99,
+        "quiet_busy_ratio": 0.571,
+        "baseline_saturated": false
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "ff_speed_kmph": 24.9,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 1.27,
+        "quiet_busy_ratio": 0.442,
+        "baseline_saturated": false
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "ff_speed_kmph": 31.7,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.551,
+        "baseline_saturated": false
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "ff_speed_kmph": 33.7,
+        "corridor_median_speed": 31.7,
+        "peer_ratio": 0.94,
+        "quiet_busy_ratio": 0.551,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        295,
+        451
+      ]
+    ],
+    "bertini": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": [],
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": [
+        [
+          298,
+          353
+        ],
+        [
+          366,
+          370
+        ],
+        [
+          380,
+          385
+        ],
+        [
+          433,
+          451
+        ]
+      ],
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": [
+        [
+          386,
+          420
+        ]
+      ],
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": [],
+      "df036495-665d-4c1f-8f74-7cb5f380579d": [],
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": [],
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": []
+    },
+    "head_bottleneck": [
+      [
+        354,
+        365
+      ],
+      [
+        371,
+        379
+      ],
+      [
+        424,
+        432
+      ],
+      [
+        452,
+        476
+      ]
+    ],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 9,
+          "observed_lag_min": -20,
+          "expected_lag_range_min": [
+            3.6,
+            6.6
+          ],
+          "pass": false,
+          "dist_m": 1312.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 3,
+          "observed_lag_min": 21,
+          "expected_lag_range_min": [
+            3.3,
+            6.1
+          ],
+          "pass": false,
+          "dist_m": 1216.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 1,
+          "observed_lag_min": -3,
+          "expected_lag_range_min": [
+            2.7,
+            5.0
+          ],
+          "pass": false,
+          "dist_m": 998.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 3,
+          "observed_lag_min": -26,
+          "expected_lag_range_min": [
+            3.6,
+            6.6
+          ],
+          "pass": false,
+          "dist_m": 1312.0
+        }
+      ],
+      "pass_rate": 0.0,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 4,
+      "max_fraction": 0.57,
+      "threshold_segments": 6
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.445,
+      "systemic_by_contig": false,
+      "peak_bucket": 386,
+      "peak_segs": [
+        0,
+        1,
+        2
+      ]
+    },
+    "recurrence": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "n_days": 15,
+        "total_days": 18,
+        "frac": 0.83,
+        "label": "RECURRING"
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "n_days": 4,
+        "total_days": 18,
+        "frac": 0.22,
+        "label": "RARE"
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "n_days": 6,
+        "total_days": 18,
+        "frac": 0.33,
+        "label": "OCCASIONAL"
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "n_days": 4,
+        "total_days": 18,
+        "frac": 0.22,
+        "label": "RARE"
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "n_days": 8,
+        "total_days": 18,
+        "frac": 0.44,
+        "label": "OCCASIONAL"
+      }
+    },
+    "confidence": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+        "score": 0.636,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.545,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+        "score": 0.55,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 0.8,
+          "shockwave_support": 0.0
+        }
+      },
+      "df036495-665d-4c1f-8f74-7cb5f380579d": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+        "score": 0.55,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 0.8,
+          "shockwave_support": 0.0
+        }
+      },
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "ccae34ae-68f2-461b-ad35-e22ffed0cbca": "HEAD_BOTTLENECK",
+      "ed74068d-02e5-4425-b625-43bcba3a05ea": "ACTIVE_BOTTLENECK",
+      "89537212-35b1-45c4-99e4-b5f836c5ce58": "ACTIVE_BOTTLENECK",
+      "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": "FREE_FLOW",
+      "df036495-665d-4c1f-8f74-7cb5f380579d": "FREE_FLOW",
+      "bb42e92a-5f01-4286-afe8-07b183cc5bb8": "FREE_FLOW",
+      "4cc5b7f6-4d2b-4435-a27f-055e89014f92": "FREE_FLOW"
+    }
+  },
+  "KOL_C": {
+    "corridor_id": "KOL_C",
+    "corridor_name": "KK Tagore to Vivekananda to EM Bypass",
+    "n_segments": 11,
+    "total_length_m": 10239,
+    "freeflow": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "ff_tt": 76.0,
+        "raw_ff_sec": 76.0,
+        "clamped_ff_sec": 76.0,
+        "ff_speed_kmph": 31.4,
+        "quiet_windows": [
+          [
+            "20:56",
+            "21:26"
+          ],
+          [
+            "20:58",
+            "21:28"
+          ],
+          [
+            "21:00",
+            "21:30"
+          ]
+        ],
+        "warnings": []
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "ff_tt": 62.0,
+        "raw_ff_sec": 62.0,
+        "clamped_ff_sec": 62.0,
+        "ff_speed_kmph": 25.6,
+        "quiet_windows": [
+          [
+            "20:38",
+            "21:08"
+          ],
+          [
+            "20:40",
+            "21:10"
+          ],
+          [
+            "20:42",
+            "21:12"
+          ]
+        ],
+        "warnings": []
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "ff_tt": 52.0,
+        "raw_ff_sec": 52.0,
+        "clamped_ff_sec": 52.0,
+        "ff_speed_kmph": 33.3,
+        "quiet_windows": [
+          [
+            "21:30",
+            "22:00"
+          ],
+          [
+            "21:32",
+            "22:02"
+          ],
+          [
+            "21:34",
+            "22:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "ff_tt": 79.0,
+        "raw_ff_sec": 79.0,
+        "clamped_ff_sec": 79.0,
+        "ff_speed_kmph": 33.6,
+        "quiet_windows": [
+          [
+            "21:34",
+            "22:04"
+          ],
+          [
+            "21:36",
+            "22:06"
+          ],
+          [
+            "21:38",
+            "22:08"
+          ]
+        ],
+        "warnings": []
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "ff_tt": 73.0,
+        "raw_ff_sec": 73.0,
+        "clamped_ff_sec": 73.0,
+        "ff_speed_kmph": 26.0,
+        "quiet_windows": [
+          [
+            "21:12",
+            "21:42"
+          ],
+          [
+            "21:14",
+            "21:44"
+          ],
+          [
+            "21:16",
+            "21:46"
+          ]
+        ],
+        "warnings": []
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "ff_tt": 136.0,
+        "raw_ff_sec": 136.0,
+        "clamped_ff_sec": 136.0,
+        "ff_speed_kmph": 31.4,
+        "quiet_windows": [
+          [
+            "21:34",
+            "22:04"
+          ],
+          [
+            "21:36",
+            "22:06"
+          ],
+          [
+            "21:38",
+            "22:08"
+          ]
+        ],
+        "warnings": []
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "ff_tt": 174.0,
+        "raw_ff_sec": 174.0,
+        "clamped_ff_sec": 174.0,
+        "ff_speed_kmph": 22.2,
+        "quiet_windows": [
+          [
+            "22:44",
+            "23:14"
+          ],
+          [
+            "22:46",
+            "23:16"
+          ],
+          [
+            "22:50",
+            "23:20"
+          ]
+        ],
+        "warnings": []
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "ff_tt": 98.0,
+        "raw_ff_sec": 98.0,
+        "clamped_ff_sec": 98.0,
+        "ff_speed_kmph": 41.1,
+        "quiet_windows": [
+          [
+            "23:16",
+            "23:46"
+          ],
+          [
+            "23:18",
+            "23:48"
+          ],
+          [
+            "23:20",
+            "23:50"
+          ]
+        ],
+        "warnings": []
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "ff_tt": 148.0,
+        "raw_ff_sec": 148.0,
+        "clamped_ff_sec": 148.0,
+        "ff_speed_kmph": 39.4,
+        "quiet_windows": [
+          [
+            "22:48",
+            "23:18"
+          ],
+          [
+            "22:50",
+            "23:20"
+          ],
+          [
+            "22:52",
+            "23:22"
+          ]
+        ],
+        "warnings": []
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "ff_tt": 96.0,
+        "raw_ff_sec": 96.0,
+        "clamped_ff_sec": 96.0,
+        "ff_speed_kmph": 46.2,
+        "quiet_windows": [
+          [
+            "00:00",
+            "00:30"
+          ],
+          [
+            "00:02",
+            "00:32"
+          ],
+          [
+            "00:04",
+            "00:34"
+          ]
+        ],
+        "warnings": []
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "ff_tt": 110.0,
+        "raw_ff_sec": 110.0,
+        "clamped_ff_sec": 110.0,
+        "ff_speed_kmph": 38.0,
+        "quiet_windows": [
+          [
+            "21:56",
+            "22:26"
+          ],
+          [
+            "21:58",
+            "22:28"
+          ],
+          [
+            "22:00",
+            "22:30"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "ff_speed_kmph": 31.4,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 1.06,
+        "quiet_busy_ratio": 0.452,
+        "baseline_saturated": false
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "ff_speed_kmph": 25.6,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 1.3,
+        "quiet_busy_ratio": 0.431,
+        "baseline_saturated": false
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "ff_speed_kmph": 33.3,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 1.0,
+        "quiet_busy_ratio": 0.419,
+        "baseline_saturated": false
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "ff_speed_kmph": 33.6,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 0.99,
+        "quiet_busy_ratio": 0.286,
+        "baseline_saturated": false
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "ff_speed_kmph": 26.0,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 1.28,
+        "quiet_busy_ratio": 0.401,
+        "baseline_saturated": false
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "ff_speed_kmph": 31.4,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 1.06,
+        "quiet_busy_ratio": 0.525,
+        "baseline_saturated": false
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "ff_speed_kmph": 22.2,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 1.5,
+        "quiet_busy_ratio": 0.372,
+        "baseline_saturated": false
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "ff_speed_kmph": 41.1,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 0.81,
+        "quiet_busy_ratio": 0.386,
+        "baseline_saturated": false
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "ff_speed_kmph": 39.4,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 0.85,
+        "quiet_busy_ratio": 0.54,
+        "baseline_saturated": false
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "ff_speed_kmph": 46.2,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 0.72,
+        "quiet_busy_ratio": 0.585,
+        "baseline_saturated": false
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "ff_speed_kmph": 38.0,
+        "corridor_median_speed": 33.3,
+        "peer_ratio": 0.88,
+        "quiet_busy_ratio": 0.755,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        352,
+        451
+      ]
+    ],
+    "bertini": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": [],
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": [],
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": [],
+      "58edb596-249c-4392-974d-d9130b586c84": [],
+      "415c8593-b159-424b-9d8f-5b614d13b37c": [
+        [
+          359,
+          451
+        ]
+      ],
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": [],
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": [],
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": [
+        [
+          387,
+          442
+        ]
+      ],
+      "2f13172d-1224-4dc9-857d-4dd692939334": [],
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": [],
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": []
+    },
+    "head_bottleneck": [
+      [
+        347,
+        353
+      ],
+      [
+        383,
+        393
+      ],
+      [
+        417,
+        421
+      ],
+      [
+        429,
+        440
+      ],
+      [
+        446,
+        458
+      ]
+    ],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 3,
+          "observed_lag_min": -14,
+          "expected_lag_range_min": [
+            1.5,
+            2.8
+          ],
+          "pass": false,
+          "dist_m": 552.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 8,
+          "observed_lag_min": -17.5,
+          "expected_lag_range_min": [
+            1.3,
+            2.3
+          ],
+          "pass": false,
+          "dist_m": 461.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 7,
+          "observed_lag_min": -7,
+          "expected_lag_range_min": [
+            1.7,
+            3.0
+          ],
+          "pass": false,
+          "dist_m": 610.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 7,
+          "observed_lag_min": 22,
+          "expected_lag_range_min": [
+            1.7,
+            3.2
+          ],
+          "pass": false,
+          "dist_m": 632.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 1,
+          "observed_lag_min": -4,
+          "expected_lag_range_min": [
+            2.3,
+            4.3
+          ],
+          "pass": false,
+          "dist_m": 856.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "n_days": 6,
+          "observed_lag_min": 13.5,
+          "expected_lag_range_min": [
+            3.0,
+            5.5
+          ],
+          "pass": false,
+          "dist_m": 1096.0
+        },
+        {
+          "pair": [
+            7,
+            8
+          ],
+          "n_days": 12,
+          "observed_lag_min": -7.5,
+          "expected_lag_range_min": [
+            3.7,
+            6.8
+          ],
+          "pass": false,
+          "dist_m": 1370.0
+        },
+        {
+          "pair": [
+            8,
+            9
+          ],
+          "n_days": 13,
+          "observed_lag_min": -12,
+          "expected_lag_range_min": [
+            3.9,
+            7.1
+          ],
+          "pass": false,
+          "dist_m": 1426.0
+        },
+        {
+          "pair": [
+            9,
+            10
+          ],
+          "n_days": 2,
+          "observed_lag_min": -22.5,
+          "expected_lag_range_min": [
+            3.3,
+            6.0
+          ],
+          "pass": false,
+          "dist_m": 1196.0
+        }
+      ],
+      "pass_rate": 0.0,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 7,
+      "max_fraction": 0.64,
+      "threshold_segments": 9
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.278,
+      "systemic_by_contig": false,
+      "peak_bucket": 359,
+      "peak_segs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "recurrence": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "n_days": 15,
+        "total_days": 18,
+        "frac": 0.83,
+        "label": "RECURRING"
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "n_days": 14,
+        "total_days": 18,
+        "frac": 0.78,
+        "label": "RECURRING"
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "n_days": 17,
+        "total_days": 18,
+        "frac": 0.94,
+        "label": "RECURRING"
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "n_days": 15,
+        "total_days": 18,
+        "frac": 0.83,
+        "label": "RECURRING"
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "n_days": 12,
+        "total_days": 18,
+        "frac": 0.67,
+        "label": "FREQUENT"
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "n_days": 18,
+        "total_days": 18,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "n_days": 3,
+        "total_days": 18,
+        "frac": 0.17,
+        "label": "RARE"
+      }
+    },
+    "confidence": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "58edb596-249c-4392-974d-d9130b586c84": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "415c8593-b159-424b-9d8f-5b614d13b37c": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "2f13172d-1224-4dc9-857d-4dd692939334": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": {
+        "score": 0.5,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 0.6,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "eb2ea5f3-fd01-42ce-b808-8e2297a7eb38": "HEAD_BOTTLENECK",
+      "3c96ac8f-fe08-4ef5-8442-e4c3e7c7f271": "QUEUE_VICTIM",
+      "52a2de03-f8e4-4adc-b0d1-c1ef8aafa2a7": "QUEUE_VICTIM",
+      "58edb596-249c-4392-974d-d9130b586c84": "QUEUE_VICTIM",
+      "415c8593-b159-424b-9d8f-5b614d13b37c": "ACTIVE_BOTTLENECK",
+      "b1745c1e-10c1-448c-9d50-a493002d53fc": "FREE_FLOW",
+      "46b12af8-6b96-4e60-bc35-c3e8d8406b28": "QUEUE_VICTIM",
+      "b6878d6b-dbb7-4869-84a8-233b48ec70be": "ACTIVE_BOTTLENECK",
+      "2f13172d-1224-4dc9-857d-4dd692939334": "FREE_FLOW",
+      "eea8da9c-27eb-4ec3-9071-b57adf20f057": "FREE_FLOW",
+      "a8b44907-05e0-4fcc-8061-882b9eea84c4": "FREE_FLOW"
+    }
+  }
+}
