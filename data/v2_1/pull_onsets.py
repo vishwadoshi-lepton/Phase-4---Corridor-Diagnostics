@@ -39,21 +39,47 @@ SLICE_FILTER = {
     "weekend": "IN (6, 7)",
 }
 
+import re, time  # noqa: E402
 
-def load_validation_road_ids() -> list[str]:
+def _parse_duration_seconds(s: str) -> int:
+    """Parse '1h', '30m', '2h30m', '90s' → seconds. Raises on bad input."""
+    m = re.fullmatch(r"\s*(?:(\d+)\s*h)?\s*(?:(\d+)\s*m)?\s*(?:(\d+)\s*s)?\s*", s or "")
+    if not m or not any(m.groups()):
+        raise ValueError(f"unparseable duration: {s!r}")
+    h, mn, sc = (int(g or 0) for g in m.groups())
+    return h * 3600 + mn * 60 + sc
+
+def _is_cache_fresh(path: str, max_age: str | None) -> bool:
+    if not max_age or not os.path.isfile(path):
+        return False
+    age = time.time() - os.path.getmtime(path)
+    return age < _parse_duration_seconds(max_age)
+
+
+def load_validation_road_ids(corridor_id: str | None = None) -> list[str]:
     corridors = json.load(open(CORRIDORS_PATH))
     rids: list[str] = []
-    for c in corridors.values():
+    for cid, c in corridors.items():
+        if corridor_id is not None and cid != corridor_id:
+            continue
         for seg in c["chain"]:
             if seg["road_id"] not in rids:
                 rids.append(seg["road_id"])
+    if corridor_id is not None and not rids:
+        raise SystemExit(f"ERROR: corridor_id '{corridor_id}' not found in "
+                         f"{CORRIDORS_PATH}")
     return rids
 
 
-def pull(slice_: str, days: int) -> int:
+def pull(slice_: str, days: int, corridor_id: str | None = None,
+         max_age: str | None = None) -> int:
     if slice_ not in SLICE_FILTER:
         print(f"ERROR: slice must be one of {list(SLICE_FILTER)}", file=sys.stderr)
         return 2
+    dest = os.path.join(ONSETS_DIR, f"all_onsets_{slice_}.json")
+    if _is_cache_fresh(dest, max_age):
+        print(f"Cache fresh ({max_age}): skipping pull, reusing {dest}")
+        return 0
     missing = [v for v in ("POSTGRES_HOST", "POSTGRES_PORT", "POSTGRES_DB",
                            "POSTGRES_USER", "POSTGRES_PASSWORD")
                if not os.environ.get(v)]
@@ -61,8 +87,9 @@ def pull(slice_: str, days: int) -> int:
         print(f"ERROR: missing env vars: {', '.join(missing)}", file=sys.stderr)
         return 2
 
-    rids = load_validation_road_ids()
-    print(f"Pulling {slice_} onsets for {len(rids)} segments, "
+    rids = load_validation_road_ids(corridor_id)
+    scope_label = f"corridor={corridor_id}" if corridor_id else "all corridors"
+    print(f"Pulling {slice_} onsets for {len(rids)} segments ({scope_label}), "
           f"last {days} calendar days, from {os.environ['POSTGRES_HOST']}...")
 
     # ff_tt_proxy: per-segment p15 of observations in 01:30-05:30 IST over the whole window.
@@ -147,7 +174,12 @@ def pull(slice_: str, days: int) -> int:
     print(f"  segments with 0 onset days:  {empty}")
 
     os.makedirs(ONSETS_DIR, exist_ok=True)
-    dest = os.path.join(ONSETS_DIR, f"all_onsets_{slice_}.json")
+    if corridor_id is not None and os.path.isfile(dest):
+        existing = json.load(open(dest))
+        scoped_rids = set(rids)
+        # Drop existing rows for the scoped rids, then append the freshly-pulled rows.
+        existing = [row for row in existing if row["rid"] not in scoped_rids]
+        out = existing + out
     with open(dest, "w") as f:
         json.dump(out, f)
     print(f"Wrote {dest}")
@@ -159,5 +191,10 @@ if __name__ == "__main__":
     ap.add_argument("--slice", default="weekday", choices=list(SLICE_FILTER))
     ap.add_argument("--days",  type=int, default=30,
                     help="calendar-day lookback window (default 30)")
+    ap.add_argument("--corridor",
+                    help="restrict to one corridor_id from validation_corridors.json")
+    ap.add_argument("--max-age",
+                    help="skip pull if onsets file's mtime is younger than this "
+                         "duration (e.g. '1h', '30m'); applies per slice")
     args = ap.parse_args()
-    sys.exit(pull(args.slice, args.days))
+    sys.exit(pull(args.slice, args.days, args.corridor, args.max_age))
