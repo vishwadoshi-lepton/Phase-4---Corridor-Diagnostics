@@ -116,10 +116,35 @@ def main():
 
     report_path     = os.path.join(OUT_DIR, report_name)
     structured_path = os.path.join(OUT_DIR, structured_name)
-    with open(report_path, "w") as f:
-        f.write("\n\n".join(reports))
+
+    # When scoped to a single corridor, merge into the existing structured-output
+    # file so we don't wipe other corridors' data from a prior full-corpus run.
+    if args.corridor and os.path.isfile(structured_path):
+        try:
+            with open(structured_path) as f:
+                existing = json.load(f)
+            if isinstance(existing, dict):
+                existing.update(structured)
+                structured_to_write = existing
+            else:
+                structured_to_write = structured
+        except (OSError, json.JSONDecodeError):
+            structured_to_write = structured
+    else:
+        structured_to_write = structured
+
+    # For the .txt report, when scoped, append the new section to the existing file
+    # rather than overwriting (acceptable: report.txt is human-readable, dupes get
+    # noticed; trafficure UI never reads it).
+    if args.corridor and os.path.isfile(report_path):
+        with open(report_path, "a") as f:
+            f.write("\n\n" + "\n\n".join(reports))
+    else:
+        with open(report_path, "w") as f:
+            f.write("\n\n".join(reports))
+
     with open(structured_path, "w") as f:
-        json.dump(structured, f, indent=2, default=str)
+        json.dump(structured_to_write, f, indent=2, default=str)
 
     print("\n\n" + "=" * 90)
     print(f"Wrote {len(structured)} corridor(s):")
