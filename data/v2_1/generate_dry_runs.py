@@ -88,9 +88,15 @@ def render_corridor_svg(chain: list, verdicts: dict, freeflow: dict) -> str:
     W, H = 1000.0, 180.0
     x0, x1 = 40.0, 960.0
     track = x1 - x0
+    # Per-segment min widths (px) below which inline labels would overlap their neighbours.
+    MIN_W_LABEL_S    = 22  # "Sxx" inline label
+    MIN_W_LENGTH_TOP = 32  # "NNN m" above the bar
+    MIN_W_FF_BOT     = 48  # "ff_spd / ff_tt" below the bar (two-line block)
     parts = [f'<svg class="corridor" viewBox="0 0 {int(W)} {int(H)}" xmlns="http://www.w3.org/2000/svg">',
              f'<line x1="{x0}" y1="90" x2="{x1}" y2="90" stroke="#cbd5e1" stroke-width="2"/>']
     xc = x0
+    suppressed_labels = 0
+    suppressed_metrics = 0
     for i, seg in enumerate(chain):
         w = track * seg["length_m"] / total
         v = verdicts.get(seg["road_id"], "FREE_FLOW")
@@ -99,15 +105,34 @@ def render_corridor_svg(chain: list, verdicts: dict, freeflow: dict) -> str:
         ff = freeflow.get(seg["road_id"], {})
         ff_spd = ff.get("ff_speed_kmph", 0)
         ff_tt  = ff.get("ff_tt", 0)
+        # SVG <title> for hover tooltip — works in every browser, no JS needed.
+        tooltip = (f"S{i+1:02d}  {esc(seg['road_name'])}\n"
+                   f"length {seg['length_m']} m  ·  ff {ff_spd:.1f} km/h  ·  ff_tt {ff_tt:.0f} s\n"
+                   f"verdict: {v}")
         parts.append(
+            f'<g><title>{tooltip}</title>'
             f'<rect x="{xc:.2f}" y="76" width="{w:.2f}" height="28" rx="4" '
-            f'fill="{fill}" fill-opacity="{op}" stroke="{fill}" stroke-width="1.5"/>'
+            f'fill="{fill}" fill-opacity="{op}" stroke="{fill}" stroke-width="1.5"/></g>'
         )
-        parts.append(f'<text x="{cx:.2f}" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S{i+1:02d}</text>')
-        parts.append(f'<text x="{cx:.2f}" y="60" text-anchor="middle" font-size="11" fill="#475569">{seg["length_m"]} m</text>')
-        parts.append(f'<text x="{cx:.2f}" y="124" text-anchor="middle" font-size="10" fill="#64748b">{ff_spd:.1f} km/h</text>')
-        parts.append(f'<text x="{cx:.2f}" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt {ff_tt:.0f}s</text>')
+        if w >= MIN_W_LABEL_S:
+            parts.append(f'<text x="{cx:.2f}" y="95" text-anchor="middle" font-size="13" font-weight="600" fill="#0f172a">S{i+1:02d}</text>')
+        else:
+            suppressed_labels += 1
+        if w >= MIN_W_LENGTH_TOP:
+            parts.append(f'<text x="{cx:.2f}" y="60" text-anchor="middle" font-size="11" fill="#475569">{seg["length_m"]} m</text>')
+        if w >= MIN_W_FF_BOT:
+            parts.append(f'<text x="{cx:.2f}" y="124" text-anchor="middle" font-size="10" fill="#64748b">{ff_spd:.1f} km/h</text>')
+            parts.append(f'<text x="{cx:.2f}" y="138" text-anchor="middle" font-size="10" fill="#94a3b8">ff_tt {ff_tt:.0f}s</text>')
+        elif w >= MIN_W_LABEL_S:
+            suppressed_metrics += 1
         xc += w
+    if suppressed_labels or suppressed_metrics:
+        notes = []
+        if suppressed_labels:
+            notes.append(f"{suppressed_labels} segment label(s) too narrow to draw inline")
+        if suppressed_metrics:
+            notes.append(f"{suppressed_metrics} ff_spd/ff_tt label(s) hidden")
+        parts.append(f'<text x="{x0}" y="158" font-size="10" fill="#94a3b8" font-style="italic">{"; ".join(notes)} — hover any box for full details</text>')
     upstream_label   = esc(chain[0]["road_name"].split(" To ")[0].split("/")[-1])
     downstream_label = esc(chain[-1]["road_name"].split(" To ")[-1].split("/")[-1])
     parts.append(f'<text x="{x0}" y="30" font-size="12" fill="#1e293b">⬅ upstream ({upstream_label})</text>')
@@ -278,7 +303,7 @@ def render_confidence_table(chain: list, confidence: dict, verdicts: dict) -> st
     for i, seg in enumerate(chain):
         rid = seg["road_id"]
         c = confidence[rid]
-        br = c.get("breakdown", {})
+        br = c.get("breakdown") or c.get("components") or {}
         label = c.get("label", "LOW")
         cls   = CONF_LABEL_CLASS.get(label, "label-low")
         v     = verdicts.get(rid, "FREE_FLOW")
@@ -900,6 +925,8 @@ def main():
     ap.add_argument("--slice", default="weekday", choices=["weekday", "weekend"])
     ap.add_argument("--legacy-names", action="store_true",
                     help="for slice=weekday, write un-suffixed output filenames")
+    ap.add_argument("--corridor",
+                    help="render only this corridor_id")
     args = ap.parse_args()
 
     structured_path, profiles_path = resolve_slice_paths(args.slice)
@@ -911,6 +938,13 @@ def main():
     print(f"slice={args.slice}")
     print(f"  structured: {structured_path}")
     print(f"  profiles:   {profiles_path}")
+
+    if args.corridor:
+        if args.corridor not in corridors:
+            raise SystemExit(f"ERROR: corridor_id '{args.corridor}' not found in "
+                             f"validation_corridors.json")
+        corridors = {args.corridor: corridors[args.corridor]}
+        structured = {args.corridor: structured[args.corridor]} if args.corridor in structured else {}
 
     os.makedirs(OUT_DIR, exist_ok=True)
     wrote = []
