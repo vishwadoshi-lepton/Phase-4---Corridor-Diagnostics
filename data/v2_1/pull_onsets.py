@@ -77,7 +77,11 @@ def pull(slice_: str, days: int, corridor_id: str | None = None,
         print(f"ERROR: slice must be one of {list(SLICE_FILTER)}", file=sys.stderr)
         return 2
     dest = os.path.join(ONSETS_DIR, f"all_onsets_{slice_}.json")
-    if _is_cache_fresh(dest, max_age):
+    # Cache-skip only applies to full-corpus runs. For a corridor-scoped run
+    # we can't tell from the file alone whether those segments were already
+    # queried (a segment with zero onsets in the window leaves no trace), so
+    # always pull when --corridor is set. The query is small and cheap.
+    if not corridor_id and _is_cache_fresh(dest, max_age):
         print(f"Cache fresh ({max_age}): skipping pull, reusing {dest}")
         return 0
     missing = [v for v in ("POSTGRES_HOST", "POSTGRES_PORT", "POSTGRES_DB",

@@ -58,6 +58,20 @@ def _is_cache_fresh(path: str, max_age: str | None) -> bool:
     return age < _parse_duration_seconds(max_age)
 
 
+def _cache_covers_rids(path: str, rids: list[str]) -> bool:
+    """True iff every requested road_id has a non-empty profile in the cached file."""
+    try:
+        with open(path) as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return False
+    for rid in rids:
+        prof = data.get(rid)
+        if not prof:
+            return False
+    return True
+
+
 def load_validation_road_ids(corridor_id: str | None = None) -> list[str]:
     corridors = json.load(open(CORRIDORS_PATH))
     rids: list[str] = []
@@ -79,9 +93,14 @@ def pull(slice_: str, days: int, corridor_id: str | None = None,
         print(f"ERROR: slice must be one of {list(SLICE_FILTER)}", file=sys.stderr)
         return 2
     dest = os.path.join(PROFILES_DIR, f"all_profiles_{slice_}.json")
+    # Cache is only safe to reuse when it covers the requested corridor's rids.
+    # A freshly-saved corridor wouldn't be in a previously-cached file.
     if _is_cache_fresh(dest, max_age):
-        print(f"Cache fresh ({max_age}): skipping pull, reusing {dest}")
-        return 0
+        scoped_rids = load_validation_road_ids(corridor_id) if corridor_id else None
+        if scoped_rids is None or _cache_covers_rids(dest, scoped_rids):
+            print(f"Cache fresh ({max_age}): skipping pull, reusing {dest}")
+            return 0
+        print(f"Cache fresh but missing data for {corridor_id}'s segments — pulling.")
     missing = [v for v in ("POSTGRES_HOST", "POSTGRES_PORT", "POSTGRES_DB",
                            "POSTGRES_USER", "POSTGRES_PASSWORD")
                if not os.environ.get(v)]
