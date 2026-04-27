@@ -46,6 +46,8 @@ def main():
     ap.add_argument("--slice", default="weekday", choices=["weekday", "weekend"])
     ap.add_argument("--legacy-names", action="store_true",
                     help="for slice=weekday, write un-suffixed output filenames")
+    ap.add_argument("--corridor",
+                    help="restrict to one corridor_id from validation_corridors.json")
     args = ap.parse_args()
 
     os.makedirs(OUT_DIR, exist_ok=True)
@@ -64,6 +66,12 @@ def main():
         onsets_by_seg[row["rid"]].append((row["dt"], row["om"]))
 
     profiles = {seg: {int(m): tt for m, tt in prof.items()} for seg, prof in profiles_raw.items()}
+
+    if args.corridor:
+        if args.corridor not in corridors:
+            raise SystemExit(f"ERROR: corridor_id '{args.corridor}' not found in "
+                             f"validation_corridors.json")
+        corridors = {args.corridor: corridors[args.corridor]}
 
     reports = []
     structured = {}
