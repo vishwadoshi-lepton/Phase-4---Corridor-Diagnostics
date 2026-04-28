@@ -6,36 +6,36 @@ Segments: 6    Corridor length: 7.12 km
 
 --- STAGE 1 — DISCOVERED FREE FLOW ---
 seg     length    ff_tt     ff_spd  sat? peer qb   name
-S01      494m     56s   31.8 kmph     1.0x 0.24  Pune/Fakri Hill Chowk To  Lullanagar Chowk
-S02      551m     60s   33.1 kmph     1.0x 0.43  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
-S03      314m     32s   35.3 kmph     0.9x 0.60  Pune/Command Hospital To Cross Road junction
-S04     1578m    152s   37.4 kmph     0.9x 0.61  Pune/Cross Road junction To Golibar Maidan Chowk
+S01      494m     54s   32.9 kmph     1.0x 0.33  Pune/Fakri Hill Chowk To  Lullanagar Chowk
+S02      551m     57s   34.8 kmph     1.0x 0.40  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+S03      314m     28s   40.4 kmph     0.8x 0.54  Pune/Command Hospital To Cross Road junction
+S04     1578m    151s   37.6 kmph     0.9x 0.60  Pune/Cross Road junction To Golibar Maidan Chowk
 S05      734m     89s   29.7 kmph     1.1x 0.84  Pune/Khadi Machine Chowk To Pisoli Junction
-S06     3451m    382s   32.5 kmph     1.0x 0.67  Pune/Pisoli Junction To Mohmmadwadi Junction
+S06     3451m    382s   32.5 kmph     1.0x 0.68  Pune/Pisoli Junction To Mohmmadwadi Junction
 
 --- STAGE 2 — REGIME DISTRIBUTION ---
 seg      FREE    APPR    CONG    SEVR   name
-S01   27.6%   39.7%   29.4%    3.2%   Pune/Fakri Hill Chowk To  Lullanagar Chowk
-S02   29.6%   56.5%   13.9%    0.0%   Pune/Jyoti Hotel Chowk to Lullanagar Chowk
-S03   38.2%   61.8%    0.0%    0.0%   Pune/Command Hospital To Cross Road junction
-S04   38.2%   61.8%    0.0%    0.0%   Pune/Cross Road junction To Golibar Maidan Chowk
+S01   26.4%   32.5%   41.1%    0.0%   Pune/Fakri Hill Chowk To  Lullanagar Chowk
+S02   28.1%   55.0%   16.9%    0.0%   Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+S03   28.9%   71.1%    0.0%    0.0%   Pune/Command Hospital To Cross Road junction
+S04   38.5%   61.5%    0.0%    0.0%   Pune/Cross Road junction To Golibar Maidan Chowk
 S05  100.0%    0.0%    0.0%    0.0%   Pune/Khadi Machine Chowk To Pisoli Junction
-S06   58.5%   41.5%    0.0%    0.0%   Pune/Pisoli Junction To Mohmmadwadi Junction
+S06   60.6%   39.4%    0.0%    0.0%   Pune/Pisoli Junction To Mohmmadwadi Junction
 
 --- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
   rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
   (no corridor-level congestion window — quiet or fragmented)
 
 --- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
-  S02  ACTIVE   12:24–13:12, 13:42–16:14   conf=HIGH(0.88)   [Pune/Jyoti Hotel Chowk to Lullanagar Chowk]
-  S01  HEAD     05:56–07:54, 11:06–12:24, 13:12–13:42, 16:14–16:58   conf=HIGH(0.75)   [Pune/Fakri Hill Chowk To  Lullanagar Chowk]
+  S02  ACTIVE   12:18–16:22   conf=HIGH(0.88)   [Pune/Jyoti Hotel Chowk to Lullanagar Chowk]
+  S01  HEAD     05:46–09:06, 10:28–12:18, 16:22–17:00   conf=HIGH(0.75)   [Pune/Fakri Hill Chowk To  Lullanagar Chowk]
 
 --- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
-  OK S01→S02   observed_lag=+1.0m  expected=1.4-2.6m  dist=522m  (n=5d)
-  !! S02→S03   observed_lag=-22.5m  expected=1.2-2.2m  dist=432m  (n=2d)
-  !! S03→S04   observed_lag=-48.0m  expected=2.6-4.7m  dist=946m  (n=1d)
-  !! S04→S05   observed_lag=+46.0m  expected=3.2-5.8m  dist=1156m  (n=1d)
-  !! S05→S06   observed_lag=+28.0m  expected=5.7-10.5m  dist=2092m  (n=2d)
+  OK S01→S02   observed_lag=-1.0m  expected=1.4-2.6m  dist=522m  (n=13d)
+  !! S02→S03   observed_lag=-6.5m  expected=1.2-2.2m  dist=432m  (n=4d)
+  !! S03→S04   observed_lag=+60.0m  expected=2.6-4.7m  dist=946m  (n=1d)
+  !! S04→S05   observed_lag=+35.0m  expected=3.2-5.8m  dist=1156m  (n=1d)
+  !! S05→S06   observed_lag=+34.0m  expected=5.7-10.5m  dist=2092m  (n=2d)
   shockwave pass rate: 20%
 
 --- STAGE 5 — SYSTEMIC vs POINT ---
@@ -44,18 +44,18 @@ S06   58.5%   41.5%    0.0%    0.0%   Pune/Pisoli Junction To Mohmmadwadi Juncti
   VERDICT: POINT-BOTTLENECK
 
 --- STAGE 6 — RECURRENCE TYPING ---
-  window: 18 analysed days with ≥1 onset
+  window: 23 analysed days with ≥1 onset
   bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
   seg    verdict             band         days  frac   name
-  S01★ HEAD_BOTTLENECK     RECURRING    18/18   100%  Pune/Fakri Hill Chowk To  Lullanagar Chowk
-  S02★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
-  S03  FREE_FLOW           RECURRING    17/18    94%  Pune/Command Hospital To Cross Road junction
-  S04  FREE_FLOW           FREQUENT      9/18    50%  Pune/Cross Road junction To Golibar Maidan Chowk
-  S05  FREE_FLOW           FREQUENT      9/18    50%  Pune/Khadi Machine Chowk To Pisoli Junction
-  S06  FREE_FLOW           FREQUENT     11/18    61%  Pune/Pisoli Junction To Mohmmadwadi Junction
+  S01★ HEAD_BOTTLENECK     RECURRING    23/23   100%  Pune/Fakri Hill Chowk To  Lullanagar Chowk
+  S02★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Jyoti Hotel Chowk to Lullanagar Chowk
+  S03  FREE_FLOW           RECURRING    23/23   100%  Pune/Command Hospital To Cross Road junction
+  S04  FREE_FLOW           FREQUENT     14/23    61%  Pune/Cross Road junction To Golibar Maidan Chowk
+  S05  FREE_FLOW           OCCASIONAL   10/23    43%  Pune/Khadi Machine Chowk To Pisoli Junction
+  S06  FREE_FLOW           FREQUENT     13/23    57%  Pune/Pisoli Junction To Mohmmadwadi Junction
   ★ bottleneck recurrence summary:
-      S01  HEAD_BOTTLENECK  →  RECURRING (18/18 days, 100%)
-      S02  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S01  HEAD_BOTTLENECK  →  RECURRING (23/23 days, 100%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  HEAD_BOTTLENECK     conf=HIGH   (0.75)  Pune/Fakri Hill Chowk To  Lullanagar Chowk
@@ -74,43 +74,43 @@ Segments: 9    Corridor length: 15.93 km
 --- STAGE 1 — DISCOVERED FREE FLOW ---
 seg     length    ff_tt     ff_spd  sat? peer qb   name
 S01     1714m    133s   46.4 kmph     1.1x 0.73  Pune/New Katraj Bogda To Dari Pull
-S02     1572m    116s   48.8 kmph     1.0x 0.80  Pune/Dari Pull To Swami Narayan Mandir
-S03     2510m    220s   41.1 kmph     1.2x 0.81  Pune/Swami Narayan Mandir To Navle Bridge
-S04     1013m     88s   41.4 kmph     1.2x 0.31  Pune/Navle Bridge To Wadgaon Pull
-S05     1274m    100s   45.9 kmph     1.1x 0.24  Pune/Wadgaon Pull To Mutha Nadi Pull
-S06      775m     54s   51.7 kmph     0.9x 0.76  Pune/Mutha Nadi Pull To Warje
+S02     1572m    116s   48.8 kmph     1.0x 0.79  Pune/Dari Pull To Swami Narayan Mandir
+S03     2510m    220s   41.1 kmph     1.2x 0.80  Pune/Swami Narayan Mandir To Navle Bridge
+S04     1013m     86s   42.4 kmph     1.1x 0.24  Pune/Navle Bridge To Wadgaon Pull
+S05     1274m    100s   45.9 kmph     1.1x 0.25  Pune/Wadgaon Pull To Mutha Nadi Pull
+S06      775m     56s   49.8 kmph     1.0x 0.78  Pune/Mutha Nadi Pull To Warje
 S07     2489m    168s   53.3 kmph     0.9x 0.79  Pune/Warje To Dukkarkhind Warje
-S08     2208m    140s   56.8 kmph     0.9x 0.82  Pune/Dukkarkhind Warje  To Chandni Chowk
-S09     2370m    141s   60.5 kmph     0.8x 0.76  Pune/Chandni Chowk To Bavdhan
+S08     2208m    141s   56.5 kmph     0.9x 0.83  Pune/Dukkarkhind Warje  To Chandni Chowk
+S09     2370m    146s   58.4 kmph     0.8x 0.79  Pune/Chandni Chowk To Bavdhan
 
 --- STAGE 2 — REGIME DISTRIBUTION ---
 seg      FREE    APPR    CONG    SEVR   name
-S01   49.9%   50.1%    0.0%    0.0%   Pune/New Katraj Bogda To Dari Pull
-S02   95.7%    4.3%    0.0%    0.0%   Pune/Dari Pull To Swami Narayan Mandir
-S03  100.0%    0.0%    0.0%    0.0%   Pune/Swami Narayan Mandir To Navle Bridge
-S04   62.8%   28.1%    9.2%    0.0%   Pune/Navle Bridge To Wadgaon Pull
-S05   50.7%   14.3%   21.2%   13.8%   Pune/Wadgaon Pull To Mutha Nadi Pull
-S06   52.6%   47.4%    0.0%    0.0%   Pune/Mutha Nadi Pull To Warje
+S01   52.6%   47.4%    0.0%    0.0%   Pune/New Katraj Bogda To Dari Pull
+S02   93.8%    6.2%    0.0%    0.0%   Pune/Dari Pull To Swami Narayan Mandir
+S03   99.3%    0.7%    0.0%    0.0%   Pune/Swami Narayan Mandir To Navle Bridge
+S04   59.7%   28.1%    7.4%    4.9%   Pune/Navle Bridge To Wadgaon Pull
+S05   48.9%   18.1%   18.2%   14.9%   Pune/Wadgaon Pull To Mutha Nadi Pull
+S06   92.5%    7.5%    0.0%    0.0%   Pune/Mutha Nadi Pull To Warje
 S07   96.9%    3.1%    0.0%    0.0%   Pune/Warje To Dukkarkhind Warje
 S08  100.0%    0.0%    0.0%    0.0%   Pune/Dukkarkhind Warje  To Chandni Chowk
-S09   73.5%   26.5%    0.0%    0.0%   Pune/Chandni Chowk To Bavdhan
+S09   93.2%    6.8%    0.0%    0.0%   Pune/Chandni Chowk To Bavdhan
 
 --- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
   rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
   (no corridor-level congestion window — quiet or fragmented)
 
 --- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
-  S05  ACTIVE   12:06–14:18   conf=MEDIUM(0.50)   [Pune/Wadgaon Pull To Mutha Nadi Pull]
+  S05  ACTIVE   11:36–14:32   conf=MEDIUM(0.50)   [Pune/Wadgaon Pull To Mutha Nadi Pull]
 
 --- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
-  OK S01→S02   observed_lag=+2.0m  expected=4.5-8.2m  dist=1643m  (n=1d)
+  !! S01→S02   observed_lag=+0.0m  expected=4.5-8.2m  dist=1643m  (n=1d)
   S02→S03   skipped (no paired onsets)
   S03→S04   skipped (no paired onsets)
-  !! S04→S05   observed_lag=+18.0m  expected=3.1-5.7m  dist=1144m  (n=9d)
+  !! S04→S05   observed_lag=+11.0m  expected=3.1-5.7m  dist=1144m  (n=11d)
   S05→S06   skipped (no paired onsets)
-  S06→S07   skipped (no paired onsets)
+  OK S06→S07   observed_lag=+2.0m  expected=4.5-8.2m  dist=1632m  (n=1d)
   S07→S08   skipped (no paired onsets)
-  !! S08→S09   observed_lag=-42.0m  expected=6.2-11.4m  dist=2289m  (n=1d)
+  S08→S09   skipped (no paired onsets)
   shockwave pass rate: 33%
 
 --- STAGE 5 — SYSTEMIC vs POINT ---
@@ -119,31 +119,31 @@ S09   73.5%   26.5%    0.0%    0.0%   Pune/Chandni Chowk To Bavdhan
   VERDICT: POINT-BOTTLENECK
 
 --- STAGE 6 — RECURRENCE TYPING ---
-  window: 18 analysed days with ≥1 onset
+  window: 23 analysed days with ≥1 onset
   bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
   seg    verdict             band         days  frac   name
-  S01  FREE_FLOW           OCCASIONAL    8/18    44%  Pune/New Katraj Bogda To Dari Pull
-  S02  FREE_FLOW           RARE          3/18    17%  Pune/Dari Pull To Swami Narayan Mandir
-  S03  FREE_FLOW           OCCASIONAL    8/18    44%  Pune/Swami Narayan Mandir To Navle Bridge
-  S04  FREE_FLOW           RECURRING    18/18   100%  Pune/Navle Bridge To Wadgaon Pull
-  S05★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Pune/Wadgaon Pull To Mutha Nadi Pull
-  S06  FREE_FLOW           RARE          2/18    11%  Pune/Mutha Nadi Pull To Warje
-  S07  FREE_FLOW           RARE          4/18    22%  Pune/Warje To Dukkarkhind Warje
-  S08  FREE_FLOW           OCCASIONAL    6/18    33%  Pune/Dukkarkhind Warje  To Chandni Chowk
-  S09  FREE_FLOW           OCCASIONAL    5/18    28%  Pune/Chandni Chowk To Bavdhan
+  S01  FREE_FLOW           OCCASIONAL   10/23    43%  Pune/New Katraj Bogda To Dari Pull
+  S02  FREE_FLOW           RARE          3/23    13%  Pune/Dari Pull To Swami Narayan Mandir
+  S03  FREE_FLOW           FREQUENT     13/23    57%  Pune/Swami Narayan Mandir To Navle Bridge
+  S04  FREE_FLOW           RECURRING    23/23   100%  Pune/Navle Bridge To Wadgaon Pull
+  S05★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Wadgaon Pull To Mutha Nadi Pull
+  S06  FREE_FLOW           RARE          4/23    17%  Pune/Mutha Nadi Pull To Warje
+  S07  FREE_FLOW           RARE          4/23    17%  Pune/Warje To Dukkarkhind Warje
+  S08  FREE_FLOW           OCCASIONAL    6/23    26%  Pune/Dukkarkhind Warje  To Chandni Chowk
+  S09  FREE_FLOW           OCCASIONAL   10/23    43%  Pune/Chandni Chowk To Bavdhan
   ★ bottleneck recurrence summary:
-      S05  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
-  S01  FREE_FLOW           conf=HIGH   (0.93)  Pune/New Katraj Bogda To Dari Pull
-  S02  FREE_FLOW           conf=HIGH   (0.82)  Pune/Dari Pull To Swami Narayan Mandir
+  S01  FREE_FLOW           conf=MEDIUM (0.68)  Pune/New Katraj Bogda To Dari Pull
+  S02  FREE_FLOW           conf=MEDIUM (0.57)  Pune/Dari Pull To Swami Narayan Mandir
   S03  FREE_FLOW           conf=HIGH   (0.80)  Pune/Swami Narayan Mandir To Navle Bridge
   S04  FREE_FLOW           conf=MEDIUM (0.68)  Pune/Navle Bridge To Wadgaon Pull
   S05  ACTIVE_BOTTLENECK   conf=MEDIUM (0.50)  Pune/Wadgaon Pull To Mutha Nadi Pull
-  S06  FREE_FLOW           conf=MEDIUM (0.65)  Pune/Mutha Nadi Pull To Warje
-  S07  FREE_FLOW           conf=HIGH   (0.75)  Pune/Warje To Dukkarkhind Warje
-  S08  FREE_FLOW           conf=MEDIUM (0.68)  Pune/Dukkarkhind Warje  To Chandni Chowk
-  S09  FREE_FLOW           conf=MEDIUM (0.68)  Pune/Chandni Chowk To Bavdhan
+  S06  FREE_FLOW           conf=HIGH   (0.88)  Pune/Mutha Nadi Pull To Warje
+  S07  FREE_FLOW           conf=HIGH   (0.87)  Pune/Warje To Dukkarkhind Warje
+  S08  FREE_FLOW           conf=HIGH   (0.80)  Pune/Dukkarkhind Warje  To Chandni Chowk
+  S09  FREE_FLOW           conf=HIGH   (0.80)  Pune/Chandni Chowk To Bavdhan
 
 ==========================================================================================
 TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  Balewadi to Vidyapeeth Gate (NW arterial)
@@ -153,42 +153,42 @@ Segments: 8    Corridor length: 10.66 km
 
 --- STAGE 1 — DISCOVERED FREE FLOW ---
 seg     length    ff_tt     ff_spd  sat? peer qb   name
-S01     2389m    136s   63.2 kmph     0.8x 0.70  Pune/Balewadi To Sus
+S01     2389m    136s   63.2 kmph     0.8x 0.71  Pune/Balewadi To Sus
 S02      981m     64s   55.2 kmph     0.9x 0.73  Pune/Sus To Pashan
-S03     1217m     96s   45.6 kmph     1.1x 0.57  Pune/Sus Bridge To Sai Chowk
-S04      527m     41s   46.3 kmph     1.0x 0.36  Pune/Sai Chowk To Balaji Chowk
+S03     1217m     92s   47.6 kmph     1.0x 0.57  Pune/Sus Bridge To Sai Chowk
+S04      527m     40s   47.4 kmph     1.0x 0.36  Pune/Sai Chowk To Balaji Chowk
 S05     1116m    100s   40.2 kmph     1.2x 0.49  Pune/Balaji Chowk To Pashan Circle
 S06      686m     50s   49.4 kmph     1.0x 0.64  Pune/Pashan Circle To NRDE Pashan
 S07      717m     52s   49.6 kmph     1.0x 0.65  Pune/NRDE Pashan To Panchwati
-S08     3027m    301s   36.2 kmph     1.3x 0.64  Pune/Panchwati To Vidhyapeeth Gate
+S08     3027m    300s   36.3 kmph     1.3x 0.62  Pune/Panchwati To Vidhyapeeth Gate
 
 --- STAGE 2 — REGIME DISTRIBUTION ---
 seg      FREE    APPR    CONG    SEVR   name
-S01   66.0%   34.0%    0.0%    0.0%   Pune/Balewadi To Sus
-S02   74.3%   25.7%    0.0%    0.0%   Pune/Sus To Pashan
-S03   39.2%   60.8%    0.0%    0.0%   Pune/Sus Bridge To Sai Chowk
-S04   34.9%   33.9%   31.2%    0.0%   Pune/Sai Chowk To Balaji Chowk
-S05   36.0%   59.7%    4.3%    0.0%   Pune/Balaji Chowk To Pashan Circle
-S06   40.6%   59.4%    0.0%    0.0%   Pune/Pashan Circle To NRDE Pashan
-S07   38.8%   61.2%    0.0%    0.0%   Pune/NRDE Pashan To Panchwati
-S08   42.5%   57.5%    0.0%    0.0%   Pune/Panchwati To Vidhyapeeth Gate
+S01   63.3%   36.7%    0.0%    0.0%   Pune/Balewadi To Sus
+S02   70.3%   29.7%    0.0%    0.0%   Pune/Sus To Pashan
+S03   36.8%   63.2%    0.0%    0.0%   Pune/Sus Bridge To Sai Chowk
+S04   34.7%   32.5%   32.8%    0.0%   Pune/Sai Chowk To Balaji Chowk
+S05   36.5%   59.7%    3.8%    0.0%   Pune/Balaji Chowk To Pashan Circle
+S06   40.3%   59.7%    0.0%    0.0%   Pune/Pashan Circle To NRDE Pashan
+S07   39.3%   60.7%    0.0%    0.0%   Pune/NRDE Pashan To Panchwati
+S08   41.8%   58.2%    0.0%    0.0%   Pune/Panchwati To Vidhyapeeth Gate
 
 --- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
   rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
   (no corridor-level congestion window — quiet or fragmented)
 
 --- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
-  S05  ACTIVE   13:08–14:10   conf=HIGH(0.75)   [Pune/Balaji Chowk To Pashan Circle]
+  S05  ACTIVE   13:08–14:02   conf=HIGH(0.75)   [Pune/Balaji Chowk To Pashan Circle]
 
 --- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
-  OK S01→S02   observed_lag=+2.0m  expected=4.6-8.4m  dist=1685m  (n=4d)
-  !! S02→S03   observed_lag=+11.0m  expected=3.0-5.5m  dist=1099m  (n=3d)
+  OK S01→S02   observed_lag=+2.0m  expected=4.6-8.4m  dist=1685m  (n=5d)
+  OK S02→S03   observed_lag=+5.5m  expected=3.0-5.5m  dist=1099m  (n=2d)
   S03→S04   skipped (no paired onsets)
-  !! S04→S05   observed_lag=-53.0m  expected=2.2-4.1m  dist=822m  (n=1d)
+  !! S04→S05   observed_lag=-42.0m  expected=2.2-4.1m  dist=822m  (n=1d)
   S05→S06   skipped (no paired onsets)
   S06→S07   skipped (no paired onsets)
   S07→S08   skipped (no paired onsets)
-  shockwave pass rate: 33%
+  shockwave pass rate: 67%
 
 --- STAGE 5 — SYSTEMIC vs POINT ---
   simultaneous (v2): 2/8 (25%)  threshold=80%
@@ -196,27 +196,27 @@ S08   42.5%   57.5%    0.0%    0.0%   Pune/Panchwati To Vidhyapeeth Gate
   VERDICT: POINT-BOTTLENECK
 
 --- STAGE 6 — RECURRENCE TYPING ---
-  window: 18 analysed days with ≥1 onset
+  window: 23 analysed days with ≥1 onset
   bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
   seg    verdict             band         days  frac   name
-  S01  FREE_FLOW           FREQUENT      9/18    50%  Pune/Balewadi To Sus
-  S02  FREE_FLOW           OCCASIONAL    6/18    33%  Pune/Sus To Pashan
-  S03  FREE_FLOW           FREQUENT      9/18    50%  Pune/Sus Bridge To Sai Chowk
-  S04  FREE_FLOW           RECURRING    18/18   100%  Pune/Sai Chowk To Balaji Chowk
-  S05★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Pune/Balaji Chowk To Pashan Circle
-  S06  FREE_FLOW           RARE          1/18     6%  Pune/Pashan Circle To NRDE Pashan
-  S07  FREE_FLOW           NEVER         0/18     0%  Pune/NRDE Pashan To Panchwati
-  S08  FREE_FLOW           OCCASIONAL    5/18    28%  Pune/Panchwati To Vidhyapeeth Gate
+  S01  FREE_FLOW           FREQUENT     12/23    52%  Pune/Balewadi To Sus
+  S02  FREE_FLOW           OCCASIONAL    8/23    35%  Pune/Sus To Pashan
+  S03  FREE_FLOW           OCCASIONAL   11/23    48%  Pune/Sus Bridge To Sai Chowk
+  S04  FREE_FLOW           RECURRING    23/23   100%  Pune/Sai Chowk To Balaji Chowk
+  S05★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Balaji Chowk To Pashan Circle
+  S06  FREE_FLOW           NEVER         0/23     0%  Pune/Pashan Circle To NRDE Pashan
+  S07  FREE_FLOW           NEVER         0/23     0%  Pune/NRDE Pashan To Panchwati
+  S08  FREE_FLOW           OCCASIONAL    9/23    39%  Pune/Panchwati To Vidhyapeeth Gate
   ★ bottleneck recurrence summary:
-      S05  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
   S01  FREE_FLOW           conf=HIGH   (0.85)  Pune/Balewadi To Sus
-  S02  FREE_FLOW           conf=MEDIUM (0.72)  Pune/Sus To Pashan
-  S03  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Sus Bridge To Sai Chowk
+  S02  FREE_FLOW           conf=HIGH   (0.85)  Pune/Sus To Pashan
+  S03  FREE_FLOW           conf=HIGH   (0.85)  Pune/Sus Bridge To Sai Chowk
   S04  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Sai Chowk To Balaji Chowk
   S05  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Pune/Balaji Chowk To Pashan Circle
-  S06  FREE_FLOW           conf=MEDIUM (0.53)  Pune/Pashan Circle To NRDE Pashan
+  S06  FREE_FLOW           conf=LOW    (0.47)  Pune/Pashan Circle To NRDE Pashan
   S07  FREE_FLOW           conf=LOW    (0.47)  Pune/NRDE Pashan To Panchwati
   S08  FREE_FLOW           conf=MEDIUM (0.72)  Pune/Panchwati To Vidhyapeeth Gate
 
@@ -228,41 +228,39 @@ Segments: 7    Corridor length: 4.95 km
 
 --- STAGE 1 — DISCOVERED FREE FLOW ---
 seg     length    ff_tt     ff_spd  sat? peer qb   name
-S01     1142m    138s   29.8 kmph     0.9x 0.61  Kolkata/A P C RD (E1-E7)
-S02      638m     68s   33.8 kmph     0.8x 0.45  Kolkata/A P C RD (E7-E10)
-S03      943m    131s   25.9 kmph     1.0x 0.44  Kolkata/A P C RD (L3-L17)
-S04      959m    159s   21.7 kmph     1.2x 0.35  Kolkata/A P C RD (L17-L-58)
-S05      285m     35s   29.3 kmph     0.9x 0.71  Kolkata/A P C RD (L58-L56)
-S06      551m    103s   19.3 kmph     1.3x 0.43  Kolkata/RAJA DINENDRA ST (L56-C8)
+S01     1142m    137s   30.0 kmph     0.9x 0.60  Kolkata/A P C RD (E1-E7)
+S02      638m     68s   33.8 kmph     0.8x 0.48  Kolkata/A P C RD (E7-E10)
+S03      943m    130s   26.1 kmph     1.0x 0.48  Kolkata/A P C RD (L3-L17)
+S04      959m    152s   22.8 kmph     1.1x 0.51  Kolkata/A P C RD (L17-L-58)
+S05      285m     32s   32.1 kmph     0.8x 0.72  Kolkata/A P C RD (L58-L56)
+S06      551m    105s   18.9 kmph     1.4x 0.45  Kolkata/RAJA DINENDRA ST (L56-C8)
 S07      431m     68s   22.8 kmph     1.1x 0.41  Kolkata/B T ROAD (C8-C21)
 
 --- STAGE 2 — REGIME DISTRIBUTION ---
 seg      FREE    APPR    CONG    SEVR   name
 S01   25.0%   75.0%    0.0%    0.0%   Kolkata/A P C RD (E1-E7)
-S02   25.0%   67.2%    7.8%    0.0%   Kolkata/A P C RD (E7-E10)
-S03   29.4%   61.9%    8.6%    0.0%   Kolkata/A P C RD (L3-L17)
-S04   29.7%   60.4%    9.7%    0.1%   Kolkata/A P C RD (L17-L-58)
-S05   71.7%   28.3%    0.0%    0.0%   Kolkata/A P C RD (L58-L56)
-S06   24.4%   53.5%   22.1%    0.0%   Kolkata/RAJA DINENDRA ST (L56-C8)
-S07   19.9%   24.4%   55.7%    0.0%   Kolkata/B T ROAD (C8-C21)
+S02   25.7%   70.1%    4.2%    0.0%   Kolkata/A P C RD (E7-E10)
+S03   29.3%   67.1%    3.6%    0.0%   Kolkata/A P C RD (L3-L17)
+S04   32.9%   66.1%    1.0%    0.0%   Kolkata/A P C RD (L17-L-58)
+S05   58.6%   41.4%    0.0%    0.0%   Kolkata/A P C RD (L58-L56)
+S06   25.3%   54.3%   20.4%    0.0%   Kolkata/RAJA DINENDRA ST (L56-C8)
+S07   19.4%   21.4%   59.2%    0.0%   Kolkata/B T ROAD (C8-C21)
 
 --- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
   rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
-  02:38 – 03:50   (duration 72 min)
-  13:10 – 15:14   (duration 124 min)
+  13:16 – 14:44   (duration 88 min)
 
 --- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
-  S03  ACTIVE   13:22–14:08, 14:48–15:14   conf=HIGH(0.75)   [Kolkata/A P C RD (L3-L17)]
-  S04  ACTIVE   14:08–14:24   conf=HIGH(0.75)   [Kolkata/A P C RD (L17-L-58)]
+  S04  ACTIVE   14:10–14:24   conf=MEDIUM(0.75)   [Kolkata/A P C RD (L17-L-58)]
 
 --- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
-  !! S01→S02   observed_lag=+21.0m  expected=2.4-4.5m  dist=890m  (n=1d)
-  !! S02→S03   observed_lag=+17.5m  expected=2.2-4.0m  dist=790m  (n=6d)
-  S03→S04   skipped (no paired onsets)
-  !! S04→S05   observed_lag=-18.0m  expected=1.7-3.1m  dist=622m  (n=9d)
-  S05→S06   skipped (no paired onsets)
-  !! S06→S07   observed_lag=-52.5m  expected=1.3-2.5m  dist=491m  (n=2d)
-  shockwave pass rate: 0%
+  OK S01→S02   observed_lag=+2.0m  expected=2.4-4.5m  dist=890m  (n=2d)
+  OK S02→S03   observed_lag=+6.0m  expected=2.2-4.0m  dist=790m  (n=7d)
+  !! S03→S04   observed_lag=-47.0m  expected=2.6-4.8m  dist=951m  (n=1d)
+  !! S04→S05   observed_lag=-27.0m  expected=1.7-3.1m  dist=622m  (n=9d)
+  !! S05→S06   observed_lag=-17.0m  expected=1.1-2.1m  dist=418m  (n=1d)
+  !! S06→S07   observed_lag=+6.0m  expected=1.3-2.5m  dist=491m  (n=6d)
+  shockwave pass rate: 33%
 
 --- STAGE 5 — SYSTEMIC vs POINT ---
   simultaneous (v2): 5/7 (71%)  threshold=80%
@@ -270,25 +268,24 @@ S07   19.9%   24.4%   55.7%    0.0%   Kolkata/B T ROAD (C8-C21)
   VERDICT: POINT-BOTTLENECK
 
 --- STAGE 6 — RECURRENCE TYPING ---
-  window: 18 analysed days with ≥1 onset
+  window: 25 analysed days with ≥1 onset
   bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
   seg    verdict             band         days  frac   name
-  S01  FREE_FLOW           FREQUENT     10/18    56%  Kolkata/A P C RD (E1-E7)
-  S02  QUEUE_VICTIM        FREQUENT     13/18    72%  Kolkata/A P C RD (E7-E10)
-  S03★ ACTIVE_BOTTLENECK   FREQUENT     12/18    67%  Kolkata/A P C RD (L3-L17)
-  S04★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/A P C RD (L17-L-58)
-  S05  FREE_FLOW           RECURRING    18/18   100%  Kolkata/A P C RD (L58-L56)
-  S06  QUEUE_VICTIM        RECURRING    18/18   100%  Kolkata/RAJA DINENDRA ST (L56-C8)
-  S07  SLOW_LINK           RECURRING    17/18    94%  Kolkata/B T ROAD (C8-C21)
+  S01  FREE_FLOW           FREQUENT     15/25    60%  Kolkata/A P C RD (E1-E7)
+  S02  QUEUE_VICTIM        FREQUENT     16/25    64%  Kolkata/A P C RD (E7-E10)
+  S03  SLOW_LINK           FREQUENT     15/25    60%  Kolkata/A P C RD (L3-L17)
+  S04★ ACTIVE_BOTTLENECK   RECURRING    24/25    96%  Kolkata/A P C RD (L17-L-58)
+  S05  FREE_FLOW           RECURRING    22/25    88%  Kolkata/A P C RD (L58-L56)
+  S06  QUEUE_VICTIM        RECURRING    23/25    92%  Kolkata/RAJA DINENDRA ST (L56-C8)
+  S07  SLOW_LINK           RECURRING    25/25   100%  Kolkata/B T ROAD (C8-C21)
   ★ bottleneck recurrence summary:
-      S03  ACTIVE_BOTTLENECK  →  FREQUENT (12/18 days, 67%)
-      S04  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S04  ACTIVE_BOTTLENECK  →  RECURRING (24/25 days, 96%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
-  S01  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/A P C RD (E1-E7)
-  S02  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/A P C RD (E7-E10)
-  S03  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A P C RD (L3-L17)
-  S04  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A P C RD (L17-L-58)
+  S01  FREE_FLOW           conf=HIGH   (0.85)  Kolkata/A P C RD (E1-E7)
+  S02  QUEUE_VICTIM        conf=HIGH   (0.85)  Kolkata/A P C RD (E7-E10)
+  S03  SLOW_LINK           conf=MEDIUM (0.72)  Kolkata/A P C RD (L3-L17)
+  S04  ACTIVE_BOTTLENECK   conf=MEDIUM (0.75)  Kolkata/A P C RD (L17-L-58)
   S05  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/A P C RD (L58-L56)
   S06  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/RAJA DINENDRA ST (L56-C8)
   S07  SLOW_LINK           conf=MEDIUM (0.60)  Kolkata/B T ROAD (C8-C21)
@@ -301,36 +298,35 @@ Segments: 7    Corridor length: 7.98 km
 
 --- STAGE 1 — DISCOVERED FREE FLOW ---
 seg     length    ff_tt     ff_spd  sat? peer qb   name
-S01     1118m    173s   23.3 kmph     1.4x 0.38  Kolkata/J L NEHRU RD (A1-F9)
-S02     1507m    188s   28.9 kmph     1.1x 0.25  Kolkata/J L NEHRU RD(F9-F13)
-S03      926m    100s   33.3 kmph     0.9x 0.44  Kolkata/A T M RD(F13-I6)
-S04     1071m    120s   32.1 kmph     1.0x 0.57  Kolkata/S P MUKHERJEE RD (I6-I8)
+S01     1118m    175s   23.0 kmph     1.4x 0.35  Kolkata/J L NEHRU RD (A1-F9)
+S02     1507m    186s   29.2 kmph     1.1x 0.26  Kolkata/J L NEHRU RD(F9-F13)
+S03      926m    100s   33.3 kmph     0.9x 0.43  Kolkata/A T M RD(F13-I6)
+S04     1071m    119s   32.4 kmph     1.0x 0.56  Kolkata/S P MUKHERJEE RD (I6-I8)
 S05      734m    106s   24.9 kmph     1.3x 0.44  Kolkata/S P MUKHERJEE RD(I8 - N5)
-S06     1708m    194s   31.7 kmph     1.0x 0.55  Kolkata/S P MUKHERJEE RD( N5 - S1 )
-S07      917m     98s   33.7 kmph     0.9x 0.55  Kolkata/D P S RD(S1 - S35)
+S06     1708m    194s   31.7 kmph     1.0x 0.54  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+S07      917m     98s   33.7 kmph     0.9x 0.56  Kolkata/D P S RD(S1 - S35)
 
 --- STAGE 2 — REGIME DISTRIBUTION ---
 seg      FREE    APPR    CONG    SEVR   name
-S01   30.0%   44.9%   25.1%    0.0%   Kolkata/J L NEHRU RD (A1-F9)
-S02   37.2%   35.6%   24.4%    2.8%   Kolkata/J L NEHRU RD(F9-F13)
-S03   25.8%   58.1%   16.1%    0.0%   Kolkata/A T M RD(F13-I6)
-S04   31.1%   68.9%    0.0%    0.0%   Kolkata/S P MUKHERJEE RD (I6-I8)
-S05   24.9%   61.2%   13.9%    0.0%   Kolkata/S P MUKHERJEE RD(I8 - N5)
-S06   29.3%   70.7%    0.0%    0.0%   Kolkata/S P MUKHERJEE RD( N5 - S1 )
-S07   29.2%   70.8%    0.0%    0.0%   Kolkata/D P S RD(S1 - S35)
+S01   29.7%   46.1%   24.2%    0.0%   Kolkata/J L NEHRU RD (A1-F9)
+S02   36.7%   34.7%   26.0%    2.6%   Kolkata/J L NEHRU RD(F9-F13)
+S03   26.5%   61.2%   12.2%    0.0%   Kolkata/A T M RD(F13-I6)
+S04   29.9%   70.1%    0.0%    0.0%   Kolkata/S P MUKHERJEE RD (I6-I8)
+S05   23.2%   64.3%   12.5%    0.0%   Kolkata/S P MUKHERJEE RD(I8 - N5)
+S06   29.2%   70.8%    0.0%    0.0%   Kolkata/S P MUKHERJEE RD( N5 - S1 )
+S07   29.0%   71.0%    0.0%    0.0%   Kolkata/D P S RD(S1 - S35)
 
 --- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
   rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
-  09:50 – 15:04   (duration 314 min)
+  10:06 – 15:04   (duration 298 min)
 
 --- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
-  S02  ACTIVE   09:56–11:48, 12:12–12:22, 12:40–12:52, 14:26–15:04   conf=HIGH(0.75)   [Kolkata/J L NEHRU RD(F9-F13)]
-  S03  ACTIVE   12:52–14:02   conf=HIGH(0.75)   [Kolkata/A T M RD(F13-I6)]
-  S01  HEAD     11:48–12:12, 12:22–12:40, 14:08–14:26, 15:04–15:54   conf=MEDIUM(0.64)   [Kolkata/J L NEHRU RD (A1-F9)]
+  S02  ACTIVE   10:06–11:50, 12:06–13:50, 14:26–15:04   conf=HIGH(0.75)   [Kolkata/J L NEHRU RD(F9-F13)]
+  S01  HEAD     11:50–12:06, 14:02–14:26, 15:04–15:54   conf=MEDIUM(0.61)   [Kolkata/J L NEHRU RD (A1-F9)]
 
 --- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
-  !! S01→S02   observed_lag=-20.0m  expected=3.6-6.6m  dist=1312m  (n=9d)
-  !! S02→S03   observed_lag=+21.0m  expected=3.3-6.1m  dist=1216m  (n=3d)
+  !! S01→S02   observed_lag=-13.0m  expected=3.6-6.6m  dist=1312m  (n=10d)
+  !! S02→S03   observed_lag=+24.0m  expected=3.3-6.1m  dist=1216m  (n=5d)
   !! S03→S04   observed_lag=-3.0m  expected=2.7-5.0m  dist=998m  (n=1d)
   S04→S05   skipped (no paired onsets)
   S05→S06   skipped (no paired onsets)
@@ -338,33 +334,32 @@ S07   29.2%   70.8%    0.0%    0.0%   Kolkata/D P S RD(S1 - S35)
   shockwave pass rate: 0%
 
 --- STAGE 5 — SYSTEMIC vs POINT ---
-  simultaneous (v2): 4/7 (57%)  threshold=80%
+  simultaneous (v2): 3/7 (43%)  threshold=80%
   contig-length (v2.1 R5): max=44%  threshold=60%
   VERDICT: POINT-BOTTLENECK
 
 --- STAGE 6 — RECURRENCE TYPING ---
-  window: 18 analysed days with ≥1 onset
+  window: 25 analysed days with ≥1 onset
   bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
   seg    verdict             band         days  frac   name
-  S01★ HEAD_BOTTLENECK     RECURRING    18/18   100%  Kolkata/J L NEHRU RD (A1-F9)
-  S02★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/J L NEHRU RD(F9-F13)
-  S03★ ACTIVE_BOTTLENECK   RECURRING    15/18    83%  Kolkata/A T M RD(F13-I6)
-  S04  FREE_FLOW           RARE          4/18    22%  Kolkata/S P MUKHERJEE RD (I6-I8)
-  S05  FREE_FLOW           OCCASIONAL    6/18    33%  Kolkata/S P MUKHERJEE RD(I8 - N5)
-  S06  FREE_FLOW           RARE          4/18    22%  Kolkata/S P MUKHERJEE RD( N5 - S1 )
-  S07  FREE_FLOW           OCCASIONAL    8/18    44%  Kolkata/D P S RD(S1 - S35)
+  S01★ HEAD_BOTTLENECK     RECURRING    25/25   100%  Kolkata/J L NEHRU RD (A1-F9)
+  S02★ ACTIVE_BOTTLENECK   RECURRING    25/25   100%  Kolkata/J L NEHRU RD(F9-F13)
+  S03  FREE_FLOW           RECURRING    20/25    80%  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           RARE          5/25    20%  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S05  FREE_FLOW           OCCASIONAL    9/25    36%  Kolkata/S P MUKHERJEE RD(I8 - N5)
+  S06  FREE_FLOW           OCCASIONAL    7/25    28%  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S07  FREE_FLOW           OCCASIONAL   10/25    40%  Kolkata/D P S RD(S1 - S35)
   ★ bottleneck recurrence summary:
-      S01  HEAD_BOTTLENECK  →  RECURRING (18/18 days, 100%)
-      S02  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
-      S03  ACTIVE_BOTTLENECK  →  RECURRING (15/18 days, 83%)
+      S01  HEAD_BOTTLENECK  →  RECURRING (25/25 days, 100%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (25/25 days, 100%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
-  S01  HEAD_BOTTLENECK     conf=MEDIUM (0.64)  Kolkata/J L NEHRU RD (A1-F9)
+  S01  HEAD_BOTTLENECK     conf=MEDIUM (0.61)  Kolkata/J L NEHRU RD (A1-F9)
   S02  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/J L NEHRU RD(F9-F13)
-  S03  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A T M RD(F13-I6)
-  S04  FREE_FLOW           conf=MEDIUM (0.55)  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S03  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/S P MUKHERJEE RD (I6-I8)
   S05  FREE_FLOW           conf=MEDIUM (0.72)  Kolkata/S P MUKHERJEE RD(I8 - N5)
-  S06  FREE_FLOW           conf=MEDIUM (0.55)  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S06  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/S P MUKHERJEE RD( N5 - S1 )
   S07  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/D P S RD(S1 - S35)
 
 ==========================================================================================
@@ -375,53 +370,53 @@ Segments: 11    Corridor length: 10.24 km
 
 --- STAGE 1 — DISCOVERED FREE FLOW ---
 seg     length    ff_tt     ff_spd  sat? peer qb   name
-S01      662m     76s   31.4 kmph     1.1x 0.45  Kolkata/K K TAGORE ST (B17-D29)
-S02      441m     62s   25.6 kmph     1.3x 0.43  Kolkata/VIVEKANANDA RD (D29-D9)
-S03      481m     52s   33.3 kmph     1.0x 0.42  Kolkata/VIVEKANANDA RD (D9-L14)
-S04      738m     79s   33.6 kmph     1.0x 0.29  Kolkata/VIVEKANADA RD (L14-L17)
+S01      662m     76s   31.4 kmph     1.1x 0.49  Kolkata/K K TAGORE ST (B17-D29)
+S02      441m     60s   26.5 kmph     1.3x 0.41  Kolkata/VIVEKANANDA RD (D29-D9)
+S03      481m     51s   34.0 kmph     1.0x 0.43  Kolkata/VIVEKANANDA RD (D9-L14)
+S04      738m     79s   33.6 kmph     1.0x 0.30  Kolkata/VIVEKANADA RD (L14-L17)
 S05      527m     73s   26.0 kmph     1.3x 0.40  Kolkata/VIVEKANANDA RD (L17-L21)
-S06     1186m    136s   31.4 kmph     1.1x 0.53  Kolkata/MANICKTALA MAIN RD (L21-L27)
-S07     1073m    174s   22.2 kmph     1.5x 0.37  Kolkata/MANICKTALA MAIN RD (L27-L29)
-S08     1119m     98s   41.1 kmph     0.8x 0.39  Kolkata/E M BY PASS (L29-L7)
+S06     1186m    134s   31.9 kmph     1.1x 0.53  Kolkata/MANICKTALA MAIN RD (L21-L27)
+S07     1073m    175s   22.1 kmph     1.5x 0.39  Kolkata/MANICKTALA MAIN RD (L27-L29)
+S08     1119m    100s   40.3 kmph     0.8x 0.39  Kolkata/E M BY PASS (L29-L7)
 S09     1620m    148s   39.4 kmph     0.8x 0.54  Kolkata/E M BAY PASS (M7-M4)
-S10     1232m     96s   46.2 kmph     0.7x 0.58  Kolkata/E M BY PASS (M4-M2B)
-S11     1160m    110s   38.0 kmph     0.9x 0.76  Kolkata/E M BY PASS (M2B-X1)
+S10     1232m     96s   46.2 kmph     0.7x 0.56  Kolkata/E M BY PASS (M4-M2B)
+S11     1160m    110s   38.0 kmph     0.9x 0.74  Kolkata/E M BY PASS (M2B-X1)
 
 --- STAGE 2 — REGIME DISTRIBUTION ---
 seg      FREE    APPR    CONG    SEVR   name
-S01   24.2%   66.9%    8.9%    0.0%   Kolkata/K K TAGORE ST (B17-D29)
-S02   26.2%   61.1%   12.6%    0.0%   Kolkata/VIVEKANANDA RD (D29-D9)
-S03   29.0%   59.2%   11.8%    0.0%   Kolkata/VIVEKANANDA RD (D9-L14)
-S04   27.9%   57.2%   13.6%    1.2%   Kolkata/VIVEKANADA RD (L14-L17)
-S05   21.8%   34.6%   43.6%    0.0%   Kolkata/VIVEKANANDA RD (L17-L21)
-S06   30.4%   69.6%    0.0%    0.0%   Kolkata/MANICKTALA MAIN RD (L21-L27)
-S07   35.8%   56.2%    7.9%    0.0%   Kolkata/MANICKTALA MAIN RD (L27-L29)
-S08   36.2%   46.1%   17.6%    0.0%   Kolkata/E M BY PASS (L29-L7)
-S09   34.9%   65.1%    0.0%    0.0%   Kolkata/E M BAY PASS (M7-M4)
-S10   44.9%   55.1%    0.0%    0.0%   Kolkata/E M BY PASS (M4-M2B)
-S11   52.5%   47.5%    0.0%    0.0%   Kolkata/E M BY PASS (M2B-X1)
+S01   23.8%   75.1%    1.1%    0.0%   Kolkata/K K TAGORE ST (B17-D29)
+S02   24.6%   59.9%   15.6%    0.0%   Kolkata/VIVEKANANDA RD (D29-D9)
+S03   26.7%   60.0%   13.3%    0.0%   Kolkata/VIVEKANANDA RD (D9-L14)
+S04   26.8%   61.0%   11.1%    1.1%   Kolkata/VIVEKANADA RD (L14-L17)
+S05   21.4%   28.6%   50.0%    0.0%   Kolkata/VIVEKANANDA RD (L17-L21)
+S06   29.7%   70.3%    0.0%    0.0%   Kolkata/MANICKTALA MAIN RD (L21-L27)
+S07   37.1%   55.6%    7.4%    0.0%   Kolkata/MANICKTALA MAIN RD (L27-L29)
+S08   36.5%   46.4%   17.1%    0.0%   Kolkata/E M BY PASS (L29-L7)
+S09   32.8%   67.2%    0.0%    0.0%   Kolkata/E M BAY PASS (M7-M4)
+S10   43.3%   56.7%    0.0%    0.0%   Kolkata/E M BY PASS (M4-M2B)
+S11   50.0%   50.0%    0.0%    0.0%   Kolkata/E M BY PASS (M2B-X1)
 
 --- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
   rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
-  11:44 – 15:04   (duration 200 min)
+  11:54 – 14:34   (duration 160 min)
 
 --- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
-  S05  ACTIVE   11:58–15:04   conf=HIGH(0.75)   [Kolkata/VIVEKANANDA RD (L17-L21)]
-  S08  ACTIVE   12:54–14:46   conf=HIGH(0.75)   [Kolkata/E M BY PASS (L29-L7)]
-  S01  HEAD     11:34–11:48, 12:46–13:08, 13:54–14:04, 14:18–14:42, 14:52–15:18   conf=HIGH(0.75)   [Kolkata/K K TAGORE ST (B17-D29)]
+  S03  ACTIVE   11:54–12:14   conf=MEDIUM(0.74)   [Kolkata/VIVEKANANDA RD (D9-L14)]
+  S05  ACTIVE   12:14–14:34   conf=HIGH(0.75)   [Kolkata/VIVEKANANDA RD (L17-L21)]
+  S08  ACTIVE   12:48–14:34   conf=HIGH(0.88)   [Kolkata/E M BY PASS (L29-L7)]
 
 --- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
-  !! S01→S02   observed_lag=-14.0m  expected=1.5-2.8m  dist=552m  (n=3d)
-  !! S02→S03   observed_lag=-17.5m  expected=1.3-2.3m  dist=461m  (n=8d)
-  !! S03→S04   observed_lag=-7.0m  expected=1.7-3.0m  dist=610m  (n=7d)
-  !! S04→S05   observed_lag=+22.0m  expected=1.7-3.2m  dist=632m  (n=7d)
+  !! S01→S02   observed_lag=-5.0m  expected=1.5-2.8m  dist=552m  (n=5d)
+  !! S02→S03   observed_lag=-15.0m  expected=1.3-2.3m  dist=461m  (n=8d)
+  !! S03→S04   observed_lag=-15.0m  expected=1.7-3.0m  dist=610m  (n=6d)
+  !! S04→S05   observed_lag=+24.0m  expected=1.7-3.2m  dist=632m  (n=8d)
   !! S05→S06   observed_lag=-4.0m  expected=2.3-4.3m  dist=856m  (n=1d)
   S06→S07   skipped (no paired onsets)
-  !! S07→S08   observed_lag=+13.5m  expected=3.0-5.5m  dist=1096m  (n=6d)
-  !! S08→S09   observed_lag=-7.5m  expected=3.7-6.8m  dist=1370m  (n=12d)
-  !! S09→S10   observed_lag=-12.0m  expected=3.9-7.1m  dist=1426m  (n=13d)
-  !! S10→S11   observed_lag=-22.5m  expected=3.3-6.0m  dist=1196m  (n=2d)
-  shockwave pass rate: 0%
+  !! S07→S08   observed_lag=+15.0m  expected=3.0-5.5m  dist=1096m  (n=9d)
+  OK S08→S09   observed_lag=+4.0m  expected=3.7-6.8m  dist=1370m  (n=13d)
+  !! S09→S10   observed_lag=-9.0m  expected=3.9-7.1m  dist=1426m  (n=15d)
+  !! S10→S11   observed_lag=-32.0m  expected=3.3-6.0m  dist=1196m  (n=3d)
+  shockwave pass rate: 11%
 
 --- STAGE 5 — SYSTEMIC vs POINT ---
   simultaneous (v2): 7/11 (64%)  threshold=80%
@@ -429,34 +424,556 @@ S11   52.5%   47.5%    0.0%    0.0%   Kolkata/E M BY PASS (M2B-X1)
   VERDICT: POINT-BOTTLENECK
 
 --- STAGE 6 — RECURRENCE TYPING ---
-  window: 18 analysed days with ≥1 onset
+  window: 25 analysed days with ≥1 onset
   bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
   seg    verdict             band         days  frac   name
-  S01★ HEAD_BOTTLENECK     RECURRING    15/18    83%  Kolkata/K K TAGORE ST (B17-D29)
-  S02  QUEUE_VICTIM        RECURRING    14/18    78%  Kolkata/VIVEKANANDA RD (D29-D9)
-  S03  QUEUE_VICTIM        RECURRING    17/18    94%  Kolkata/VIVEKANANDA RD (D9-L14)
-  S04  QUEUE_VICTIM        RECURRING    15/18    83%  Kolkata/VIVEKANADA RD (L14-L17)
-  S05★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/VIVEKANANDA RD (L17-L21)
-  S06  FREE_FLOW           FREQUENT     12/18    67%  Kolkata/MANICKTALA MAIN RD (L21-L27)
-  S07  QUEUE_VICTIM        RECURRING    18/18   100%  Kolkata/MANICKTALA MAIN RD (L27-L29)
-  S08★ ACTIVE_BOTTLENECK   RECURRING    18/18   100%  Kolkata/E M BY PASS (L29-L7)
-  S09  FREE_FLOW           RECURRING    18/18   100%  Kolkata/E M BAY PASS (M7-M4)
-  S10  FREE_FLOW           RECURRING    18/18   100%  Kolkata/E M BY PASS (M4-M2B)
-  S11  FREE_FLOW           RARE          3/18    17%  Kolkata/E M BY PASS (M2B-X1)
+  S01  FREE_FLOW           RECURRING    20/25    80%  Kolkata/K K TAGORE ST (B17-D29)
+  S02  QUEUE_VICTIM        RECURRING    19/25    76%  Kolkata/VIVEKANANDA RD (D29-D9)
+  S03★ ACTIVE_BOTTLENECK   RECURRING    21/25    84%  Kolkata/VIVEKANANDA RD (D9-L14)
+  S04  QUEUE_VICTIM        RECURRING    20/25    80%  Kolkata/VIVEKANADA RD (L14-L17)
+  S05★ ACTIVE_BOTTLENECK   RECURRING    25/25   100%  Kolkata/VIVEKANANDA RD (L17-L21)
+  S06  FREE_FLOW           FREQUENT     15/25    60%  Kolkata/MANICKTALA MAIN RD (L21-L27)
+  S07  QUEUE_VICTIM        RECURRING    24/25    96%  Kolkata/MANICKTALA MAIN RD (L27-L29)
+  S08★ ACTIVE_BOTTLENECK   RECURRING    25/25   100%  Kolkata/E M BY PASS (L29-L7)
+  S09  FREE_FLOW           RECURRING    25/25   100%  Kolkata/E M BAY PASS (M7-M4)
+  S10  FREE_FLOW           RECURRING    25/25   100%  Kolkata/E M BY PASS (M4-M2B)
+  S11  FREE_FLOW           OCCASIONAL    9/25    36%  Kolkata/E M BY PASS (M2B-X1)
   ★ bottleneck recurrence summary:
-      S01  HEAD_BOTTLENECK  →  RECURRING (15/18 days, 83%)
-      S05  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
-      S08  ACTIVE_BOTTLENECK  →  RECURRING (18/18 days, 100%)
+      S03  ACTIVE_BOTTLENECK  →  RECURRING (21/25 days, 84%)
+      S05  ACTIVE_BOTTLENECK  →  RECURRING (25/25 days, 100%)
+      S08  ACTIVE_BOTTLENECK  →  RECURRING (25/25 days, 100%)
 
 --- PER-SEGMENT VERDICTS (operator-facing) ---
-  S01  HEAD_BOTTLENECK     conf=HIGH   (0.75)  Kolkata/K K TAGORE ST (B17-D29)
+  S01  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/K K TAGORE ST (B17-D29)
   S02  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/VIVEKANANDA RD (D29-D9)
-  S03  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/VIVEKANANDA RD (D9-L14)
+  S03  ACTIVE_BOTTLENECK   conf=MEDIUM (0.74)  Kolkata/VIVEKANANDA RD (D9-L14)
   S04  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/VIVEKANADA RD (L14-L17)
   S05  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/VIVEKANANDA RD (L17-L21)
   S06  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/MANICKTALA MAIN RD (L21-L27)
   S07  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/MANICKTALA MAIN RD (L27-L29)
-  S08  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/E M BY PASS (L29-L7)
-  S09  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/E M BAY PASS (M7-M4)
+  S08  ACTIVE_BOTTLENECK   conf=HIGH   (0.88)  Kolkata/E M BY PASS (L29-L7)
+  S09  FREE_FLOW           conf=MEDIUM (0.72)  Kolkata/E M BAY PASS (M7-M4)
   S10  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/E M BY PASS (M4-M2B)
-  S11  FREE_FLOW           conf=MEDIUM (0.50)  Kolkata/E M BY PASS (M2B-X1)
+  S11  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/E M BY PASS (M2B-X1)
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  Sri Aurobindo Marg (Delhi) - polyline-derived
+id: DEL_AUROBINDO
+==========================================================================================
+Segments: 41    Corridor length: 2.90 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01       11m      1s   39.6 kmph     1.3x 0.50  Sri Aurobindo Marg
+S02       69m      5s   49.7 kmph     1.0x 0.29  Sri Aurobindo Marg
+S03       69m      5s   49.7 kmph     1.0x 0.28  Sri Aurobindo Marg
+S04       41m      2s   73.8 kmph     0.7x 0.12  Sri Aurobindo Marg
+S05       48m      3s   57.6 kmph     0.9x 0.11  Sri Aurobindo Marg
+S06       27m      2s   48.6 kmph     1.1x 0.14  Sri Aurobindo Marg
+S07       47m      3s   56.4 kmph     0.9x 0.10  Sri Aurobindo Marg
+S08       50m      3s   60.0 kmph     0.8x 0.08  Sri Aurobindo Marg
+S09      115m      8s   51.8 kmph     1.0x 0.10  Sri Aurobindo Marg
+S10      170m     12s   51.0 kmph     1.0x 0.13  Sri Aurobindo Marg
+S11       91m      6s   54.6 kmph     0.9x 0.25  Sri Aurobindo Marg
+S12       54m      3s   64.8 kmph     0.8x 0.30  Sri Aurobindo Marg
+S13       77m      5s   55.4 kmph     0.9x 0.31  Sri Aurobindo Marg
+S14       22m      1s   79.2 kmph     0.6x 0.25  Sri Aurobindo Marg
+S15       11m      1s   39.6 kmph     1.3x 0.50  Sri Aurobindo Marg
+S16       20m      1s   72.0 kmph     0.7x 0.17  Sri Aurobindo Marg
+S17       54m      4s   48.6 kmph     1.1x 0.27  Sri Aurobindo Marg
+S18       77m      6s   46.2 kmph     1.1x 0.24  Sri Aurobindo Marg
+S19       11m      1s   39.6 kmph     1.3x 0.25  Sri Aurobindo Marg
+S20      253m     18s   50.6 kmph     1.0x 0.28  Sri Aurobindo Marg
+S21       35m      2s   63.0 kmph     0.8x 0.10  Sri Aurobindo Marg
+S22       22m      1s   79.2 kmph     0.6x 0.08  Sri Aurobindo Marg
+S23       16m      1s   57.6 kmph     0.9x 0.10  Sri Aurobindo Marg
+S24       90m      6s   54.0 kmph     0.9x 0.09  Sri Aurobindo Marg
+S25      144m     10s   51.8 kmph     1.0x 0.11  Sri Aurobindo Marg
+S26       93m     10s   33.5 kmph     1.5x 0.14  Sri Aurobindo Marg
+S27        9m      1s   32.4 kmph     1.6x 0.50  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+S28       19m      1s   68.4 kmph     0.8x 0.20  Sri Aurobindo Marg
+S29      303m     22s   49.6 kmph     1.0x 0.18  Sri Aurobindo Marg
+S30       19m      1s   68.4 kmph     0.8x 0.08  Sri Aurobindo Marg
+S31      323m     22s   52.9 kmph     1.0x 0.09  Sri Aurobindo Marg
+S32       21m      2s   37.8 kmph     1.4x 0.06  Sri Aurobindo Marg
+S33        9m      2s   16.2 kmph     3.1x 0.22  Sri Aurobindo Marg
+S34       26m     15s    6.2 kmph     8.2x 0.53  Sri Aurobindo Marg
+S35       32m      4s   28.8 kmph     1.8x 0.20  Sri Aurobindo Marg
+S36       37m      4s   33.3 kmph     1.5x 0.17  Sri Aurobindo Marg
+S37       24m      2s   43.2 kmph     1.2x 0.18  Sri Aurobindo Marg
+S38       63m      5s   45.4 kmph     1.1x 0.17  Sri Aurobindo Marg
+S39       24m      1s   80.0 kmph     0.6x 0.06  Sri Aurobindo Marg
+S40       20m      1s   72.0 kmph     0.7x 0.10  Sri Aurobindo Marg
+S41      255m     18s   51.0 kmph     1.0x 0.15  Sri Aurobindo Marg
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   99.0%    0.0%    0.0%    1.0%   Sri Aurobindo Marg
+S02   50.3%   48.2%    0.1%    1.4%   Sri Aurobindo Marg
+S03   43.3%   55.0%    0.4%    1.2%   Sri Aurobindo Marg
+S04    3.3%   93.5%    0.6%    2.6%   Sri Aurobindo Marg
+S05   26.5%   70.0%    0.1%    3.3%   Sri Aurobindo Marg
+S06   96.4%    0.0%    0.0%    3.6%   Sri Aurobindo Marg
+S07   47.6%   46.2%    1.5%    4.6%   Sri Aurobindo Marg
+S08   27.1%   60.7%    2.2%   10.0%   Sri Aurobindo Marg
+S09   24.7%   38.8%   14.0%   22.5%   Sri Aurobindo Marg
+S10   18.9%   30.4%   33.2%   17.5%   Sri Aurobindo Marg
+S11   18.5%   59.3%   19.3%    2.9%   Sri Aurobindo Marg
+S12   10.0%   82.4%    6.8%    0.8%   Sri Aurobindo Marg
+S13   24.6%   68.9%    5.1%    1.4%   Sri Aurobindo Marg
+S14   14.9%   81.4%    1.5%    2.2%   Sri Aurobindo Marg
+S15   98.8%    0.3%    0.0%    1.0%   Sri Aurobindo Marg
+S16   21.5%   77.1%    0.0%    1.4%   Sri Aurobindo Marg
+S17   29.6%   68.9%    0.1%    1.4%   Sri Aurobindo Marg
+S18   19.3%   77.6%    1.0%    2.1%   Sri Aurobindo Marg
+S19   84.2%   12.8%    0.0%    3.1%   Sri Aurobindo Marg
+S20   19.2%   73.2%    4.9%    2.8%   Sri Aurobindo Marg
+S21   60.4%   28.9%    0.3%   10.4%   Sri Aurobindo Marg
+S22   24.0%   61.4%    0.8%   13.8%   Sri Aurobindo Marg
+S23   79.0%    6.4%    0.3%   14.3%   Sri Aurobindo Marg
+S24   35.0%   37.6%    2.6%   24.7%   Sri Aurobindo Marg
+S25   26.4%   20.3%    9.7%   43.6%   Sri Aurobindo Marg
+S26   12.5%   15.6%    5.0%   66.9%   Sri Aurobindo Marg
+S27   36.5%   61.9%    0.0%    1.5%   roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+S28   16.4%   80.0%    1.2%    2.4%   Sri Aurobindo Marg
+S29   35.6%   49.7%    4.0%   10.7%   Sri Aurobindo Marg
+S30   56.5%   17.9%    0.0%   25.6%   Sri Aurobindo Marg
+S31   26.1%   11.4%   12.2%   50.3%   Sri Aurobindo Marg
+S32    2.6%   12.1%    4.0%   81.2%   Sri Aurobindo Marg
+S33    6.2%   20.8%   46.4%   26.5%   Sri Aurobindo Marg
+S34    4.7%   80.4%   14.9%    0.0%   Sri Aurobindo Marg
+S35   21.2%   37.5%   22.4%   18.9%   Sri Aurobindo Marg
+S36   36.7%   19.6%   27.4%   16.4%   Sri Aurobindo Marg
+S37   33.3%   24.0%   24.7%   17.9%   Sri Aurobindo Marg
+S38   36.8%   28.9%   21.9%   12.4%   Sri Aurobindo Marg
+S39    4.4%   49.6%   23.6%   22.4%   Sri Aurobindo Marg
+S40   22.1%   70.1%    4.3%    3.5%   Sri Aurobindo Marg
+S41   39.2%   56.1%    1.7%    3.1%   Sri Aurobindo Marg
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  06:22 – 18:32   (duration 730 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S09  ACTIVE   06:36–06:54   conf=MEDIUM(0.60)   [Sri Aurobindo Marg]
+  S10  ACTIVE   06:54–07:36, 07:38–07:50, 08:38–09:28, 10:12–10:22, 10:48–11:00, 11:48–15:02, 15:14–15:38, 15:52–16:12   conf=MEDIUM(0.60)   [Sri Aurobindo Marg]
+  S11  ACTIVE   15:02–15:14, 15:38–15:52, 17:04–19:00   conf=MEDIUM(0.58)   [Sri Aurobindo Marg]
+  S19  ACTIVE   07:22–07:46   conf=MEDIUM(0.55)   [Sri Aurobindo Marg]
+  S26  ACTIVE   06:14–13:02, 13:04–13:14, 13:24–14:10, 14:24–17:06   conf=MEDIUM(0.58)   [Sri Aurobindo Marg]
+  S32  ACTIVE   08:46–09:00, 09:06–09:22, 09:24–09:40   conf=MEDIUM(0.72)   [Sri Aurobindo Marg]
+  S33  ACTIVE   06:24–06:40, 06:44–07:02, 07:12–07:26, 07:30–07:40, 07:46–08:08, 08:10–08:38, 09:40–10:08, 10:16–10:30, 10:38–13:30, 14:32–18:24   conf=MEDIUM(0.56)   [Sri Aurobindo Marg]
+  S36  ACTIVE   08:04–08:16   conf=MEDIUM(0.72)   [Sri Aurobindo Marg]
+  S37  ACTIVE   08:46–08:56, 09:24–09:44, 10:20–10:44, 11:00–11:16   conf=HIGH(0.85)   [Sri Aurobindo Marg]
+  S38  ACTIVE   17:10–17:32   conf=MEDIUM(0.72)   [Sri Aurobindo Marg]
+  S39  ACTIVE   07:50–08:04, 08:58–09:24, 09:44–10:20, 11:16–12:04, 12:14–12:28, 12:34–13:50, 15:06–15:18, 15:24–16:40, 16:48–17:10   conf=MEDIUM(0.70)   [Sri Aurobindo Marg]
+  S40  ACTIVE   14:00–14:46   conf=MEDIUM(0.72)   [Sri Aurobindo Marg]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  S01→S02   skipped (no paired onsets)
+  S02→S03   skipped (no paired onsets)
+  S03→S04   skipped (no paired onsets)
+  !! S04→S05   observed_lag=-24.0m  expected=0.1-0.2m  dist=44m  (n=1d)
+  S05→S06   skipped (no paired onsets)
+  S06→S07   skipped (no paired onsets)
+  !! S07→S08   observed_lag=+9.0m  expected=0.1-0.2m  dist=48m  (n=1d)
+  S08→S09   skipped (no paired onsets)
+  !! S09→S10   observed_lag=-3.0m  expected=0.4-0.7m  dist=142m  (n=1d)
+  S10→S11   skipped (no paired onsets)
+  S11→S12   skipped (no paired onsets)
+  S12→S13   skipped (no paired onsets)
+  !! S13→S14   observed_lag=+36.0m  expected=0.1-0.2m  dist=50m  (n=1d)
+  S14→S15   skipped (no paired onsets)
+  S15→S16   skipped (no paired onsets)
+  S16→S17   skipped (no paired onsets)
+  OK S17→S18   observed_lag=-2.0m  expected=0.2-0.3m  dist=66m  (n=2d)
+  !! S18→S19   observed_lag=-40.0m  expected=0.1-0.2m  dist=44m  (n=1d)
+  S19→S20   skipped (no paired onsets)
+  S20→S21   skipped (no paired onsets)
+  S21→S22   skipped (no paired onsets)
+  S22→S23   skipped (no paired onsets)
+  S23→S24   skipped (no paired onsets)
+  S24→S25   skipped (no paired onsets)
+  S25→S26   skipped (no paired onsets)
+  !! S26→S27   observed_lag=-14.0m  expected=0.1-0.3m  dist=51m  (n=2d)
+  S27→S28   skipped (no paired onsets)
+  S28→S29   skipped (no paired onsets)
+  S29→S30   skipped (no paired onsets)
+  !! S30→S31   observed_lag=-44.0m  expected=0.5-0.9m  dist=171m  (n=1d)
+  S31→S32   skipped (no paired onsets)
+  S32→S33   skipped (no paired onsets)
+  !! S33→S34   observed_lag=+55.0m  expected=0.0-0.1m  dist=18m  (n=1d)
+  S34→S35   skipped (no paired onsets)
+  !! S35→S36   observed_lag=-23.5m  expected=0.1-0.2m  dist=34m  (n=2d)
+  OK S36→S37   observed_lag=+1.5m  expected=0.1-0.2m  dist=30m  (n=2d)
+  S37→S38   skipped (no paired onsets)
+  S38→S39   skipped (no paired onsets)
+  S39→S40   skipped (no paired onsets)
+  S40→S41   skipped (no paired onsets)
+  shockwave pass rate: 18%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 24/41 (59%)  threshold=80%
+  contig-length (v2.1 R5): max=55%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 2 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S02  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S03  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S04  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S05  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S06  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S07  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S08  QUEUE_VICTIM        FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S09★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S10★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S11★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S12  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S13  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S14  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S15  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S16  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S17  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S18  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S19★ ACTIVE_BOTTLENECK   FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S20  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S21  QUEUE_VICTIM        FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S22  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S23  QUEUE_VICTIM        FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S24  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S25  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S26★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S27  FREE_FLOW           RECURRING     2/2    100%  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+  S28  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  S29  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S30  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S31  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S32★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S33★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S34  FREE_FLOW           RECURRING     2/2    100%  Sri Aurobindo Marg
+  S35  QUEUE_VICTIM        RECURRING     2/2    100%  Sri Aurobindo Marg
+  S36★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S37★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S38★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S39★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S40★ ACTIVE_BOTTLENECK   RECURRING     2/2    100%  Sri Aurobindo Marg
+  S41  FREE_FLOW           FREQUENT      1/2     50%  Sri Aurobindo Marg
+  ★ bottleneck recurrence summary:
+      S09  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S10  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S11  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S19  ACTIVE_BOTTLENECK  →  FREQUENT (1/2 days, 50%)
+      S26  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S32  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S33  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S36  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S37  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S38  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S39  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+      S40  ACTIVE_BOTTLENECK  →  RECURRING (2/2 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S02  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S03  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S04  FREE_FLOW           conf=LOW    (0.40)  Sri Aurobindo Marg
+  S05  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S06  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S07  FREE_FLOW           conf=LOW    (0.40)  Sri Aurobindo Marg
+  S08  QUEUE_VICTIM        conf=LOW    (0.40)  Sri Aurobindo Marg
+  S09  ACTIVE_BOTTLENECK   conf=MEDIUM (0.60)  Sri Aurobindo Marg
+  S10  ACTIVE_BOTTLENECK   conf=MEDIUM (0.60)  Sri Aurobindo Marg
+  S11  ACTIVE_BOTTLENECK   conf=MEDIUM (0.58)  Sri Aurobindo Marg
+  S12  FREE_FLOW           conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S13  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S14  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S15  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S16  FREE_FLOW           conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S17  FREE_FLOW           conf=MEDIUM (0.70)  Sri Aurobindo Marg
+  S18  FREE_FLOW           conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S19  ACTIVE_BOTTLENECK   conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S20  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S21  QUEUE_VICTIM        conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S22  QUEUE_VICTIM        conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S23  QUEUE_VICTIM        conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S24  QUEUE_VICTIM        conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S25  QUEUE_VICTIM        conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S26  ACTIVE_BOTTLENECK   conf=MEDIUM (0.58)  Sri Aurobindo Marg
+  S27  FREE_FLOW           conf=LOW    (0.45)  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+  S28  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S29  QUEUE_VICTIM        conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S30  QUEUE_VICTIM        conf=LOW    (0.45)  Sri Aurobindo Marg
+  S31  QUEUE_VICTIM        conf=LOW    (0.45)  Sri Aurobindo Marg
+  S32  ACTIVE_BOTTLENECK   conf=MEDIUM (0.72)  Sri Aurobindo Marg
+  S33  ACTIVE_BOTTLENECK   conf=MEDIUM (0.56)  Sri Aurobindo Marg
+  S34  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S35  QUEUE_VICTIM        conf=LOW    (0.45)  Sri Aurobindo Marg
+  S36  ACTIVE_BOTTLENECK   conf=MEDIUM (0.72)  Sri Aurobindo Marg
+  S37  ACTIVE_BOTTLENECK   conf=HIGH   (0.85)  Sri Aurobindo Marg
+  S38  ACTIVE_BOTTLENECK   conf=MEDIUM (0.72)  Sri Aurobindo Marg
+  S39  ACTIVE_BOTTLENECK   conf=MEDIUM (0.70)  Sri Aurobindo Marg
+  S40  ACTIVE_BOTTLENECK   conf=MEDIUM (0.72)  Sri Aurobindo Marg
+  S41  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+
+--- WARNINGS ---
+  • 12b746f7 (Sri Aurobindo Marg): ff speed 6.2 km/h < 8 — segment may never reach true free flow
+  • 27264061 (Sri Aurobindo Marg): raw ff=1.0s implies 86.4 km/h (>80); clamped to 1.1s
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  Sri Aurobindo Marg (Delhi) - polyline-derived
+id: DEL_AUROBINDO
+==========================================================================================
+Segments: 41    Corridor length: 2.90 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01       11m      1s   39.6 kmph     1.3x 1.00  Sri Aurobindo Marg
+S02       69m      5s   49.7 kmph     1.0x 0.62  Sri Aurobindo Marg
+S03       69m      5s   49.7 kmph     1.0x 0.62  Sri Aurobindo Marg
+S04       41m      3s   49.2 kmph     1.0x 0.75  Sri Aurobindo Marg
+S05       48m      3s   57.6 kmph     0.9x 0.60  Sri Aurobindo Marg
+S06       27m      2s   48.6 kmph     1.0x 1.00  Sri Aurobindo Marg
+S07       47m      3s   56.4 kmph     0.9x 0.75  Sri Aurobindo Marg
+S08       50m      3s   60.0 kmph     0.8x 0.38  Sri Aurobindo Marg
+S09      115m      8s   51.8 kmph     1.0x 0.19  Sri Aurobindo Marg
+S10      170m     12s   51.0 kmph     1.0x 0.19  Sri Aurobindo Marg
+S11       91m      6s   54.6 kmph     0.9x 0.32  Sri Aurobindo Marg
+S12       54m      3s   64.8 kmph     0.8x 0.50  Sri Aurobindo Marg
+S13       77m      5s   55.4 kmph     0.9x 0.56  Sri Aurobindo Marg
+S14       22m      1s   79.2 kmph     0.6x 0.50  Sri Aurobindo Marg
+S15       11m      1s   39.6 kmph     1.3x 1.00  Sri Aurobindo Marg
+S16       20m      1s   72.0 kmph     0.7x 0.50  Sri Aurobindo Marg
+S17       54m      4s   48.6 kmph     1.0x 0.50  Sri Aurobindo Marg
+S18       77m      6s   46.2 kmph     1.1x 0.55  Sri Aurobindo Marg
+S19       11m      1s   39.6 kmph     1.3x 0.50  Sri Aurobindo Marg
+S20      253m     19s   47.9 kmph     1.0x 0.45  Sri Aurobindo Marg
+S21       35m      2s   63.0 kmph     0.8x 0.50  Sri Aurobindo Marg
+S22       22m      1s   79.2 kmph     0.6x 0.50  Sri Aurobindo Marg
+S23       16m      1s   57.6 kmph     0.9x 1.00  Sri Aurobindo Marg
+S24       90m      6s   54.0 kmph     0.9x 0.27  Sri Aurobindo Marg
+S25      144m     10s   51.8 kmph     1.0x 0.17  Sri Aurobindo Marg
+S26       93m     10s   33.5 kmph     1.5x 0.16  Sri Aurobindo Marg
+S27        9m      1s   32.4 kmph     1.5x 0.50  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+S28       19m      1s   68.4 kmph     0.7x 0.33  Sri Aurobindo Marg
+S29      303m     22s   49.6 kmph     1.0x 0.33  Sri Aurobindo Marg
+S30       19m      1s   68.4 kmph     0.7x 0.12  Sri Aurobindo Marg
+S31      323m     24s   48.5 kmph     1.0x 0.10  Sri Aurobindo Marg
+S32       21m      3s   25.2 kmph     2.0x 0.11  Sri Aurobindo Marg
+S33        9m      3s   10.8 kmph     4.6x 0.33  Sri Aurobindo Marg
+S34       26m     14s    6.7 kmph     7.4x 0.50  Sri Aurobindo Marg
+S35       32m      4s   28.8 kmph     1.7x 0.15  Sri Aurobindo Marg
+S36       37m      4s   33.3 kmph     1.5x 0.14  Sri Aurobindo Marg
+S37       24m      2s   43.2 kmph     1.1x 0.17  Sri Aurobindo Marg
+S38       63m      5s   45.4 kmph     1.1x 0.25  Sri Aurobindo Marg
+S39       24m      1s   80.0 kmph     0.6x 0.25  Sri Aurobindo Marg
+S40       20m      1s   72.0 kmph     0.7x 0.33  Sri Aurobindo Marg
+S41      255m     18s   51.0 kmph     1.0x 0.27  Sri Aurobindo Marg
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01  100.0%    0.0%    0.0%    0.0%   Sri Aurobindo Marg
+S02   52.5%   47.5%    0.0%    0.0%   Sri Aurobindo Marg
+S03   46.9%   53.1%    0.0%    0.0%   Sri Aurobindo Marg
+S04   42.6%   57.4%    0.0%    0.0%   Sri Aurobindo Marg
+S05   26.4%   73.6%    0.0%    0.0%   Sri Aurobindo Marg
+S06  100.0%    0.0%    0.0%    0.0%   Sri Aurobindo Marg
+S07   44.3%   55.7%    0.0%    0.0%   Sri Aurobindo Marg
+S08   11.5%   86.7%    0.3%    1.5%   Sri Aurobindo Marg
+S09   23.3%   51.0%   18.1%    7.6%   Sri Aurobindo Marg
+S10   17.4%   43.8%   30.8%    8.1%   Sri Aurobindo Marg
+S11   16.8%   63.1%   19.9%    0.3%   Sri Aurobindo Marg
+S12   11.0%   89.0%    0.0%    0.0%   Sri Aurobindo Marg
+S13   30.1%   69.9%    0.0%    0.0%   Sri Aurobindo Marg
+S14   16.9%   83.1%    0.0%    0.0%   Sri Aurobindo Marg
+S15  100.0%    0.0%    0.0%    0.0%   Sri Aurobindo Marg
+S16   28.9%   71.1%    0.0%    0.0%   Sri Aurobindo Marg
+S17   41.5%   58.5%    0.0%    0.0%   Sri Aurobindo Marg
+S18   20.4%   79.6%    0.0%    0.0%   Sri Aurobindo Marg
+S19   94.3%    5.7%    0.0%    0.0%   Sri Aurobindo Marg
+S20   19.7%   78.3%    1.9%    0.0%   Sri Aurobindo Marg
+S21   57.8%   41.7%    0.6%    0.0%   Sri Aurobindo Marg
+S22   40.0%   60.0%    0.0%    0.0%   Sri Aurobindo Marg
+S23   99.9%    0.1%    0.0%    0.0%   Sri Aurobindo Marg
+S24   44.0%   51.5%    1.8%    2.6%   Sri Aurobindo Marg
+S25   22.9%   27.5%   22.5%   27.1%   Sri Aurobindo Marg
+S26   12.4%   13.2%    7.2%   67.2%   Sri Aurobindo Marg
+S27   38.9%   61.1%    0.0%    0.0%   roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+S28   17.6%   80.1%    2.2%    0.0%   Sri Aurobindo Marg
+S29   36.4%   59.3%    3.3%    1.0%   Sri Aurobindo Marg
+S30   70.3%   19.7%    0.4%    9.6%   Sri Aurobindo Marg
+S31   30.7%   12.1%   10.3%   46.9%   Sri Aurobindo Marg
+S32    8.3%   11.0%    7.2%   73.5%   Sri Aurobindo Marg
+S33    5.8%   80.8%   13.2%    0.1%   Sri Aurobindo Marg
+S34    1.1%   65.6%   33.3%    0.0%   Sri Aurobindo Marg
+S35   22.1%   37.9%   24.0%   16.0%   Sri Aurobindo Marg
+S36   38.6%   22.9%   24.2%   14.3%   Sri Aurobindo Marg
+S37   33.8%   22.8%   28.8%   14.7%   Sri Aurobindo Marg
+S38   35.6%   31.4%   24.6%    8.5%   Sri Aurobindo Marg
+S39    5.1%   45.3%   32.9%   16.7%   Sri Aurobindo Marg
+S40   29.3%   62.8%    6.9%    1.0%   Sri Aurobindo Marg
+S41   36.4%   61.2%    1.0%    1.4%   Sri Aurobindo Marg
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  11:58 – 22:08   (duration 610 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S10  ACTIVE   14:22–14:36, 17:18–17:34, 17:44–18:06, 18:08–20:32, 20:44–21:20   conf=HIGH(0.95)   [Sri Aurobindo Marg]
+  S11  ACTIVE   20:32–20:44   conf=HIGH(0.95)   [Sri Aurobindo Marg]
+  S26  ACTIVE   12:04–22:22   conf=MEDIUM(0.58)   [Sri Aurobindo Marg]
+  S32  ACTIVE   09:44–16:58, 17:04–19:02, 19:26–19:36   conf=MEDIUM(0.65)   [Sri Aurobindo Marg]
+  S33  ACTIVE   20:08–20:24   conf=MEDIUM(0.70)   [Sri Aurobindo Marg]
+  S39  ACTIVE   14:10–15:04, 16:44–18:54, 20:38–22:08   conf=HIGH(0.90)   [Sri Aurobindo Marg]
+  S40  ACTIVE   18:58–19:20, 19:22–20:38   conf=HIGH(0.82)   [Sri Aurobindo Marg]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  S01→S02   skipped (no paired onsets)
+  !! S02→S03   observed_lag=-19.5m  expected=0.2-0.3m  dist=69m  (n=2d)
+  !! S03→S04   observed_lag=+10.5m  expected=0.1-0.3m  dist=55m  (n=2d)
+  !! S04→S05   observed_lag=-24.0m  expected=0.1-0.2m  dist=44m  (n=1d)
+  S05→S06   skipped (no paired onsets)
+  S06→S07   skipped (no paired onsets)
+  !! S07→S08   observed_lag=+9.0m  expected=0.1-0.2m  dist=48m  (n=1d)
+  !! S08→S09   observed_lag=+28.0m  expected=0.2-0.4m  dist=82m  (n=1d)
+  OK S09→S10   observed_lag=-1.0m  expected=0.4-0.7m  dist=142m  (n=1d)
+  OK S10→S11   observed_lag=+0.0m  expected=0.4-0.7m  dist=130m  (n=4d)
+  OK S11→S12   observed_lag=-1.0m  expected=0.2-0.4m  dist=72m  (n=4d)
+  !! S12→S13   observed_lag=-35.0m  expected=0.2-0.3m  dist=66m  (n=1d)
+  !! S13→S14   observed_lag=+36.0m  expected=0.1-0.2m  dist=50m  (n=1d)
+  S14→S15   skipped (no paired onsets)
+  S15→S16   skipped (no paired onsets)
+  S16→S17   skipped (no paired onsets)
+  !! S17→S18   observed_lag=+8.0m  expected=0.2-0.3m  dist=66m  (n=4d)
+  !! S18→S19   observed_lag=-20.0m  expected=0.1-0.2m  dist=44m  (n=2d)
+  S19→S20   skipped (no paired onsets)
+  !! S20→S21   observed_lag=-56.0m  expected=0.4-0.7m  dist=144m  (n=3d)
+  !! S21→S22   observed_lag=+19.0m  expected=0.1-0.1m  dist=28m  (n=1d)
+  S22→S23   skipped (no paired onsets)
+  S23→S24   skipped (no paired onsets)
+  S24→S25   skipped (no paired onsets)
+  !! S25→S26   observed_lag=+11.0m  expected=0.3-0.6m  dist=118m  (n=1d)
+  !! S26→S27   observed_lag=-5.0m  expected=0.1-0.3m  dist=51m  (n=1d)
+  !! S27→S28   observed_lag=+4.0m  expected=0.0-0.1m  dist=14m  (n=1d)
+  S28→S29   skipped (no paired onsets)
+  OK S29→S30   observed_lag=+1.0m  expected=0.4-0.8m  dist=161m  (n=1d)
+  !! S30→S31   observed_lag=-12.0m  expected=0.5-0.9m  dist=171m  (n=1d)
+  OK S31→S32   observed_lag=-0.5m  expected=0.5-0.9m  dist=172m  (n=2d)
+  !! S32→S33   observed_lag=-7.0m  expected=0.0-0.1m  dist=15m  (n=4d)
+  S33→S34   skipped (no paired onsets)
+  S34→S35   skipped (no paired onsets)
+  !! S35→S36   observed_lag=-46.0m  expected=0.1-0.2m  dist=34m  (n=1d)
+  OK S36→S37   observed_lag=+2.0m  expected=0.1-0.2m  dist=30m  (n=3d)
+  !! S37→S38   observed_lag=+30.0m  expected=0.1-0.2m  dist=44m  (n=2d)
+  OK S38→S39   observed_lag=+0.0m  expected=0.1-0.2m  dist=44m  (n=2d)
+  OK S39→S40   observed_lag=+1.0m  expected=0.1-0.1m  dist=22m  (n=1d)
+  !! S40→S41   observed_lag=-4.0m  expected=0.4-0.7m  dist=138m  (n=1d)
+  shockwave pass rate: 30%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 17/41 (41%)  threshold=80%
+  contig-length (v2.1 R5): max=31%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 4 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           OCCASIONAL    1/4     25%  Sri Aurobindo Marg
+  S02  FREE_FLOW           FREQUENT      2/4     50%  Sri Aurobindo Marg
+  S03  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  S04  FREE_FLOW           FREQUENT      2/4     50%  Sri Aurobindo Marg
+  S05  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  S06  FREE_FLOW           FREQUENT      2/4     50%  Sri Aurobindo Marg
+  S07  FREE_FLOW           FREQUENT      2/4     50%  Sri Aurobindo Marg
+  S08  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  S09  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S10★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S11★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S12  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S13  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  S14  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S15  FREE_FLOW           OCCASIONAL    1/4     25%  Sri Aurobindo Marg
+  S16  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S17  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S18  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S19  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  S20  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S21  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S22  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S23  FREE_FLOW           OCCASIONAL    1/4     25%  Sri Aurobindo Marg
+  S24  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  S25  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S26★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S27  FREE_FLOW           RECURRING     4/4    100%  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+  S28  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S29  FREE_FLOW           RECURRING     4/4    100%  Sri Aurobindo Marg
+  S30  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S31  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S32★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S33★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S34  FREE_FLOW           FREQUENT      2/4     50%  Sri Aurobindo Marg
+  S35  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S36  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S37  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S38  QUEUE_VICTIM        RECURRING     4/4    100%  Sri Aurobindo Marg
+  S39★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S40★ ACTIVE_BOTTLENECK   RECURRING     4/4    100%  Sri Aurobindo Marg
+  S41  FREE_FLOW           RECURRING     3/4     75%  Sri Aurobindo Marg
+  ★ bottleneck recurrence summary:
+      S10  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+      S11  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+      S26  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+      S32  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+      S33  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+      S39  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+      S40  ACTIVE_BOTTLENECK  →  RECURRING (4/4 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S02  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S03  FREE_FLOW           conf=MEDIUM (0.50)  Sri Aurobindo Marg
+  S04  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S05  FREE_FLOW           conf=MEDIUM (0.50)  Sri Aurobindo Marg
+  S06  FREE_FLOW           conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S07  FREE_FLOW           conf=LOW    (0.45)  Sri Aurobindo Marg
+  S08  FREE_FLOW           conf=MEDIUM (0.50)  Sri Aurobindo Marg
+  S09  QUEUE_VICTIM        conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S10  ACTIVE_BOTTLENECK   conf=HIGH   (0.95)  Sri Aurobindo Marg
+  S11  ACTIVE_BOTTLENECK   conf=HIGH   (0.95)  Sri Aurobindo Marg
+  S12  FREE_FLOW           conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S13  FREE_FLOW           conf=MEDIUM (0.50)  Sri Aurobindo Marg
+  S14  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S15  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S16  FREE_FLOW           conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S17  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S18  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S19  FREE_FLOW           conf=MEDIUM (0.50)  Sri Aurobindo Marg
+  S20  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S21  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S22  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S23  FREE_FLOW           conf=MEDIUM (0.53)  Sri Aurobindo Marg
+  S24  FREE_FLOW           conf=MEDIUM (0.62)  Sri Aurobindo Marg
+  S25  QUEUE_VICTIM        conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S26  ACTIVE_BOTTLENECK   conf=MEDIUM (0.58)  Sri Aurobindo Marg
+  S27  FREE_FLOW           conf=MEDIUM (0.55)  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo
+  S28  FREE_FLOW           conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S29  FREE_FLOW           conf=HIGH   (0.80)  Sri Aurobindo Marg
+  S30  QUEUE_VICTIM        conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S31  QUEUE_VICTIM        conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S32  ACTIVE_BOTTLENECK   conf=MEDIUM (0.65)  Sri Aurobindo Marg
+  S33  ACTIVE_BOTTLENECK   conf=MEDIUM (0.70)  Sri Aurobindo Marg
+  S34  FREE_FLOW           conf=MEDIUM (0.57)  Sri Aurobindo Marg
+  S35  QUEUE_VICTIM        conf=MEDIUM (0.55)  Sri Aurobindo Marg
+  S36  QUEUE_VICTIM        conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S37  QUEUE_VICTIM        conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S38  QUEUE_VICTIM        conf=MEDIUM (0.68)  Sri Aurobindo Marg
+  S39  ACTIVE_BOTTLENECK   conf=HIGH   (0.90)  Sri Aurobindo Marg
+  S40  ACTIVE_BOTTLENECK   conf=HIGH   (0.82)  Sri Aurobindo Marg
+  S41  FREE_FLOW           conf=MEDIUM (0.50)  Sri Aurobindo Marg
+
+--- WARNINGS ---
+  • 12b746f7 (Sri Aurobindo Marg): ff speed 6.7 km/h < 8 — segment may never reach true free flow
+  • 27264061 (Sri Aurobindo Marg): raw ff=1.0s implies 86.4 km/h (>80); clamped to 1.1s

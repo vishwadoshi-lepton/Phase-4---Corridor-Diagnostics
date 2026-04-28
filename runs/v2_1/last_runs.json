@@ -1,0 +1,190 @@
+{
+  "PUNE_A": {
+    "weekday": {
+      "finished_at": "2026-04-27T12:30:53.531Z",
+      "summary_verdict": "POINT",
+      "heatstrip": [
+        {
+          "road_id": "53b8c7b4-c353-488c-992e-04298c2671b3",
+          "order": 1,
+          "length_m": 494,
+          "verdict": "HEAD_BOTTLENECK"
+        },
+        {
+          "road_id": "78759d67-cc66-4634-a058-7f158a957912",
+          "order": 2,
+          "length_m": 551,
+          "verdict": "ACTIVE_BOTTLENECK"
+        },
+        {
+          "road_id": "33c2fa56-a315-4587-8838-1872c3d469cf",
+          "order": 3,
+          "length_m": 314,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "7495fe06-2281-4957-a928-353948d5279b",
+          "order": 4,
+          "length_m": 1578,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "337b792b-f217-413b-8bda-1377fe15847d",
+          "order": 5,
+          "length_m": 734,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "a08d9521-9203-43a4-a98d-48a50d31fcfb",
+          "order": 6,
+          "length_m": 3451,
+          "verdict": "FREE_FLOW"
+        }
+      ]
+    }
+  },
+  "USER_LOHGAON_TO_VISHRANT_WADI_TRY_2": {
+    "weekday": {
+      "finished_at": "2026-04-27T12:23:29.399Z",
+      "summary_verdict": "POINT",
+      "heatstrip": [
+        {
+          "road_id": "52e8063d-8a60-404a-9872-f0c11f30739f",
+          "order": 1,
+          "length_m": 2230,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "0b3acd6c-e86f-406d-bf32-7e14641dfa77",
+          "order": 2,
+          "length_m": 2219,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "bac8cf91-a4df-4f30-83d4-1106483c4b43",
+          "order": 3,
+          "length_m": 856,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "79936e0e-ff30-45d1-b934-6bcccc2b760d",
+          "order": 4,
+          "length_m": 857,
+          "verdict": "QUEUE_VICTIM"
+        },
+        {
+          "road_id": "1e5d6d5c-4981-4e54-af07-4c2f26740f43",
+          "order": 5,
+          "length_m": 1251,
+          "verdict": "QUEUE_VICTIM"
+        },
+        {
+          "road_id": "79376aeb-7480-4552-b0e3-38cba10a68af",
+          "order": 6,
+          "length_m": 1645,
+          "verdict": "SLOW_LINK"
+        }
+      ]
+    }
+  },
+  "USER_BIDHAN_NAGAR_TEST1": {
+    "weekday": {
+      "finished_at": "2026-04-27T12:41:42.794Z",
+      "summary_verdict": "POINT",
+      "heatstrip": [
+        {
+          "road_id": "b8d7bf34-3533-46cb-8b82-d518b29d10e9",
+          "order": 1,
+          "length_m": 763,
+          "verdict": "HEAD_BOTTLENECK"
+        },
+        {
+          "road_id": "1bbc6f1d-b3c3-40e8-90dc-d699bfc54527",
+          "order": 2,
+          "length_m": 1178,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "fec1c73c-2631-42f3-928d-7e1bfaf929dd",
+          "order": 3,
+          "length_m": 1384,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "bdb0be9d-7fa4-4780-9f32-164884df0ed9",
+          "order": 4,
+          "length_m": 1208,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "36a82457-419e-4bc9-b5e2-abaf8f521fa0",
+          "order": 5,
+          "length_m": 355,
+          "verdict": "FREE_FLOW"
+        }
+      ]
+    }
+  },
+  "PUNE_B": {
+    "weekday": {
+      "finished_at": "2026-04-27T12:50:29.759Z",
+      "summary_verdict": "POINT",
+      "heatstrip": [
+        {
+          "road_id": "41ee1523-56bf-45d5-b682-5ec53164d3ba",
+          "order": 1,
+          "length_m": 1714,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "6b2f764b-f1c0-422f-8e7e-e2c64cb3efea",
+          "order": 2,
+          "length_m": 1572,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "d4aa2f2a-bd1e-48c0-a441-e92cd838042a",
+          "order": 3,
+          "length_m": 2510,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "eb22bbd6-6154-4e89-9cb5-d5e7990c9df6",
+          "order": 4,
+          "length_m": 1013,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "0e668e68-2eb3-4dfa-9f30-b62888659dee",
+          "order": 5,
+          "length_m": 1274,
+          "verdict": "ACTIVE_BOTTLENECK"
+        },
+        {
+          "road_id": "97a6e3fc-4b9c-4a5f-aaad-5f9dfa61ea4a",
+          "order": 6,
+          "length_m": 775,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "889abc53-d3ea-43b0-bc12-0b248ccea383",
+          "order": 7,
+          "length_m": 2489,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "599072f7-4ccc-425c-933f-fa39dea96bd4",
+          "order": 8,
+          "length_m": 2208,
+          "verdict": "FREE_FLOW"
+        },
+        {
+          "road_id": "a59f6ed4-d5ac-4b8e-9921-cd29da2f2272",
+          "order": 9,
+          "length_m": 2370,
+          "verdict": "FREE_FLOW"
+        }
+      ]
+    }
+  }
+}
