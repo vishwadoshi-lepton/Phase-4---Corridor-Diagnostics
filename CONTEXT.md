@@ -93,11 +93,15 @@ Phase 4 - Corridor Diagnostics/
     └── mundhwa-corridor-diagnostics.html       pre-v2 Mundhwa-specific mockup
 ```
 
+## Prediction layer (v1, on top of v2.1)
+
+A short-horizon (90-min) now-cast layer was scaffolded on 2026-04-23 that consumes v2.1's output as a prior and uses Google Research's TimesFM 2.5 foundation model as the forecaster. Six corridors × three held-out days × 37 anchor ticks are pre-computed and delivered as self-contained HTML replays with a dual-marker slider (anchor + playhead; past = actual, forecast window = predicted, beyond horizon = actual again). The pipeline code lives at `data/v2_1/predict/`. The design doc is `docs/CORRIDOR_PREDICTION_V1_DESIGN.md`. The replays are at `docs/replay/index.html`. This layer currently runs on synthetic held-out days (the `traffic_observation` pull for raw per-day rows is still pending).
+
 ## Relation to earlier phases
 
 - **Phase 1 (Foundation)** set up the probe-data ingestion pipeline and `traffic_observation` schema. Phase 4 consumes it directly.
 - **Phase 2 (Enhanced Intelligence)** introduced v1's diagnostic pipeline and the per-corridor reports in `data/v1_per_corridor_reports/`. Phase 4 replaces v1's diagnostic with a traffic-engineering-grade v2.
-- **Phase 3 (CityPulse)** is the predictive layer. Phase 4 is the diagnostic layer. Diagnostic answers "why is it broken right now"; CityPulse answers "when will it be broken next." They share the same data substrate but run independently.
+- **Phase 3 (CityPulse)** was designed as the predictive layer independent of v2.1. The new prediction layer in `data/v2_1/predict/` partially occupies that space by anchoring TimesFM forecasts on v2.1's verdict + onset distribution. Whether to merge or keep separate is an open question.
 
 ## Next engineering tasks (in order)
 
