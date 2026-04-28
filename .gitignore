@@ -1,6 +1,17 @@
-data/__pycache__
-data/v2_1/__pycache__
-docs/.DS_Store
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Editor / OS
+.DS_Store
+*.swp
+
+# Local config
 .env
 .env.local
+
+# Claude Code session/runtime state (not source)
+.claude/
 .superpowers/
