@@ -334,5 +334,1799 @@
     ],
     "total_length_m": 10239,
     "n_segments": 11
+  },
+  "DEL_AUROBINDO": {
+    "city": "Delhi",
+    "name": "Sri Aurobindo Marg (Delhi) - polyline-derived",
+    "chain": [
+      {
+        "road_id": "20914a08-a262-4e79-9196-7954e451ddeb",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 11,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2ff96edb-90d3-4744-92b3-c87b196b5a02",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 69,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "69019c73-c74a-4f90-a0b6-1403e1fe7843",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 69,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6acec70c-8605-46d8-8ee8-3edf1275bae4",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 41,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2e7ac259-46a1-4f1a-b2e2-288d3282ae9b",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 48,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e4eedd2-ac54-4279-b019-d57be7ca79af",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 27,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b03f6c23-2b10-4fc2-8a94-14960f77a88f",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 47,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e77ed9d9-3298-4ef5-ada5-ff959ce2e4cf",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 50,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "99d27c41-06cf-4e16-ae46-492436f718df",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 115,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "013d4921-65e9-4bee-93b9-96688d3cbc33",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 170,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d4c950c7-8973-4e36-bd6e-f48aec086de8",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 91,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c853ad4d-4414-4700-89ce-991a0ec54129",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 54,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8be40291-a08b-4ae3-8d9b-b369cb51d30e",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 77,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "aa199c43-69d2-4777-ba2e-4790465a9cab",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 22,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7c342410-1ff0-4d55-990d-c253fc9a30aa",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 11,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c76964a5-54b0-482c-97c6-7eea9e6ef4b5",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 20,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a4c7f59c-7345-4c2c-b73f-c807271ba347",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 54,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e9d9e526-0474-4eba-9b2d-fa0b03f6ea8d",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 77,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "74b95fc0-46bf-4ca9-ad67-aff08cdb273f",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 11,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8ad054b9-9bc7-4908-9860-d8818754d46a",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 253,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "ccb355c2-2a30-4184-8953-fccd325d1a56",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 35,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "01b5d198-cb7d-4938-b234-9d27635a04d6",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 22,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "37aab973-3aed-430e-918b-b0e24896de73",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 16,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3ac6fe76-d757-493e-a6ba-54b0bc730579",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 90,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2521c98e-2bbc-4145-939a-c8fa46040c51",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 144,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bd141c1a-5422-4ff7-9462-b67d402b298d",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 93,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "21d2b99d-eff4-4e09-ab6c-eb0266f1a40f",
+        "road_name": "roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo",
+        "length_m": 9,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e030980-bbb9-46ac-ab65-478faf41c806",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 19,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c249fc2e-6c2f-474a-8d2c-35822166a074",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 303,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4cfcdacd-8a5b-48f5-b3a7-c0506047b1f9",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 19,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4289be62-200d-4639-9cd4-9fd9a82e9505",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 323,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "637a994b-4712-4e65-b400-ffdf092f3bda",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 21,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d0a13fde-6bec-40b5-9926-37867b9255ea",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 9,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "12b746f7-9078-48f8-ad14-d062f2129c1c",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 26,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "477157cb-1895-4917-b141-83d62b1f4b59",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 32,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7befd294-292a-42e1-8bf6-3c0eff0a7a37",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 37,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8b45daaa-fc07-4f58-a1b8-68c4fc4dc1b0",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 24,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "050cdafd-22b7-44b0-a68a-aac2c3794322",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 63,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "27264061-b5a7-4dd2-98db-668cf6a3682c",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 24,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e007e321-d104-4b95-bf61-d588cd07ab1e",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 20,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5c5b5237-ccd0-4660-81b5-e7398d8aa1ae",
+        "road_name": "Sri Aurobindo Marg",
+        "length_m": 255,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 2901,
+    "n_segments": 41
+  },
+  "TRANSIENT_1777283096337": {
+    "city": "Pune",
+    "name": "18.5, 73.9 → 18.5, 73.9",
+    "chain": [
+      {
+        "road_id": "587ecea0-ff59-409a-8caa-0b1ca0ab0d67",
+        "road_name": "Pune/Ch. Shree Shivaji School To Manpa Bridge",
+        "length_m": 523,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e2c1ba9-1ef4-42d4-9908-2726b61d3811",
+        "road_name": "Pune/Manpa Bridge To Jijamata Chowk",
+        "length_m": 366,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fde221fa-ecc7-47ec-9f21-77535d9f187b",
+        "road_name": "Pune/Dattamandir To Fadgate Police Chowki",
+        "length_m": 795,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5198ea09-0e9f-41ab-a3da-3961c35b03ef",
+        "road_name": "Pune/Fadgate Police Chowki To Rashtrabhushan Chowk",
+        "length_m": 563,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7435abcd-a4ec-4a68-bafb-fe3cba0d7596",
+        "road_name": "Pune/23- Bajirao Road (Reversed)",
+        "length_m": 3832,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8be48b5e-21e2-4877-9bcd-a75445994743",
+        "road_name": "Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate",
+        "length_m": 354,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 6433,
+    "n_segments": 6
+  },
+  "USER_18_5_73_9_18_5_73_9": {
+    "city": "Pune",
+    "name": "18.5, 73.9 → 18.5, 73.9",
+    "chain": [
+      {
+        "road_id": "5781af4f-3d15-42e9-94c9-8c4e5b177f2a",
+        "road_name": "Pune/Poultry Farm Chowk To Mariaai Gate",
+        "length_m": 545,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9ca35d98-84f9-47af-a789-41fce2337793",
+        "road_name": "Pune/Mariaai Gate To Patil Estate Chowk",
+        "length_m": 1481,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "587ecea0-ff59-409a-8caa-0b1ca0ab0d67",
+        "road_name": "Pune/Ch. Shree Shivaji School To Manpa Bridge",
+        "length_m": 523,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e2c1ba9-1ef4-42d4-9908-2726b61d3811",
+        "road_name": "Pune/Manpa Bridge To Jijamata Chowk",
+        "length_m": 366,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fde221fa-ecc7-47ec-9f21-77535d9f187b",
+        "road_name": "Pune/Dattamandir To Fadgate Police Chowki",
+        "length_m": 795,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5198ea09-0e9f-41ab-a3da-3961c35b03ef",
+        "road_name": "Pune/Fadgate Police Chowki To Rashtrabhushan Chowk",
+        "length_m": 563,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7435abcd-a4ec-4a68-bafb-fe3cba0d7596",
+        "road_name": "Pune/23- Bajirao Road (Reversed)",
+        "length_m": 3832,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8be48b5e-21e2-4877-9bcd-a75445994743",
+        "road_name": "Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate",
+        "length_m": 354,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7d15c018-e684-4e55-8fc0-d37f0cc359b0",
+        "road_name": "Pune/Jedhe Chowk To Laxminarayan",
+        "length_m": 428,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a06de4e7-8677-48ac-9efc-426a67d8b907",
+        "road_name": "Pune/Laxminarayan To Panchmi Hotel",
+        "length_m": 466,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002",
+        "road_name": "Pune/Panchmi Hotel To Adinath Society",
+        "length_m": 180,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "18cbf145-600d-43e3-87b1-05019bfae269",
+        "road_name": "Pune/Adinath Society To Rao Nursing Home",
+        "length_m": 664,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "41db3372-45c7-427d-bc50-3791d9faade0",
+        "road_name": "Pune/Rao Nursing Home To Padmavati",
+        "length_m": 859,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 11056,
+    "n_segments": 13
+  },
+  "USER_18_5_73_8_18_5_73_9": {
+    "city": "Pune",
+    "name": "18.5, 73.8 → 18.5, 73.9",
+    "chain": [
+      {
+        "road_id": "9cb223cd-3ce5-4155-9abf-90b0574d5225",
+        "road_name": "Pune/Masoba Gate Chowk To Simla Office",
+        "length_m": 560,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9849bdb6-a07b-4760-b9ce-30fe50a55aeb",
+        "road_name": "Pune/Simla Office Chowk To Sancheti Hospital",
+        "length_m": 331,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "55f46699-2343-4849-b0f3-ee039c0e02c2",
+        "road_name": "Pune/Patil Estate Chowk To Engineering Collage Chowk",
+        "length_m": 455,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "30101b56-45e6-4340-8b37-aacee4fb36fe",
+        "road_name": "Pune/Engineering Collage Chowk To RTO Chowk",
+        "length_m": 646,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 1992,
+    "n_segments": 4
+  },
+  "USER_TEST1": {
+    "city": "Pune",
+    "name": "test1",
+    "chain": [
+      {
+        "road_id": "587ecea0-ff59-409a-8caa-0b1ca0ab0d67",
+        "road_name": "Pune/Ch. Shree Shivaji School To Manpa Bridge",
+        "length_m": 523,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e2c1ba9-1ef4-42d4-9908-2726b61d3811",
+        "road_name": "Pune/Manpa Bridge To Jijamata Chowk",
+        "length_m": 366,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fde221fa-ecc7-47ec-9f21-77535d9f187b",
+        "road_name": "Pune/Dattamandir To Fadgate Police Chowki",
+        "length_m": 795,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5198ea09-0e9f-41ab-a3da-3961c35b03ef",
+        "road_name": "Pune/Fadgate Police Chowki To Rashtrabhushan Chowk",
+        "length_m": 563,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7435abcd-a4ec-4a68-bafb-fe3cba0d7596",
+        "road_name": "Pune/23- Bajirao Road (Reversed)",
+        "length_m": 3832,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8be48b5e-21e2-4877-9bcd-a75445994743",
+        "road_name": "Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate",
+        "length_m": 354,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7d15c018-e684-4e55-8fc0-d37f0cc359b0",
+        "road_name": "Pune/Jedhe Chowk To Laxminarayan",
+        "length_m": 428,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a06de4e7-8677-48ac-9efc-426a67d8b907",
+        "road_name": "Pune/Laxminarayan To Panchmi Hotel",
+        "length_m": 466,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002",
+        "road_name": "Pune/Panchmi Hotel To Adinath Society",
+        "length_m": 180,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "18cbf145-600d-43e3-87b1-05019bfae269",
+        "road_name": "Pune/Adinath Society To Rao Nursing Home",
+        "length_m": 664,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "41db3372-45c7-427d-bc50-3791d9faade0",
+        "road_name": "Pune/Rao Nursing Home To Padmavati",
+        "length_m": 859,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "15119c2b-df72-4e0b-ae57-3bf49969037d",
+        "road_name": "Pune/Padmavati  To KK Market Chowk",
+        "length_m": 1003,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "24a877c6-4516-4ba7-9111-82a351bd0be3",
+        "road_name": "Pune/KK Market Chowk To  Dhankavdi Phata",
+        "length_m": 259,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8f0f2a5a-e714-4829-9b5a-9722026852c1",
+        "road_name": "Pune/Dhankavdi Phata To Bharti Vidhyapeeth",
+        "length_m": 895,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 11187,
+    "n_segments": 14
+  },
+  "USER_LOHGAON_TO_VISHRANT_WADI": {
+    "city": "Pune",
+    "name": "Lohgaon to vishrant wadi",
+    "chain": [
+      {
+        "road_id": "52e8063d-8a60-404a-9872-f0c11f30739f",
+        "road_name": "Pune/Wagholi Phata Tpo Kalwad Wasti",
+        "length_m": 2230,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "0b3acd6c-e86f-406d-bf32-7e14641dfa77",
+        "road_name": "Pune/Kalwad Wasti To Wagholi Phata",
+        "length_m": 2219,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bac8cf91-a4df-4f30-83d4-1106483c4b43",
+        "road_name": "Pune/Kalwad Wasti To Petrol satha Chowk",
+        "length_m": 856,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "79936e0e-ff30-45d1-b934-6bcccc2b760d",
+        "road_name": "Pune/Petrol satha Chowk To Kalwad Wasti",
+        "length_m": 857,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1e5d6d5c-4981-4e54-af07-4c2f26740f43",
+        "road_name": "Pune/Petrol satha Chowk To Kekan Petrol Pump",
+        "length_m": 1251,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "79376aeb-7480-4552-b0e3-38cba10a68af",
+        "road_name": "Pune/Kekan Petrol Pump To vishrantwadi Chowk",
+        "length_m": 1645,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 9058,
+    "n_segments": 6
+  },
+  "USER_18_5_73_9_18_5_73_90UHVIEPDW": {
+    "city": "Pune",
+    "name": "18.5, 73.9 → 18.5, 73.90uhviepdw",
+    "chain": [
+      {
+        "road_id": "587ecea0-ff59-409a-8caa-0b1ca0ab0d67",
+        "road_name": "Pune/Ch. Shree Shivaji School To Manpa Bridge",
+        "length_m": 523,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e2c1ba9-1ef4-42d4-9908-2726b61d3811",
+        "road_name": "Pune/Manpa Bridge To Jijamata Chowk",
+        "length_m": 366,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fde221fa-ecc7-47ec-9f21-77535d9f187b",
+        "road_name": "Pune/Dattamandir To Fadgate Police Chowki",
+        "length_m": 795,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5198ea09-0e9f-41ab-a3da-3961c35b03ef",
+        "road_name": "Pune/Fadgate Police Chowki To Rashtrabhushan Chowk",
+        "length_m": 563,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7435abcd-a4ec-4a68-bafb-fe3cba0d7596",
+        "road_name": "Pune/23- Bajirao Road (Reversed)",
+        "length_m": 3832,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8be48b5e-21e2-4877-9bcd-a75445994743",
+        "road_name": "Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate",
+        "length_m": 354,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 6433,
+    "n_segments": 6
+  },
+  "TRANSIENT_1777285976818": {
+    "city": "Pune",
+    "name": "Custom (3 segs)",
+    "chain": [
+      {
+        "road_id": "53b8c7b4-c353-488c-992e-04298c2671b3",
+        "road_name": "Pune/Fakri Hill Chowk To  Lullanagar Chowk",
+        "length_m": 494,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "78759d67-cc66-4634-a058-7f158a957912",
+        "road_name": "Pune/Jyoti Hotel Chowk to Lullanagar Chowk",
+        "length_m": 551,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "33c2fa56-a315-4587-8838-1872c3d469cf",
+        "road_name": "Pune/Command Hospital To Cross Road junction",
+        "length_m": 314,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 1359,
+    "n_segments": 3
+  },
+  "USER_LOHGAON_TO_VISHRANT_WADI_TRY_2": {
+    "city": "Pune",
+    "name": "Lohgaon to vishrant wadi try 2",
+    "chain": [
+      {
+        "road_id": "52e8063d-8a60-404a-9872-f0c11f30739f",
+        "road_name": "Pune/Wagholi Phata Tpo Kalwad Wasti",
+        "length_m": 2230,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "0b3acd6c-e86f-406d-bf32-7e14641dfa77",
+        "road_name": "Pune/Kalwad Wasti To Wagholi Phata",
+        "length_m": 2219,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bac8cf91-a4df-4f30-83d4-1106483c4b43",
+        "road_name": "Pune/Kalwad Wasti To Petrol satha Chowk",
+        "length_m": 856,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "79936e0e-ff30-45d1-b934-6bcccc2b760d",
+        "road_name": "Pune/Petrol satha Chowk To Kalwad Wasti",
+        "length_m": 857,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1e5d6d5c-4981-4e54-af07-4c2f26740f43",
+        "road_name": "Pune/Petrol satha Chowk To Kekan Petrol Pump",
+        "length_m": 1251,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "79376aeb-7480-4552-b0e3-38cba10a68af",
+        "road_name": "Pune/Kekan Petrol Pump To vishrantwadi Chowk",
+        "length_m": 1645,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 9058,
+    "n_segments": 6
+  },
+  "USER_BIDHAN_NAGAR_TEST1": {
+    "city": "Bidhan Nagar",
+    "name": "Bidhan nagar test1",
+    "chain": [
+      {
+        "road_id": "b8d7bf34-3533-46cb-8b82-d518b29d10e9",
+        "road_name": "Bidhan Nagar/AL-BL to 8 No. Island",
+        "length_m": 763,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1bbc6f1d-b3c3-40e8-90dc-d699bfc54527",
+        "road_name": "Bidhan Nagar/206 Bus Stand to Baisakhi Island",
+        "length_m": 1178,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fec1c73c-2631-42f3-928d-7e1bfaf929dd",
+        "road_name": "Bidhan Nagar/Baisakhi Island to 4 No. tank",
+        "length_m": 1384,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bdb0be9d-7fa4-4780-9f32-164884df0ed9",
+        "road_name": "Bidhan Nagar/4 No. tank to PNB Island",
+        "length_m": 1208,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "36a82457-419e-4bc9-b5e2-abaf8f521fa0",
+        "road_name": "Bidhan Nagar/PNB Island to Salt Lake Gate no. 2",
+        "length_m": 355,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 4888,
+    "n_segments": 5
+  },
+  "USER_BIDHAN_NAGAR_ROUTE_TEST_1": {
+    "city": "Bidhan Nagar",
+    "name": "bidhan nagar route test 1",
+    "chain": [
+      {
+        "road_id": "5a9c35df-bb9b-4f41-afac-b1fb426b3ff9",
+        "road_name": "Bidhan Nagar/Dakshindari to Clock Tower",
+        "length_m": 1475,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "71720732-6e02-44a1-9830-bbb2a14e7eca",
+        "road_name": "Bidhan Nagar/Clock Tower to Bangur",
+        "length_m": 629,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c739fc4d-6ee7-48f8-8ca0-4403f53fa4ce",
+        "road_name": "Bidhan Nagar/Bangur to Dum Dum Park",
+        "length_m": 703,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1be27dda-fd8c-42bb-b3c1-9da15d40308b",
+        "road_name": "Bidhan Nagar/Dum Dum Park to Haldiram",
+        "length_m": 3327,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3f581f6c-6c1c-4567-ae10-0a66cc638b94",
+        "road_name": "Bidhan Nagar/Haldiram to Kaikhali",
+        "length_m": 880,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "dbe11837-6845-4391-a89d-ecd308429ad1",
+        "road_name": "Bidhan Nagar/Kaikhali to Hotel Crossing",
+        "length_m": 764,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "78f45638-4f72-44b7-aff9-74939c753a57",
+        "road_name": "Bidhan Nagar/Hotel Crossing to 1 No. Airport gate",
+        "length_m": 297,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 8075,
+    "n_segments": 7
+  },
+  "USER_MAHATMA_GANDHI_ROAD_SIMULATION_TEST_ROUTE_2": {
+    "city": "Delhi",
+    "name": "Mahatma Gandhi road - simulation test route 2",
+    "chain": [
+      {
+        "road_id": "0f8cb905-6bbb-4644-a3e1-c6df0e4e9cd0",
+        "road_name": "Ring Road",
+        "length_m": 512,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8be45766-0dfc-4633-9ca3-4684183bfaf4",
+        "road_name": "Ring Road",
+        "length_m": 182,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "74ff8a35-ab04-432c-bdeb-dc5c8364b784",
+        "road_name": "Ring Road",
+        "length_m": 65,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6d87ef8e-caca-440a-9b45-07d9ac6af84e",
+        "road_name": "Ring Road",
+        "length_m": 35,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e9477f0e-1df6-4f47-a2da-628758ea5a3e",
+        "road_name": "Ring Road",
+        "length_m": 22,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6f940bb4-f9ef-4ea3-86e8-cd954494c8ae",
+        "road_name": "Ring Road",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "77553f59-2900-4504-aa32-c3053ab14064",
+        "road_name": "Ring Road",
+        "length_m": 12,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "26375076-d59b-427b-b8d5-205e251ee473",
+        "road_name": "Ring Road",
+        "length_m": 26,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "74cd17d3-21bc-48a8-b762-612ade745435",
+        "road_name": "Ring Road",
+        "length_m": 21,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3428cc10-8dae-49c6-92ca-e1afc7b1baf2",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 168,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9219cb40-1c7b-4f3c-921e-48b93e96db8b",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 23,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "397bc02c-d46f-4f4b-8899-c2502730ad31",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f50f120f-e077-4979-a6c7-2d322d672e37",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 42,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "aef6569c-cd46-4e59-9453-5f6610a9669e",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6a907be5-7605-47c6-b020-76482af2cbc5",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 24,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a47f5d49-40d8-4cfd-a320-a1174fa47d9c",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 195,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "875ee358-7b28-44f5-b5a2-f3ed943699f9",
+        "road_name": "Ring Road",
+        "length_m": 43,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c97d82a5-5171-4cad-ba29-cc75813bb441",
+        "road_name": "Ring Road",
+        "length_m": 29,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "33132f98-a0be-4401-83b3-9a5aad45f0ca",
+        "road_name": "Ring Road",
+        "length_m": 24,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d8cd5e5e-c959-4f6c-975d-47ff3eccb194",
+        "road_name": "Ring Road",
+        "length_m": 46,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f5e8ae37-3783-43ab-ba54-365bd81570ef",
+        "road_name": "Ring Road",
+        "length_m": 101,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a18c3572-78b0-4a08-a85e-a97e131f5b0c",
+        "road_name": "Ring Road",
+        "length_m": 25,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "0dbb5707-0856-484b-a3b2-31738a8cb126",
+        "road_name": "Ring Road",
+        "length_m": 86,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4c3cb7c3-b10e-4c1b-913c-3a3ac0bae620",
+        "road_name": "Ring Road",
+        "length_m": 12,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3c5c60c9-0c44-4e6c-9f34-bf9b17810220",
+        "road_name": "Ring Road",
+        "length_m": 12,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "37ba43c9-392f-4fff-b694-514ade019b03",
+        "road_name": "Ring Road",
+        "length_m": 45,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "21b0a554-f23d-406b-8dac-d4b9abe6a33e",
+        "road_name": "Ring Road",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "eb94b23d-e447-4eff-8f36-06cc54a58e02",
+        "road_name": "Ring Road",
+        "length_m": 140,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6e691a1d-a39e-4a25-b592-0eafa7f20caa",
+        "road_name": "Ring Road",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d1672a3e-03a6-4890-944a-4f8ce21902bf",
+        "road_name": "Ring Road",
+        "length_m": 29,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "430059d4-9c63-4e7b-b019-86a1a034c5dd",
+        "road_name": "Ring Road",
+        "length_m": 34,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e394f8a7-aaba-4e0a-9fd6-822a0ad3803e",
+        "road_name": "Ring Road",
+        "length_m": 37,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "33abe253-b000-4a1d-a839-8c0b53332094",
+        "road_name": "Ring Road",
+        "length_m": 43,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "72f0ff9f-17c0-4817-b43d-aa93e2d3a9c8",
+        "road_name": "Ring Road",
+        "length_m": 148,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1e85446a-c64c-473a-87db-b74b58bbd251",
+        "road_name": "Ring Road",
+        "length_m": 15,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "35e46226-343b-4305-ad26-d874a5115692",
+        "road_name": "Ring Road",
+        "length_m": 38,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6ff0ffb9-3d52-41b2-8de5-7d623b3eb5cc",
+        "road_name": "Ring Road",
+        "length_m": 81,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f1c5438e-a6c9-4927-b345-6da004a3b7e6",
+        "road_name": "Ring Road",
+        "length_m": 166,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8520d8d5-5155-42d4-8d34-e88683e44847",
+        "road_name": "Ring Road",
+        "length_m": 26,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c2ffab33-d3de-43d0-b595-1c295427747c",
+        "road_name": "Ring Road",
+        "length_m": 29,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "0be2a3ca-fa4c-466d-825d-d2abee18deb6",
+        "road_name": "Ring Road",
+        "length_m": 13,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "75d7a2d7-621e-478a-a441-3379b65d3ff6",
+        "road_name": "Ring Road",
+        "length_m": 59,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "84b43000-9c59-4fc8-b298-335e93c03de8",
+        "road_name": "Ring Road",
+        "length_m": 71,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "acee1164-5645-460d-ba16-a01b73e7d183",
+        "road_name": "Ring Road",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "645436be-3b58-4abd-b6a1-49eaaa3d0db8",
+        "road_name": "Ring Road",
+        "length_m": 140,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7fe1ed3b-f002-434a-a074-e112e990c9dd",
+        "road_name": "Ring Road",
+        "length_m": 26,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e8941281-a111-4c5e-ac40-4f1ee2d3b8fb",
+        "road_name": "Ring Road",
+        "length_m": 27,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "48dae510-b693-400e-9657-defca69ad4ba",
+        "road_name": "Ring Road",
+        "length_m": 76,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9f997f32-d80a-4f21-a922-1dd2db70488a",
+        "road_name": "Ring Road",
+        "length_m": 60,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d6f19def-d534-4da4-aca3-833650021e5c",
+        "road_name": "Ring Road",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "eebd1863-30a3-4119-b22a-bb4093b25e28",
+        "road_name": "Ring Road",
+        "length_m": 122,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2765645d-43b7-4465-9cd3-780f5acd053d",
+        "road_name": "Ring Road",
+        "length_m": 56,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "386f7242-c58b-4668-aa60-d80bbc60a0e3",
+        "road_name": "Ring Road",
+        "length_m": 20,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d3fbf6aa-4786-42ee-a173-db59487c0b16",
+        "road_name": "Ring Road",
+        "length_m": 44,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d92b5f5a-eb73-4819-bf4e-e70f661c9ea6",
+        "road_name": "Ring Road",
+        "length_m": 76,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "82e94bb6-a8b7-4275-9497-831c753f203b",
+        "road_name": "Ring Road",
+        "length_m": 100,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 3640,
+    "n_segments": 56
+  },
+  "USER_MAHATMA_GANDHI_ROAD_REVERSE": {
+    "city": "Delhi",
+    "name": "Mahatma Gandhi Road reverse",
+    "chain": [
+      {
+        "road_id": "3918eceb-21c1-4d69-ac1d-edef43d70c8f",
+        "road_name": "Ring Road",
+        "length_m": 98,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "deeb52d1-ba05-41a9-829a-b3e963ca35fd",
+        "road_name": "Ring Road",
+        "length_m": 15,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3ef4b226-e74f-4c91-af73-26b5e79b9843",
+        "road_name": "Ring Road",
+        "length_m": 44,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c87efe08-a09f-453b-b54c-157b3f03851b",
+        "road_name": "Ring Road",
+        "length_m": 17,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d7bb1751-2d73-4e82-bdfd-f60d4fe60c0b",
+        "road_name": "Ring Road",
+        "length_m": 68,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d5c3c7ef-0f09-4d82-a835-db3d9185f1b6",
+        "road_name": "Ring Road",
+        "length_m": 9,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "11e0d9c4-fa5d-419b-b617-9b086ff6dec6",
+        "road_name": "Ring Road",
+        "length_m": 141,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5c146826-0551-4a6f-8353-24e19ab2a05b",
+        "road_name": "Ring Road",
+        "length_m": 6,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4dbfa5c3-ac72-42f5-83f0-dd3b9ac78ac3",
+        "road_name": "Ring Road",
+        "length_m": 62,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "727d186a-9ea2-4a71-9b32-fdea7ea37c10",
+        "road_name": "Ring Road",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d57cbac3-d234-43b4-a9ec-eda625647ad1",
+        "road_name": "Ring Road",
+        "length_m": 116,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1b3120cc-82af-4665-b919-b80e8db5293b",
+        "road_name": "Ring Road",
+        "length_m": 39,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e54e3822-65d4-46ee-a56e-92c05dbcac67",
+        "road_name": "Ring Road",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "ab00fb08-a468-49be-aa26-9f6f4e593175",
+        "road_name": "Ring Road",
+        "length_m": 37,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "888f4b98-da7f-4c7f-81b4-2a5257e69ee6",
+        "road_name": "Ring Road",
+        "length_m": 27,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a49978ed-4436-4302-8c07-0498d2336bb9",
+        "road_name": "Ring Road",
+        "length_m": 32,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b1683477-b389-4343-838d-6870f231dfae",
+        "road_name": "Ring Road",
+        "length_m": 148,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d0bbd380-fe8e-4036-89ef-963baf5f897f",
+        "road_name": "Ring Road",
+        "length_m": 55,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d2c1413c-d3c1-4d47-ad83-6b96e85a8a27",
+        "road_name": "Ring Road",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "daffae1e-296c-488a-9e72-f3292267b2b3",
+        "road_name": "Ring Road",
+        "length_m": 105,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "559b111b-2592-4b7e-be2e-cb40a40c34cb",
+        "road_name": "Ring Road",
+        "length_m": 88,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "0c810de3-24c8-4845-a1b4-e83a97aed028",
+        "road_name": "Ring Road",
+        "length_m": 72,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "97142c3c-9cf1-408e-aaac-4da452781986",
+        "road_name": "Ring Road",
+        "length_m": 37,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8a13c263-2bcd-4608-9fff-bc93b2aae0b6",
+        "road_name": "Ring Road",
+        "length_m": 47,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "970e32ae-ab00-4580-87ca-1996493ace83",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 198,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f78bff06-05bf-4ffa-a75f-5a79fc683408",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 23,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "24686cf2-3fc4-4051-9d08-723e72caebdc",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "20656e7b-f460-425d-8edc-beeb35dea352",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 42,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c11350f3-cf45-4ce4-b3f4-900a2acaaaa8",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "66675232-77f0-4a5f-9de1-642d0b118671",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 23,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "db393b0e-bb36-40c2-b10f-e994bd8c0835",
+        "road_name": "Rama Krishna Puram Flyover",
+        "length_m": 171,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "90c180cb-e9d2-454f-bdd8-0b23240cbf6b",
+        "road_name": "Ring Road",
+        "length_m": 43,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "def43b72-8e78-4952-8c74-62b2986dc7f2",
+        "road_name": "Ring Road",
+        "length_m": 53,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4faafc73-251d-4b5f-bce1-ad11224df739",
+        "road_name": "Ring Road",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1c3b62bb-0842-4226-8e6f-dff1d16c74ca",
+        "road_name": "Ring Road",
+        "length_m": 7,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1bcf7d57-b5d6-44f8-848f-6f033974e34b",
+        "road_name": "Ring Road",
+        "length_m": 82,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8d03dc3e-9982-40b7-968f-f8a35397175d",
+        "road_name": "Ring Road",
+        "length_m": 74,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1cbb7604-b440-44b5-9c7e-7eafec77f6f2",
+        "road_name": "Ring Road",
+        "length_m": 291,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f8d22cb4-f18c-45f8-b2cb-f91d7c8a37bd",
+        "road_name": "Ring Road",
+        "length_m": 37,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "55d3041e-0507-4a83-bae4-df10c43d555e",
+        "road_name": "Ring Road",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "77aafed2-8b8b-4f97-bdd8-fd23d26e2ee6",
+        "road_name": "Ring Road",
+        "length_m": 46,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "8bf40262-1182-4b81-8b8f-befe16d6a1a7",
+        "road_name": "Ring Road",
+        "length_m": 439,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 3003,
+    "n_segments": 42
+  },
+  "USER_AFRICA_AVENUE": {
+    "city": "Delhi",
+    "name": "Africa Avenue",
+    "chain": [
+      {
+        "road_id": "e6605d78-d270-4a87-9201-d7d45ed9196c",
+        "road_name": "Africa Avenue",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9627b165-b5da-4d05-a1f0-832fd4d1b1b1",
+        "road_name": "Africa Avenue",
+        "length_m": 30,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "615a2cb7-3cc3-48b7-94b3-d1fc73d40d73",
+        "road_name": "Africa Avenue",
+        "length_m": 45,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b75bd363-9ee7-4a72-9ddc-0ce40fb895fc",
+        "road_name": "Africa Avenue",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fe717987-a7b5-4948-940f-46b26f8e47c3",
+        "road_name": "Africa Avenue",
+        "length_m": 140,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f7f00101-ffa3-45f1-86e8-6d7c755ddb00",
+        "road_name": "Africa Avenue",
+        "length_m": 50,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "71c98e82-3433-4a47-bf36-5e03c0e8ce74",
+        "road_name": "Africa Avenue",
+        "length_m": 64,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "3a042914-0c88-4e3f-a976-1b3b8494e9fe",
+        "road_name": "Africa Avenue",
+        "length_m": 114,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2880b7a6-3faf-4b42-ad79-5cebb88071ac",
+        "road_name": "Africa Avenue",
+        "length_m": 137,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c38e2aa3-8796-48df-b0ef-628f13d360ed",
+        "road_name": "Africa Avenue",
+        "length_m": 31,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "ecf93bf2-7de5-4a58-8598-742c337801a1",
+        "road_name": "Africa Avenue",
+        "length_m": 7,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "bfa3b8c3-8063-460b-ba82-ead2dd63cc30",
+        "road_name": "Africa Avenue",
+        "length_m": 16,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "48f40306-71c1-47ea-9cc3-ac32c558ea4c",
+        "road_name": "Africa Avenue",
+        "length_m": 18,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "cb98ad8a-2daf-43a0-af27-cc941db09991",
+        "road_name": "Africa Avenue",
+        "length_m": 13,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9493b96d-086d-4b47-b9b9-469213689e16",
+        "road_name": "Africa Avenue",
+        "length_m": 28,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "80ab0f95-a9c7-4e63-8273-41c7d8d4d156",
+        "road_name": "Africa Avenue",
+        "length_m": 25,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9988dae5-4bb5-49f1-88a9-85925167b087",
+        "road_name": "Africa Avenue",
+        "length_m": 51,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "75575abd-717f-4d66-b103-348f0409028e",
+        "road_name": "Africa Avenue",
+        "length_m": 59,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f0555e1d-740d-46b2-bd8c-aaa0e9470420",
+        "road_name": "Africa Avenue",
+        "length_m": 54,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "46003c2b-2888-4041-b091-62b879e35a04",
+        "road_name": "Africa Avenue",
+        "length_m": 97,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2165757c-10cb-43b2-b7f2-48c94c83cd4c",
+        "road_name": "Africa Avenue",
+        "length_m": 99,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e1ad17c0-886d-4b34-a2ab-e1b5cf48d63e",
+        "road_name": "Africa Avenue",
+        "length_m": 47,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6da39c88-5677-41ec-bec0-be38ca5b889c",
+        "road_name": "Africa Avenue",
+        "length_m": 17,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9bcbd59c-3949-417f-ab51-b24473c15594",
+        "road_name": "Africa Avenue",
+        "length_m": 9,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b249f35e-38c1-452e-98b3-1863636c3e5a",
+        "road_name": "Africa Avenue",
+        "length_m": 13,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "75013b3f-6b61-4477-a250-972f9bf7fe8d",
+        "road_name": "Africa Avenue",
+        "length_m": 35,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5d16cc02-d787-403b-b211-1ee61176efde",
+        "road_name": "Africa Avenue",
+        "length_m": 66,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "6222affe-9cf5-4898-91a3-34f39125f43d",
+        "road_name": "Africa Avenue",
+        "length_m": 7,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9eeaafc9-b79f-4264-b93b-72c33a250655",
+        "road_name": "Africa Avenue",
+        "length_m": 24,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "e01a7302-9411-4634-8a0f-01810bebd702",
+        "road_name": "Africa Avenue",
+        "length_m": 41,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "94ac1479-ac00-4549-b897-0b8114a2f8f0",
+        "road_name": "Africa Avenue",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4b53deef-0e5a-4bae-bfe5-c7e5d4b0e3f8",
+        "road_name": "Africa Avenue",
+        "length_m": 14,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "98039b1c-6988-4f8e-839b-19248007529c",
+        "road_name": "Africa Avenue",
+        "length_m": 21,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "7ad891f0-9e7e-445c-9164-1be1b140620d",
+        "road_name": "Africa Avenue",
+        "length_m": 136,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "add3d534-87da-4c7a-a556-a5842915a760",
+        "road_name": "Africa Avenue",
+        "length_m": 47,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "004e9984-0dd2-45ea-b5fb-2c111a322428",
+        "road_name": "Africa Avenue",
+        "length_m": 70,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "31618559-b1d0-4013-ac05-157216844315",
+        "road_name": "Africa Avenue",
+        "length_m": 57,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "ef79c531-d3be-49aa-96e6-6194ec32e7b1",
+        "road_name": "Africa Avenue",
+        "length_m": 22,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "0946ee0c-a89b-4f07-a915-2774181a8f41",
+        "road_name": "Africa Avenue",
+        "length_m": 63,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9ba3bb0d-e834-494b-a09c-70b44c0cb1f2",
+        "road_name": "Africa Avenue",
+        "length_m": 8,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1bda2d2f-b2ac-4de0-b250-f04587386414",
+        "road_name": "Africa Avenue",
+        "length_m": 49,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "fda8e258-a2a4-4037-91b0-42a5dc8f767a",
+        "road_name": "Africa Avenue",
+        "length_m": 32,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9fbc37e6-6d91-482e-abd6-3c3a9f41b11e",
+        "road_name": "Africa Avenue",
+        "length_m": 65,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "304000db-21db-48c7-be00-fcdf00e95da5",
+        "road_name": "Africa Avenue",
+        "length_m": 71,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f82b358f-3e5f-4b96-a0f7-0f80527bc761",
+        "road_name": "Africa Avenue",
+        "length_m": 35,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "df0ca7b7-8da4-48ee-b9ba-93d26bf838e4",
+        "road_name": "Africa Avenue",
+        "length_m": 81,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 2189,
+    "n_segments": 46
+  },
+  "USER_AFRICA_AVENUE_REVERSE": {
+    "city": "Delhi",
+    "name": "Africa Avenue reverse",
+    "chain": [
+      {
+        "road_id": "ab175989-d7b1-4c43-bbd6-38030689c04b",
+        "road_name": "Africa Avenue",
+        "length_m": 71,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "198bccd4-3635-46e9-97bd-5e0cc1d7a120",
+        "road_name": "Africa Avenue",
+        "length_m": 29,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "230dcc4c-ca0b-4cf4-9b88-1a26583fc82a",
+        "road_name": "Africa Avenue",
+        "length_m": 233,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "88ab3f1a-15b8-4575-be0c-8247dbe5a18b",
+        "road_name": "Africa Avenue",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "140f1926-e6a6-4d11-bb7c-01c1bfe00ca1",
+        "road_name": "Africa Avenue",
+        "length_m": 194,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d9841d5e-1a1c-45e8-acba-c84b259c54f8",
+        "road_name": "Africa Avenue",
+        "length_m": 128,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b2469890-2cf9-47c6-9449-137d74c97fc8",
+        "road_name": "Africa Avenue",
+        "length_m": 96,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "20c3b774-ec35-4ced-b656-8f9768f5d1e1",
+        "road_name": "Africa Avenue",
+        "length_m": 12,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "406dadd8-6c62-492e-b2d7-be78405f7dd6",
+        "road_name": "Africa Avenue",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "baff16c3-06b9-4e1e-95ef-11576ff0a10c",
+        "road_name": "Africa Avenue",
+        "length_m": 14,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "1e2ce713-86ba-42ae-8928-fcfbecc75371",
+        "road_name": "Africa Avenue",
+        "length_m": 173,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a757cb8b-ada3-4419-89e3-22b7d1b3cc0d",
+        "road_name": "Africa Avenue",
+        "length_m": 9,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "4fd38d36-06da-4c5f-b1f8-0b7b87c4d595",
+        "road_name": "Africa Avenue",
+        "length_m": 166,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d8beac80-47a7-4dc0-85d9-a254b7377f06",
+        "road_name": "Africa Avenue",
+        "length_m": 138,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "cd95c5b2-68a8-4f73-a485-a21300359d04",
+        "road_name": "Africa Avenue",
+        "length_m": 40,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9e80c85c-802a-4d12-9c55-072f48ffa62c",
+        "road_name": "Africa Avenue",
+        "length_m": 179,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f3757a41-3b63-45bb-8139-7fda11796b0a",
+        "road_name": "Africa Avenue",
+        "length_m": 7,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5ad7118c-f6b1-4972-bd36-286a21a1e623",
+        "road_name": "Africa Avenue",
+        "length_m": 76,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "f2c4d41a-7dd5-4f98-8ca1-ff1c3120adff",
+        "road_name": "Africa Avenue",
+        "length_m": 64,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a2d3b75e-521c-4f57-a5b1-944f18f1c1d4",
+        "road_name": "Africa Avenue",
+        "length_m": 368,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "62fed446-8c65-4b56-8487-aaa38400ece0",
+        "road_name": "Africa Avenue",
+        "length_m": 10,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "cff3956e-90e9-4b4f-87da-0ba7355fc7a9",
+        "road_name": "Africa Avenue",
+        "length_m": 61,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d08bc9d7-2436-424d-b3e3-b1b5936973d5",
+        "road_name": "Africa Avenue",
+        "length_m": 15,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "18382073-6707-4bbd-bcfc-63324763d79d",
+        "road_name": "Africa Avenue",
+        "length_m": 62,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 2165,
+    "n_segments": 24
   }
 }
