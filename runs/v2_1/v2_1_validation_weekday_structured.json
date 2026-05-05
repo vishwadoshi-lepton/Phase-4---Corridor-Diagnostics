@@ -18560,5 +18560,1215 @@
       "d08bc9d7-2436-424d-b3e3-b1b5936973d5": "FREE_FLOW",
       "18382073-6707-4bbd-bcfc-63324763d79d": "SLOW_LINK"
     }
+  },
+  "USER_18_5_73_8_18_5_73_9": {
+    "corridor_id": "USER_18_5_73_8_18_5_73_9",
+    "corridor_name": "18.5, 73.8 \u2192 18.5, 73.9",
+    "n_segments": 4,
+    "total_length_m": 1992,
+    "freeflow": {
+      "9cb223cd-3ce5-4155-9abf-90b0574d5225": {
+        "ff_tt": 46.0,
+        "raw_ff_sec": 46.0,
+        "clamped_ff_sec": 46.0,
+        "ff_speed_kmph": 43.8,
+        "quiet_windows": [
+          [
+            "05:42",
+            "06:12"
+          ],
+          [
+            "05:44",
+            "06:14"
+          ],
+          [
+            "05:46",
+            "06:16"
+          ]
+        ],
+        "warnings": []
+      },
+      "9849bdb6-a07b-4760-b9ce-30fe50a55aeb": {
+        "ff_tt": 32.0,
+        "raw_ff_sec": 32.0,
+        "clamped_ff_sec": 32.0,
+        "ff_speed_kmph": 37.2,
+        "quiet_windows": [
+          [
+            "03:02",
+            "03:32"
+          ],
+          [
+            "03:04",
+            "03:34"
+          ],
+          [
+            "03:06",
+            "03:36"
+          ]
+        ],
+        "warnings": []
+      },
+      "55f46699-2343-4849-b0f3-ee039c0e02c2": {
+        "ff_tt": 48.0,
+        "raw_ff_sec": 48.0,
+        "clamped_ff_sec": 48.0,
+        "ff_speed_kmph": 34.1,
+        "quiet_windows": [
+          [
+            "02:36",
+            "03:06"
+          ],
+          [
+            "02:38",
+            "03:08"
+          ],
+          [
+            "02:40",
+            "03:10"
+          ]
+        ],
+        "warnings": []
+      },
+      "30101b56-45e6-4340-8b37-aacee4fb36fe": {
+        "ff_tt": 58.0,
+        "raw_ff_sec": 58.0,
+        "clamped_ff_sec": 58.0,
+        "ff_speed_kmph": 40.1,
+        "quiet_windows": [
+          [
+            "04:36",
+            "05:06"
+          ],
+          [
+            "04:38",
+            "05:08"
+          ],
+          [
+            "04:40",
+            "05:10"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "9cb223cd-3ce5-4155-9abf-90b0574d5225": {
+        "ff_speed_kmph": 43.8,
+        "corridor_median_speed": 38.7,
+        "peer_ratio": 0.88,
+        "quiet_busy_ratio": 0.278,
+        "baseline_saturated": false
+      },
+      "9849bdb6-a07b-4760-b9ce-30fe50a55aeb": {
+        "ff_speed_kmph": 37.2,
+        "corridor_median_speed": 38.7,
+        "peer_ratio": 1.04,
+        "quiet_busy_ratio": 0.262,
+        "baseline_saturated": false
+      },
+      "55f46699-2343-4849-b0f3-ee039c0e02c2": {
+        "ff_speed_kmph": 34.1,
+        "corridor_median_speed": 38.7,
+        "peer_ratio": 1.13,
+        "quiet_busy_ratio": 0.353,
+        "baseline_saturated": false
+      },
+      "30101b56-45e6-4340-8b37-aacee4fb36fe": {
+        "ff_speed_kmph": 40.1,
+        "corridor_median_speed": 38.7,
+        "peer_ratio": 0.96,
+        "quiet_busy_ratio": 0.161,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        17,
+        37
+      ],
+      [
+        266,
+        621
+      ]
+    ],
+    "bertini": {
+      "9cb223cd-3ce5-4155-9abf-90b0574d5225": [],
+      "9849bdb6-a07b-4760-b9ce-30fe50a55aeb": [
+        [
+          313,
+          353
+        ],
+        [
+          361,
+          365
+        ],
+        [
+          495,
+          503
+        ],
+        [
+          590,
+          595
+        ]
+      ],
+      "55f46699-2343-4849-b0f3-ee039c0e02c2": [],
+      "30101b56-45e6-4340-8b37-aacee4fb36fe": []
+    },
+    "head_bottleneck": [
+      [
+        17,
+        24
+      ],
+      [
+        33,
+        37
+      ]
+    ],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 5,
+          "observed_lag_min": 0,
+          "expected_lag_range_min": [
+            1.2,
+            2.2
+          ],
+          "pass": true,
+          "dist_m": 446.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 2,
+          "observed_lag_min": -45.5,
+          "expected_lag_range_min": [
+            1.1,
+            2.0
+          ],
+          "pass": false,
+          "dist_m": 393.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 1,
+          "observed_lag_min": 47,
+          "expected_lag_range_min": [
+            1.5,
+            2.8
+          ],
+          "pass": false,
+          "dist_m": 550.0
+        }
+      ],
+      "pass_rate": 0.3333333333333333,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [
+        [
+          1030,
+          1040
+        ],
+        [
+          1060,
+          1178
+        ]
+      ],
+      "max_simultaneous": 4,
+      "max_fraction": 1.0,
+      "threshold_segments": 4
+    },
+    "systemic_v21": {
+      "max_contig_frac": 1.0,
+      "systemic_by_contig": true,
+      "peak_bucket": 515,
+      "peak_segs": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "recurrence": {
+      "9cb223cd-3ce5-4155-9abf-90b0574d5225": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "9849bdb6-a07b-4760-b9ce-30fe50a55aeb": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "55f46699-2343-4849-b0f3-ee039c0e02c2": {
+        "n_days": 22,
+        "total_days": 23,
+        "frac": 0.96,
+        "label": "RECURRING"
+      },
+      "30101b56-45e6-4340-8b37-aacee4fb36fe": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      }
+    },
+    "confidence": {
+      "9cb223cd-3ce5-4155-9abf-90b0574d5225": {
+        "score": 1.0,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      },
+      "9849bdb6-a07b-4760-b9ce-30fe50a55aeb": {
+        "score": 0.875,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "55f46699-2343-4849-b0f3-ee039c0e02c2": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "30101b56-45e6-4340-8b37-aacee4fb36fe": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "9cb223cd-3ce5-4155-9abf-90b0574d5225": "HEAD_BOTTLENECK",
+      "9849bdb6-a07b-4760-b9ce-30fe50a55aeb": "ACTIVE_BOTTLENECK",
+      "55f46699-2343-4849-b0f3-ee039c0e02c2": "QUEUE_VICTIM",
+      "30101b56-45e6-4340-8b37-aacee4fb36fe": "SLOW_LINK"
+    }
+  },
+  "USER_TEST1": {
+    "corridor_id": "USER_TEST1",
+    "corridor_name": "test1",
+    "n_segments": 14,
+    "total_length_m": 11187,
+    "freeflow": {
+      "587ecea0-ff59-409a-8caa-0b1ca0ab0d67": {
+        "ff_tt": 48.0,
+        "raw_ff_sec": 48.0,
+        "clamped_ff_sec": 48.0,
+        "ff_speed_kmph": 39.2,
+        "quiet_windows": [
+          [
+            "03:04",
+            "03:34"
+          ],
+          [
+            "03:06",
+            "03:36"
+          ],
+          [
+            "03:08",
+            "03:38"
+          ]
+        ],
+        "warnings": []
+      },
+      "6e2c1ba9-1ef4-42d4-9908-2726b61d3811": {
+        "ff_tt": 40.0,
+        "raw_ff_sec": 40.0,
+        "clamped_ff_sec": 40.0,
+        "ff_speed_kmph": 32.9,
+        "quiet_windows": [
+          [
+            "03:06",
+            "03:36"
+          ],
+          [
+            "03:08",
+            "03:38"
+          ],
+          [
+            "03:10",
+            "03:40"
+          ]
+        ],
+        "warnings": []
+      },
+      "fde221fa-ecc7-47ec-9f21-77535d9f187b": {
+        "ff_tt": 88.0,
+        "raw_ff_sec": 88.0,
+        "clamped_ff_sec": 88.0,
+        "ff_speed_kmph": 32.5,
+        "quiet_windows": [
+          [
+            "04:40",
+            "05:10"
+          ],
+          [
+            "04:42",
+            "05:12"
+          ],
+          [
+            "04:44",
+            "05:14"
+          ]
+        ],
+        "warnings": []
+      },
+      "5198ea09-0e9f-41ab-a3da-3961c35b03ef": {
+        "ff_tt": 56.0,
+        "raw_ff_sec": 56.0,
+        "clamped_ff_sec": 56.0,
+        "ff_speed_kmph": 36.2,
+        "quiet_windows": [
+          [
+            "03:24",
+            "03:54"
+          ],
+          [
+            "03:26",
+            "03:56"
+          ],
+          [
+            "03:28",
+            "03:58"
+          ]
+        ],
+        "warnings": []
+      },
+      "7435abcd-a4ec-4a68-bafb-fe3cba0d7596": {
+        "ff_tt": 461.2,
+        "raw_ff_sec": 461.2,
+        "clamped_ff_sec": 461.2,
+        "ff_speed_kmph": 29.9,
+        "quiet_windows": [
+          [
+            "03:40",
+            "04:10"
+          ],
+          [
+            "03:42",
+            "04:12"
+          ],
+          [
+            "03:44",
+            "04:14"
+          ]
+        ],
+        "warnings": []
+      },
+      "8be48b5e-21e2-4877-9bcd-a75445994743": {
+        "ff_tt": 42.0,
+        "raw_ff_sec": 42.0,
+        "clamped_ff_sec": 42.0,
+        "ff_speed_kmph": 30.3,
+        "quiet_windows": [
+          [
+            "03:18",
+            "03:48"
+          ],
+          [
+            "03:20",
+            "03:50"
+          ],
+          [
+            "03:22",
+            "03:52"
+          ]
+        ],
+        "warnings": []
+      },
+      "7d15c018-e684-4e55-8fc0-d37f0cc359b0": {
+        "ff_tt": 56.0,
+        "raw_ff_sec": 56.0,
+        "clamped_ff_sec": 56.0,
+        "ff_speed_kmph": 27.5,
+        "quiet_windows": [
+          [
+            "02:30",
+            "03:00"
+          ],
+          [
+            "02:32",
+            "03:02"
+          ],
+          [
+            "02:34",
+            "03:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "a06de4e7-8677-48ac-9efc-426a67d8b907": {
+        "ff_tt": 40.0,
+        "raw_ff_sec": 40.0,
+        "clamped_ff_sec": 40.0,
+        "ff_speed_kmph": 41.9,
+        "quiet_windows": [
+          [
+            "02:28",
+            "02:58"
+          ],
+          [
+            "02:30",
+            "03:00"
+          ],
+          [
+            "02:32",
+            "03:02"
+          ]
+        ],
+        "warnings": []
+      },
+      "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002": {
+        "ff_tt": 15.0,
+        "raw_ff_sec": 15.0,
+        "clamped_ff_sec": 15.0,
+        "ff_speed_kmph": 43.2,
+        "quiet_windows": [
+          [
+            "02:24",
+            "02:54"
+          ],
+          [
+            "02:26",
+            "02:56"
+          ],
+          [
+            "02:28",
+            "02:58"
+          ]
+        ],
+        "warnings": []
+      },
+      "18cbf145-600d-43e3-87b1-05019bfae269": {
+        "ff_tt": 61.0,
+        "raw_ff_sec": 61.0,
+        "clamped_ff_sec": 61.0,
+        "ff_speed_kmph": 39.2,
+        "quiet_windows": [
+          [
+            "02:32",
+            "03:02"
+          ],
+          [
+            "02:34",
+            "03:04"
+          ],
+          [
+            "02:36",
+            "03:06"
+          ]
+        ],
+        "warnings": []
+      },
+      "41db3372-45c7-427d-bc50-3791d9faade0": {
+        "ff_tt": 80.0,
+        "raw_ff_sec": 80.0,
+        "clamped_ff_sec": 80.0,
+        "ff_speed_kmph": 38.7,
+        "quiet_windows": [
+          [
+            "02:30",
+            "03:00"
+          ],
+          [
+            "02:32",
+            "03:02"
+          ],
+          [
+            "02:34",
+            "03:04"
+          ]
+        ],
+        "warnings": []
+      },
+      "15119c2b-df72-4e0b-ae57-3bf49969037d": {
+        "ff_tt": 88.0,
+        "raw_ff_sec": 88.0,
+        "clamped_ff_sec": 88.0,
+        "ff_speed_kmph": 41.0,
+        "quiet_windows": [
+          [
+            "02:48",
+            "03:18"
+          ],
+          [
+            "02:50",
+            "03:20"
+          ],
+          [
+            "02:52",
+            "03:22"
+          ]
+        ],
+        "warnings": []
+      },
+      "24a877c6-4516-4ba7-9111-82a351bd0be3": {
+        "ff_tt": 19.0,
+        "raw_ff_sec": 19.0,
+        "clamped_ff_sec": 19.0,
+        "ff_speed_kmph": 49.1,
+        "quiet_windows": [
+          [
+            "02:38",
+            "03:08"
+          ],
+          [
+            "02:40",
+            "03:10"
+          ],
+          [
+            "02:42",
+            "03:12"
+          ]
+        ],
+        "warnings": []
+      },
+      "8f0f2a5a-e714-4829-9b5a-9722026852c1": {
+        "ff_tt": 76.0,
+        "raw_ff_sec": 76.0,
+        "clamped_ff_sec": 76.0,
+        "ff_speed_kmph": 42.4,
+        "quiet_windows": [
+          [
+            "02:44",
+            "03:14"
+          ],
+          [
+            "02:46",
+            "03:16"
+          ],
+          [
+            "02:48",
+            "03:18"
+          ]
+        ],
+        "warnings": []
+      }
+    },
+    "baseline_flags": {
+      "587ecea0-ff59-409a-8caa-0b1ca0ab0d67": {
+        "ff_speed_kmph": 39.2,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.99,
+        "quiet_busy_ratio": 0.5,
+        "baseline_saturated": false
+      },
+      "6e2c1ba9-1ef4-42d4-9908-2726b61d3811": {
+        "ff_speed_kmph": 32.9,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.18,
+        "quiet_busy_ratio": 0.46,
+        "baseline_saturated": false
+      },
+      "fde221fa-ecc7-47ec-9f21-77535d9f187b": {
+        "ff_speed_kmph": 32.5,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.2,
+        "quiet_busy_ratio": 0.331,
+        "baseline_saturated": false
+      },
+      "5198ea09-0e9f-41ab-a3da-3961c35b03ef": {
+        "ff_speed_kmph": 36.2,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.08,
+        "quiet_busy_ratio": 0.418,
+        "baseline_saturated": false
+      },
+      "7435abcd-a4ec-4a68-bafb-fe3cba0d7596": {
+        "ff_speed_kmph": 29.9,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.3,
+        "quiet_busy_ratio": 0.345,
+        "baseline_saturated": false
+      },
+      "8be48b5e-21e2-4877-9bcd-a75445994743": {
+        "ff_speed_kmph": 30.3,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.29,
+        "quiet_busy_ratio": 0.25,
+        "baseline_saturated": false
+      },
+      "7d15c018-e684-4e55-8fc0-d37f0cc359b0": {
+        "ff_speed_kmph": 27.5,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.42,
+        "quiet_busy_ratio": 0.571,
+        "baseline_saturated": false
+      },
+      "a06de4e7-8677-48ac-9efc-426a67d8b907": {
+        "ff_speed_kmph": 41.9,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.93,
+        "quiet_busy_ratio": 0.421,
+        "baseline_saturated": false
+      },
+      "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002": {
+        "ff_speed_kmph": 43.2,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.9,
+        "quiet_busy_ratio": 0.205,
+        "baseline_saturated": false
+      },
+      "18cbf145-600d-43e3-87b1-05019bfae269": {
+        "ff_speed_kmph": 39.2,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.99,
+        "quiet_busy_ratio": 0.243,
+        "baseline_saturated": false
+      },
+      "41db3372-45c7-427d-bc50-3791d9faade0": {
+        "ff_speed_kmph": 38.7,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 1.01,
+        "quiet_busy_ratio": 0.357,
+        "baseline_saturated": false
+      },
+      "15119c2b-df72-4e0b-ae57-3bf49969037d": {
+        "ff_speed_kmph": 41.0,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.95,
+        "quiet_busy_ratio": 0.451,
+        "baseline_saturated": false
+      },
+      "24a877c6-4516-4ba7-9111-82a351bd0be3": {
+        "ff_speed_kmph": 49.1,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.79,
+        "quiet_busy_ratio": 0.704,
+        "baseline_saturated": false
+      },
+      "8f0f2a5a-e714-4829-9b5a-9722026852c1": {
+        "ff_speed_kmph": 42.4,
+        "corridor_median_speed": 39.0,
+        "peer_ratio": 0.92,
+        "quiet_busy_ratio": 0.543,
+        "baseline_saturated": false
+      }
+    },
+    "primary_windows_v21": [
+      [
+        336,
+        648
+      ]
+    ],
+    "bertini": {
+      "587ecea0-ff59-409a-8caa-0b1ca0ab0d67": [],
+      "6e2c1ba9-1ef4-42d4-9908-2726b61d3811": [],
+      "fde221fa-ecc7-47ec-9f21-77535d9f187b": [],
+      "5198ea09-0e9f-41ab-a3da-3961c35b03ef": [],
+      "7435abcd-a4ec-4a68-bafb-fe3cba0d7596": [],
+      "8be48b5e-21e2-4877-9bcd-a75445994743": [
+        [
+          336,
+          648
+        ]
+      ],
+      "7d15c018-e684-4e55-8fc0-d37f0cc359b0": [],
+      "a06de4e7-8677-48ac-9efc-426a67d8b907": [],
+      "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002": [],
+      "18cbf145-600d-43e3-87b1-05019bfae269": [
+        [
+          336,
+          354
+        ]
+      ],
+      "41db3372-45c7-427d-bc50-3791d9faade0": [
+        [
+          355,
+          406
+        ],
+        [
+          538,
+          565
+        ],
+        [
+          608,
+          627
+        ]
+      ],
+      "15119c2b-df72-4e0b-ae57-3bf49969037d": [
+        [
+          566,
+          607
+        ]
+      ],
+      "24a877c6-4516-4ba7-9111-82a351bd0be3": [],
+      "8f0f2a5a-e714-4829-9b5a-9722026852c1": []
+    },
+    "head_bottleneck": [],
+    "shockwave": {
+      "pairs": [
+        {
+          "pair": [
+            0,
+            1
+          ],
+          "n_days": 21,
+          "observed_lag_min": -12,
+          "expected_lag_range_min": [
+            1.2,
+            2.2
+          ],
+          "pass": false,
+          "dist_m": 444.0
+        },
+        {
+          "pair": [
+            1,
+            2
+          ],
+          "n_days": 15,
+          "observed_lag_min": 0,
+          "expected_lag_range_min": [
+            1.6,
+            2.9
+          ],
+          "pass": true,
+          "dist_m": 580.0
+        },
+        {
+          "pair": [
+            2,
+            3
+          ],
+          "n_days": 15,
+          "observed_lag_min": 26,
+          "expected_lag_range_min": [
+            1.9,
+            3.4
+          ],
+          "pass": false,
+          "dist_m": 679.0
+        },
+        {
+          "pair": [
+            3,
+            4
+          ],
+          "n_days": 19,
+          "observed_lag_min": -6,
+          "expected_lag_range_min": [
+            6.0,
+            11.0
+          ],
+          "pass": false,
+          "dist_m": 2198.0
+        },
+        {
+          "pair": [
+            4,
+            5
+          ],
+          "n_days": 4,
+          "observed_lag_min": 31.5,
+          "expected_lag_range_min": [
+            5.7,
+            10.5
+          ],
+          "pass": false,
+          "dist_m": 2093.0
+        },
+        {
+          "pair": [
+            5,
+            6
+          ],
+          "n_days": 1,
+          "observed_lag_min": 36,
+          "expected_lag_range_min": [
+            1.1,
+            2.0
+          ],
+          "pass": false,
+          "dist_m": 391.0
+        },
+        {
+          "pair": [
+            6,
+            7
+          ],
+          "n_days": 6,
+          "observed_lag_min": 38.5,
+          "expected_lag_range_min": [
+            1.2,
+            2.2
+          ],
+          "pass": false,
+          "dist_m": 447.0
+        },
+        {
+          "pair": [
+            7,
+            8
+          ],
+          "n_days": 16,
+          "observed_lag_min": 31.5,
+          "expected_lag_range_min": [
+            0.9,
+            1.6
+          ],
+          "pass": false,
+          "dist_m": 323.0
+        },
+        {
+          "pair": [
+            8,
+            9
+          ],
+          "n_days": 1,
+          "observed_lag_min": 1,
+          "expected_lag_range_min": [
+            1.2,
+            2.1
+          ],
+          "pass": true,
+          "dist_m": 422.0
+        },
+        {
+          "pair": [
+            9,
+            10
+          ],
+          "n_days": 1,
+          "observed_lag_min": 1,
+          "expected_lag_range_min": [
+            2.1,
+            3.8
+          ],
+          "pass": true,
+          "dist_m": 762.0
+        },
+        {
+          "pair": [
+            10,
+            11
+          ],
+          "n_days": 1,
+          "observed_lag_min": -2,
+          "expected_lag_range_min": [
+            2.5,
+            4.7
+          ],
+          "pass": false,
+          "dist_m": 931.0
+        },
+        {
+          "pair": [
+            11,
+            12
+          ],
+          "skipped": "no paired onsets"
+        },
+        {
+          "pair": [
+            12,
+            13
+          ],
+          "n_days": 3,
+          "observed_lag_min": 11,
+          "expected_lag_range_min": [
+            1.6,
+            2.9
+          ],
+          "pass": false,
+          "dist_m": 577.0
+        }
+      ],
+      "pass_rate": 0.25,
+      "mode": "per-day onsets"
+    },
+    "systemic_v2": {
+      "systemic_windows": [],
+      "max_simultaneous": 11,
+      "max_fraction": 0.79,
+      "threshold_segments": 12
+    },
+    "systemic_v21": {
+      "max_contig_frac": 0.575,
+      "systemic_by_contig": false,
+      "peak_bucket": 573,
+      "peak_segs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "recurrence": {
+      "587ecea0-ff59-409a-8caa-0b1ca0ab0d67": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "6e2c1ba9-1ef4-42d4-9908-2726b61d3811": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "fde221fa-ecc7-47ec-9f21-77535d9f187b": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "5198ea09-0e9f-41ab-a3da-3961c35b03ef": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "7435abcd-a4ec-4a68-bafb-fe3cba0d7596": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "8be48b5e-21e2-4877-9bcd-a75445994743": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "7d15c018-e684-4e55-8fc0-d37f0cc359b0": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "a06de4e7-8677-48ac-9efc-426a67d8b907": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "18cbf145-600d-43e3-87b1-05019bfae269": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "41db3372-45c7-427d-bc50-3791d9faade0": {
+        "n_days": 23,
+        "total_days": 23,
+        "frac": 1.0,
+        "label": "RECURRING"
+      },
+      "15119c2b-df72-4e0b-ae57-3bf49969037d": {
+        "n_days": 22,
+        "total_days": 23,
+        "frac": 0.96,
+        "label": "RECURRING"
+      },
+      "24a877c6-4516-4ba7-9111-82a351bd0be3": {
+        "n_days": 8,
+        "total_days": 23,
+        "frac": 0.35,
+        "label": "OCCASIONAL"
+      },
+      "8f0f2a5a-e714-4829-9b5a-9722026852c1": {
+        "n_days": 22,
+        "total_days": 23,
+        "frac": 0.96,
+        "label": "RECURRING"
+      }
+    },
+    "confidence": {
+      "587ecea0-ff59-409a-8caa-0b1ca0ab0d67": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "6e2c1ba9-1ef4-42d4-9908-2726b61d3811": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "fde221fa-ecc7-47ec-9f21-77535d9f187b": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "5198ea09-0e9f-41ab-a3da-3961c35b03ef": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "7435abcd-a4ec-4a68-bafb-fe3cba0d7596": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "8be48b5e-21e2-4877-9bcd-a75445994743": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "7d15c018-e684-4e55-8fc0-d37f0cc359b0": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "a06de4e7-8677-48ac-9efc-426a67d8b907": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002": {
+        "score": 0.725,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "18cbf145-600d-43e3-87b1-05019bfae269": {
+        "score": 1.0,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 1.0
+        }
+      },
+      "41db3372-45c7-427d-bc50-3791d9faade0": {
+        "score": 0.875,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.5
+        }
+      },
+      "15119c2b-df72-4e0b-ae57-3bf49969037d": {
+        "score": 0.75,
+        "label": "HIGH",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 1.0,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "24a877c6-4516-4ba7-9111-82a351bd0be3": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      },
+      "8f0f2a5a-e714-4829-9b5a-9722026852c1": {
+        "score": 0.6,
+        "label": "MEDIUM",
+        "components": {
+          "ff_tight": 1.0,
+          "primary_overlap": 0.4,
+          "onset_support": 1.0,
+          "shockwave_support": 0.0
+        }
+      }
+    },
+    "verdicts": {
+      "587ecea0-ff59-409a-8caa-0b1ca0ab0d67": "FREE_FLOW",
+      "6e2c1ba9-1ef4-42d4-9908-2726b61d3811": "QUEUE_VICTIM",
+      "fde221fa-ecc7-47ec-9f21-77535d9f187b": "QUEUE_VICTIM",
+      "5198ea09-0e9f-41ab-a3da-3961c35b03ef": "QUEUE_VICTIM",
+      "7435abcd-a4ec-4a68-bafb-fe3cba0d7596": "QUEUE_VICTIM",
+      "8be48b5e-21e2-4877-9bcd-a75445994743": "ACTIVE_BOTTLENECK",
+      "7d15c018-e684-4e55-8fc0-d37f0cc359b0": "FREE_FLOW",
+      "a06de4e7-8677-48ac-9efc-426a67d8b907": "FREE_FLOW",
+      "fe0bf1a4-3bf6-417a-bdb3-36e61b5bd002": "QUEUE_VICTIM",
+      "18cbf145-600d-43e3-87b1-05019bfae269": "ACTIVE_BOTTLENECK",
+      "41db3372-45c7-427d-bc50-3791d9faade0": "ACTIVE_BOTTLENECK",
+      "15119c2b-df72-4e0b-ae57-3bf49969037d": "ACTIVE_BOTTLENECK",
+      "24a877c6-4516-4ba7-9111-82a351bd0be3": "FREE_FLOW",
+      "8f0f2a5a-e714-4829-9b5a-9722026852c1": "FREE_FLOW"
+    }
   }
 }

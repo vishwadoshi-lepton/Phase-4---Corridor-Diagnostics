@@ -2128,5 +2128,109 @@
     ],
     "total_length_m": 2165,
     "n_segments": 24
+  },
+  "TRANSIENT_1777456331878": {
+    "city": "Pune",
+    "name": "Nal Stop → Kharadi",
+    "chain": [
+      {
+        "road_id": "2ee90d4a-b233-49c0-a16a-0888a76ec274",
+        "road_name": "Pune/Abhinav Chowk To Abasaheb garvare Collage",
+        "length_m": 775,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c6499efc-5f8a-418b-a36a-8ab0467bc70c",
+        "road_name": "Pune/Abasaheb garvare Collage To handoji baba Junction",
+        "length_m": 628,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "c759a5a5-2a0a-49fd-a968-2c7b0185c522",
+        "road_name": "Pune/Shabri Hotel ,FC Collage Road to sandip Hotel",
+        "length_m": 452,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "9849bdb6-a07b-4760-b9ce-30fe50a55aeb",
+        "road_name": "Pune/Simla Office Chowk To Sancheti Hospital",
+        "length_m": 331,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "5ce8a50b-5b00-4f23-a91b-f14d72ec47ca",
+        "road_name": "Pune/Patil Estate Chowk To Sangamwadi Gaon",
+        "length_m": 1442,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "20aaa47e-5437-4585-8a29-807d955a3159",
+        "road_name": "Pune/Sangamwadi Gaon To Sadalbaba Chowk",
+        "length_m": 1600,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "cf54d9e0-29dd-4089-835f-e9bf1e0c5599",
+        "road_name": "Pune/Sadalbaba Chowk To Parnkuti",
+        "length_m": 879,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "b295939a-160c-42e0-bc69-ac5ed9b308e6",
+        "road_name": "Pune/Parnkuti To Gunjan Chowk",
+        "length_m": 435,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "79d6ed13-3e4d-47c2-87a9-9a506b4c987f",
+        "road_name": "Pune/Gunjan Chowk To Shastrinagar",
+        "length_m": 1099,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "a5379fc6-9dc3-446f-bab6-f28d7f9aee11",
+        "road_name": "Pune/Shastrinagar To Ramwadi Junction",
+        "length_m": 1317,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "2223e531-30a2-4ce4-9c0a-80f3fa4ba83d",
+        "road_name": "Pune/Ramwadi Junction To Wadgaonsheri",
+        "length_m": 445,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "86738b96-d974-4581-aa0e-24909430a0a6",
+        "road_name": "Pune/Wadgaonsheri  To Viman nagar Phoenix  Mall Junction",
+        "length_m": 724,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d5ffc2a0-ab28-4f7b-aa85-ccbbee62b564",
+        "road_name": "Pune/Viman nagar Phoenix Mall Junction To Somnathnagar Junction",
+        "length_m": 330,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "976c124b-cd05-456b-aa0f-56cf649fe872",
+        "road_name": "Pune/Somnathnagar Junction To Tata Guard Room Junction",
+        "length_m": 735,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "d8c406d8-0804-4232-a98d-5f7387a67f62",
+        "road_name": "Pune/Tata Guard Room Junction To Chandannagar",
+        "length_m": 453,
+        "road_class": "Arterial"
+      },
+      {
+        "road_id": "571d3777-4f33-44b4-af2b-12565ca06ddb",
+        "road_name": "Pune/Kharadi Bypass To Radison Hotel",
+        "length_m": 899,
+        "road_class": "Arterial"
+      }
+    ],
+    "total_length_m": 12544,
+    "n_segments": 16
   }
 }

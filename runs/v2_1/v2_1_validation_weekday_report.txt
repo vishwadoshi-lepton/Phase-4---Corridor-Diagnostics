@@ -4535,3 +4535,172 @@ S06   30.6%   26.4%   43.1%    0.0%   Pune/Kekan Petrol Pump To vishrantwadi Cho
   S04  QUEUE_VICTIM        conf=MEDIUM (0.60)  Pune/Petrol satha Chowk To Kalwad Wasti
   S05  QUEUE_VICTIM        conf=MEDIUM (0.60)  Pune/Petrol satha Chowk To Kekan Petrol Pump
   S06  SLOW_LINK           conf=MEDIUM (0.60)  Pune/Kekan Petrol Pump To vishrantwadi Chowk
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  18.5, 73.8 → 18.5, 73.9
+id: USER_18_5_73_8_18_5_73_9
+==========================================================================================
+Segments: 4    Corridor length: 1.99 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01      560m     46s   43.8 kmph     0.9x 0.28  Pune/Masoba Gate Chowk To Simla Office
+S02      331m     32s   37.2 kmph     1.0x 0.26  Pune/Simla Office Chowk To Sancheti Hospital
+S03      455m     48s   34.1 kmph     1.1x 0.35  Pune/Patil Estate Chowk To Engineering Collage Chowk
+S04      646m     58s   40.1 kmph     1.0x 0.16  Pune/Engineering Collage Chowk To RTO Chowk
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   16.4%   64.0%   17.4%    2.2%   Pune/Masoba Gate Chowk To Simla Office
+S02   32.8%   38.6%   25.7%    2.9%   Pune/Simla Office Chowk To Sancheti Hospital
+S03   64.0%   25.3%   10.7%    0.0%   Pune/Patil Estate Chowk To Engineering Collage Chowk
+S04   28.9%   21.7%   18.6%   30.8%   Pune/Engineering Collage Chowk To RTO Chowk
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  00:34 – 01:16   (duration 42 min)
+  08:52 – 20:44   (duration 712 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S02  ACTIVE   10:26–11:48, 12:02–12:12, 16:30–16:48, 19:40–19:52   conf=HIGH(0.88)   [Pune/Simla Office Chowk To Sancheti Hospital]
+  S01  HEAD     00:34–00:50, 01:06–01:16   conf=HIGH(1.00)   [Pune/Masoba Gate Chowk To Simla Office]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  OK S01→S02   observed_lag=+0.0m  expected=1.2-2.2m  dist=446m  (n=5d)
+  !! S02→S03   observed_lag=-45.5m  expected=1.1-2.0m  dist=393m  (n=2d)
+  !! S03→S04   observed_lag=+47.0m  expected=1.5-2.8m  dist=550m  (n=1d)
+  shockwave pass rate: 33%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 4/4 (100%)  threshold=80%
+  contig-length (v2.1 R5): max=100%  threshold=60%
+  VERDICT: SYSTEMIC
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 23 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01★ HEAD_BOTTLENECK     RECURRING    23/23   100%  Pune/Masoba Gate Chowk To Simla Office
+  S02★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Simla Office Chowk To Sancheti Hospital
+  S03  QUEUE_VICTIM        RECURRING    22/23    96%  Pune/Patil Estate Chowk To Engineering Collage Chowk
+  S04  SLOW_LINK           RECURRING    23/23   100%  Pune/Engineering Collage Chowk To RTO Chowk
+  ★ bottleneck recurrence summary:
+      S01  HEAD_BOTTLENECK  →  RECURRING (23/23 days, 100%)
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  HEAD_BOTTLENECK     conf=HIGH   (1.00)  Pune/Masoba Gate Chowk To Simla Office
+  S02  ACTIVE_BOTTLENECK   conf=HIGH   (0.88)  Pune/Simla Office Chowk To Sancheti Hospital
+  S03  QUEUE_VICTIM        conf=MEDIUM (0.60)  Pune/Patil Estate Chowk To Engineering Collage Chowk
+  S04  SLOW_LINK           conf=MEDIUM (0.60)  Pune/Engineering Collage Chowk To RTO Chowk
+
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  test1
+id: USER_TEST1
+==========================================================================================
+Segments: 14    Corridor length: 11.19 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01      523m     48s   39.2 kmph     1.0x 0.50  Pune/Ch. Shree Shivaji School To Manpa Bridge
+S02      366m     40s   32.9 kmph     1.2x 0.46  Pune/Manpa Bridge To Jijamata Chowk
+S03      795m     88s   32.5 kmph     1.2x 0.33  Pune/Dattamandir To Fadgate Police Chowki
+S04      563m     56s   36.2 kmph     1.1x 0.42  Pune/Fadgate Police Chowki To Rashtrabhushan Chowk
+S05     3832m    461s   29.9 kmph     1.3x 0.34  Pune/23- Bajirao Road (Reversed)
+S06      354m     42s   30.3 kmph     1.3x 0.25  Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate
+S07      428m     56s   27.5 kmph     1.4x 0.57  Pune/Jedhe Chowk To Laxminarayan
+S08      466m     40s   41.9 kmph     0.9x 0.42  Pune/Laxminarayan To Panchmi Hotel
+S09      180m     15s   43.2 kmph     0.9x 0.20  Pune/Panchmi Hotel To Adinath Society
+S10      664m     61s   39.2 kmph     1.0x 0.24  Pune/Adinath Society To Rao Nursing Home
+S11      859m     80s   38.7 kmph     1.0x 0.36  Pune/Rao Nursing Home To Padmavati
+S12     1003m     88s   41.0 kmph     0.9x 0.45  Pune/Padmavati  To KK Market Chowk
+S13      259m     19s   49.1 kmph     0.8x 0.70  Pune/KK Market Chowk To  Dhankavdi Phata
+S14      895m     76s   42.4 kmph     0.9x 0.54  Pune/Dhankavdi Phata To Bharti Vidhyapeeth
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   33.3%   66.0%    0.7%    0.0%   Pune/Ch. Shree Shivaji School To Manpa Bridge
+S02   32.2%   42.2%   25.6%    0.0%   Pune/Manpa Bridge To Jijamata Chowk
+S03   19.4%   35.8%   44.7%    0.0%   Pune/Dattamandir To Fadgate Police Chowki
+S04   33.8%   22.1%   44.2%    0.0%   Pune/Fadgate Police Chowki To Rashtrabhushan Chowk
+S05   27.9%   28.6%   43.5%    0.0%   Pune/23- Bajirao Road (Reversed)
+S06   28.5%   17.2%   47.1%    7.2%   Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate
+S07   42.4%   57.6%    0.0%    0.0%   Pune/Jedhe Chowk To Laxminarayan
+S08   37.4%   56.9%    5.7%    0.0%   Pune/Laxminarayan To Panchmi Hotel
+S09   28.1%   60.0%   10.4%    1.5%   Pune/Panchmi Hotel To Adinath Society
+S10   27.4%    6.8%   59.7%    6.1%   Pune/Adinath Society To Rao Nursing Home
+S11   32.2%   48.1%   19.7%    0.0%   Pune/Rao Nursing Home To Padmavati
+S12   37.1%   57.1%    5.8%    0.0%   Pune/Padmavati  To KK Market Chowk
+S13   64.3%   35.7%    0.0%    0.0%   Pune/KK Market Chowk To  Dhankavdi Phata
+S14   42.4%   57.6%    0.0%    0.0%   Pune/Dhankavdi Phata To Bharti Vidhyapeeth
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  11:12 – 21:38   (duration 626 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S06  ACTIVE   11:12–21:38   conf=HIGH(0.75)   [Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate]
+  S10  ACTIVE   11:12–11:50   conf=HIGH(1.00)   [Pune/Adinath Society To Rao Nursing Home]
+  S11  ACTIVE   11:50–13:34, 17:56–18:52, 20:16–20:56   conf=HIGH(0.88)   [Pune/Rao Nursing Home To Padmavati]
+  S12  ACTIVE   18:52–20:16   conf=HIGH(0.75)   [Pune/Padmavati  To KK Market Chowk]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  !! S01→S02   observed_lag=-12.0m  expected=1.2-2.2m  dist=444m  (n=21d)
+  OK S02→S03   observed_lag=+0.0m  expected=1.6-2.9m  dist=580m  (n=15d)
+  !! S03→S04   observed_lag=+26.0m  expected=1.9-3.4m  dist=679m  (n=15d)
+  !! S04→S05   observed_lag=-6.0m  expected=6.0-11.0m  dist=2198m  (n=19d)
+  !! S05→S06   observed_lag=+31.5m  expected=5.7-10.5m  dist=2093m  (n=4d)
+  !! S06→S07   observed_lag=+36.0m  expected=1.1-2.0m  dist=391m  (n=1d)
+  !! S07→S08   observed_lag=+38.5m  expected=1.2-2.2m  dist=447m  (n=6d)
+  !! S08→S09   observed_lag=+31.5m  expected=0.9-1.6m  dist=323m  (n=16d)
+  OK S09→S10   observed_lag=+1.0m  expected=1.2-2.1m  dist=422m  (n=1d)
+  OK S10→S11   observed_lag=+1.0m  expected=2.1-3.8m  dist=762m  (n=1d)
+  !! S11→S12   observed_lag=-2.0m  expected=2.5-4.7m  dist=931m  (n=1d)
+  S12→S13   skipped (no paired onsets)
+  !! S13→S14   observed_lag=+11.0m  expected=1.6-2.9m  dist=577m  (n=3d)
+  shockwave pass rate: 25%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 11/14 (79%)  threshold=80%
+  contig-length (v2.1 R5): max=57%  threshold=60%
+  VERDICT: POINT-BOTTLENECK
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 23 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  FREE_FLOW           RECURRING    23/23   100%  Pune/Ch. Shree Shivaji School To Manpa Bridge
+  S02  QUEUE_VICTIM        RECURRING    23/23   100%  Pune/Manpa Bridge To Jijamata Chowk
+  S03  QUEUE_VICTIM        RECURRING    23/23   100%  Pune/Dattamandir To Fadgate Police Chowki
+  S04  QUEUE_VICTIM        RECURRING    23/23   100%  Pune/Fadgate Police Chowki To Rashtrabhushan Chowk
+  S05  QUEUE_VICTIM        RECURRING    23/23   100%  Pune/23- Bajirao Road (Reversed)
+  S06★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate
+  S07  FREE_FLOW           RECURRING    23/23   100%  Pune/Jedhe Chowk To Laxminarayan
+  S08  FREE_FLOW           RECURRING    23/23   100%  Pune/Laxminarayan To Panchmi Hotel
+  S09  QUEUE_VICTIM        RECURRING    23/23   100%  Pune/Panchmi Hotel To Adinath Society
+  S10★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Adinath Society To Rao Nursing Home
+  S11★ ACTIVE_BOTTLENECK   RECURRING    23/23   100%  Pune/Rao Nursing Home To Padmavati
+  S12★ ACTIVE_BOTTLENECK   RECURRING    22/23    96%  Pune/Padmavati  To KK Market Chowk
+  S13  FREE_FLOW           OCCASIONAL    8/23    35%  Pune/KK Market Chowk To  Dhankavdi Phata
+  S14  FREE_FLOW           RECURRING    22/23    96%  Pune/Dhankavdi Phata To Bharti Vidhyapeeth
+  ★ bottleneck recurrence summary:
+      S06  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
+      S10  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
+      S11  ACTIVE_BOTTLENECK  →  RECURRING (23/23 days, 100%)
+      S12  ACTIVE_BOTTLENECK  →  RECURRING (22/23 days, 96%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Ch. Shree Shivaji School To Manpa Bridge
+  S02  QUEUE_VICTIM        conf=MEDIUM (0.72)  Pune/Manpa Bridge To Jijamata Chowk
+  S03  QUEUE_VICTIM        conf=MEDIUM (0.72)  Pune/Dattamandir To Fadgate Police Chowki
+  S04  QUEUE_VICTIM        conf=MEDIUM (0.60)  Pune/Fadgate Police Chowki To Rashtrabhushan Chowk
+  S05  QUEUE_VICTIM        conf=MEDIUM (0.60)  Pune/23- Bajirao Road (Reversed)
+  S06  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Pune/Rashtrabhushan Chowk  To Jedhe Chowk Swargate
+  S07  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Jedhe Chowk To Laxminarayan
+  S08  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Laxminarayan To Panchmi Hotel
+  S09  QUEUE_VICTIM        conf=MEDIUM (0.72)  Pune/Panchmi Hotel To Adinath Society
+  S10  ACTIVE_BOTTLENECK   conf=HIGH   (1.00)  Pune/Adinath Society To Rao Nursing Home
+  S11  ACTIVE_BOTTLENECK   conf=HIGH   (0.88)  Pune/Rao Nursing Home To Padmavati
+  S12  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Pune/Padmavati  To KK Market Chowk
+  S13  FREE_FLOW           conf=MEDIUM (0.60)  Pune/KK Market Chowk To  Dhankavdi Phata
+  S14  FREE_FLOW           conf=MEDIUM (0.60)  Pune/Dhankavdi Phata To Bharti Vidhyapeeth
