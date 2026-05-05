@@ -1,0 +1,97 @@
+==========================================================================================
+v3-A Mode B  —  Sri Aurobindo Marg (Delhi) - polyline-derived  (anchor 2026-04-22T23:58:00+05:30)
+==========================================================================================
+
+  schema_version    : v3
+  engine_version    : v3.a.0
+  run_id            : v3a-20260422T235800-DEL_AUROBINDO-533c
+  partial           : True
+  warnings          : 1
+  tier1 modules run : ['growth_rate', 'percolation', 'jam_tree', 'mfd']
+
+--- v2.1 stages (today's regimes) ---
+  primary_windows_today: 1 window(s)
+    12:02–21:20
+  systemic_v2 max_fraction: 68.00%
+  systemic_v21 max_contig_frac: 39.80%  -> False
+
+--- v2.1 per-segment verdicts (typical-day) ---
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=FREQUENT
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=OCCASIONAL
+  Sri Aurobindo Marg                                       SLOW_LINK           conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  roads/ChIJ9fWVDg3iDDkRE8yaNquxrXo                        FREE_FLOW           conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       SLOW_LINK           conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=OCCASIONAL
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Sri Aurobindo Marg                                       FREE_FLOW           conf=MEDIUM    rec=RECURRING
+
+--- Tier-1 #1: Growth-rate (Duan 2023) ---
+  events: total=36  fast=0  moderate=1  contained=35  insuff=0
+    BERTINI-bd141c1a-5422-4ff7-9462-b67d402b298d-1  t0=08:24  slope=+0.0 m/min  CONTAINED
+    BERTINI-637a994b-4712-4e65-b400-ffdf092f3bda-1  t0=11:42  slope=+0.0 m/min  CONTAINED
+    BERTINI-013d4921-65e9-4bee-93b9-96688d3cbc33-1  t0=12:14  slope=+0.0 m/min  CONTAINED
+    BERTINI-637a994b-4712-4e65-b400-ffdf092f3bda-2  t0=12:20  slope=+0.0 m/min  CONTAINED
+    BERTINI-637a994b-4712-4e65-b400-ffdf092f3bda-3  t0=12:42  slope=+0.0 m/min  CONTAINED
+    BERTINI-d0a13fde-6bec-40b5-9926-37867b9255ea-1  t0=13:08  slope=+0.0 m/min  CONTAINED
+
+--- Tier-1 #2: Percolation on corridor (Li / Zeng / Ambühl) ---
+  onset_bucket: 435  (14:30)
+  onset_lcc_m:  675.0
+  onset_slcc_m: 455.0
+  time_to_merge_minutes: None
+  summary: max_lcc=1156m  max_slcc=455m  buckets_with_2plus=555
+
+--- Tier-1 #3: Jam-tree + temporal precedence (Serok / Duan) ---
+  origins: 13  propagated: 23  max_depth: 7
+  reclassifications: 0
+  ORIGINs:
+    Sri Aurobindo Marg                                  onset=00:00
+    Sri Aurobindo Marg                                  onset=00:00
+    Sri Aurobindo Marg                                  onset=00:00
+    Sri Aurobindo Marg                                  onset=00:00
+    Sri Aurobindo Marg                                  onset=00:00
+
+--- Tier-1 #4: MFD with hysteresis (Geroliminis / Saberi) ---
+  peak_density_bucket: 567  (18:54)
+  peak_density_frac:   60.19%
+  loop_closes:         False
+  loop_area:           0.80  (kmph * density-frac)
+  recovery_lag_min:    None
+  ff_corridor_kmph:    50.4
+
+--- DOW anomaly track ---
+  available: True   n_samples: 3   dow: Tuesday
+  max_deviation_pct: 0.00%  at bucket 0

@@ -1,0 +1,74 @@
+==========================================================================================
+TRAFFICURE CORRIDOR DIAGNOSTIC v2.1  —  JLN Rd to SPM Rd to DPS Rd (S-N central)
+id: KOL_B
+==========================================================================================
+Segments: 7    Corridor length: 7.98 km
+
+--- STAGE 1 — DISCOVERED FREE FLOW ---
+seg     length    ff_tt     ff_spd  sat? peer qb   name
+S01     1118m    185s   21.8 kmph     1.4x 0.42  Kolkata/J L NEHRU RD (A1-F9)
+S02     1507m    182s   29.8 kmph     1.0x 0.24  Kolkata/J L NEHRU RD(F9-F13)
+S03      926m    104s   32.1 kmph     1.0x 0.39  Kolkata/A T M RD(F13-I6)
+S04     1071m    124s   31.1 kmph     1.0x 0.49  Kolkata/S P MUKHERJEE RD (I6-I8)
+S05      734m    111s   23.8 kmph     1.3x 0.43  Kolkata/S P MUKHERJEE RD(I8 - N5)
+S06     1708m    199s   30.9 kmph     1.0x 0.45  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+S07      917m     99s   33.3 kmph     0.9x 0.42  Kolkata/D P S RD(S1 - S35)
+
+--- STAGE 2 — REGIME DISTRIBUTION ---
+seg      FREE    APPR    CONG    SEVR   name
+S01   38.1%   44.2%   17.8%    0.0%   Kolkata/J L NEHRU RD (A1-F9)
+S02   33.6%   34.2%   28.9%    3.3%   Kolkata/J L NEHRU RD(F9-F13)
+S03   30.1%   43.8%   26.1%    0.0%   Kolkata/A T M RD(F13-I6)
+S04   33.5%   64.4%    2.1%    0.0%   Kolkata/S P MUKHERJEE RD (I6-I8)
+S05   26.4%   48.2%   25.4%    0.0%   Kolkata/S P MUKHERJEE RD(I8 - N5)
+S06   30.1%   61.1%    8.8%    0.0%   Kolkata/S P MUKHERJEE RD( N5 - S1 )
+S07   28.9%   59.9%   11.2%    0.0%   Kolkata/D P S RD(S1 - S35)
+
+--- STAGE 2b — PRIMARY CONGESTION WINDOW(S) (length-weighted, R1) ---
+  rule: CONG/SEVR segments ≥ 25% of corridor LENGTH for ≥ 30 min
+  05:56 – 06:26   (duration 30 min)
+  10:24 – 15:08   (duration 284 min)
+
+--- STAGE 3 — BOTTLENECK ACTIVATION (Bertini + R3 head) ---
+  S02  ACTIVE   10:24–12:06   conf=HIGH(0.75)   [Kolkata/J L NEHRU RD(F9-F13)]
+  S03  ACTIVE   12:06–14:52   conf=HIGH(0.75)   [Kolkata/A T M RD(F13-I6)]
+  S05  ACTIVE   05:56–06:26   conf=HIGH(0.75)   [Kolkata/S P MUKHERJEE RD(I8 - N5)]
+
+--- STAGE 4 — SHOCKWAVE VALIDATION (mode=per-day onsets) ---
+  !! S01→S02   observed_lag=-35.5m  expected=3.6-6.6m  dist=1312m  (n=10d)
+  !! S02→S03   observed_lag=-16.0m  expected=3.3-6.1m  dist=1216m  (n=25d)
+  !! S03→S04   observed_lag=-23.5m  expected=2.7-5.0m  dist=998m  (n=18d)
+  !! S04→S05   observed_lag=-2.0m  expected=2.5-4.5m  dist=902m  (n=12d)
+  !! S05→S06   observed_lag=+30.0m  expected=3.3-6.1m  dist=1221m  (n=3d)
+  !! S06→S07   observed_lag=+11.0m  expected=3.6-6.6m  dist=1312m  (n=11d)
+  shockwave pass rate: 0%
+
+--- STAGE 5 — SYSTEMIC vs POINT ---
+  simultaneous (v2): 6/7 (86%)  threshold=80%
+  contig-length (v2.1 R5): max=44%  threshold=60%
+  VERDICT: SYSTEMIC
+
+--- STAGE 6 — RECURRENCE TYPING ---
+  window: 64 analysed days with ≥1 onset
+  bands: RECURRING≥75%, FREQUENT≥50%, OCCASIONAL≥25%, RARE≥1%, else NEVER
+  seg    verdict             band         days  frac   name
+  S01  QUEUE_VICTIM        RECURRING    64/64   100%  Kolkata/J L NEHRU RD (A1-F9)
+  S02★ ACTIVE_BOTTLENECK   RECURRING    64/64   100%  Kolkata/J L NEHRU RD(F9-F13)
+  S03★ ACTIVE_BOTTLENECK   RECURRING    55/64    86%  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           FREQUENT     39/64    61%  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S05★ ACTIVE_BOTTLENECK   FREQUENT     47/64    73%  Kolkata/S P MUKHERJEE RD(I8 - N5)
+  S06  QUEUE_VICTIM        OCCASIONAL   22/64    34%  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S07  SLOW_LINK           RECURRING    59/64    92%  Kolkata/D P S RD(S1 - S35)
+  ★ bottleneck recurrence summary:
+      S02  ACTIVE_BOTTLENECK  →  RECURRING (64/64 days, 100%)
+      S03  ACTIVE_BOTTLENECK  →  RECURRING (55/64 days, 86%)
+      S05  ACTIVE_BOTTLENECK  →  FREQUENT (47/64 days, 73%)
+
+--- PER-SEGMENT VERDICTS (operator-facing) ---
+  S01  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/J L NEHRU RD (A1-F9)
+  S02  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/J L NEHRU RD(F9-F13)
+  S03  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/A T M RD(F13-I6)
+  S04  FREE_FLOW           conf=MEDIUM (0.60)  Kolkata/S P MUKHERJEE RD (I6-I8)
+  S05  ACTIVE_BOTTLENECK   conf=HIGH   (0.75)  Kolkata/S P MUKHERJEE RD(I8 - N5)
+  S06  QUEUE_VICTIM        conf=MEDIUM (0.60)  Kolkata/S P MUKHERJEE RD( N5 - S1 )
+  S07  SLOW_LINK           conf=MEDIUM (0.60)  Kolkata/D P S RD(S1 - S35)

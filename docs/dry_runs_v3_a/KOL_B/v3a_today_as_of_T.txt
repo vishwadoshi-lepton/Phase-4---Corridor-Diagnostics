@@ -1,0 +1,59 @@
+==========================================================================================
+v3-A Mode B  —  JLN Rd to SPM Rd to DPS Rd (S-N central)  (anchor 2026-04-22T23:58:00+05:30)
+==========================================================================================
+
+  schema_version    : v3
+  engine_version    : v3.a.0
+  run_id            : v3a-20260422T235800-KOL_B-8c2b
+  partial           : False
+  warnings          : 0
+  tier1 modules run : ['growth_rate', 'percolation', 'jam_tree', 'mfd']
+
+--- v2.1 stages (today's regimes) ---
+  primary_windows_today: 2 window(s)
+    05:56–06:24
+    10:24–15:06
+  systemic_v2 max_fraction: 86.00%
+  systemic_v21 max_contig_frac: 44.50%  -> False
+
+--- v2.1 per-segment verdicts (typical-day) ---
+  Kolkata/J L NEHRU RD (A1-F9)                             QUEUE_VICTIM        conf=MEDIUM    rec=RECURRING
+  Kolkata/J L NEHRU RD(F9-F13)                             ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Kolkata/A T M RD(F13-I6)                                 ACTIVE_BOTTLENECK   conf=HIGH      rec=RECURRING
+  Kolkata/S P MUKHERJEE RD (I6-I8)                         FREE_FLOW           conf=MEDIUM    rec=FREQUENT
+  Kolkata/S P MUKHERJEE RD(I8 - N5)                        ACTIVE_BOTTLENECK   conf=HIGH      rec=FREQUENT
+  Kolkata/S P MUKHERJEE RD( N5 - S1 )                      QUEUE_VICTIM        conf=MEDIUM    rec=OCCASIONAL
+  Kolkata/D P S RD(S1 - S35)                               SLOW_LINK           conf=MEDIUM    rec=RECURRING
+
+--- Tier-1 #1: Growth-rate (Duan 2023) ---
+  events: total=3  fast=0  moderate=0  contained=3  insuff=0
+    BERTINI-df036495-665d-4c1f-8f74-7cb5f380579d-1  t0=05:56  slope=+0.0 m/min  CONTAINED
+    BERTINI-ed74068d-02e5-4425-b625-43bcba3a05ea-1  t0=10:24  slope=+0.0 m/min  CONTAINED
+    BERTINI-89537212-35b1-45c4-99e4-b5f836c5ce58-1  t0=12:06  slope=+0.0 m/min  CONTAINED
+
+--- Tier-1 #2: Percolation on corridor (Li / Zeng / Ambühl) ---
+  onset_bucket: 386  (12:52)
+  onset_lcc_m:  3551.0
+  onset_slcc_m: 3359.0
+  time_to_merge_minutes: None
+  summary: max_lcc=3551m  max_slcc=3359m  buckets_with_2plus=181
+
+--- Tier-1 #3: Jam-tree + temporal precedence (Serok / Duan) ---
+  origins: 3  propagated: 4  max_depth: 2
+  reclassifications: 0
+  ORIGINs:
+    Kolkata/A T M RD(F13-I6)                            onset=04:06
+    Kolkata/S P MUKHERJEE RD(I8 - N5)                   onset=04:30
+    Kolkata/D P S RD(S1 - S35)                          onset=12:50
+
+--- Tier-1 #4: MFD with hysteresis (Geroliminis / Saberi) ---
+  peak_density_bucket: 386  (12:52)
+  peak_density_frac:   86.58%
+  loop_closes:         True
+  loop_area:           -0.66  (kmph * density-frac)
+  recovery_lag_min:    210
+  ff_corridor_kmph:    29.2
+
+--- DOW anomaly track ---
+  available: True   n_samples: 3   dow: Tuesday
+  max_deviation_pct: 0.00%  at bucket 0

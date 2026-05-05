@@ -1,0 +1,477 @@
+{
+  "corridor_id": "KOL_B",
+  "corridor_name": "JLN Rd to SPM Rd to DPS Rd (S-N central)",
+  "n_segments": 7,
+  "total_length_m": 7981,
+  "freeflow": {
+    "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+      "ff_tt": 185.0,
+      "raw_ff_sec": 185.0,
+      "clamped_ff_sec": 185.0,
+      "ff_speed_kmph": 21.8,
+      "quiet_windows": [
+        [
+          "23:16",
+          "23:46"
+        ],
+        [
+          "23:18",
+          "23:48"
+        ],
+        [
+          "23:20",
+          "23:50"
+        ]
+      ],
+      "warnings": []
+    },
+    "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+      "ff_tt": 182.0,
+      "raw_ff_sec": 182.0,
+      "clamped_ff_sec": 182.0,
+      "ff_speed_kmph": 29.8,
+      "quiet_windows": [
+        [
+          "21:50",
+          "22:20"
+        ],
+        [
+          "21:52",
+          "22:22"
+        ],
+        [
+          "21:54",
+          "22:24"
+        ]
+      ],
+      "warnings": []
+    },
+    "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+      "ff_tt": 104.0,
+      "raw_ff_sec": 104.0,
+      "clamped_ff_sec": 104.0,
+      "ff_speed_kmph": 32.1,
+      "quiet_windows": [
+        [
+          "21:58",
+          "22:28"
+        ],
+        [
+          "22:00",
+          "22:30"
+        ],
+        [
+          "22:02",
+          "22:32"
+        ]
+      ],
+      "warnings": []
+    },
+    "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+      "ff_tt": 124.0,
+      "raw_ff_sec": 124.0,
+      "clamped_ff_sec": 124.0,
+      "ff_speed_kmph": 31.1,
+      "quiet_windows": [
+        [
+          "21:54",
+          "22:24"
+        ],
+        [
+          "21:56",
+          "22:26"
+        ],
+        [
+          "21:58",
+          "22:28"
+        ]
+      ],
+      "warnings": []
+    },
+    "df036495-665d-4c1f-8f74-7cb5f380579d": {
+      "ff_tt": 111.0,
+      "raw_ff_sec": 111.0,
+      "clamped_ff_sec": 111.0,
+      "ff_speed_kmph": 23.8,
+      "quiet_windows": [
+        [
+          "21:48",
+          "22:18"
+        ],
+        [
+          "21:50",
+          "22:20"
+        ],
+        [
+          "21:52",
+          "22:22"
+        ]
+      ],
+      "warnings": []
+    },
+    "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+      "ff_tt": 199.0,
+      "raw_ff_sec": 199.0,
+      "clamped_ff_sec": 199.0,
+      "ff_speed_kmph": 30.9,
+      "quiet_windows": [
+        [
+          "22:06",
+          "22:36"
+        ],
+        [
+          "22:08",
+          "22:38"
+        ],
+        [
+          "22:10",
+          "22:40"
+        ]
+      ],
+      "warnings": []
+    },
+    "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+      "ff_tt": 99.0,
+      "raw_ff_sec": 99.0,
+      "clamped_ff_sec": 99.0,
+      "ff_speed_kmph": 33.3,
+      "quiet_windows": [
+        [
+          "22:12",
+          "22:42"
+        ],
+        [
+          "22:14",
+          "22:44"
+        ],
+        [
+          "22:16",
+          "22:46"
+        ]
+      ],
+      "warnings": []
+    }
+  },
+  "baseline_flags": {
+    "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+      "ff_speed_kmph": 21.8,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 1.42,
+      "quiet_busy_ratio": 0.419,
+      "baseline_saturated": false
+    },
+    "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+      "ff_speed_kmph": 29.8,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 1.04,
+      "quiet_busy_ratio": 0.241,
+      "baseline_saturated": false
+    },
+    "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+      "ff_speed_kmph": 32.1,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 0.96,
+      "quiet_busy_ratio": 0.391,
+      "baseline_saturated": false
+    },
+    "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+      "ff_speed_kmph": 31.1,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 0.99,
+      "quiet_busy_ratio": 0.49,
+      "baseline_saturated": false
+    },
+    "df036495-665d-4c1f-8f74-7cb5f380579d": {
+      "ff_speed_kmph": 23.8,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 1.3,
+      "quiet_busy_ratio": 0.435,
+      "baseline_saturated": false
+    },
+    "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+      "ff_speed_kmph": 30.9,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 1.0,
+      "quiet_busy_ratio": 0.45,
+      "baseline_saturated": false
+    },
+    "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+      "ff_speed_kmph": 33.3,
+      "corridor_median_speed": 30.9,
+      "peer_ratio": 0.93,
+      "quiet_busy_ratio": 0.423,
+      "baseline_saturated": false
+    }
+  },
+  "primary_windows_v21": [
+    [
+      178,
+      192
+    ],
+    [
+      312,
+      453
+    ]
+  ],
+  "bertini": {
+    "ccae34ae-68f2-461b-ad35-e22ffed0cbca": [],
+    "ed74068d-02e5-4425-b625-43bcba3a05ea": [
+      [
+        312,
+        362
+      ]
+    ],
+    "89537212-35b1-45c4-99e4-b5f836c5ce58": [
+      [
+        363,
+        445
+      ]
+    ],
+    "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": [],
+    "df036495-665d-4c1f-8f74-7cb5f380579d": [
+      [
+        178,
+        192
+      ]
+    ],
+    "bb42e92a-5f01-4286-afe8-07b183cc5bb8": [],
+    "4cc5b7f6-4d2b-4435-a27f-055e89014f92": []
+  },
+  "head_bottleneck": [],
+  "shockwave": {
+    "pairs": [
+      {
+        "pair": [
+          0,
+          1
+        ],
+        "n_days": 10,
+        "observed_lag_min": -35.5,
+        "expected_lag_range_min": [
+          3.6,
+          6.6
+        ],
+        "pass": false,
+        "dist_m": 1312.0
+      },
+      {
+        "pair": [
+          1,
+          2
+        ],
+        "n_days": 25,
+        "observed_lag_min": -16,
+        "expected_lag_range_min": [
+          3.3,
+          6.1
+        ],
+        "pass": false,
+        "dist_m": 1216.0
+      },
+      {
+        "pair": [
+          2,
+          3
+        ],
+        "n_days": 18,
+        "observed_lag_min": -23.5,
+        "expected_lag_range_min": [
+          2.7,
+          5.0
+        ],
+        "pass": false,
+        "dist_m": 998.0
+      },
+      {
+        "pair": [
+          3,
+          4
+        ],
+        "n_days": 12,
+        "observed_lag_min": -2.0,
+        "expected_lag_range_min": [
+          2.5,
+          4.5
+        ],
+        "pass": false,
+        "dist_m": 902.0
+      },
+      {
+        "pair": [
+          4,
+          5
+        ],
+        "n_days": 3,
+        "observed_lag_min": 30,
+        "expected_lag_range_min": [
+          3.3,
+          6.1
+        ],
+        "pass": false,
+        "dist_m": 1221.0
+      },
+      {
+        "pair": [
+          5,
+          6
+        ],
+        "n_days": 11,
+        "observed_lag_min": 11,
+        "expected_lag_range_min": [
+          3.6,
+          6.6
+        ],
+        "pass": false,
+        "dist_m": 1312.0
+      }
+    ],
+    "pass_rate": 0.0,
+    "mode": "per-day onsets"
+  },
+  "systemic_v2": {
+    "systemic_windows": [
+      [
+        772,
+        878
+      ]
+    ],
+    "max_simultaneous": 6,
+    "max_fraction": 0.86,
+    "threshold_segments": 6
+  },
+  "systemic_v21": {
+    "max_contig_frac": 0.445,
+    "systemic_by_contig": false,
+    "peak_bucket": 363,
+    "peak_segs": [
+      0,
+      1,
+      2
+    ]
+  },
+  "recurrence": {
+    "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+      "n_days": 64,
+      "total_days": 64,
+      "frac": 1.0,
+      "label": "RECURRING"
+    },
+    "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+      "n_days": 64,
+      "total_days": 64,
+      "frac": 1.0,
+      "label": "RECURRING"
+    },
+    "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+      "n_days": 55,
+      "total_days": 64,
+      "frac": 0.86,
+      "label": "RECURRING"
+    },
+    "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+      "n_days": 39,
+      "total_days": 64,
+      "frac": 0.61,
+      "label": "FREQUENT"
+    },
+    "df036495-665d-4c1f-8f74-7cb5f380579d": {
+      "n_days": 47,
+      "total_days": 64,
+      "frac": 0.73,
+      "label": "FREQUENT"
+    },
+    "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+      "n_days": 22,
+      "total_days": 64,
+      "frac": 0.34,
+      "label": "OCCASIONAL"
+    },
+    "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+      "n_days": 59,
+      "total_days": 64,
+      "frac": 0.92,
+      "label": "RECURRING"
+    }
+  },
+  "confidence": {
+    "ccae34ae-68f2-461b-ad35-e22ffed0cbca": {
+      "score": 0.6,
+      "label": "MEDIUM",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 0.4,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    },
+    "ed74068d-02e5-4425-b625-43bcba3a05ea": {
+      "score": 0.75,
+      "label": "HIGH",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 1.0,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    },
+    "89537212-35b1-45c4-99e4-b5f836c5ce58": {
+      "score": 0.75,
+      "label": "HIGH",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 1.0,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    },
+    "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": {
+      "score": 0.6,
+      "label": "MEDIUM",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 0.4,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    },
+    "df036495-665d-4c1f-8f74-7cb5f380579d": {
+      "score": 0.75,
+      "label": "HIGH",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 1.0,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    },
+    "bb42e92a-5f01-4286-afe8-07b183cc5bb8": {
+      "score": 0.6,
+      "label": "MEDIUM",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 0.4,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    },
+    "4cc5b7f6-4d2b-4435-a27f-055e89014f92": {
+      "score": 0.6,
+      "label": "MEDIUM",
+      "components": {
+        "ff_tight": 1.0,
+        "primary_overlap": 0.4,
+        "onset_support": 1.0,
+        "shockwave_support": 0.0
+      }
+    }
+  },
+  "verdicts": {
+    "ccae34ae-68f2-461b-ad35-e22ffed0cbca": "QUEUE_VICTIM",
+    "ed74068d-02e5-4425-b625-43bcba3a05ea": "ACTIVE_BOTTLENECK",
+    "89537212-35b1-45c4-99e4-b5f836c5ce58": "ACTIVE_BOTTLENECK",
+    "397e7aaf-f00c-4a2c-b523-d1bf227c77c2": "FREE_FLOW",
+    "df036495-665d-4c1f-8f74-7cb5f380579d": "ACTIVE_BOTTLENECK",
+    "bb42e92a-5f01-4286-afe8-07b183cc5bb8": "QUEUE_VICTIM",
+    "4cc5b7f6-4d2b-4435-a27f-055e89014f92": "SLOW_LINK"
+  }
+}
